@@ -1,0 +1,15 @@
+{
+  "nav.planner": "Trip Planner",
+  "nav.bidding": "Offers",
+  "nav.cameraGuide": "Camera Guide",
+  "nav.providers": "Providers",
+  "planner.title": "Plan your Ma'an trip",
+  "planner.interests": "Interests",
+  "planner.days": "Trip length (days)",
+  "planner.accessibility": "I need accessibility-friendly routes",
+  "planner.generate": "Generate itinerary",
+  "bidding.title": "Provider offers",
+  "cameraGuide.title": "Point your camera at a landmark",
+  "cameraGuide.upload": "Upload a photo",
+  "providers.title": "Verified providers"
+}

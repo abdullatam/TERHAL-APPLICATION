@@ -1,0 +1,15 @@
+{
+  "nav.planner": "مخطط الرحلة",
+  "nav.bidding": "العروض",
+  "nav.cameraGuide": "دليل الكاميرا",
+  "nav.providers": "مزودو الخدمة",
+  "planner.title": "خطط رحلتك في معان",
+  "planner.interests": "الاهتمامات",
+  "planner.days": "مدة الرحلة (أيام)",
+  "planner.accessibility": "أحتاج مسارات ملائمة لذوي الإعاقة",
+  "planner.generate": "إنشاء خط الرحلة",
+  "bidding.title": "عروض مزودي الخدمة",
+  "cameraGuide.title": "وجّه الكاميرا نحو أحد المعالم",
+  "cameraGuide.upload": "ارفع صورة",
+  "providers.title": "مزودو الخدمة الموثقون"
+}
