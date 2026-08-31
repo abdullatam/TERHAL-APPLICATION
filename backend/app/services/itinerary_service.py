@@ -14,6 +14,7 @@ DEFAULT_ORDER = [
     SiteId.little_petra,
     SiteId.wadi_trails,
     SiteId.shobak_castle,
+    SiteId.udhruh,
 ]
 
 START_TIMES = ["08:00", "13:30", "16:00"]

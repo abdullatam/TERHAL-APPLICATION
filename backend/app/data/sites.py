@@ -71,4 +71,21 @@ SITES: dict[SiteId, Site] = {
         avg_visit_minutes=150,
         accessibility_notes="Uneven natural terrain; not accessible for reduced-mobility visitors.",
     ),
+    SiteId.udhruh: Site(
+        id=SiteId.udhruh,
+        name_en="Udhruh",
+        name_ar="أذرح",
+        description_en=(
+            "A town 15 km east of Petra that grew around a Roman legionary fortress built "
+            "after Rome annexed the Nabataean kingdom in 106 CE; later reused as an Ottoman "
+            "pilgrim station on the Hajj road to Mecca. Excavations continue to uncover its "
+            "role as a desert gateway linking Petra to regional trade and water networks."
+        ),
+        description_ar=(
+            "بلدة تبعد 15 كم شرق البتراء نشأت حول حصن روماني بُني بعد ضم روما للمملكة النبطية "
+            "عام 106م، واستُخدمت لاحقاً كمحطة للحجاج العثمانيين على طريق الحج إلى مكة."
+        ),
+        avg_visit_minutes=60,
+        accessibility_notes="Open ruins site with uneven ground; not wheelchair accessible.",
+    ),
 }

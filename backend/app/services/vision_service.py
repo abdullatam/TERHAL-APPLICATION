@@ -8,12 +8,12 @@ import json
 import anthropic
 
 from app.config import settings
-from app.data.sites import SITES
+from app.data.landmarks import LANDMARKS
 from app.models import Language, VisionIdentifyResult
 
 _KB_SUMMARY = "\n".join(
-    f"- {s.id.value}: {s.name_en} / {s.name_ar} — {s.description_en}"
-    for s in SITES.values()
+    f"- {l.id} ({l.site.value}): {l.name_en} / {l.name_ar} — {l.description_en}"
+    for l in LANDMARKS.values()
 )
 
 
@@ -23,11 +23,11 @@ def identify_landmark(image_bytes: bytes, media_type: str, language: Language) -
 
     prompt = (
         "You are a tour guide for Ma'an governorate, Jordan. Identify which landmark in the "
-        "photo matches one of the sites below, using ONLY the facts given here — do not invent "
-        "details not grounded in this knowledge base. If nothing matches, say so.\n\n"
+        "photo matches one of the entries below, using ONLY the facts given here — do not "
+        "invent details not grounded in this knowledge base. If nothing matches, say so.\n\n"
         f"Knowledge base:\n{_KB_SUMMARY}\n\n"
         f"{lang_instruction}\n"
-        'Reply as JSON: {"site_id": "<id or null>", "landmark": "<name>", "narration": "<2-4 sentences>"}'
+        'Reply as JSON: {"landmark_id": "<id or null>", "landmark": "<name>", "narration": "<2-4 sentences>"}'
     )
 
     message = client.messages.create(
@@ -55,11 +55,11 @@ def identify_landmark(image_bytes: bytes, media_type: str, language: Language) -
     try:
         parsed = json.loads(raw)
     except json.JSONDecodeError:
-        parsed = {"site_id": None, "landmark": "Unknown", "narration": raw}
+        parsed = {"landmark_id": None, "landmark": "Unknown", "narration": raw}
 
-    site_id = parsed.get("site_id")
+    landmark = LANDMARKS.get(parsed.get("landmark_id"))
     return VisionIdentifyResult(
-        site=site_id if site_id in SITES else None,
+        site=landmark.site if landmark else None,
         landmark=parsed.get("landmark", "Unknown"),
         narration=parsed.get("narration", ""),
         language=language,

@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
-from app.routers import bidding, chat, itinerary, providers, sites, vision
+from app.routers import bidding, chat, itinerary, landmarks, providers, sites, vision
 
 app = FastAPI(title="Maan Project API")
 
@@ -15,6 +15,7 @@ app.add_middleware(
 )
 
 app.include_router(sites.router)
+app.include_router(landmarks.router)
 app.include_router(itinerary.router)
 app.include_router(providers.router)
 app.include_router(bidding.router)

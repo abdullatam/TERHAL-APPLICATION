@@ -12,6 +12,7 @@ class SiteId(str, Enum):
     shobak_castle = "shobak_castle"
     wadi_musa = "wadi_musa"
     wadi_trails = "wadi_trails"
+    udhruh = "udhruh"
 
 
 class ProviderRole(str, Enum):
@@ -34,6 +35,17 @@ class Site(BaseModel):
     description_ar: str
     avg_visit_minutes: int
     accessibility_notes: str
+
+
+class Landmark(BaseModel):
+    id: str
+    site: SiteId
+    name_en: str
+    name_ar: str
+    description_en: str
+    description_ar: str
+    image_url: Optional[str] = None
+    image_attribution: Optional[str] = None
 
 
 class ItineraryStop(BaseModel):
