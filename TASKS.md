@@ -80,6 +80,8 @@ who didn't write it.
 
 ## Abd — Group A + the five questions + the merge
 
+*Abd = Abdelrahman, listed as Dam3a in PROJECT.md.*
+
 File: `data/scraped_group_a.csv`
 
 ### 1. Settle these first — Mon 31 Aug, before scraping

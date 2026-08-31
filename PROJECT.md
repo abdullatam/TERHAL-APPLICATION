@@ -3,7 +3,7 @@
 > **Working name:** Maan Project (a.k.a. Ma'an Trip Planner)
 > **Hackathon:** Maan Hackathon for Entrepreneurship (Irada Program)
 > **Application deadline:** 8 September 2026
-> **Team:** Pulga, Dam3a, Mahdi
+> **Team:** Pulga, Abdelrahman (Dam3a), Mahdi
 > **Fields:** Tourism innovation and experience design · Social innovation and community empowerment
 > **Status:** Pre-build / MVP scoping
 

@@ -18,7 +18,7 @@ providers. Phase 1 ends when the extracted data passes validation and is seeded.
 > in the CSV as working metadata — they are useful for splitting the work and for
 > sanity-checking — but they are not seeded.
 
-**Owners:** Abd → Group A · Mahdi → Group B · Pulga → Group C
+**Owners:** Abd (Abdelrahman, a.k.a. Dam3a) → Group A · Mahdi → Group B · Pulga → Group C
 **Deadline:** all three group files complete **Thu 3 Sept, 18:00**. Merge and
 validation same evening.
 
