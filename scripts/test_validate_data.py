@@ -13,7 +13,8 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from validate_data import HEADER, Report, check_row, check_file_level  # noqa: E402
+from validate_data import (HEADER, Report, check_row, check_file_level,  # noqa: E402
+                           load_removals)
 
 GOOD = {
     "id": "PET-TRE", "type": "landmark", "parent_site": "PET",
@@ -142,12 +143,24 @@ check("EXCLUDED row not marked no rejected",
 print("\nfile-level checks:")
 
 
-def file_check(label: str, rows: list[dict], *, expect_error: str,
-               universe=UNIVERSE, expect_ids=None, merged=False) -> None:
+def file_check(label: str, rows: list[dict], *, expect_error: str | None,
+               universe=UNIVERSE, expect_ids=None, merged=False,
+               removals=None, expect_warning: str | None = None) -> None:
     global passed, failed
     rep = Report()
     check_file_level([{**GOOD, **r} for r in rows], rep,
-                     expect_ids=expect_ids, merged=merged, universe=universe)
+                     expect_ids=expect_ids, merged=merged, universe=universe,
+                     removals=removals)
+    if expect_warning is not None:
+        msgs = " || ".join(m for _, m in rep.warnings)
+        errs = " || ".join(m for _, m in rep.errors)
+        if expect_warning in msgs and "missing from this file" not in errs:
+            passed += 1; print(f"  ok    {label}")
+        else:
+            failed += 1
+            print(f"  FAIL  {label}\n          expected warning {expect_warning!r}; "
+                  f"warnings: {msgs or '(none)'} errors: {errs or '(none)'}")
+        return
     msgs = " || ".join(m for _, m in rep.errors)
     if expect_error in msgs:
         passed += 1
@@ -167,6 +180,11 @@ file_check("entry missing from the file rejected",
            [{"id": "PET-TRE"}],
            expect_ids={"PET-TRE", "PET-MON"},
            expect_error="missing from this file")
+file_check("documented removal passes as a warning, not an error",
+           [{"id": "PET-TRE"}],
+           expect_ids={"PET-TRE", "PET-MON"},
+           removals={"PET-MON": "duplicate of PET-DEIR, agreed in chat 2 Sept"},
+           expect_error=None, expect_warning="deliberately removed")
 file_check("merged file with a group left out rejected",
            [{"id": "PET-TRE", "group": "C"}],
            merged=True, expect_error="contains no group A rows")

@@ -270,9 +270,30 @@ def check_row(row: dict[str, str], rep: Report, *, strict_seed: bool) -> None:
             rep.warn(rid, f"attribution {attribution!r} may not name a photographer")
 
 
+def load_removals(master: Path) -> dict[str, str]:
+    """Entries deliberately dropped, recorded in the master list.
+
+    Put `REMOVED: <reason>` in the master list's notes column to drop an entry
+    from the scrape. Without this, a missing row is indistinguishable from one
+    somebody forgot, so both had to be errors — which meant a legitimate
+    removal could never pass validation.
+    """
+    if not master.exists():
+        return {}
+    out: dict[str, str] = {}
+    with master.open(newline="", encoding="utf-8") as fh:
+        for row in csv.DictReader(fh):
+            note = (row.get("notes") or "")
+            marker = note.upper().find("REMOVED:")
+            if marker >= 0:
+                out[(row.get("id") or "").strip()] = note[marker + len("REMOVED:"):].strip()
+    return out
+
+
 def check_file_level(rows: list[dict[str, str]], rep: Report, *,
                      expect_ids: set[str] | None, merged: bool,
-                     universe: set[str] | None) -> None:
+                     universe: set[str] | None,
+                     removals: dict[str, str] | None = None) -> None:
     ids = [(r.get("id") or "").strip() for r in rows if (r.get("id") or "").strip()]
     for rid, count in Counter(ids).items():
         if count > 1:
@@ -293,9 +314,14 @@ def check_file_level(rows: list[dict[str, str]], rep: Report, *,
 
     if expect_ids is not None:
         present = {(r.get("id") or "").strip() for r in rows}
+        removals = removals or {}
         for missing in sorted(expect_ids - present):
-            rep.error(missing, "in the master list but missing from this file — "
-                               "if it was removed deliberately, say why in notes")
+            if missing in removals:
+                rep.warn(missing, f"deliberately removed: {removals[missing]}")
+            else:
+                rep.error(missing, "in the master list but missing from this file — if it "
+                                   "was removed on purpose, record it in the master list "
+                                   "notes as 'REMOVED: <reason>'")
         for added in sorted(present - expect_ids - {""}):
             rep.warn(added, "not in the master list — a new entry?")
 
@@ -428,7 +454,7 @@ def main() -> int:
     for row in rows:
         check_row(row, rep, strict_seed=args.merged)
     check_file_level(rows, rep, expect_ids=expect_ids, merged=args.merged,
-                     universe=universe)
+                     universe=universe, removals=load_removals(master))
 
     if args.check_images:
         check_images(rows, rep)
