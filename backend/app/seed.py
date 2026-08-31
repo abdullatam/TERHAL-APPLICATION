@@ -3,7 +3,7 @@
 Run with: python -m app.seed
 
 Idempotent — safe to re-run as landmarks.py/mock_providers.py are updated
-during the data phase (see DATA_PHASE.md); existing rows are upserted, not
+during the data phase (see PLAN.md); existing rows are upserted, not
 duplicated.
 """
 from sqlalchemy.dialects.postgresql import insert

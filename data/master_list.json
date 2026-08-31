@@ -1,0 +1,805 @@
+{
+  "meta": {
+    "title": "Maan Project - FINAL Verified Places List",
+    "status": "BLOCKER CLOSED - three-way split assigned, schema-conformant, handed off",
+    "governorate": "Ma'an Governorate, Jordan ONLY",
+    "total_verified_places": 41,
+    "total_needs_verification": 2,
+    "total_excluded": 4,
+    "verification_method": "Each place confirmed against at least one of: Wikipedia/Wikidata infobox stating 'Ma'an Governorate' directly, official Jordan tourism sources (visitjordan.com, visitpetra.jo), Jordan News Agency (Petra) reporting, or physical containment inside the Petra district (itself explicitly confirmed as one of Ma'an governorate's official districts, area 240 km2). Cross-checked visually against the official Jordan governorates map - the verified set sits entirely inside the Ma'an boundary, west-central through eastern desert (Al-Jafr).",
+    "note_on_ids": "IDs prefixed PET- are physically inside the Petra archaeological park boundary. All other IDs are standalone macro sites elsewhere in the governorate.",
+    "schema": "flat entries[]; field names match backend/app/models.py and data/README.md",
+    "group_split": {
+      "A": 15,
+      "B": 13,
+      "C": 13
+    },
+    "enrichment": "Coordinates and some name:ar pulled from OpenStreetMap (Overpass, small-bbox sweep of the Petra park + Shobak + governorate-wide historic/tourism features); source_url also carries the matching en.wikipedia page where one exists. Nothing was hand-invented: entries without a confident match carry needs_coords / needs_source / needs_name_ar in flags.",
+    "boundary_recheck": "Every PET-* coordinate was required to fall inside the Petra park bbox (30.28-30.42N, 35.38-35.52E) and every other entry inside the Ma'an bbox (29.20-30.95N, 35.30-38.00E). Matches outside their box were rejected, not accepted - this caught a wrong 'Qasr al-Bint' homonym ~40km north of Petra.",
+    "known_issues_for_scrapers": [
+      "PET-QAB: source list says 'Temple of Dushares' - the Nabataean god is Dushara. Fix before AR translation.",
+      "PET-HAB: alternate name 'Cave de Sueth' is unverified; that name normally refers to Habis Jaldak in the Yarmouk region, not al-Habis in Petra. Site itself is real and Crusader.",
+      "OPM vs PAM: probably the same museum - see the note on OPM. Resolve before seeding.",
+      "PET-OBT: matched OSM feature is 'Bab al-Siq Triclinium', the lower half of the same two-storey monument as the Obelisk Tomb. Expected, but keep them as one entry.",
+      "Painted Biclinium at Little Petra was in the seed backend/app/data/landmarks.py but is absent from this list - add it as a landmark of LPET or record why it was dropped."
+    ]
+  },
+  "entries": [
+    {
+      "id": "SHB",
+      "type": "site",
+      "parent_site": null,
+      "category": "castles",
+      "name_en": "Shobak Castle (Montreal)",
+      "name_ar": "قلعة الشوبك",
+      "era": "12th c. Crusader",
+      "in_maan_governorate": "yes",
+      "lat": null,
+      "lon": null,
+      "group": "A",
+      "source_url": "https://en.wikipedia.org/wiki/Montreal_%28castle%29",
+      "flags": [
+        "needs_coords"
+      ],
+      "notes": "No OSM feature for the castle itself in the fetched extract (the 0.93 match was 'Shobak Wind Farm') - get coordinates manually from the Wikipedia article or a map."
+    },
+    {
+      "id": "WUA",
+      "type": "site",
+      "parent_site": null,
+      "category": "castles",
+      "name_en": "Wu'ayra Castle (Vaux Moise)",
+      "name_ar": "قلعة الوعيرة",
+      "era": "1116 AD, Crusader",
+      "in_maan_governorate": "yes",
+      "lat": 30.3327377,
+      "lon": 35.4656377,
+      "group": "A",
+      "source_url": "https://www.openstreetmap.org/way/751173171 | https://en.wikipedia.org/wiki/Wu%27ayra_Castle",
+      "flags": [],
+      "notes": null
+    },
+    {
+      "id": "UNZ",
+      "type": "site",
+      "parent_site": null,
+      "category": "castles",
+      "name_en": "Qasr Uneizah (Unayzah)",
+      "name_ar": "قصر عنيزة",
+      "era": "Islamic period",
+      "in_maan_governorate": "yes",
+      "lat": null,
+      "lon": null,
+      "group": "A",
+      "source_url": "",
+      "flags": [
+        "needs_coords",
+        "needs_source"
+      ],
+      "notes": null
+    },
+    {
+      "id": "PET-HAB",
+      "type": "landmark",
+      "parent_site": "PET",
+      "category": "castles",
+      "name_en": "Al-Habis Castle (Cave de Sueth)",
+      "name_ar": "قلعة الحبيس",
+      "era": "1115 AD, Crusader",
+      "in_maan_governorate": "yes",
+      "lat": 30.3290508,
+      "lon": 35.4388177,
+      "group": "A",
+      "source_url": "https://www.openstreetmap.org/node/2533844440",
+      "flags": [],
+      "notes": "Inside Petra"
+    },
+    {
+      "id": "PET-SIQ",
+      "type": "landmark",
+      "parent_site": "PET",
+      "category": "wadis",
+      "name_en": "The Siq",
+      "name_ar": "السيق",
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.3242359,
+      "lon": 35.4482366,
+      "group": "B",
+      "source_url": "https://www.openstreetmap.org/way/35049641 | https://en.wikipedia.org/wiki/Siq",
+      "flags": [],
+      "notes": null
+    },
+    {
+      "id": "PET-WFA",
+      "type": "landmark",
+      "parent_site": "PET",
+      "category": "wadis",
+      "name_en": "Wadi Farasa",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.3235921,
+      "lon": 35.4419705,
+      "group": "C",
+      "source_url": "https://www.openstreetmap.org/way/303937147",
+      "flags": [
+        "needs_name_ar"
+      ],
+      "notes": "OSM matched as 'Wadi Farasah' (score 0.93) - confirm same feature"
+    },
+    {
+      "id": "PET-WSA",
+      "type": "landmark",
+      "parent_site": "PET",
+      "category": "wadis",
+      "name_en": "Wadi Sabra",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": null,
+      "lon": null,
+      "group": "C",
+      "source_url": "",
+      "flags": [
+        "needs_coords",
+        "needs_name_ar",
+        "needs_source"
+      ],
+      "notes": null
+    },
+    {
+      "id": "PET-WMD",
+      "type": "landmark",
+      "parent_site": "PET",
+      "category": "wadis",
+      "name_en": "Wadi al-Mudhlim (Nabataean Dam & Tunnel)",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.3235419,
+      "lon": 35.460945,
+      "group": "C",
+      "source_url": "https://www.openstreetmap.org/way/488821487",
+      "flags": [
+        "needs_name_ar"
+      ],
+      "notes": null
+    },
+    {
+      "id": "PET",
+      "type": "site",
+      "parent_site": null,
+      "category": "other_tourism_places",
+      "name_en": "Petra",
+      "name_ar": "البتراء",
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.3333331,
+      "lon": 35.4333329,
+      "group": "B",
+      "source_url": "https://www.openstreetmap.org/node/802556924 | https://en.wikipedia.org/wiki/Petra",
+      "flags": [],
+      "notes": null
+    },
+    {
+      "id": "LPET",
+      "type": "site",
+      "parent_site": null,
+      "category": "other_tourism_places",
+      "name_en": "Little Petra (Siq al-Barid)",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.3751131,
+      "lon": 35.4509057,
+      "group": "B",
+      "source_url": "https://www.openstreetmap.org/node/546597034 | https://en.wikipedia.org/wiki/Little_Petra",
+      "flags": [
+        "needs_name_ar"
+      ],
+      "notes": null
+    },
+    {
+      "id": "BAS",
+      "type": "site",
+      "parent_site": null,
+      "category": "other_tourism_places",
+      "name_en": "Basta (Neolithic site)",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.233,
+      "lon": 35.533,
+      "group": "A",
+      "source_url": "https://en.wikipedia.org/wiki/Basta_%28archaeological_site%29",
+      "flags": [
+        "needs_name_ar"
+      ],
+      "notes": null
+    },
+    {
+      "id": "BAJ",
+      "type": "site",
+      "parent_site": null,
+      "category": "other_tourism_places",
+      "name_en": "Ba'ja (Neolithic site)",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.4134083,
+      "lon": 35.4612934,
+      "group": "A",
+      "source_url": "https://www.openstreetmap.org/node/8855258827 | https://en.wikipedia.org/wiki/Ba%27ja",
+      "flags": [
+        "needs_name_ar"
+      ],
+      "notes": null
+    },
+    {
+      "id": "BEI",
+      "type": "site",
+      "parent_site": null,
+      "category": "other_tourism_places",
+      "name_en": "Beidha (Neolithic site)",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": null,
+      "lon": null,
+      "group": "A",
+      "source_url": "https://en.wikipedia.org/wiki/Beidha_%28archaeological_site%29",
+      "flags": [
+        "needs_coords",
+        "needs_name_ar"
+      ],
+      "notes": null
+    },
+    {
+      "id": "JHR",
+      "type": "site",
+      "parent_site": null,
+      "category": "other_tourism_places",
+      "name_en": "Jebel Harun / Tomb of Aaron",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.316791,
+      "lon": 35.406715,
+      "group": "A",
+      "source_url": "https://www.openstreetmap.org/node/3379067633 | https://en.wikipedia.org/wiki/Mount_Hor",
+      "flags": [
+        "needs_name_ar"
+      ],
+      "notes": "No formal entrance - guide required"
+    },
+    {
+      "id": "AMS",
+      "type": "site",
+      "parent_site": null,
+      "category": "other_tourism_places",
+      "name_en": "Ain Musa (Moses Spring)",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": null,
+      "lon": null,
+      "group": "A",
+      "source_url": "",
+      "flags": [
+        "needs_coords",
+        "needs_name_ar",
+        "needs_source"
+      ],
+      "notes": null
+    },
+    {
+      "id": "UDH",
+      "type": "site",
+      "parent_site": null,
+      "category": "other_tourism_places",
+      "name_en": "Udhruh (Roman legionary fort)",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.3304905,
+      "lon": 35.5954027,
+      "group": "A",
+      "source_url": "https://www.openstreetmap.org/node/9205489036 | https://en.wikipedia.org/wiki/Udhruh",
+      "flags": [
+        "needs_name_ar"
+      ],
+      "notes": null
+    },
+    {
+      "id": "AJF",
+      "type": "site",
+      "parent_site": null,
+      "category": "other_tourism_places",
+      "name_en": "Al-Jafr (desert town & basin)",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.3175067,
+      "lon": 36.1852741,
+      "group": "B",
+      "source_url": "https://www.openstreetmap.org/node/9206525690 | https://en.wikipedia.org/wiki/Al-Jafr",
+      "flags": [
+        "needs_name_ar"
+      ],
+      "notes": null
+    },
+    {
+      "id": "USH",
+      "type": "site",
+      "parent_site": null,
+      "category": "other_tourism_places",
+      "name_en": "Umm Sayhoun (Bedouin village)",
+      "name_ar": "أم صيحون",
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.343334,
+      "lon": 35.45547,
+      "group": "A",
+      "source_url": "https://www.openstreetmap.org/node/802551597",
+      "flags": [],
+      "notes": null
+    },
+    {
+      "id": "AMM",
+      "type": "site",
+      "parent_site": null,
+      "category": "other_tourism_places",
+      "name_en": "Ammarin Bedouin Camp",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.3815497,
+      "lon": 35.4495047,
+      "group": "C",
+      "source_url": "https://www.openstreetmap.org/node/3053244053",
+      "flags": [
+        "needs_name_ar"
+      ],
+      "notes": "Community-owned cooperative - potential pitch case study / demo partner"
+    },
+    {
+      "id": "OPM",
+      "type": "site",
+      "parent_site": null,
+      "category": "other_tourism_places",
+      "name_en": "Old Petra Museum",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": null,
+      "lon": null,
+      "group": "A",
+      "source_url": "",
+      "flags": [
+        "needs_coords",
+        "needs_name_ar",
+        "needs_source"
+      ],
+      "notes": "DUPLICATE RISK: the only museum feature in the Petra extract is a single 'Petra Museum' node at 30.32532,35.46784 - the same entity as PAM, and ~10m from the coords originally recorded for OPM. Decide: merge into PAM and drop OPM, or source the in-park archaeological museum separately. The 0.93 match was the 'Petra' node itself."
+    },
+    {
+      "id": "WMU",
+      "type": "site",
+      "parent_site": null,
+      "category": "other_tourism_places",
+      "name_en": "Wadi Musa (town)",
+      "name_ar": "وادي موسى",
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.3216568,
+      "lon": 35.4800889,
+      "group": "A",
+      "source_url": "https://www.openstreetmap.org/node/411050499 | https://en.wikipedia.org/wiki/Wadi_Musa",
+      "flags": [],
+      "notes": null
+    },
+    {
+      "id": "PET-TRE",
+      "type": "landmark",
+      "parent_site": "PET",
+      "category": "petra_landmarks",
+      "name_en": "Treasury (Al-Khazneh)",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.3220754,
+      "lon": 35.4515251,
+      "group": "B",
+      "source_url": "https://www.openstreetmap.org/way/488848937 | https://en.wikipedia.org/wiki/Al-Khazneh",
+      "flags": [
+        "needs_name_ar"
+      ],
+      "notes": null
+    },
+    {
+      "id": "PET-MON",
+      "type": "landmark",
+      "parent_site": "PET",
+      "category": "petra_landmarks",
+      "name_en": "Monastery (Ad-Deir)",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.3382074,
+      "lon": 35.4309778,
+      "group": "B",
+      "source_url": "https://www.openstreetmap.org/way/41032088 | https://en.wikipedia.org/wiki/Ed-Deir%2C_Petra",
+      "flags": [
+        "needs_name_ar"
+      ],
+      "notes": "OSM matched as 'Monastery (Ad Deir)' (score 0.93) - confirm same feature"
+    },
+    {
+      "id": "PET-SOF",
+      "type": "landmark",
+      "parent_site": "PET",
+      "category": "petra_landmarks",
+      "name_en": "Street of Facades",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.323142,
+      "lon": 35.4501264,
+      "group": "B",
+      "source_url": "https://www.openstreetmap.org/node/4788669947",
+      "flags": [
+        "needs_name_ar"
+      ],
+      "notes": null
+    },
+    {
+      "id": "PET-URN",
+      "type": "landmark",
+      "parent_site": "PET",
+      "category": "petra_landmarks",
+      "name_en": "Urn Tomb (Royal Tombs)",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.327551,
+      "lon": 35.449262,
+      "group": "B",
+      "source_url": "https://www.openstreetmap.org/node/2437205310",
+      "flags": [
+        "needs_name_ar"
+      ],
+      "notes": null
+    },
+    {
+      "id": "PET-SLK",
+      "type": "landmark",
+      "parent_site": "PET",
+      "category": "petra_landmarks",
+      "name_en": "Silk Tomb (Royal Tombs)",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.3280388,
+      "lon": 35.4492607,
+      "group": "B",
+      "source_url": "https://www.openstreetmap.org/node/2437205299",
+      "flags": [
+        "needs_name_ar"
+      ],
+      "notes": null
+    },
+    {
+      "id": "PET-COR",
+      "type": "landmark",
+      "parent_site": "PET",
+      "category": "petra_landmarks",
+      "name_en": "Corinthian Tomb (Royal Tombs)",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.3285277,
+      "lon": 35.4495453,
+      "group": "B",
+      "source_url": "https://www.openstreetmap.org/node/2437205269",
+      "flags": [
+        "needs_name_ar"
+      ],
+      "notes": null
+    },
+    {
+      "id": "PET-PAL",
+      "type": "landmark",
+      "parent_site": "PET",
+      "category": "petra_landmarks",
+      "name_en": "Palace Tomb (Royal Tombs)",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.3291065,
+      "lon": 35.4499137,
+      "group": "B",
+      "source_url": "https://www.openstreetmap.org/node/2437205291 | https://en.wikipedia.org/wiki/Palace_Tomb",
+      "flags": [
+        "needs_name_ar"
+      ],
+      "notes": null
+    },
+    {
+      "id": "PET-THE",
+      "type": "landmark",
+      "parent_site": "PET",
+      "category": "petra_landmarks",
+      "name_en": "Roman Theatre",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.3248246,
+      "lon": 35.446958,
+      "group": "B",
+      "source_url": "https://www.openstreetmap.org/way/41022807",
+      "flags": [
+        "needs_name_ar"
+      ],
+      "notes": null
+    },
+    {
+      "id": "PET-HPS",
+      "type": "landmark",
+      "parent_site": "PET",
+      "category": "petra_landmarks",
+      "name_en": "High Place of Sacrifice",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.3214793,
+      "lon": 35.4469854,
+      "group": "B",
+      "source_url": "https://www.openstreetmap.org/way/40995686",
+      "flags": [
+        "needs_name_ar"
+      ],
+      "notes": null
+    },
+    {
+      "id": "PET-COL",
+      "type": "landmark",
+      "parent_site": "PET",
+      "category": "petra_landmarks",
+      "name_en": "Colonnaded Street",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": null,
+      "lon": null,
+      "group": "B",
+      "source_url": "https://en.wikipedia.org/wiki/Colonnaded_Street",
+      "flags": [
+        "needs_coords",
+        "needs_name_ar"
+      ],
+      "notes": null
+    },
+    {
+      "id": "PET-QAB",
+      "type": "landmark",
+      "parent_site": "PET",
+      "category": "petra_landmarks",
+      "name_en": "Qasr al-Bint (Temple of Dushares)",
+      "name_ar": "قصر البنت",
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.3294833,
+      "lon": 35.4401292,
+      "group": "C",
+      "source_url": "https://www.openstreetmap.org/way/115512688 | https://en.wikipedia.org/wiki/Qasr_al-Bint",
+      "flags": [],
+      "notes": null
+    },
+    {
+      "id": "PET-TWL",
+      "type": "landmark",
+      "parent_site": "PET",
+      "category": "petra_landmarks",
+      "name_en": "Temple of the Winged Lions",
+      "name_ar": "معبد الأسود المجنحة",
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.3300823,
+      "lon": 35.4424319,
+      "group": "C",
+      "source_url": "https://www.openstreetmap.org/way/115512690 | https://en.wikipedia.org/wiki/Temple_of_the_Winged_Lions",
+      "flags": [],
+      "notes": null
+    },
+    {
+      "id": "PET-CHU",
+      "type": "landmark",
+      "parent_site": "PET",
+      "category": "petra_landmarks",
+      "name_en": "Petra Church",
+      "name_ar": "الكنيسة البيزنطية",
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.3306244,
+      "lon": 35.444369,
+      "group": "C",
+      "source_url": "https://www.openstreetmap.org/way/115515461",
+      "flags": [],
+      "notes": null
+    },
+    {
+      "id": "PET-RST",
+      "type": "landmark",
+      "parent_site": "PET",
+      "category": "petra_landmarks",
+      "name_en": "Roman Soldier's Tomb",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.3208234,
+      "lon": 35.4448873,
+      "group": "C",
+      "source_url": "https://www.openstreetmap.org/node/5167013933 | https://en.wikipedia.org/wiki/Tomb_of_the_Roman_Soldier",
+      "flags": [
+        "needs_name_ar"
+      ],
+      "notes": null
+    },
+    {
+      "id": "PET-GTM",
+      "type": "landmark",
+      "parent_site": "PET",
+      "category": "petra_landmarks",
+      "name_en": "Garden Tomb",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.3204293,
+      "lon": 35.4454647,
+      "group": "C",
+      "source_url": "https://www.openstreetmap.org/node/2528846745",
+      "flags": [
+        "needs_name_ar"
+      ],
+      "notes": null
+    },
+    {
+      "id": "PET-OBT",
+      "type": "landmark",
+      "parent_site": "PET",
+      "category": "petra_landmarks",
+      "name_en": "Obelisk Tomb",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.3212234,
+      "lon": 35.4632816,
+      "group": "C",
+      "source_url": "https://www.openstreetmap.org/node/2437205290",
+      "flags": [
+        "needs_name_ar"
+      ],
+      "notes": null
+    },
+    {
+      "id": "PET-GRT",
+      "type": "landmark",
+      "parent_site": "PET",
+      "category": "petra_landmarks",
+      "name_en": "Great Temple",
+      "name_ar": "المعبد الكبير",
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.3288133,
+      "lon": 35.4423492,
+      "group": "C",
+      "source_url": "https://www.openstreetmap.org/way/115512705 | https://en.wikipedia.org/wiki/Great_Temple_%28Petra%29",
+      "flags": [],
+      "notes": null
+    },
+    {
+      "id": "PET-DJN",
+      "type": "landmark",
+      "parent_site": "PET",
+      "category": "petra_landmarks",
+      "name_en": "Djinn Blocks",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.3221541,
+      "lon": 35.4642445,
+      "group": "C",
+      "source_url": "https://www.openstreetmap.org/node/2437205273",
+      "flags": [
+        "needs_name_ar"
+      ],
+      "notes": null
+    },
+    {
+      "id": "PET-KHB",
+      "type": "landmark",
+      "parent_site": "PET",
+      "category": "petra_landmarks",
+      "name_en": "Al-Khubtha High Place & Trail",
+      "name_ar": "جبل خبثة",
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.333333,
+      "lon": 35.466667,
+      "group": "C",
+      "source_url": "https://www.openstreetmap.org/node/802551326",
+      "flags": [],
+      "notes": null
+    },
+    {
+      "id": "PET-LTC",
+      "type": "landmark",
+      "parent_site": "PET",
+      "category": "petra_landmarks",
+      "name_en": "Lion Triclinium",
+      "name_ar": null,
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.335035,
+      "lon": 35.4386386,
+      "group": "C",
+      "source_url": "https://www.openstreetmap.org/node/2528846741",
+      "flags": [
+        "needs_name_ar"
+      ],
+      "notes": null
+    }
+  ],
+  "needs_verification": [
+    {
+      "id": "PAM",
+      "name_en": "Petra Museum (visitor center)",
+      "in_maan_governorate": "unsure",
+      "lat": 30.325322,
+      "lon": 35.4678442,
+      "group": "HOLD",
+      "source_url": "https://www.openstreetmap.org/way/156571190",
+      "flags": [
+        "needs_name_ar",
+        "do_not_scrape",
+        "do_not_seed"
+      ],
+      "issue": "Not sourced from a confirmed reference - may not be a distinct entity from the Old Petra Museum (OPM). Do not seed into the database until a team member confirms it exists as described, ideally via visitpetra.jo or an on-the-ground check."
+    },
+    {
+      "id": "MPL",
+      "name_en": "Founder King's Palace / Hijaz Railway Station (Ma'an city)",
+      "in_maan_governorate": "unsure",
+      "lat": null,
+      "lon": null,
+      "group": "HOLD",
+      "source_url": "https://en.wikipedia.org/wiki/Ma%27an",
+      "flags": [
+        "needs_coords",
+        "needs_name_ar",
+        "do_not_scrape",
+        "do_not_seed"
+      ],
+      "issue": "Located in Ma'an city (governorate capital) so almost certainly within Ma'an, but the specific building/site details were never confirmed against a direct source. Verify before publishing historical claims about it."
+    }
+  ],
+  "excluded_confirmed_outside_maan": [
+    {
+      "candidate": "Wadi Rum",
+      "actual_governorate": "Aqaba"
+    },
+    {
+      "candidate": "Dana Biosphere Reserve",
+      "actual_governorate": "Tafilah"
+    },
+    {
+      "candidate": "Wadi al-Hasa",
+      "actual_governorate": "Karak/Tafilah border"
+    },
+    {
+      "candidate": "Wadi Hisma",
+      "actual_governorate": "Unresolved - leans Aqaba border zone, excluded on caution"
+    }
+  ]
+}

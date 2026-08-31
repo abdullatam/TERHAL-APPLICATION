@@ -1,0 +1,48 @@
+id,type,parent_site,name_en,name_ar,in_maan_governorate,lat,lon,group,source_url,flags,notes
+SHB,site,,Shobak Castle (Montreal),قلعة الشوبك,yes,,,A,https://en.wikipedia.org/wiki/Montreal_%28castle%29,needs_coords,No OSM feature for the castle itself in the fetched extract (the 0.93 match was 'Shobak Wind Farm') - get coordinates manually from the Wikipedia article or a map.
+WUA,site,,Wu'ayra Castle (Vaux Moise),قلعة الوعيرة,yes,30.3327377,35.4656377,A,https://www.openstreetmap.org/way/751173171 | https://en.wikipedia.org/wiki/Wu%27ayra_Castle,,
+UNZ,site,,Qasr Uneizah (Unayzah),قصر عنيزة,yes,,,A,,"needs_coords,needs_source",
+PET-HAB,landmark,PET,Al-Habis Castle (Cave de Sueth),قلعة الحبيس,yes,30.3290508,35.4388177,A,https://www.openstreetmap.org/node/2533844440,,Inside Petra
+PET-SIQ,landmark,PET,The Siq,السيق,yes,30.3242359,35.4482366,B,https://www.openstreetmap.org/way/35049641 | https://en.wikipedia.org/wiki/Siq,,
+PET-WFA,landmark,PET,Wadi Farasa,,yes,30.3235921,35.4419705,C,https://www.openstreetmap.org/way/303937147,needs_name_ar,OSM matched as 'Wadi Farasah' (score 0.93) - confirm same feature
+PET-WSA,landmark,PET,Wadi Sabra,,yes,,,C,,"needs_coords,needs_name_ar,needs_source",
+PET-WMD,landmark,PET,Wadi al-Mudhlim (Nabataean Dam & Tunnel),,yes,30.3235419,35.460945,C,https://www.openstreetmap.org/way/488821487,needs_name_ar,
+PET,site,,Petra,البتراء,yes,30.3333331,35.4333329,B,https://www.openstreetmap.org/node/802556924 | https://en.wikipedia.org/wiki/Petra,,
+LPET,site,,Little Petra (Siq al-Barid),,yes,30.3751131,35.4509057,B,https://www.openstreetmap.org/node/546597034 | https://en.wikipedia.org/wiki/Little_Petra,needs_name_ar,
+BAS,site,,Basta (Neolithic site),,yes,30.233,35.533,A,https://en.wikipedia.org/wiki/Basta_%28archaeological_site%29,needs_name_ar,
+BAJ,site,,Ba'ja (Neolithic site),,yes,30.4134083,35.4612934,A,https://www.openstreetmap.org/node/8855258827 | https://en.wikipedia.org/wiki/Ba%27ja,needs_name_ar,
+BEI,site,,Beidha (Neolithic site),,yes,,,A,https://en.wikipedia.org/wiki/Beidha_%28archaeological_site%29,"needs_coords,needs_name_ar",
+JHR,site,,Jebel Harun / Tomb of Aaron,,yes,30.316791,35.406715,A,https://www.openstreetmap.org/node/3379067633 | https://en.wikipedia.org/wiki/Mount_Hor,needs_name_ar,No formal entrance - guide required
+AMS,site,,Ain Musa (Moses Spring),,yes,,,A,,"needs_coords,needs_name_ar,needs_source",
+UDH,site,,Udhruh (Roman legionary fort),,yes,30.3304905,35.5954027,A,https://www.openstreetmap.org/node/9205489036 | https://en.wikipedia.org/wiki/Udhruh,needs_name_ar,
+AJF,site,,Al-Jafr (desert town & basin),,yes,30.3175067,36.1852741,B,https://www.openstreetmap.org/node/9206525690 | https://en.wikipedia.org/wiki/Al-Jafr,needs_name_ar,
+USH,site,,Umm Sayhoun (Bedouin village),أم صيحون,yes,30.343334,35.45547,A,https://www.openstreetmap.org/node/802551597,,
+AMM,site,,Ammarin Bedouin Camp,,yes,30.3815497,35.4495047,C,https://www.openstreetmap.org/node/3053244053,needs_name_ar,Community-owned cooperative - potential pitch case study / demo partner
+OPM,site,,Old Petra Museum,,yes,,,A,,"needs_coords,needs_name_ar,needs_source","DUPLICATE RISK: the only museum feature in the Petra extract is a single 'Petra Museum' node at 30.32532,35.46784 - the same entity as PAM, and ~10m from the coords originally recorded for OPM. Decide: merge into PAM and drop OPM, or source the in-park archaeological museum separately. The 0.93 match was the 'Petra' node itself."
+WMU,site,,Wadi Musa (town),وادي موسى,yes,30.3216568,35.4800889,A,https://www.openstreetmap.org/node/411050499 | https://en.wikipedia.org/wiki/Wadi_Musa,,
+PET-TRE,landmark,PET,Treasury (Al-Khazneh),,yes,30.3220754,35.4515251,B,https://www.openstreetmap.org/way/488848937 | https://en.wikipedia.org/wiki/Al-Khazneh,needs_name_ar,
+PET-MON,landmark,PET,Monastery (Ad-Deir),,yes,30.3382074,35.4309778,B,https://www.openstreetmap.org/way/41032088 | https://en.wikipedia.org/wiki/Ed-Deir%2C_Petra,needs_name_ar,OSM matched as 'Monastery (Ad Deir)' (score 0.93) - confirm same feature
+PET-SOF,landmark,PET,Street of Facades,,yes,30.323142,35.4501264,B,https://www.openstreetmap.org/node/4788669947,needs_name_ar,
+PET-URN,landmark,PET,Urn Tomb (Royal Tombs),,yes,30.327551,35.449262,B,https://www.openstreetmap.org/node/2437205310,needs_name_ar,
+PET-SLK,landmark,PET,Silk Tomb (Royal Tombs),,yes,30.3280388,35.4492607,B,https://www.openstreetmap.org/node/2437205299,needs_name_ar,
+PET-COR,landmark,PET,Corinthian Tomb (Royal Tombs),,yes,30.3285277,35.4495453,B,https://www.openstreetmap.org/node/2437205269,needs_name_ar,
+PET-PAL,landmark,PET,Palace Tomb (Royal Tombs),,yes,30.3291065,35.4499137,B,https://www.openstreetmap.org/node/2437205291 | https://en.wikipedia.org/wiki/Palace_Tomb,needs_name_ar,
+PET-THE,landmark,PET,Roman Theatre,,yes,30.3248246,35.446958,B,https://www.openstreetmap.org/way/41022807,needs_name_ar,
+PET-HPS,landmark,PET,High Place of Sacrifice,,yes,30.3214793,35.4469854,B,https://www.openstreetmap.org/way/40995686,needs_name_ar,
+PET-COL,landmark,PET,Colonnaded Street,,yes,,,B,https://en.wikipedia.org/wiki/Colonnaded_Street,"needs_coords,needs_name_ar",
+PET-QAB,landmark,PET,Qasr al-Bint (Temple of Dushares),قصر البنت,yes,30.3294833,35.4401292,C,https://www.openstreetmap.org/way/115512688 | https://en.wikipedia.org/wiki/Qasr_al-Bint,,
+PET-TWL,landmark,PET,Temple of the Winged Lions,معبد الأسود المجنحة,yes,30.3300823,35.4424319,C,https://www.openstreetmap.org/way/115512690 | https://en.wikipedia.org/wiki/Temple_of_the_Winged_Lions,,
+PET-CHU,landmark,PET,Petra Church,الكنيسة البيزنطية,yes,30.3306244,35.444369,C,https://www.openstreetmap.org/way/115515461,,
+PET-RST,landmark,PET,Roman Soldier's Tomb,,yes,30.3208234,35.4448873,C,https://www.openstreetmap.org/node/5167013933 | https://en.wikipedia.org/wiki/Tomb_of_the_Roman_Soldier,needs_name_ar,
+PET-GTM,landmark,PET,Garden Tomb,,yes,30.3204293,35.4454647,C,https://www.openstreetmap.org/node/2528846745,needs_name_ar,
+PET-OBT,landmark,PET,Obelisk Tomb,,yes,30.3212234,35.4632816,C,https://www.openstreetmap.org/node/2437205290,needs_name_ar,
+PET-GRT,landmark,PET,Great Temple,المعبد الكبير,yes,30.3288133,35.4423492,C,https://www.openstreetmap.org/way/115512705 | https://en.wikipedia.org/wiki/Great_Temple_%28Petra%29,,
+PET-DJN,landmark,PET,Djinn Blocks,,yes,30.3221541,35.4642445,C,https://www.openstreetmap.org/node/2437205273,needs_name_ar,
+PET-KHB,landmark,PET,Al-Khubtha High Place & Trail,جبل خبثة,yes,30.333333,35.466667,C,https://www.openstreetmap.org/node/802551326,,
+PET-LTC,landmark,PET,Lion Triclinium,,yes,30.335035,35.4386386,C,https://www.openstreetmap.org/node/2528846741,needs_name_ar,
+PAM,,,Petra Museum (visitor center),,unsure,30.325322,35.4678442,HOLD,https://www.openstreetmap.org/way/156571190,"needs_name_ar,do_not_scrape,do_not_seed","DO NOT SCRAPE OR SEED until confirmed. Not sourced from a confirmed reference - may not be a distinct entity from the Old Petra Museum (OPM). Do not seed into the database until a team member confirms it exists as described, ideally via visitpetra.jo or an on-the-ground check."
+MPL,,,Founder King's Palace / Hijaz Railway Station (Ma'an city),,unsure,,,HOLD,https://en.wikipedia.org/wiki/Ma%27an,"needs_coords,needs_name_ar,do_not_scrape,do_not_seed","DO NOT SCRAPE OR SEED until confirmed. Located in Ma'an city (governorate capital) so almost certainly within Ma'an, but the specific building/site details were never confirmed against a direct source. Verify before publishing historical claims about it."
+,,,Wadi Rum,,no,,,EXCLUDED,,,actual governorate: Aqaba
+,,,Dana Biosphere Reserve,,no,,,EXCLUDED,,,actual governorate: Tafilah
+,,,Wadi al-Hasa,,no,,,EXCLUDED,,,actual governorate: Karak/Tafilah border
+,,,Wadi Hisma,,no,,,EXCLUDED,,,"actual governorate: Unresolved - leans Aqaba border zone, excluded on caution"
