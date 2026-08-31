@@ -1,272 +1,349 @@
 """Knowledge base for every tourist attraction in Ma'an governorate — the
 single source of truth for both the AI itinerary planner and the camera
-guide's grounding data. Flat by design: no separate "site" grouping above
-these rows, each attraction (whether a whole area like Petra or a single
-monument like the Treasury) carries its own visit duration and
-accessibility notes.
+guide's grounding data.
 
-Sourced from Wikipedia/UNESCO/tourism-board research (facts paraphrased,
-not copied verbatim); illustrated with CC-licensed Wikimedia Commons
-photos where available. avg_visit_minutes/accessibility_notes for the
-individual Petra monuments are reasonable estimates pending refinement
-during the data phase (see DATA_PHASE.md).
+GENERATED FILE — do not hand-edit. The source of truth is
+data/scraped_group_*.csv; regenerate this with
+`python scripts/build_dataset.py` after any of those change. See PLAN.md
+and data/README.md for the sourcing/licensing rules behind this data.
 """
 from app.models import Landmark
 
 LANDMARKS: dict[str, Landmark] = {
-    "petra": Landmark(
-        id="petra",
-        name_en="Petra",
-        name_ar="البتراء",
-        description_en=(
-            "Nabataean city carved into rose-red sandstone cliffs, c. 3rd century BCE. "
-            "Key landmarks: the Siq entrance canyon, the Treasury (Al-Khazneh), the Street "
-            "of Facades, the Royal Tombs, and the Monastery (Ad-Deir) reached via ~900 steps."
-        ),
-        description_ar=(
-            "مدينة نبطية منحوتة في منحدرات الحجر الرملي الوردي، يعود تاريخها إلى القرن الثالث "
-            "قبل الميلاد. أبرز معالمها: السيق، الخزنة، شارع الواجهات، المدافن الملكية، والدير."
-        ),
-        avg_visit_minutes=240,
-        accessibility_notes="Siq and main trail are wheelchair-passable with assistance; Monastery climb (~900 steps) is not.",
-    ),
-    "siq": Landmark(
-        id="siq",
-        name_en="The Siq",
-        name_ar="السيق",
-        description_en=(
-            "The main entrance gorge into Petra: a narrow, winding sandstone canyon about "
-            "1.2 km long and, in places, just 3 metres wide. It was the Nabataeans' grand "
-            "caravan approach, and votive niches carved into its walls once held sacred "
-            "stones (baetyls)."
-        ),
-        description_ar=(
-            "الممر الرئيسي المؤدي إلى البتراء: شق صخري ضيق ومتعرج يمتد نحو 1.2 كم، يضيق في "
-            "بعض الأماكن إلى 3 أمتار فقط. كان المدخل الكبير للقوافل النبطية، وتحمل جدرانه "
-            "تجاويف نذرية كانت تضم أحجاراً مقدسة."
-        ),
-        avg_visit_minutes=20,
-        accessibility_notes="Wide enough for wheelchair passage with assistance in most sections; uneven sandy/paved surface.",
-        image_url="https://commons.wikimedia.org/wiki/Special:FilePath/Petra_Siq,_entrance_to_the_ancient_Nabatean_city_of_Petra,_Jordan.jpg",
-        image_attribution="Photo by Vyacheslav Argenberg, CC BY 4.0, via Wikimedia Commons",
-    ),
-    "al_khazneh": Landmark(
-        id="al_khazneh",
-        name_en="Al-Khazneh (The Treasury)",
-        name_ar="الخزنة",
-        description_en=(
-            "Petra's most famous monument, carved directly into a sandstone cliff face at "
-            "the end of the Siq. Built as a royal tomb in the early 1st century AD under "
-            "Nabataean king Aretas IV, its name comes from a local legend that treasure was "
-            "hidden in the stone urn at its top."
-        ),
-        description_ar=(
-            "أشهر معالم البتراء، منحوت مباشرة في واجهة صخرية عند نهاية السيق. بُني كمقبرة "
-            "ملكية في مطلع القرن الأول الميلادي في عهد الملك النبطي الحارث الرابع، ويُنسب "
-            "اسمها إلى أسطورة محلية عن كنز مخبأ في الجرة الحجرية أعلى الواجهة."
-        ),
-        avg_visit_minutes=20,
-        accessibility_notes="Viewed from ground level at the end of the Siq; wheelchair-accessible approach.",
-        image_url="https://commons.wikimedia.org/wiki/Special:FilePath/Al-Khazneh_(The_Treasury),_Petra,_Jordan.jpg",
-        image_attribution="Photo by Vyacheslav Argenberg, CC BY 4.0, via Wikimedia Commons",
-    ),
-    "street_of_facades": Landmark(
-        id="street_of_facades",
-        name_en="Street of Facades",
-        name_ar="شارع الواجهات",
-        description_en=(
-            "A row of more than 40 tomb and house facades cut side-by-side into the cliffs "
-            "just past the Treasury, believed to be the burial places of senior Nabataean "
-            "officials from the late 1st century BC. Traces of paint still visible on one "
-            "facade suggest they were once brightly coloured."
-        ),
-        description_ar=(
-            "صف من أكثر من 40 واجهة لمدافن ومنازل منحوتة جنباً إلى جنب في المنحدرات بعد "
-            "الخزنة مباشرة، يُعتقد أنها كانت مدافن لكبار المسؤولين النبطيين في أواخر القرن "
-            "الأول قبل الميلاد."
-        ),
-        avg_visit_minutes=15,
-        accessibility_notes="Viewable from the main path at ground level; generally accessible.",
-        image_url="https://commons.wikimedia.org/wiki/Special:FilePath/Street_of_Facades,_Petra.jpg",
-        image_attribution="Photo by Bernard Gagnon, CC BY-SA 3.0, via Wikimedia Commons",
-    ),
-    "royal_tombs": Landmark(
-        id="royal_tombs",
-        name_en="Royal Tombs (Urn Tomb)",
-        name_ar="المدافن الملكية (مقبرة الجرة)",
-        description_en=(
-            "A cluster of four monumental facades — the Urn, Silk, Corinthian, and Palace "
-            "Tombs — cut high into the cliffside overlooking the city centre. The Urn Tomb, "
-            "fronted by a large colonnaded courtyard, is thought to belong to the Nabataean "
-            "king Malichus II, who died in 70 AD."
-        ),
-        description_ar=(
-            "مجموعة من أربع واجهات ضخمة — مقبرة الجرة، والمقبرة الحريرية، والكورنثية، "
-            "والقصر — منحوتة عالياً في المنحدر المطل على مركز المدينة. يُعتقد أن مقبرة "
-            "الجرة تعود للملك النبطي مالكوس الثاني الذي توفي عام 70م."
-        ),
-        avg_visit_minutes=20,
-        accessibility_notes="Viewable from the path below; the facades themselves are not climbable or accessible.",
-        image_url="https://commons.wikimedia.org/wiki/Special:FilePath/Urn_Tomb,_Petra_01.jpg",
-        image_attribution="Photo by Bernard Gagnon, CC BY-SA 3.0, via Wikimedia Commons",
-    ),
-    "ad_deir": Landmark(
-        id="ad_deir",
-        name_en="Ad-Deir (The Monastery)",
-        name_ar="الدير",
-        description_en=(
-            "A huge rock-cut facade, about 48 m wide and 47 m tall, reached by a climb of "
-            "nearly 800 rock-cut steps from the city centre. Probably carved in the mid-1st "
-            "century AD for a religious purpose, it earned its Arabic name 'the Monastery' "
-            "from crosses later carved inside during its use as a Byzantine church."
-        ),
-        description_ar=(
-            "واجهة صخرية ضخمة يبلغ عرضها نحو 48 متراً وارتفاعها 47 متراً، يُصعد إليها عبر "
-            "نحو 800 درجة منحوتة في الصخر من مركز المدينة. يُرجّح أنها نُحتت في منتصف القرن "
-            "الأول الميلادي لغرض ديني، واكتسبت اسمها 'الدير' من صلبان نُقشت داخلها لاحقاً "
-            "حين استُخدمت ككنيسة في العصر البيزنطي."
-        ),
-        avg_visit_minutes=120,
-        accessibility_notes="Reached via ~800 rock-cut steps; not accessible for reduced mobility.",
-        image_url="https://commons.wikimedia.org/wiki/Special:FilePath/Ad_Deir_(The_Monastery),_El_Deir,_Petra,_Jordan.jpg",
-        image_attribution="Photo by Vyacheslav Argenberg, CC BY 4.0, via Wikimedia Commons",
-    ),
-    "qasr_al_bint": Landmark(
-        id="qasr_al_bint",
-        name_en="Qasr al-Bint",
-        name_ar="قصر البنت",
-        description_en=(
-            "A freestanding stone temple on Petra's colonnaded street, built in the second "
-            "half of the 1st century BC as the cult centre of Dushara, the chief Nabataean "
-            "god. Its Arabic name, 'Palace of the Daughter,' comes from a local folk tale "
-            "rather than the building's original purpose."
-        ),
-        description_ar=(
-            "معبد حجري قائم بذاته على الشارع المعمد في البتراء، بُني في النصف الثاني من "
-            "القرن الأول قبل الميلاد كمركز عبادة لذو الشرى، كبير آلهة الأنباط. اسمه العربي "
-            "'قصر البنت' مستمد من حكاية شعبية محلية لا من وظيفة المبنى الأصلية."
-        ),
-        avg_visit_minutes=15,
-        accessibility_notes="On the flat colonnaded street; wheelchair accessible.",
-        image_url="https://commons.wikimedia.org/wiki/Special:FilePath/Petra_Qasr_al-Bint_Temple_Complex_1695.jpg",
-        image_attribution="Photo by Dick Osseman, CC BY-SA 4.0, via Wikimedia Commons",
-    ),
-    "high_place_of_sacrifice": Landmark(
-        id="high_place_of_sacrifice",
-        name_en="High Place of Sacrifice",
-        name_ar="المذبح المرتفع",
-        description_en=(
-            "A ritual platform atop Jebel al-Madbah, reached by a roughly 30-40 minute climb "
-            "above the Street of Facades, with sheer drops of about 170 m to the wadi below. "
-            "An altar on stepped platforms and a drainage channel point to its use for animal "
-            "sacrifice to the god Dushara."
-        ),
-        description_ar=(
-            "منصة طقسية أعلى جبل المذبح، يُصعد إليها عبر مسار يستغرق نحو 30-40 دقيقة فوق "
-            "شارع الواجهات، بانحدارات شبه عمودية تصل إلى 170 متراً نحو الوادي. تشير منصة "
-            "المذبح المدرجة وقناة التصريف إلى استخدامها في تقديم القرابين الحيوانية لذو الشرى."
-        ),
+    'AJF': Landmark(
+        id='AJF',
+        name_en='Al-Jafr (desert town & basin)',
+        name_ar='الجفر',
+        description_en="Al-Jafr is a desert town and basin in Ma'an Governorate, about 300 km east of Amman, sitting at roughly 865 m elevation in a flat, semi-arid depression far from the Petra cluster. Known locally for the vast open playa used for land-speed record attempts, it has a population of about 6,400 and is also home to Al-Jafr prison. Visitors come for the stark desert scenery and open horizons rather than any single monument.",
+        description_ar='الجفر بلدة صحراوية وحوض واسع في محافظة معان، يبعد نحو 300 كم شرق عمان على ارتفاع نحو 865 متراً في منخفض شبه جاف بعيداً عن مجمع البتراء. يشتهر محلياً بسهله المفتوح الذي استُخدم لمحاولات تحطيم أرقام قياسية في السرعة على الأرض، ويقطنه نحو 6400 نسمة، ويضم سجن الجفر. يقصده الزوار لمشاهدة المشهد الصحراوي الفسيح أكثر من أي معلم واحد.',
         avg_visit_minutes=90,
-        accessibility_notes="Reached via a steep 30-40 minute climb with sheer drops; not accessible for reduced mobility.",
-        image_url="https://commons.wikimedia.org/wiki/Special:FilePath/High_Place_of_Sacrifice_Jebel_al-Madbah_Petra_Jordan1432.jpg",
-        image_attribution="Photo by Michael Gunther, CC BY-SA 3.0, via Wikimedia Commons",
+        accessibility_notes='Flat open desert terrain with easy driving access; no paved paths or visitor facilities, not set up for wheelchair use without assistance.',
+        image_url='https://commons.wikimedia.org/wiki/Special:FilePath/Al-Jafr_main_road.jpg',
+        image_attribution='Photo by Davide Mauro, CC BY-SA 4.0, via Wikimedia Commons',
+        lat=30.3175067,
+        lon=36.1852741,
+        source_url='https://www.openstreetmap.org/node/9206525690 | https://en.wikipedia.org/wiki/Al-Jafr | https://en.wikipedia.org/wiki/Al-Jafr,_Jordan',
     ),
-    "little_petra": Landmark(
-        id="little_petra",
-        name_en="Little Petra (Siq al-Barid)",
-        name_ar="البتراء الصغيرة (سيق البريد)",
-        description_en=(
-            "A smaller Nabataean satellite settlement north of Petra, believed to have served "
-            "as a suburb or caravan stop. Notable for painted ceiling frescoes in one chamber."
-        ),
-        description_ar="مستوطنة نبطية أصغر شمال البتراء، يُعتقد أنها كانت ضاحية أو محطة للقوافل.",
+    'LPET': Landmark(
+        id='LPET',
+        name_en='Little Petra (Siq al-Barid)',
+        name_ar='البتراء الصغيرة (سيق البريد)',
+        description_en="Little Petra, known in Arabic as Siq al-Barid ('the cold canyon'), is a smaller Nabataean site about 8 km north of Petra, built in the 1st century AD to house traders passing through on the Silk Road. Its 450-metre canyon opens into three wider chambers lined with rock-cut facades, dining halls, and water channels, and one chamber holds rare Nabataean ceiling paintings dated to between 40 BC and 25 AD.",
+        description_ar='البتراء الصغيرة، المعروفة بالعربية باسم سيق البريد، موقع نبطي أصغر يبعد نحو 8 كم شمال البتراء، بُني في القرن الأول الميلادي لإيواء التجار المارّين على طريق الحرير. يمتد وادٍ ضيق طوله 450 متراً إلى ثلاث ساحات أوسع تحيط بها واجهات منحوتة وقاعات طعام وقنوات مياه، وتحتفظ إحدى غرفها برسوم سقفية نبطية نادرة يعود تاريخها إلى ما بين 40 ق.م و25م.',
         avg_visit_minutes=60,
-        accessibility_notes="Mostly flat, narrow passage; not wheelchair accessible.",
+        accessibility_notes='Mostly flat but narrow canyon passage with uneven rock surfaces in places; not wheelchair accessible.',
+        image_url='https://commons.wikimedia.org/wiki/Special:FilePath/05_Little_Petra_Canyon_Trail_-_The_Trail_Starts_at_the_End_of_Little_Petra_-_panoramio.jpg',
+        image_attribution='Photo by hikinginjordan, CC BY-SA 3.0, via Wikimedia Commons',
+        lat=30.3751131,
+        lon=35.4509057,
+        source_url='https://www.openstreetmap.org/node/546597034 | https://en.wikipedia.org/wiki/Little_Petra',
     ),
-    "little_petra_biclinium": Landmark(
-        id="little_petra_biclinium",
-        name_en="Painted Biclinium, Little Petra",
-        name_ar="البيت المرسوم (البيكلينيوم)، البتراء الصغيرة",
-        description_en=(
-            "A rock-cut dining chamber whose ceiling holds the largest surviving example of "
-            "Nabataean wall painting: grapevines, pomegranates, birds, and small winged "
-            "figures rendered in a Hellenistic style, dated to between 40 BC and 25 AD and "
-            "restored in 2007 after centuries of soot and graffiti obscured it."
-        ),
-        description_ar=(
-            "غرفة طعام منحوتة في الصخر تحمل سقفها أكبر نموذج باقٍ من الرسم الجداري النبطي: "
-            "كروم عنب ورمان وطيور وأشكال مجنحة صغيرة بأسلوب هلنستي، يعود تاريخها إلى ما بين "
-            "40 ق.م و25م، وخضعت للترميم عام 2007 بعد أن غطاها السخام والكتابات لقرون."
-        ),
+    'PET': Landmark(
+        id='PET',
+        name_en='Petra',
+        name_ar='البتراء',
+        description_en='Petra is the rock-cut Nabataean capital in southern Jordan, settled from the 4th century BC and inscribed as a UNESCO World Heritage Site in 1985. Visitors enter through the Siq, a narrow sandstone gorge only 3-4 metres wide in places, before the site opens onto dozens of carved facades, tombs, and temples spread across roughly 264 square kilometres. It draws close to a million visitors a year, and a full visit covering the Siq, Treasury, Street of Facades, and one of the high climbs typically takes a full day.',
+        description_ar='البتراء هي العاصمة النبطية المنحوتة في الصخر جنوب الأردن، استوطنها الأنباط منذ القرن الرابع قبل الميلاد، وأُدرجت موقعاً للتراث العالمي لليونسكو عام 1985. يدخل الزوار عبر السيق، وهو ممر صخري ضيق لا يتجاوز عرضه 3-4 أمتار في بعض الأماكن، قبل أن تنكشف عشرات الواجهات والمقابر والمعابد المنحوتة على مساحة نحو 264 كيلومتراً مربعاً. يستقبل الموقع قرابة مليون زائر سنوياً، وتستغرق الزيارة الكاملة - السيق والخزنة وشارع الواجهات وأحد المرتفعات - يوماً كاملاً عادة.',
+        avg_visit_minutes=480,
+        accessibility_notes='Main trail from the Siq to the Street of Facades is wheelchair-passable with assistance on packed sand/gravel; onward climbs to the Monastery or High Place of Sacrifice are not accessible for reduced mobility.',
+        image_url='https://commons.wikimedia.org/wiki/Special:FilePath/Central_Petra.jpg',
+        image_attribution='Photo by Clem23, CC BY-SA 3.0, via Wikimedia Commons',
+        lat=30.3333331,
+        lon=35.4333329,
+        source_url='https://www.openstreetmap.org/node/802556924 | https://en.wikipedia.org/wiki/Petra',
+    ),
+    'PET-CHU': Landmark(
+        id='PET-CHU',
+        name_en='Petra Church',
+        name_ar='الكنيسة البيزنطية',
+        description_en='A Byzantine basilica on the ridge north of the Colonnaded Street, and the clearest surviving example of monumental Christian architecture in Petra. Excavation by the American Center of Research between 1990 and 1998 recovered 140 carbonised papyri — mostly contracts dated between the 530s and 590s — which showed the city was still prosperous in the sixth century. Mosaic floors survive in the side aisles.',
+        description_ar='كنيسة بيزنطية تقع على المرتفع شمال شارع الأعمدة، وهي أوضح مثال باقٍ على العمارة المسيحية المونومنتالية في البتراء. كشفت أعمال التنقيب التي أجراها المركز الأمريكي للبحوث بين عامي 1990 و1998 عن 140 لفيفة بردية متفحمة، معظمها عقود تعود إلى ما بين ثلاثينيات وتسعينيات القرن السادس، وأثبتت أن المدينة كانت لا تزال مزدهرة في ذلك القرن. ولا تزال أرضيات الفسيفساء محفوظة في الأجنحة الجانبية.',
+        avg_visit_minutes=20,
+        accessibility_notes='Reached by a stepped, uneven path up from the Colonnaded Street; not wheelchair accessible. The excavated floor area itself is level and partly shaded.',
+        image_url='https://commons.wikimedia.org/wiki/Special:FilePath/Mosaic_Petra_Church_5.JPG',
+        image_attribution='Photo by Odilia, CC BY-SA 3.0, via Wikimedia Commons',
+        lat=30.3306244,
+        lon=35.444369,
+        source_url='https://www.openstreetmap.org/way/115515461 | https://en.wikipedia.org/wiki/Petra',
+    ),
+    'PET-COL': Landmark(
+        id='PET-COL',
+        name_en='Colonnaded Street',
+        name_ar='الشارع المعمد',
+        description_en="The Colonnaded Street was Petra's Roman-era main thoroughfare, rebuilt around 106 AD after Rome annexed the Nabataean kingdom, replacing an earlier unpaved Nabataean road. It ran roughly 800 metres through the city centre at about 6 metres wide, lined with a double row of columns and shops that likely traded frankincense, textiles, and spices brought in from Arabia, East Africa, and India.",
+        description_ar='الشارع المعمد هو الطريق الرئيسي في البتراء من العصر الروماني، أُعيد بناؤه نحو عام 106م بعد ضم روما للمملكة النبطية، ليحل محل طريق نبطي غير مرصوف. يمتد الشارع نحو 800 متر عبر مركز المدينة بعرض نحو 6 أمتار، وتصطف على جانبيه أعمدة مزدوجة ومحال تجارية كانت على الأرجح تبيع البخور والأقمشة والتوابل الواردة من الجزيرة العربية وشرق أفريقيا والهند.',
+        avg_visit_minutes=20,
+        accessibility_notes='Flat paved street, one of the more wheelchair-accessible stretches of the Petra city center.',
+        image_url='https://commons.wikimedia.org/wiki/Special:FilePath/Cardo_maximus,_Petra.jpg',
+        image_attribution='Photo by Bernard Gagnon, CC BY-SA 3.0, via Wikimedia Commons',
+        lat=None,
+        lon=None,
+        source_url='https://www.visitpetra.jo/en/Location/107 | https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%B4%D8%A7%D8%B1%D8%B9_%D8%A7%D9%84%D9%85%D8%B9%D9%85%D8%AF_(%D8%A7%D9%84%D8%A8%D8%AA%D8%B1%D8%A7%D8%A1)',
+    ),
+    'PET-COR': Landmark(
+        id='PET-COR',
+        name_en='Corinthian Tomb (Royal Tombs)',
+        name_ar='قبر كورنثيان',
+        description_en="The Corinthian Tomb is one of Petra's Royal Tombs, its facade closely modelled on the Treasury (Al-Khazneh) but with squatter proportions and more eclectic Nabataean-Corinthian capitals, which is why some visitors nickname it a 'mini Treasury.' Dated to roughly 40-70 AD, its 27.5-metre-wide facade has weathered heavily, softening details that once closely echoed its far more famous neighbour.",
+        description_ar="قبر كورنثيان أحد المدافن الملكية في البتراء، وواجهته مصممة على غرار الخزنة تقريباً لكن بنسب أكثر تربّعاً وتيجان نبطية-كورنثية أكثر تنوعاً، حتى أن بعض الزوار يسمونها 'الخزنة المصغّرة'. يعود تاريخها إلى ما بين 40 و70م تقريباً، وقد تآكلت واجهتها البالغ عرضها 27.5 متراً بشكل كبير، ما أخفى تفاصيل كانت تحاكي جارتها الأشهر عن قرب.",
         avg_visit_minutes=15,
-        accessibility_notes="Narrow rock-cut passage; not wheelchair accessible.",
-        image_url="https://commons.wikimedia.org/wiki/Special:FilePath/Nabataean_Painting_Biclinium_849_Siq_al-Barid_Jordan1508.jpg",
-        image_attribution="Photo by Michael Gunther, CC BY-SA 4.0, via Wikimedia Commons",
+        accessibility_notes='Viewable from the path below; heavily weathered facade, not climbable.',
+        image_url='https://commons.wikimedia.org/wiki/Special:FilePath/Corinthian_Tomb,_Petra_01.jpg',
+        image_attribution='Photo by Bernard Gagnon, CC BY-SA 3.0, via Wikimedia Commons',
+        lat=30.3285277,
+        lon=35.4495453,
+        source_url='https://www.openstreetmap.org/node/2437205269 | https://universes.art/en/art-destinations/jordan/petra/royal-tombs/corinthian-tomb | https://madainproject.com/royal_tombs_(petra)',
     ),
-    "shobak_castle": Landmark(
-        id="shobak_castle",
-        name_en="Shobak Castle (Montreal)",
-        name_ar="قلعة الشوبك (مونتريال)",
-        description_en=(
-            "A Crusader fortress built in 1115 AD by Baldwin I of Jerusalem atop a hill "
-            "overlooking ancient trade and pilgrimage routes. A secret rock-cut staircase of "
-            "over 375 steps descends about 75 m to a spring, and the ruins hold two churches, "
-            "cisterns, and Arabic and Crusader inscriptions."
-        ),
-        description_ar=(
-            "قلعة صليبية بناها بلدوين الأول ملك بيت المقدس عام 1115م فوق تلة تشرف على طرق "
-            "التجارة والحج القديمة. يهبط درج سري منحوت في الصخر يضم أكثر من 375 درجة نحو 75 "
-            "متراً وصولاً إلى نبع ماء، وتضم الأطلال كنيستين وصهاريج ونقوشاً عربية وصليبية."
-        ),
+    'PET-DJN': Landmark(
+        id='PET-DJN',
+        name_en='Djinn Blocks',
+        name_ar='كتل الجن',
+        description_en='A group of massive freestanding stone cubes standing beside the approach road before the Siq. They were made by cutting away the surrounding rock to leave a solid block, the technique the Nabataeans used for the featureless god-blocks that represented their deities before Greek and Roman influence made those gods human-figured. Whether these particular blocks were tombs, god-blocks or something else is still debated.',
+        description_ar='مجموعة من المكعبات الحجرية الضخمة القائمة بذاتها على جانب الطريق المؤدي إلى السيق. نُحتت بإزالة الصخر المحيط بها حتى تبقى كتلة صلبة، وهي التقنية التي استخدمها الأنباط في نحت الكتل الإلهية عديمة الملامح التي كانت تمثل آلهتهم قبل أن يجعل التأثير اليوناني والروماني تلك الآلهة على هيئة بشرية. ولا يزال الجدل قائماً حول ما إذا كانت هذه الكتل بالتحديد مقابر أم كتلاً إلهية أم شيئاً آخر.',
+        avg_visit_minutes=10,
+        accessibility_notes='Immediately beside the flat, graded main approach path; visible and reachable without leaving it, so accessible to most visitors.',
+        image_url='https://commons.wikimedia.org/wiki/Special:FilePath/Petra-Djinn-Bloecke-04-2010-gje.jpg',
+        image_attribution='Photo by Gerd Eichmann, CC BY-SA 4.0, via Wikimedia Commons',
+        lat=30.3221541,
+        lon=35.4642445,
+        source_url='https://www.openstreetmap.org/node/2437205273 | https://en.wikipedia.org/wiki/Petra | https://en.wikipedia.org/wiki/Nabataeans',
+    ),
+    'PET-GRT': Landmark(
+        id='PET-GRT',
+        name_en='Great Temple',
+        name_ar='المعبد الكبير',
+        description_en='A monumental complex of roughly 7,560 square metres lying south of the Colonnaded Street, probably finished in the early first century AD under the Nabataean king Aretas IV. Brown University excavated it between 1993 and 2000. It is still unsettled whether the building was religious or administrative, and no deity has been securely attached to it.',
+        description_ar='مجمّع ضخم تبلغ مساحته نحو 7560 متراً مربعاً يقع جنوب شارع الأعمدة، ويُرجَّح أنه اكتمل في مطلع القرن الأول الميلادي في عهد الملك النبطي الحارث الرابع. وقد نقّبت فيه جامعة براون بين عامي 1993 و2000. ولم يُحسم بعد ما إذا كان المبنى دينياً أم إدارياً، ولم يُنسب إلى أي إله بشكل مؤكد.',
+        avg_visit_minutes=30,
+        accessibility_notes='Open excavated ruins on uneven ground with low walls and steps; not wheelchair accessible, though the Colonnaded Street alongside it is level.',
+        image_url='https://commons.wikimedia.org/wiki/Special:FilePath/Great_Temple%2C_Petra%2C_Jordan5.jpg',
+        image_attribution='Photo by Diego Delso, CC BY-SA 3.0, via Wikimedia Commons',
+        lat=30.3288133,
+        lon=35.4423492,
+        source_url='https://www.openstreetmap.org/way/115512705 | https://en.wikipedia.org/wiki/Great_Temple_%28Petra%29 | https://en.wikipedia.org/wiki/Great_Temple_(Petra)',
+    ),
+    'PET-HPS': Landmark(
+        id='PET-HPS',
+        name_en='High Place of Sacrifice',
+        name_ar='المذبح',
+        description_en='The High Place of Sacrifice sits atop Jebel al-Madbah, reached by a 30-40 minute climb of rock-cut steps from the Street of Facades, at roughly 1,037 m above sea level. A central courtyard with stone benches on three sides faces two altars - a rectangular one likely used for a ritual circuit and a round one for offerings - flanked by two 6-metre obelisks carved from the living rock, all built to honour the Nabataean god Dushara before some Nabataeans adopted Christianity in the 4th century.',
+        description_ar='يقع المذبح المرتفع أعلى جبل المذبح، ويُصعد إليه عبر درج منحوت في الصخر يستغرق 30-40 دقيقة من شارع الواجهات، على ارتفاع نحو 1037 متراً فوق سطح البحر. تطل ساحة مركزية بها مقاعد حجرية من ثلاث جهات على مذبحين، أحدهما مستطيل استُخدم على الأرجح لطواف طقسي والآخر دائري لتقديم القرابين، ويحيط بهما مسلتان بارتفاع 6 أمتار منحوتتان من الصخر، شُيّد الموقع كله تكريماً للإله النبطي ذو الشرى قبل اعتناق بعض الأنباط المسيحية في القرن الرابع الميلادي.',
         avg_visit_minutes=90,
-        accessibility_notes="Uneven ruins terrain; limited accessibility, no paved paths.",
-        image_url="https://commons.wikimedia.org/wiki/Special:FilePath/Montr%C3%A9al_aka_Shobak_Castle_2431.jpg",
-        image_attribution="Photo by Dick Osseman, CC BY-SA 4.0, via Wikimedia Commons",
+        accessibility_notes='Reached via a steep 30-40 minute rock-cut stair climb; not accessible for reduced mobility.',
+        image_url='https://commons.wikimedia.org/wiki/Special:FilePath/High_Place_of_Sacrifice_Jebel_al-Madbah_Petra_Jordan1432.jpg',
+        image_attribution='Photo by Michael Gunther, CC BY-SA 3.0, via Wikimedia Commons',
+        lat=30.3214793,
+        lon=35.4469854,
+        source_url='https://www.openstreetmap.org/way/40995686 | https://en.wikipedia.org/wiki/Jebel_al-Madhbah | https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%85%D8%B0%D8%A8%D8%AD_(%D8%A7%D9%84%D8%A8%D8%AA%D8%B1%D8%A7%D8%A1)',
     ),
-    "wadi_musa": Landmark(
-        id="wadi_musa",
-        name_en="Wadi Musa Town",
-        name_ar="بلدة وادي موسى",
-        description_en=(
-            "The modern town adjacent to Petra, home to local markets, Petra Kitchen "
-            "cooking experiences, and the Petra Museum."
-        ),
-        description_ar="البلدة الحديثة المجاورة للبتراء، تضم أسواقاً محلية ومطعم بيت الطبخ ومتحف البتراء.",
+    'PET-MON': Landmark(
+        id='PET-MON',
+        name_en='Monastery (Ad-Deir)',
+        name_ar='الدير',
+        description_en="Ad-Deir, or 'the Monastery,' is Petra's largest rock-cut facade at 47 m tall and 48 m wide, reached by climbing roughly 800-900 rock-cut steps from the city centre, about 40 minutes each way. Carved in the mid-1st century AD, its original purpose was likely religious rather than funerary; crosses later carved inside point to reuse as a Byzantine church or hermitage, which is how it earned its current Arabic name.",
+        description_ar='الدير هو أكبر واجهة صخرية منحوتة في البتراء بارتفاع 47 متراً وعرض 48 متراً، يُصعد إليها عبر نحو 800-900 درجة منحوتة في الصخر من مركز المدينة، أي نحو 40 دقيقة في كل اتجاه. نُحتت في منتصف القرن الأول الميلادي، ويُرجّح أن غرضها الأصلي كان دينياً لا جنائزياً، وتشير صلبان نُقشت داخلها لاحقاً إلى إعادة استخدامها ككنيسة أو صومعة بيزنطية، وهو ما منحها اسمها العربي الحالي.',
         avg_visit_minutes=120,
-        accessibility_notes="Paved town streets, generally accessible.",
+        accessibility_notes='Reached via ~800-900 rock-cut steps (about 40 minutes each way); not accessible for reduced mobility.',
+        image_url='https://commons.wikimedia.org/wiki/Special:FilePath/Ad_Deir_(The_Monastery),_El_Deir,_Petra,_Jordan.jpg',
+        image_attribution='Photo by Vyacheslav Argenberg, CC BY 4.0, via Wikimedia Commons',
+        lat=30.3382074,
+        lon=35.4309778,
+        source_url='https://www.openstreetmap.org/way/41032088 | https://en.wikipedia.org/wiki/Ed-Deir%2C_Petra',
     ),
-    "wadi_trails": Landmark(
-        id="wadi_trails",
-        name_en="Wadi Trail Network",
-        name_ar="شبكة مسارات الوديان",
-        description_en=(
-            "Hiking trails including Wadi Farasa, Wadi Sabra, and Wadi al-Mudhlim, offering "
-            "scenic and less-crowded alternatives to the main Petra trail."
-        ),
-        description_ar="مسارات مشي تشمل وادي فراسة ووادي سبرا ووادي المذلم، بديل أقل ازدحاماً.",
-        avg_visit_minutes=150,
-        accessibility_notes="Uneven natural terrain; not accessible for reduced-mobility visitors.",
+    'PET-OBT': Landmark(
+        id='PET-OBT',
+        name_en='Obelisk Tomb',
+        name_ar='مقبرة المسلات',
+        description_en='One of the best-known Nabataean funerary monuments, cut into the rock on the Bab as-Siq approach before the Siq itself. It is a single two-storey face: four tall obelisks stand above a classical-fronted triclinium, the dining chamber used for commemorative meals, so the tomb and the Bab as-Siq Triclinium are two halves of the same monument rather than separate sites.',
+        description_ar='أحد أشهر المعالم الجنائزية النبطية، منحوت في الصخر على طريق باب السيق قبل السيق نفسه. وهو واجهة واحدة من طابقين: أربع مسلات مرتفعة تعلو تريكلينيوم بواجهة كلاسيكية، وهو قاعة الطعام التي كانت تُقام فيها المآدب التذكارية. وبذلك فإن المقبرة وتريكلينيوم باب السيق نصفان من معلم واحد لا موقعان منفصلان.',
+        avg_visit_minutes=15,
+        accessibility_notes='Visible from the flat graded track between the visitor centre and the Siq; viewing from the path is accessible, the facade itself sits above it.',
+        image_url='https://commons.wikimedia.org/wiki/Special:FilePath/Obelisk_Tomb%2C_Petra%2C_Jordan1.jpg',
+        image_attribution='Photo by Diego Delso, CC BY-SA 3.0, via Wikimedia Commons',
+        lat=30.3212234,
+        lon=35.4632816,
+        source_url='https://www.openstreetmap.org/node/2437205290 | https://en.wikipedia.org/wiki/Nabataean_architecture',
     ),
-    "udhruh": Landmark(
-        id="udhruh",
-        name_en="Udhruh Fort",
-        name_ar="حصن أذرح",
-        description_en=(
-            "The remains of a Roman legionary fortress in the town of Udhruh, 15 km east of "
-            "Petra, rebuilt in 303-304 AD as recorded in an inscription on its west gate and "
-            "once home to the Legio VI Ferrata. Later reoccupied as an Ottoman-era station on "
-            "the Hajj pilgrimage road, and ongoing surveys have traced watchtowers linking it "
-            "to Petra."
-        ),
-        description_ar=(
-            "بقايا حصن روماني في بلدة أذرح التي تبعد 15 كم شرق البتراء، أُعيد بناؤه عام "
-            "303-304م بحسب نقش على بوابته الغربية، وكان مقراً لفرقة الليجيو السادسة فيراتا. "
-            "أُعيد استخدام الموقع لاحقاً كمحطة عثمانية على طريق الحج، وكشفت المسوحات الأثرية "
-            "عن أبراج مراقبة تربطه بالبتراء."
-        ),
+    'PET-PAL': Landmark(
+        id='PET-PAL',
+        name_en='Palace Tomb (Royal Tombs)',
+        name_ar='قبر القصر',
+        description_en="The Palace Tomb is one of Petra's Royal Tombs and, at 49 m wide and 46 m tall, among its largest facades. Its name comes from a resemblance to grand Roman palace architecture rather than any proven royal use, and it is unusual for mixing carved rock with built masonry - the upper-left corner of its top storey was constructed from stone blocks rather than cut from the cliff. It likely dates to the late 1st century AD.",
+        description_ar='قبر القصر أحد المدافن الملكية في البتراء، وتُعد واجهته من أكبر واجهات البتراء بعرض 49 متراً وارتفاع 46 متراً. جاء اسمه من تشابهه مع العمارة الرومانية الفخمة لا من دليل مؤكد على استخدام ملكي، ويتميز بمزجه بين الصخر المنحوت والبناء الحجري، إذ شُيّدت الزاوية العليا اليسرى من طابقه العلوي بكتل حجرية بدلاً من نحتها من المنحدر، ويُرجّح أنه يعود إلى أواخر القرن الأول الميلادي.',
+        avg_visit_minutes=15,
+        accessibility_notes='Viewable from the path below; the widest of the four Royal Tombs, not climbable.',
+        image_url='https://commons.wikimedia.org/wiki/Special:FilePath/Palace_Tomb,_Petra.jpg',
+        image_attribution='Photo by Bernard Gagnon, CC BY-SA 3.0, via Wikimedia Commons',
+        lat=30.3291065,
+        lon=35.4499137,
+        source_url='https://www.openstreetmap.org/node/2437205291 | https://en.wikipedia.org/wiki/Palace_Tomb',
+    ),
+    'PET-QAB': Landmark(
+        id='PET-QAB',
+        name_en='Qasr al-Bint',
+        name_ar='قصر البنت',
+        description_en="A Nabataean temple at the western end of the Colonnaded Street, facing Wadi Musa and standing near the monumental gate. It is one of the best-preserved free-standing buildings left in Petra — most of the city's surviving architecture is rock-cut — and was a principal focus of worship in the city centre.",
+        description_ar='معبد نبطي يقع في الطرف الغربي من شارع الأعمدة، يواجه وادي موسى ويقوم قرب البوابة المونومنتالية. وهو من أفضل المباني القائمة بذاتها حفظاً في البتراء، إذ إن معظم عمارة المدينة الباقية منحوتة في الصخر، وكان محوراً رئيسياً للعبادة في وسط المدينة.',
+        avg_visit_minutes=25,
+        accessibility_notes='Stands on the relatively level valley floor at the end of the Colonnaded Street; the approach is among the most accessible in the park, with a compacted surface.',
+        image_url='https://commons.wikimedia.org/wiki/Special:FilePath/Qasr_al-Bint_%28Petra%29_01.jpg',
+        image_attribution='Photo by Davide Mauro, CC BY-SA 4.0, via Wikimedia Commons',
+        lat=30.3294833,
+        lon=35.4401292,
+        source_url='https://www.openstreetmap.org/way/115512688 | https://en.wikipedia.org/wiki/Qasr_al-Bint',
+    ),
+    'PET-RST': Landmark(
+        id='PET-RST',
+        name_en="Roman Soldier's Tomb",
+        name_ar='قبر الجندي الروماني',
+        description_en='One of the best-preserved tombs in Petra, in the Wadi Farasa valley. Its facade is recognised by three carved figures set in niches between the columns, but the tomb is only part of a larger complex: a colonnaded courtyard, a separate triclinium, rock-cut rooms, the remains of two-storey buildings and several large cisterns. The main building phase falls in the third quarter of the first century AD.',
+        description_ar='أحد أفضل المدافن حفظاً في البتراء، ويقع في وادي الفراسة. تُعرَف واجهته بثلاثة تماثيل منحوتة في كوّات بين الأعمدة، لكن المدفن ليس إلا جزءاً من مجمّع أكبر يشمل ساحة محفوفة بالأعمدة، وتريكلينيوم منفصلاً، وغرفاً منحوتة في الصخر، وبقايا مبانٍ من طابقين، وعدداً من الصهاريج الكبيرة. وتعود مرحلة البناء الرئيسية إلى الربع الثالث من القرن الأول الميلادي.',
+        avg_visit_minutes=20,
+        accessibility_notes='On the Wadi Farasa route, reached by an unpaved trail with rock steps and exposed drops; not suitable for reduced mobility.',
+        image_url='https://commons.wikimedia.org/wiki/Special:FilePath/Petra_Soldier_Tomb_1895.jpg',
+        image_attribution='Photo by Dosseman, CC BY-SA 4.0, via Wikimedia Commons',
+        lat=30.3208234,
+        lon=35.4448873,
+        source_url='https://www.openstreetmap.org/node/5167013933 | https://en.wikipedia.org/wiki/Tomb_of_the_Roman_Soldier | https://en.wikipedia.org/wiki/Nabataean_architecture',
+    ),
+    'PET-SIQ': Landmark(
+        id='PET-SIQ',
+        name_en='The Siq',
+        name_ar='السيق',
+        description_en="The Siq is Petra's grand natural entrance, a winding sandstone gorge about 1.2 km long that narrows to just 3-4 metres wide in places. Its walls still show Nabataean carved niches that once held sacred stones (baetyls) and channels from the water system that supplied the city, making the walk itself part of Petra's story before the Treasury even comes into view.",
+        description_ar='السيق هو المدخل الطبيعي الكبير للبتراء، ممر صخري متعرج يمتد نحو 1.2 كم ويضيق في بعض الأماكن إلى 3-4 أمتار فقط. لا تزال جدرانه تحمل تجاويف نبطية منحوتة كانت تضم أحجاراً مقدسة، وقنوات من نظام المياه الذي كان يغذي المدينة، ما يجعل السير فيه جزءاً من قصة البتراء قبل ظهور الخزنة.',
+        avg_visit_minutes=20,
+        accessibility_notes='Wide enough for wheelchair passage with assistance in most sections; uneven sandy/paved surface.',
+        image_url='https://commons.wikimedia.org/wiki/Special:FilePath/Petra_Siq,_entrance_to_the_ancient_Nabatean_city_of_Petra,_Jordan.jpg',
+        image_attribution='Photo by Vyacheslav Argenberg, CC BY 4.0, via Wikimedia Commons',
+        lat=30.3242359,
+        lon=35.4482366,
+        source_url='https://www.openstreetmap.org/way/35049641 | https://en.wikipedia.org/wiki/Siq',
+    ),
+    'PET-SLK': Landmark(
+        id='PET-SLK',
+        name_en='Silk Tomb (Royal Tombs)',
+        name_ar='قبر الحرير',
+        description_en="The Silk Tomb is the smallest of Petra's four Royal Tombs, set back in a recess in the Khubtha cliff face, and is named for the swirling pink, white, and yellow bands of sandstone that weathering has exposed across its facade. It dates to the first half of the 1st century AD, though no record survives of who it was built for.",
+        description_ar='قبر الحرير أصغر المدافن الملكية الأربعة في البتراء، ويقع في تجويف داخل منحدر الخبثة، وسُمّي بذلك لتموجات الحجر الرملي الوردية والبيضاء والصفراء التي كشفها التآكل على واجهته. يعود تاريخه إلى النصف الأول من القرن الأول الميلادي، رغم عدم بقاء سجل يوضح لمن بُني.',
+        avg_visit_minutes=15,
+        accessibility_notes='Viewable from the path below; set in a recessed cliff face, not climbable.',
+        image_url='https://commons.wikimedia.org/wiki/Special:FilePath/Silk_Tomb,_Petra_01.jpg',
+        image_attribution='Photo by Bernard Gagnon, CC BY-SA 3.0, via Wikimedia Commons',
+        lat=30.3280388,
+        lon=35.4492607,
+        source_url='https://www.openstreetmap.org/node/2437205299 | https://universes.art/en/art-destinations/jordan/petra/royal-tombs/silk-tomb | https://madainproject.com/royal_tombs_(petra)',
+    ),
+    'PET-SOF': Landmark(
+        id='PET-SOF',
+        name_en='Street of Facades',
+        name_ar='شارع الواجهات',
+        description_en="The Street of Facades is a row of more than 40 tomb and house facades cut side by side into the cliffs just past the Treasury, in a stepped 'crow-step' style drawing on Assyrian and Hellenistic influences. Dating from about 50 BC to 50 AD, they are thought to be the burial places of senior Nabataean officials, and traces of paint on one facade hint they were once brightly coloured.",
+        description_ar='شارع الواجهات صف من أكثر من 40 واجهة لمدافن ومنازل منحوتة جنباً إلى جنب في المنحدرات بعد الخزنة مباشرة، بطراز مدرّج متأثر بالعمارة الآشورية والهلنستية. يعود تاريخها إلى ما بين 50 ق.م و50م تقريباً، ويُعتقد أنها كانت مدافن لكبار المسؤولين النبطيين، وتشير بقايا طلاء على إحدى الواجهات إلى أنها كانت ملوّنة يوماً ما.',
+        avg_visit_minutes=15,
+        accessibility_notes='Viewable from the main path at ground level; generally accessible.',
+        image_url='https://commons.wikimedia.org/wiki/Special:FilePath/Street_of_Facades,_Petra.jpg',
+        image_attribution='Photo by Bernard Gagnon, CC BY-SA 3.0, via Wikimedia Commons',
+        lat=30.323142,
+        lon=35.4501264,
+        source_url='https://www.openstreetmap.org/node/4788669947 | https://padc.pdtra.gov.jo/en/sitesdtls/18/The-Street-of-Facades | https://nabataea.net/explore/petra/petra-street-of-facades/',
+    ),
+    'PET-THE': Landmark(
+        id='PET-THE',
+        name_en='Roman Theatre',
+        name_ar='مسرح البتراء',
+        description_en="Petra's theatre was carved directly into the sandstone at the foot of the High Place of Sacrifice trail during the reign of Nabataean king Aretas IV in the early 1st century AD, reportedly to mark his second marriage. Its three tiers of rock-cut seating, split by seven stairways, could hold about 8,500 people; after Rome annexed the kingdom in 106 AD, the theatre was enlarged, cutting through several older tombs in the process.",
+        description_ar='نُحت مسرح البتراء مباشرة في الحجر الرملي عند سفح مسار المذبح المرتفع في عهد الملك النبطي الحارث الرابع مطلع القرن الأول الميلادي، وتذكر بعض الروايات أنه شُيّد بمناسبة زواجه الثاني. تتسع مدرجاته الصخرية الثلاثة، المقسّمة بسبعة سلالم، لنحو 8500 متفرج، وبعد ضم روما للمملكة عام 106م جرى توسيع المسرح، ما أدى إلى قطع أجزاء من مدافن أقدم.',
+        avg_visit_minutes=20,
+        accessibility_notes='Rock-cut tiered seating with uneven stone steps; not wheelchair accessible.',
+        image_url='https://commons.wikimedia.org/wiki/Special:FilePath/Theater_of_Petra.jpg',
+        image_attribution='Photo by Bernard Gagnon, CC BY-SA 3.0, via Wikimedia Commons',
+        lat=30.3248246,
+        lon=35.446958,
+        source_url='https://www.openstreetmap.org/way/41022807 | https://en.wikipedia.org/wiki/Petra_Theater',
+    ),
+    'PET-TRE': Landmark(
+        id='PET-TRE',
+        name_en='Treasury (Al-Khazneh)',
+        name_ar='الخزنة',
+        description_en="Al-Khazneh, or 'the Treasury,' is Petra's most photographed monument, carved into the sandstone cliff face at the end of the Siq in the early 1st century AD under Nabataean king Aretas IV, most likely as a royal tomb and crypt. Its ornate facade includes eagle carvings, Amazon reliefs, and statues of Castor and Pollux flanking the entrance, and its name comes from a Bedouin legend that treasure was hidden inside the stone urn carved at its top.",
+        description_ar='الخزنة أكثر معالم البتراء تصويراً، مُنحوتة في الواجهة الصخرية عند نهاية السيق مطلع القرن الأول الميلادي في عهد الملك النبطي الحارث الرابع، ويُرجّح أنها بُنيت كمقبرة ملكية. تضم واجهتها الغنية بالزخارف نسوراً وتماثيل أمازونيات وتمثالين لكاستور وبولوكس عند المدخل، واسمها مستمد من أسطورة بدوية عن كنز مخبأ داخل الجرة الحجرية المنحوتة أعلاها.',
+        avg_visit_minutes=20,
+        accessibility_notes='Viewed from ground level at the end of the Siq; wheelchair-accessible approach.',
+        image_url='https://commons.wikimedia.org/wiki/Special:FilePath/Al-Khazneh_(The_Treasury),_Petra,_Jordan.jpg',
+        image_attribution='Photo by Vyacheslav Argenberg, CC BY 4.0, via Wikimedia Commons',
+        lat=30.3220754,
+        lon=35.4515251,
+        source_url='https://www.openstreetmap.org/way/488848937 | https://en.wikipedia.org/wiki/Al-Khazneh',
+    ),
+    'PET-TWL': Landmark(
+        id='PET-TWL',
+        name_en='Temple of the Winged Lions',
+        name_ar='معبد الأسود المجنحة',
+        description_en="A large temple complex in Petra's Sacred Quarter, on the north bank of Wadi Musa directly opposite Qasr al-Bint, dated to the reign of Aretas IV between 9 BC and AD 40. It is thought to have been dedicated to the principal Nabataean goddess, though which goddess is not settled. The building was brought down by the earthquake of AD 363, and inscriptions found in it record how temple revenue and ritual were administered.",
+        description_ar='مجمّع معبد كبير في الحي المقدس بالبتراء، يقع على الضفة الشمالية لوادي موسى مقابل قصر البنت مباشرة، ويعود إلى عهد الحارث الرابع بين عام 9 قبل الميلاد وعام 40 ميلادي. ويُعتقد أنه كان مكرّساً لكبرى الإلهات النبطيات، وإن لم تُحدَّد هويتها بشكل قاطع. وقد دُمِّر المبنى في زلزال عام 363 ميلادي، وتسجّل النقوش التي عُثر عليها فيه كيف كانت تُدار إيرادات المعبد وشعائره.',
+        avg_visit_minutes=20,
+        accessibility_notes='Excavated ruins reached from the valley floor; the site is fenced in places and the ground is uneven, so not wheelchair accessible.',
+        image_url=None,
+        image_attribution=None,
+        lat=30.3300823,
+        lon=35.4424319,
+        source_url='https://www.openstreetmap.org/way/115512690 | https://en.wikipedia.org/wiki/Temple_of_the_Winged_Lions | https://en.wikipedia.org/wiki/Nabataean_architecture',
+    ),
+    'PET-URN': Landmark(
+        id='PET-URN',
+        name_en='Urn Tomb (Royal Tombs)',
+        name_ar='قبر الجرة',
+        description_en="The Urn Tomb is the uppermost of Petra's Royal Tombs, fronted by a deep, colonnaded courtyard built partly from carved rock and partly from constructed columns. Its facade measures about 26 by 16.5 metres and is attributed to the Nabataean king Malichus II, who died in 70 AD; a red-painted inscription records its later consecration as a church in 447 AD.",
+        description_ar='قبر الجرة هو الأعلى موقعاً بين المدافن الملكية في البتراء، وتتقدمه ساحة عميقة محاطة بأعمدة، بعضها منحوت من الصخر وبعضها مبني. تبلغ أبعاد واجهته نحو 26×16.5 متراً، وتُنسب إلى الملك النبطي مالخوس الثاني الذي توفي عام 70م، ويوثّق نقش بالحبر الأحمر تكريسه لاحقاً ككنيسة عام 447م.',
+        avg_visit_minutes=20,
+        accessibility_notes='Viewable from the path below; the facades themselves are not climbable or accessible.',
+        image_url='https://commons.wikimedia.org/wiki/Special:FilePath/Urn_Tomb,_Petra_01.jpg',
+        image_attribution='Photo by Bernard Gagnon, CC BY-SA 3.0, via Wikimedia Commons',
+        lat=30.327551,
+        lon=35.449262,
+        source_url='https://www.openstreetmap.org/node/2437205310 | https://madainproject.com/urn_tomb | https://www.visitpetra.jo/en/Location/119',
+    ),
+    'PET-WFA': Landmark(
+        id='PET-WFA',
+        name_en='Wadi Farasa',
+        name_ar='وادي الفراسة',
+        description_en='A valley running south of the Petra city centre, followed as a walking route that links several monuments including the Tomb of the Roman Soldier complex. It carried part of the Nabataean water system: rainwater was collected in a network of basins and cisterns connected by pipes that fed back into the city, and whether the valley also had a substantial spring supply is still uncertain.',
+        description_ar='وادٍ يمتد جنوب وسط مدينة البتراء، ويُسلَك كمسار مشي يربط عدداً من المعالم، منها مجمّع قبر الجندي الروماني. وقد حمل الوادي جزءاً من منظومة المياه النبطية، إذ كانت مياه الأمطار تُجمع في شبكة من الأحواض والصهاريج المتصلة بأنابيب تعيدها إلى المدينة، ولا يزال من غير المؤكد ما إذا كان الوادي يتمتع أيضاً بمصدر وفير من مياه النبع.',
+        avg_visit_minutes=90,
+        accessibility_notes='An unpaved hiking route with rock-cut steps, loose ground and exposed sections; not accessible for reduced-mobility visitors and best walked with a guide.',
+        image_url=None,
+        image_attribution=None,
+        lat=30.3235921,
+        lon=35.4419705,
+        source_url='https://www.openstreetmap.org/way/303937147 | https://en.wikipedia.org/wiki/Nabataean_architecture',
+    ),
+    'PET-WMD': Landmark(
+        id='PET-WMD',
+        name_en='Wadi al-Mudhlim (Nabataean Dam & Tunnel)',
+        name_ar='وادي المذلم',
+        description_en='A narrow gorge north of the Siq, used as an alternative and far quieter approach into Petra. It is a piece of Nabataean flood engineering rather than a monument: the Nabataeans controlled the flash floods that funnel through this area with dams, cisterns and cut water conduits, diverting the flow away from the main entrance and storing it against drought — the water control that made the desert city possible.',
+        description_ar='مضيق ضيق يقع شمال السيق، ويُستخدم كمدخل بديل وأكثر هدوءاً إلى البتراء. وهو قطعة من الهندسة النبطية للسيول أكثر منه معلماً أثرياً: فقد تحكّم الأنباط في السيول المفاجئة التي تتجمع في هذه المنطقة بواسطة السدود والصهاريج وقنوات المياه المنحوتة، فحوّلوا مسارها بعيداً عن المدخل الرئيسي وخزّنوها لمواجهة الجفاف، وهو التحكم بالمياه الذي جعل قيام المدينة الصحراوية ممكناً.',
         avg_visit_minutes=60,
-        accessibility_notes="Open ruins site with uneven ground; not wheelchair accessible.",
-        image_url="https://commons.wikimedia.org/wiki/Special:FilePath/Udhruh_(Ottoman_Fort).jpg",
-        image_attribution="Photo by Bashar Tabbah, CC BY-SA 4.0, via Wikimedia Commons",
+        accessibility_notes='A narrow unpaved gorge route with boulders and scrambling sections, subject to closure in flood risk; not accessible, and not to be entered alone.',
+        image_url='https://commons.wikimedia.org/wiki/Special:FilePath/Petra_Wadi_Muthlim_2110.jpg',
+        image_attribution='Photo by Dosseman, CC BY-SA 4.0, via Wikimedia Commons',
+        lat=30.3235419,
+        lon=35.460945,
+        source_url='https://www.openstreetmap.org/way/488821487 | https://en.wikipedia.org/wiki/Petra',
+    ),
+    'PET-WSA': Landmark(
+        id='PET-WSA',
+        name_en='Wadi Sabra',
+        name_ar='وادي سبرة',
+        description_en='A remote wadi well south of the Petra city centre, holding a Nabataean satellite settlement that is rarely visited. Among its remains are thermal baths, where the praefurnium — the below-floor heating hearth used across the Roman world — was set at a lower level so heat spread upward through the rooms, following the natural slope of the ground.',
+        description_ar='وادٍ منعزل يقع إلى الجنوب البعيد من وسط مدينة البتراء، ويضم مستوطنة نبطية تابعة قلّ من يزورها. ومن بين بقاياه حمّامات حرارية جُعل فيها بيت النار — أي موقد التسخين تحت الأرضية الذي استُخدم في أنحاء العالم الروماني — في مستوى أدنى ليتصاعد الحر عبر الغرف، تبعاً للانحدار الطبيعي للأرض.',
+        avg_visit_minutes=180,
+        accessibility_notes='Remote desert wadi with no facilities, no marked path and no shade; reachable only on a long walk or by 4x4 with a local guide. Not accessible.',
+        image_url='https://commons.wikimedia.org/wiki/Special:FilePath/P%C3%A9tra._Plan_de_la_r%C3%A9gion_des_thermes_de_Sabra_en_1830.jpg',
+        image_attribution='Photo by Leon Laborde and Linant de Bellefonds., CC BY-SA 4.0, via Wikimedia Commons',
+        lat=None,
+        lon=None,
+        source_url='https://en.wikipedia.org/wiki/Nabataean_architecture',
     ),
 }

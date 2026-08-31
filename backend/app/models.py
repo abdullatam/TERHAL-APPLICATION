@@ -34,6 +34,9 @@ class Landmark(BaseModel):
     accessibility_notes: str
     image_url: Optional[str] = None
     image_attribution: Optional[str] = None
+    lat: Optional[float] = None
+    lon: Optional[float] = None
+    source_url: Optional[str] = None
 
 
 class ItineraryStop(BaseModel):

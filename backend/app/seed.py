@@ -41,6 +41,9 @@ def seed() -> None:
                     "accessibility_notes": landmark.accessibility_notes,
                     "image_url": landmark.image_url,
                     "image_attribution": landmark.image_attribution,
+                    "lat": landmark.lat,
+                    "lon": landmark.lon,
+                    "source_url": landmark.source_url,
                 }
                 for landmark in LANDMARKS.values()
             ],

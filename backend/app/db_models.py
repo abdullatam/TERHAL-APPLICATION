@@ -1,7 +1,7 @@
 """SQLAlchemy ORM tables, mirroring the Pydantic models in app/models.py."""
 from datetime import date
 
-from sqlalchemy import ARRAY, Boolean, Date, ForeignKey, Integer, String, Text
+from sqlalchemy import ARRAY, Boolean, Date, Float, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db import Base
@@ -25,6 +25,9 @@ class LandmarkORM(Base):
     accessibility_notes: Mapped[str] = mapped_column(Text)
     image_url: Mapped[str | None] = mapped_column(String, nullable=True)
     image_attribution: Mapped[str | None] = mapped_column(String, nullable=True)
+    lat: Mapped[float | None] = mapped_column(Float, nullable=True)
+    lon: Mapped[float | None] = mapped_column(Float, nullable=True)
+    source_url: Mapped[str | None] = mapped_column(Text, nullable=True)
 
 
 class ProviderORM(Base):
