@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import json
 import re
 import sys
 import time
@@ -335,6 +336,69 @@ def check_file_level(rows: list[dict[str, str]], rep: Report, *,
                               "did someone's file get left out?")
 
 
+COMMONS_FILEPATH = re.compile(
+    r"^https?://commons\.wikimedia\.org/wiki/Special:FilePath/(?P<name>.+)$")
+
+
+def check_commons_images(pairs: list[tuple[str, str]], rep: Report) -> set[str]:
+    """Verify Wikimedia-hosted images through the Commons API, not the file host.
+
+    Fetching the bytes of every image gets this IP a blanket HTTP 429 — the
+    error body says as much and asks callers not to do it. Asking the API
+    whether the file exists is authoritative (Special:FilePath is just a
+    redirect to whatever the API reports), costs one request per 40 files
+    instead of one per file, and is what Wikimedia would rather we did.
+
+    Returns the set of row ids it reached a verdict on.
+    """
+    import urllib.parse
+    import urllib.request
+
+    by_name: dict[str, list[str]] = {}
+    for rid, url in pairs:
+        m = COMMONS_FILEPATH.match(url)
+        if m:
+            name = urllib.parse.unquote(m.group("name")).replace("_", " ")
+            by_name.setdefault(f"File:{name}", []).append(rid)
+    if not by_name:
+        return set()
+
+    titles = list(by_name)
+    settled: set[str] = set()
+    for i in range(0, len(titles), 40):
+        chunk = titles[i:i + 40]
+        query = urllib.parse.urlencode({
+            "action": "query", "titles": "|".join(chunk), "prop": "imageinfo",
+            "iiprop": "mime|size", "format": "json", "formatversion": "2",
+        })
+        req = urllib.request.Request(
+            "https://commons.wikimedia.org/w/api.php?" + query,
+            headers={"User-Agent": "MaanProject-DataPhase/1.0 (validation)"})
+        try:
+            with urllib.request.urlopen(req, timeout=40) as resp:
+                pages = json.load(resp).get("query", {}).get("pages", [])
+        except Exception as exc:
+            print(f"  Commons API unreachable ({type(exc).__name__}); "
+                  f"falling back to fetching {len(chunk)} files directly")
+            continue
+        for page in pages:
+            title = page.get("title", "")
+            ids = by_name.get(title, [])
+            settled.update(ids)
+            if page.get("missing"):
+                for rid in ids:
+                    rep.error(rid, f"image_url points at a file that does not exist "
+                                   f"on Commons: {title}")
+                continue
+            info = (page.get("imageinfo") or [{}])[0]
+            mime = info.get("mime", "")
+            if not mime.startswith("image/"):
+                for rid in ids:
+                    rep.error(rid, f"{title} is not an image (MIME {mime!r})")
+    print(f"  {len(settled)} confirmed via the Commons API")
+    return settled
+
+
 def check_images(rows: list[dict[str, str]], rep: Report) -> None:
     """Fetch every image_url. A filename typo fails silently otherwise.
 
@@ -383,7 +447,11 @@ def check_images(rows: list[dict[str, str]], rep: Report) -> None:
                 time.sleep(4 * (attempt + 1))
         return rid, url, last[0], last[1]
 
-    print(f"  checking {len(targets)} image URLs (2 at a time, to stay polite)...")
+    settled = check_commons_images(targets, rep)
+    targets = [(rid, url) for rid, url in targets if rid not in settled]
+    if not targets:
+        return
+    print(f"  fetching the remaining {len(targets)} non-Commons URLs...")
     checked = inconclusive = 0
     # Wikimedia rate-limits bulk access hard; two workers is enough and does not
     # get the whole run thrown a 429.
@@ -409,6 +477,10 @@ def main() -> int:
                              "and enforce the NOT NULL columns as errors")
     parser.add_argument("--check-images", action="store_true",
                         help="fetch every image_url (needs network)")
+    parser.add_argument("--bounce", action="store_true",
+                        help="summarise findings by owning group (A/B/C), so the "
+                             "report can be handed straight to the person who "
+                             "has to fix it")
     parser.add_argument("--master", default="data/master_list.csv",
                         help="master list to compare ids against "
                              "(default: data/master_list.csv)")
@@ -459,8 +531,38 @@ def main() -> int:
     if args.check_images:
         check_images(rows, rep)
 
-    rep.print_group("ERRORS", rep.errors)
-    rep.print_group("WARNINGS", rep.warnings)
+    if args.bounce:
+        owner_of = {(r.get("id") or "").strip(): (r.get("group") or "").strip()
+                    for r in rows}
+        OWNERS = {"A": "Abd", "B": "Mahdi", "C": "Pulga"}
+        buckets: dict[str, dict[str, list[str]]] = {}
+        for row_id, msg in rep.errors:
+            group = owner_of.get(row_id, "?")
+            buckets.setdefault(group, {}).setdefault(row_id, []).append(msg)
+        print("\n" + "=" * 68)
+        print("BOUNCE REPORT — who has to fix what")
+        print("=" * 68)
+        if not buckets:
+            print("\nNothing to bounce. Every row passes.")
+        for group in sorted(buckets):
+            owner = OWNERS.get(group, "unassigned")
+            rows_bad = buckets[group]
+            count = sum(len(v) for v in rows_bad.values())
+            print(f"\n{owner} (group {group}) — {len(rows_bad)} rows, {count} errors")
+            for row_id in sorted(rows_bad):
+                reasons = rows_bad[row_id]
+                # collapse the repeated NOT NULL complaints into one line
+                nulls = [m.split()[0] for m in reasons if "NOT NULL" in m]
+                other = [m for m in reasons if "NOT NULL" not in m]
+                bits = []
+                if nulls:
+                    bits.append("missing " + ", ".join(nulls))
+                bits += other
+                print(f"    {row_id:10} {'; '.join(bits)}")
+        print()
+    else:
+        rep.print_group("ERRORS", rep.errors)
+        rep.print_group("WARNINGS", rep.warnings)
 
     print()
     if rep.errors:

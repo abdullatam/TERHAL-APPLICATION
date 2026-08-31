@@ -3,7 +3,7 @@
     "title": "Maan Project - FINAL Verified Places List",
     "status": "BLOCKER CLOSED - three-way split assigned, schema-conformant, handed off",
     "governorate": "Ma'an Governorate, Jordan ONLY",
-    "total_verified_places": 41,
+    "total_verified_places": 42,
     "total_needs_verification": 2,
     "total_excluded": 4,
     "verification_method": "Each place confirmed against at least one of: Wikipedia/Wikidata infobox stating 'Ma'an Governorate' directly, official Jordan tourism sources (visitjordan.com, visitpetra.jo), Jordan News Agency (Petra) reporting, or physical containment inside the Petra district (itself explicitly confirmed as one of Ma'an governorate's official districts, area 240 km2). Cross-checked visually against the official Jordan governorates map - the verified set sits entirely inside the Ma'an boundary, west-central through eastern desert (Al-Jafr).",
@@ -21,7 +21,8 @@
       "PET-HAB: alternate name 'Cave de Sueth' is unverified; that name normally refers to Habis Jaldak in the Yarmouk region, not al-Habis in Petra. Site itself is real and Crusader.",
       "OPM vs PAM: probably the same museum - see the note on OPM. Resolve before seeding.",
       "PET-OBT: matched OSM feature is 'Bab al-Siq Triclinium', the lower half of the same two-storey monument as the Obelisk Tomb. Expected, but keep them as one entry.",
-      "Painted Biclinium at Little Petra was in the seed backend/app/data/landmarks.py but is absent from this list - add it as a landmark of LPET or record why it was dropped."
+      "Painted Biclinium at Little Petra was in the seed backend/app/data/landmarks.py but is absent from this list - add it as a landmark of LPET or record why it was dropped.",
+      "AMM (Ammarin Bedouin Camp) removed from the landmark set - it is accommodation, not an attraction. Re-add it as a provider, not here."
     ]
   },
   "entries": [
@@ -83,7 +84,7 @@
       "type": "landmark",
       "parent_site": "PET",
       "category": "castles",
-      "name_en": "Al-Habis Castle (Cave de Sueth)",
+      "name_en": "Al-Habis Castle",
       "name_ar": "قلعة الحبيس",
       "era": "1115 AD, Crusader",
       "in_maan_governorate": "yes",
@@ -359,9 +360,10 @@
       "group": "C",
       "source_url": "https://www.openstreetmap.org/node/3053244053",
       "flags": [
-        "needs_name_ar"
+        "needs_name_ar",
+        "removed_not_a_landmark"
       ],
-      "notes": "Community-owned cooperative - potential pitch case study / demo partner"
+      "notes": "Community-owned cooperative - potential pitch case study / demo partner; REMOVED: not a landmark. Every source classifies it as accommodation - OSM node 3053244053 tags it tourism=camp_site, Wikidata Q111855685 records it as a hotel - and the landmarks table models attractions with a visit duration and accessibility notes, which do not apply to a place you sleep. It sits 0.7 km from Little Petra (LPET), which already covers the attraction in that spot. No descriptive source exists in Wikipedia, Wikivoyage, Wikidata, Commons or OSM tags, so a landmark description could only have been invented. Belongs in the providers table instead: the master list flags it as a community cooperative and possible pilot partner, which is a provider/vendor relationship, not a tourist site. Hand to the mock provider work in Phase 2."
     },
     {
       "id": "OPM",
@@ -369,13 +371,13 @@
       "parent_site": null,
       "category": "other_tourism_places",
       "name_en": "Old Petra Museum",
-      "name_ar": null,
+      "name_ar": "متحف البتراء القديم",
       "era": null,
       "in_maan_governorate": "yes",
-      "lat": null,
-      "lon": null,
+      "lat": 30.3246,
+      "lon": 35.46797,
       "group": "A",
-      "source_url": "",
+      "source_url": "https://en.wikipedia.org/wiki/Old_Petra_Museum",
       "flags": [
         "needs_coords",
         "needs_name_ar",
@@ -585,7 +587,7 @@
       "type": "landmark",
       "parent_site": "PET",
       "category": "petra_landmarks",
-      "name_en": "Qasr al-Bint (Temple of Dushares)",
+      "name_en": "Qasr al-Bint",
       "name_ar": "قصر البنت",
       "era": null,
       "in_maan_governorate": "yes",
@@ -749,24 +751,25 @@
         "needs_name_ar"
       ],
       "notes": null
+    },
+    {
+      "id": "PAM",
+      "type": "site",
+      "parent_site": null,
+      "category": "other_tourism_places",
+      "name_en": "Petra Museum (visitor center)",
+      "name_ar": "متحف البترا",
+      "era": null,
+      "in_maan_governorate": "yes",
+      "lat": 30.325322,
+      "lon": 35.4678442,
+      "group": "A",
+      "source_url": "https://www.openstreetmap.org/way/156571190 | https://www.petramuseum.jo/ar-jo/",
+      "flags": [],
+      "notes": "Q1 resolved: confirmed as a real, distinct entity (not a duplicate of OPM) - the new Petra Museum near the visitor center, opened 2019, Japan-funded (~$7M, 1,800 sqm), purpose-built to replace the cramped Old Petra Museum (OPM). Sourced via petramuseum.jo (official site) and independent coverage (wowjordan.com, Amman Journal). Released from HOLD into Group A for scraping."
     }
   ],
   "needs_verification": [
-    {
-      "id": "PAM",
-      "name_en": "Petra Museum (visitor center)",
-      "in_maan_governorate": "unsure",
-      "lat": 30.325322,
-      "lon": 35.4678442,
-      "group": "HOLD",
-      "source_url": "https://www.openstreetmap.org/way/156571190",
-      "flags": [
-        "needs_name_ar",
-        "do_not_scrape",
-        "do_not_seed"
-      ],
-      "issue": "Not sourced from a confirmed reference - may not be a distinct entity from the Old Petra Museum (OPM). Do not seed into the database until a team member confirms it exists as described, ideally via visitpetra.jo or an on-the-ground check."
-    },
     {
       "id": "MPL",
       "name_en": "Founder King's Palace / Hijaz Railway Station (Ma'an city)",

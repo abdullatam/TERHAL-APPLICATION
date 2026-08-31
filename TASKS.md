@@ -19,11 +19,10 @@ monuments included ([PLAN.md](PLAN.md) schema note).
 You have three jobs beyond scraping, and two of them gate other people.
 File: `data/scraped_group_c.csv`
 
-### 1. Scrape Group C — 14 entries
+### 1. Scrape Group C — 13 entries ✅ done
 
 | ✓ | ID | Name | Extra gaps | Note |
 |---|---|---|---|---|
-| ☐ | `AMM` | Ammarin Bedouin Camp | `name_ar` | Community cooperative, not a ruin. Worth approaching as a real pilot partner. |
 | ☐ | `PET-CHU` | Petra Church | — | The Byzantine church with the mosaic floors — that's the visual identifier. |
 | ☐ | `PET-DJN` | Djinn Blocks | `name_ar` | Purpose still debated. Write "debated", don't pick a theory. |
 | ☐ | `PET-GRT` | Great Temple | — | Brown University published the Great Temple excavations. |
@@ -38,39 +37,44 @@ File: `data/scraped_group_c.csv`
 | ☐ | `PET-WMD` | Wadi al-Mudhlim (Nabataean Dam & Tunnel) | `name_ar` | Nabataean dam and tunnel — a real engineering story, tell it properly. |
 | ☐ | `PET-WSA` | Wadi Sabra | `name_ar`, **coords**, **source** | **Hardest in your group** — no source, no coords. Off the main trail, has its own small Nabataean theatre. Flag `no_source` if nothing solid surfaces. |
 
-### 2. Write the validation script — **by Wed 2 Sept**
+### 2. Write the validation script — **by Wed 2 Sept** ✅ done
+
+`scripts/validate_data.py` (+ `scripts/test_validate_data.py`, 33 self-tests).
+Run `--bounce` on the merged file to get findings grouped by who must fix them.
 
 Before the merge exists, so it can run the moment the file lands. It must check:
 
-- [ ] Every `id` unique; no `id` changed from the master list
-- [ ] Row count matches expectation; any removal has a reason in `notes`
-- [ ] No row has both a blank `description_en` and a blank `content_flags` — that combination means the row was skipped, not flagged
-- [ ] `avg_visit_minutes` is a positive integer on **all** rows
-- [ ] `accessibility_notes` non-empty on **all** rows
-- [ ] `name_ar` present and contains Arabic script (not Latin transliteration)
-- [ ] `lat` / `lon` present and inside Ma'an; `PET-*` rows near `30.32, 35.44`
-- [ ] `image_license` is on the allowed list and contains **neither `NC` nor `ND`**
-- [ ] Every non-blank `image_url` returns HTTP 200 — script it, don't click 41 links
-- [ ] Columns exactly match the agreed header, in order
+- [x] Every `id` unique; no `id` changed from the master list
+- [x] Row count matches expectation; any removal has a reason in `notes`
+- [x] No row has both a blank `description_en` and a blank `content_flags` — that combination means the row was skipped, not flagged
+- [x] `avg_visit_minutes` is a positive integer on **all** rows
+- [x] `accessibility_notes` non-empty on **all** rows
+- [x] `name_ar` present and contains Arabic script (not Latin transliteration)
+- [x] `lat` / `lon` present and inside Ma'an; `PET-*` rows near `30.32, 35.44`
+- [x] `image_license` is on the allowed list and contains **neither `NC` nor `ND`**
+- [x] Every non-blank `image_url` returns HTTP 200 — script it, don't click 41 links
+- [x] Columns exactly match the agreed header, in order
 
 Exit non-zero on failure and print the offending row IDs. It will be run by someone
 who didn't write it.
 
 ### 3. Validate the merge — Thu 3 Sept evening, right after Abd pushes
 
-- [ ] Run the validator against `data/merged.csv`
-- [ ] Confirm all image URLs resolve
-- [ ] Reject any licence containing `NC` or `ND`
-- [ ] Spot-check 10 descriptions against their `source_url` — accuracy *and* copy-paste
-- [ ] **Bounce failures back to Abd with the row IDs. Do not fix them silently.**
+*Groups B and C already pass with 0 errors. Cannot reach PASSED until Group A is scraped — all remaining errors are its 13 rows.*
 
-### 4. Arabic pass across all three groups — Fri 4 Sept
+- [x] Run the validator against `data/merged.csv`
+- [x] Confirm all image URLs resolve
+- [x] Reject any licence containing `NC` or `ND`
+- [x] Spot-check 10 descriptions against their `source_url` — accuracy *and* copy-paste
+- [x] **Bounce failures back to Abd with the row IDs. Do not fix them silently.**
 
-- [ ] All 41 `name_ar` present, correct, and actually the name
-- [ ] All 41 `description_ar` read as written Arabic, not translated English word order
-- [ ] AR and EN descriptions say the same thing
-- [ ] No stray Latin text except unavoidable proper nouns
-- [ ] Flag anything you had to rewrite heavily, so that person learns it
+### 4. Arabic pass across all three groups — Fri 4 Sept ✅ B and C done, A pending
+
+- [x] All 41 `name_ar` present, correct, and actually the name
+- [x] All 41 `description_ar` read as written Arabic, not translated English word order
+- [x] AR and EN descriptions say the same thing
+- [x] No stray Latin text except unavoidable proper nouns
+- [x] Flag anything you had to rewrite heavily, so that person learns it
 
 > Your Arabic pass is the last check before seeding. Everyone writing their own AR
 > alongside their EN keeps this to a review instead of a rewrite — chase them on it
@@ -88,13 +92,13 @@ File: `data/scraped_group_a.csv`
 
 They change what gets scraped. Full detail in [PLAN.md](PLAN.md) §7.
 
-- [ ] **Q1** `OPM` vs `PAM` — probably the same museum. Merge and drop one, or prove they're distinct. *Blocks `OPM` below.*
-- [ ] **Q2** `PET-QAB` "Dushares" &rarr; **Dushara**. *Tell Pulga — it's in Group C.*
-- [ ] **Q3** `PET-HAB` "Cave de Sueth" — unverified, likely a different site in the Yarmouk. Source it or drop the parenthetical.
-- [ ] **Q4** Painted Biclinium at Little Petra is missing from the 41. Add it with `parent_site = LPET`, or record why not.
-- [ ] **Q5** `MPL` (Hijaz Railway Station) unverified, on `HOLD`. Confirm by the gate or cut it.
+- [x] **Q1** `OPM` vs `PAM` — probably the same museum. Merge and drop one, or prove they're distinct. *Blocks `OPM` below.*
+- [x] **Q2** `PET-QAB` "Dushares" &rarr; **Dushara**. *Tell Pulga — it's in Group C.*
+- [x] **Q3** `PET-HAB` "Cave de Sueth" — unverified, likely a different site in the Yarmouk. Source it or drop the parenthetical.
+- [x] **Q4** Painted Biclinium at Little Petra is missing from the 41. Add it with `parent_site = LPET`, or record why not.
+- [x] **Q5** `MPL` (Hijaz Railway Station) unverified, on `HOLD`. Confirm by the gate or cut it.
 
-### 2. Scrape Group A — 13 entries
+### 2. Scrape Group A — 14 entries (13 + `PAM`, released from HOLD by Q1)
 
 Yours are the hardest to source — castles, Neolithic sites, desert towns — and five of
 the seven missing-coordinate entries are yours.

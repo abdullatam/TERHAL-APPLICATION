@@ -1,6 +1,6 @@
 # Phase 1 — Data Extraction
 
-**The only goal of this phase:** turn the 41 verified places in
+**The only goal of this phase:** turn the verified places in
 [data/master_list.json](data/master_list.json) into one complete, licence-clean,
 bilingual data file that can be seeded into a database without a human touching it
 again.
@@ -13,7 +13,7 @@ providers. Phase 1 ends when the extracted data passes validation and is seeded.
 > (Petra, Wadi Musa town) and a single monument (the Treasury) are both just rows in
 > the `landmarks` table. Two consequences for this phase:
 > **(a)** `avg_visit_minutes` and `accessibility_notes` are `NOT NULL` on every row, so
-> they are now required for **all 41 entries**, not just the 16 that used to be sites.
+> they are now required for **every entry**, not just the 16 that used to be sites.
 > **(b)** `type` and `parent_site` are no longer part of the target schema. Keep them
 > in the CSV as working metadata — they are useful for splitting the work and for
 > sanity-checking — but they are not seeded.
@@ -32,9 +32,12 @@ new places, and you are not re-checking which governorate they are in.
 | | Count |
 |---|---|
 | Verified places, boundary-checked | **41** |
+| — removed as not-a-landmark | 1 (`AMM`, see §6) |
+| — released from `HOLD` by Q1 | 1 (`PAM`, distinct from `OPM`) |
+| **Landmark rows to scrape** | **41** |
 | — sites | 16 |
 | — landmarks | 25 |
-| On `HOLD`, unverified | 2 (`PAM`, `MPL`) |
+| On `HOLD`, unverified | 1 (`MPL`) |
 | Confirmed outside Ma'an, excluded | 4 |
 | Already have coordinates | 34 / 41 |
 | Already have a source URL | 37 / 41 |
@@ -74,7 +77,7 @@ you change anything.
 | `type` | `site` or `landmark`. **Working metadata only — not seeded.** Kept because it's a useful hint for how long a visit takes and how much description an entry needs. |
 | `parent_site` | **Working metadata only — not seeded.** Still useful for spotting that 25 entries sit inside Petra and their descriptions shouldn't repeat each other. |
 | `name_en` | Fix spelling and naming errors, keep the entity the same. |
-| `in_maan_governorate` | Already `yes` for all 41. Do not touch. |
+| `in_maan_governorate` | Already `yes` for all of them. Do not touch. |
 | `lat` / `lon` | Decimal degrees. Fill only where blank — 7 entries. |
 | `source_url` | Append, pipe-separated, never replace what is there. |
 
@@ -85,8 +88,8 @@ you change anything.
 | `name_ar` | all | The **name**, not a translation of the description. Arabic script. 28 still blank. |
 | `description_en` | all | 2–4 sentences. **Paraphrased in your own words.** Concrete and specific — what it is, when it was built, who built it, what a visitor actually sees. |
 | `description_ar` | all | Same content in natural Arabic. Not machine-translated English word order. |
-| `avg_visit_minutes` | **all 41** | Integer, realistic, `NOT NULL`. Petra as a whole is a day; the Treasury alone is 20 minutes; a Neolithic mound is 45. Feeds the itinerary generator, so a wrong number produces a nonsense itinerary. |
-| `accessibility_notes` | **all 41** | Plain, honest text about mobility, `NOT NULL`. Say what is *not* accessible. "Uneven ruins terrain, no paved paths" is useful; "may be difficult" is not. Every monument needs its own answer now — the Monastery's 800 steps and the Siq's flat floor are different rows. |
+| `avg_visit_minutes` | **every row** | Integer, realistic, `NOT NULL`. Petra as a whole is a day; the Treasury alone is 20 minutes; a Neolithic mound is 45. Feeds the itinerary generator, so a wrong number produces a nonsense itinerary. |
+| `accessibility_notes` | **every row** | Plain, honest text about mobility, `NOT NULL`. Say what is *not* accessible. "Uneven ruins terrain, no paved paths" is useful; "may be difficult" is not. Every monument needs its own answer now — the Monastery's 800 steps and the Siq's flat floor are different rows. |
 | `image_url` | all | Direct file URL. See §4. |
 | `image_license` | all | Exact licence name: `CC BY 4.0`, `CC BY-SA 3.0`, `CC0`, `public domain`. |
 | `image_attribution` | all | `Photo by NAME, LICENCE, via Wikimedia Commons`. |
@@ -181,7 +184,7 @@ ambiguous or heavily-shadowed reference image directly hurts the flagship featur
 
 ## 5. Arabic
 
-28 entries need `name_ar` and all 41 need `description_ar`. Rules:
+28 entries need `name_ar` and every row needs `description_ar`. Rules:
 
 - **Write Arabic alongside English, entry by entry.** Do not leave it all until the end — that is how a bilingual dataset ends up half-finished.
 - Arabic names come from the Arabic Wikipedia article or the Arabic side of an official tourism page, not from transliterating the English back.
@@ -197,6 +200,8 @@ ambiguous or heavily-shadowed reference image directly hurts the flagship featur
 The single most valuable thing this phase produces is a file where **nothing is
 invented**. A flagged gap is fixable by whoever comes next. A confident fabrication
 is not, because nobody knows to look.
+
+One entry has been removed on these grounds: **`AMM` (Ammarin Bedouin Camp)** is accommodation, not an attraction — OSM tags it `tourism=camp_site`, Wikidata records it as a hotel, and it sits 0.7 km from Little Petra, which already covers that spot. It belongs in the providers table. Record a removal by putting `REMOVED: <reason>` in the master list's notes; the validator then treats the missing row as a warning instead of an error.
 
 | Situation | What to do |
 |---|---|
@@ -219,6 +224,9 @@ The only museum feature in the Petra map extract is a single *Petra Museum* node
 `OPM`. Either merge them into one entry and drop the other, or produce a source
 showing the in-park archaeological museum is a distinct, currently-open venue.
 *Blocks:* `OPM` in Group A, and `PAM` leaving `HOLD`.
+**SETTLED (Abd, 2ef845b):** they are distinct — `OPM` is the 1963 cave museum, `PAM` the
+2019 visitor-centre museum. `PAM` is released from `HOLD` into Group A with its own
+sourcing, so Group A is 14 rows.
 
 **Q2 — `PET-QAB` says "Temple of Dushares".**
 The Nabataean deity is **Dushara**. Fix `name_en` before the Arabic pass, or the
@@ -240,6 +248,8 @@ are visually distinctive.
 **Q5 — `MPL` (Hijaz Railway Station, Ma'an city) is unverified.**
 Currently `HOLD`. If it is not confirmed by the Thursday gate, cut it. Do not seed an
 unverified entry.
+**SETTLED (Abd):** stays on `HOLD` — the Hejaz Railway reached Ma'an in 1904, but nothing
+confirms this specific building. Deferred to the gate.
 
 ---
 
@@ -247,7 +257,8 @@ unverified entry.
 
 Since the flattening, **every entry needs the same 7 content fields** — the old
 "sites need more work than landmarks" asymmetry is gone. The split is therefore
-balanced on entry count plus each entry's existing gaps: **13 / 14 / 14 entries**,
+balanced on entry count plus each entry's existing gaps: **13 / 14 / 13 entries**
+(Group C was 14 until `AMM` was removed — see below),
 working out at 106 / 111 / 109 cells, a 5% spread.
 
 
@@ -296,12 +307,11 @@ File: `data/scraped_group_b.csv`
 
 ### Group C — Pulga
 
-**14 entries** · **~109 cells to fill**
+**13 entries** · **~102 cells to fill**
 File: `data/scraped_group_c.csv`
 
 | ID | Name | Scope | Cells | Still missing | Where to look / watch out |
 |---|---|---|---|---|---|
-| `AMM` | Ammarin Bedouin Camp | area | 8 | `name_ar` | Community-owned cooperative. **Recommend approaching as a real pilot partner**, not just a mock provider — it goes directly to the pitch's local-benefit argument. |
 | `PET-CHU` | Petra Church | monument | 7 | — | The Byzantine church with the mosaic floors — that's the visual identifier. OSM tags it 'Byzantine Church'. |
 | `PET-DJN` | Djinn Blocks | monument | 8 | `name_ar` | Djinn Blocks — the large freestanding cubes near Bab as-Siq. Purpose still debated; say 'debated', don't pick a theory. |
 | `PET-GRT` | Great Temple | monument | 7 | — | Great Temple / Southern Temple. Wikipedia; Brown University excavation publications. |
@@ -373,7 +383,7 @@ because Phase 1's output is only useful once it exists, and because it changes w
 "done" means: the merged CSV is the deliverable, the Python file is the destination.
 
 Until that converter exists, do not hand-edit `landmarks.py` in parallel with the
-CSVs. Two sources of truth for the same 41 rows will diverge within a day.
+CSVs. Two sources of truth for the same rows will diverge within a day.
 
 ---
 
@@ -391,6 +401,9 @@ Abd:
 Pulga, immediately after:
 1. Run the validation script against `merged.csv`.
 2. Confirm every non-blank `image_url` actually resolves — script it, don't click 41 links.
+   `validate_data.py --check-images` verifies Wikimedia files through the Commons API
+   rather than fetching each one, which is both authoritative and avoids the HTTP 429
+   the file host returns for bulk access.
 3. Confirm every `image_license` is a genuinely free licence, and reject anything containing `NC` or `ND`.
 4. Spot-check 10 descriptions against their `source_url` for accuracy and for copy-paste.
 5. Full Arabic read-through.
@@ -419,7 +432,7 @@ sources — so do not read day one as the pace.
 
 ## 14. Things that will go wrong if you let them
 
-- **Arabic left to the end.** 41 descriptions in one sitting on Friday will be bad, and Arabic quality is visible to the judges.
+- **Arabic left to the end.** Forty-one descriptions in one sitting on Friday will be bad, and Arabic quality is visible to the judges.
 - **Images done last, quickly.** This is where unlicensed photos get in. Do the image with the entry.
 - **Copy-pasted Wikipedia sentences.** Fast, and a licensing problem in a product you are pitching commercially.
 - **Filling a gap with a plausible guess.** The whole value of this file is that its gaps are marked. One invented fact costs more than ten blanks.
