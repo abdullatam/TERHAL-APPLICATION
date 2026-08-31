@@ -22,6 +22,7 @@ import argparse
 import csv
 import re
 import sys
+import time
 from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -59,6 +60,15 @@ VALID_FLAGS = {"no_source", "no_free_image", ""}
 # Bounding boxes used to re-check that a coordinate is where it claims to be.
 PETRA_BOX = (30.28, 30.42, 35.38, 35.52)   # PET-* entries
 MAAN_BOX = (29.20, 30.95, 35.30, 38.00)    # everything else
+
+# The master list's id convention says PET- means "inside the Petra park
+# boundary", but a few entries carry the prefix while sitting outside it. Wadi
+# Sabra is a Nabataean satellite settlement ~6 km south of the city centre, so
+# its real coordinates (the Sabra Theatre, 30.2776, 35.4135) fall below the park
+# box. These are checked against the Ma'an box instead. Listing them explicitly
+# keeps the park check tight — widening the box for everyone would have let
+# through the wrong Qasr al-Bint homonym this check was written to catch.
+OUTSIDE_PARK_DESPITE_PET_ID = {"PET-WSA"}
 
 ARABIC = re.compile(r"[؀-ۿݐ-ݿ]")
 LATIN = re.compile(r"[A-Za-z]{4,}")
@@ -197,9 +207,10 @@ def check_row(row: dict[str, str], rep: Report, *, strict_seed: bool) -> None:
     if lat_raw and lon_raw:
         try:
             lat, lon = float(lat_raw), float(lon_raw)
-            box = PETRA_BOX if rid.startswith("PET-") else MAAN_BOX
+            in_park = rid.startswith("PET-") and rid not in OUTSIDE_PARK_DESPITE_PET_ID
+            box = PETRA_BOX if in_park else MAAN_BOX
             if not in_box(box, lat, lon):
-                where = "the Petra park" if rid.startswith("PET-") else "Ma'an governorate"
+                where = "the Petra park" if in_park else "Ma'an governorate"
                 rep.error(rid, f"coordinates {lat}, {lon} fall outside {where} — "
                                "likely a same-name feature somewhere else")
         except ValueError:
@@ -299,7 +310,13 @@ def check_file_level(rows: list[dict[str, str]], rep: Report, *,
 
 
 def check_images(rows: list[dict[str, str]], rep: Report) -> None:
-    """HEAD/GET every image_url. A filename typo fails silently otherwise."""
+    """Fetch every image_url. A filename typo fails silently otherwise.
+
+    A 404 means the URL is wrong and is an error. A 429 or 5xx means the host
+    would not answer us right now — that is inconclusive, not proof of a bad
+    URL, so it is a warning. Treating a rate limit as a failure would fail the
+    merge gate for a reason that has nothing to do with the data.
+    """
     import urllib.error
     import urllib.request
 
@@ -309,31 +326,52 @@ def check_images(rows: list[dict[str, str]], rep: Report) -> None:
         print("  no image URLs to check")
         return
 
-    def fetch(item: tuple[str, str]) -> tuple[str, str, str | None]:
+    INCONCLUSIVE = {408, 425, 429, 500, 502, 503, 504}
+
+    def fetch(item: tuple[str, str]) -> tuple[str, str, str | None, bool]:
+        """Returns (id, url, problem, fatal). fatal=False means inconclusive."""
         rid, url = item
         req = urllib.request.Request(
             url, method="GET",
             headers={"User-Agent": "MaanProject-DataPhase/1.0 (validation)",
                      "Range": "bytes=0-2047"},
         )
-        try:
-            with urllib.request.urlopen(req, timeout=25) as resp:
-                ctype = resp.headers.get("Content-Type", "")
-                if resp.status not in (200, 206):
-                    return rid, url, f"returned HTTP {resp.status}"
-                if not ctype.startswith("image/"):
-                    return rid, url, f"served Content-Type {ctype!r}, not an image"
-                return rid, url, None
-        except urllib.error.HTTPError as exc:
-            return rid, url, f"returned HTTP {exc.code}"
-        except Exception as exc:  # network, DNS, timeout, bad URL
-            return rid, url, f"could not be fetched ({type(exc).__name__})"
+        last: tuple[str | None, bool] = (None, True)
+        for attempt in range(3):
+            try:
+                with urllib.request.urlopen(req, timeout=25) as resp:
+                    ctype = resp.headers.get("Content-Type", "")
+                    if resp.status not in (200, 206):
+                        return rid, url, f"returned HTTP {resp.status}", True
+                    if not ctype.startswith("image/"):
+                        return rid, url, f"served Content-Type {ctype!r}, not an image", True
+                    return rid, url, None, True
+            except urllib.error.HTTPError as exc:
+                if exc.code in INCONCLUSIVE:
+                    last = (f"could not be verified — host returned HTTP {exc.code}", False)
+                    time.sleep(4 * (attempt + 1))
+                    continue
+                return rid, url, f"returned HTTP {exc.code}", True
+            except Exception as exc:
+                last = (f"could not be reached ({type(exc).__name__})", False)
+                time.sleep(4 * (attempt + 1))
+        return rid, url, last[0], last[1]
 
-    print(f"  checking {len(targets)} image URLs...")
-    with ThreadPoolExecutor(max_workers=6) as pool:
-        for rid, url, problem in pool.map(fetch, targets):
-            if problem:
+    print(f"  checking {len(targets)} image URLs (2 at a time, to stay polite)...")
+    checked = inconclusive = 0
+    # Wikimedia rate-limits bulk access hard; two workers is enough and does not
+    # get the whole run thrown a 429.
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        for rid, url, problem, fatal in pool.map(fetch, targets):
+            if problem is None:
+                checked += 1
+            elif fatal:
                 rep.error(rid, f"image_url {problem}: {url}")
+            else:
+                inconclusive += 1
+                rep.warn(rid, f"image_url {problem}: {url}")
+    print(f"  {checked} confirmed, {inconclusive} unverified, "
+          f"{len(targets) - checked - inconclusive} broken")
 
 
 def main() -> int:
