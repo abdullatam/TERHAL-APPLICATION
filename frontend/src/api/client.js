@@ -13,10 +13,11 @@ async function request(path, options = {}) {
 }
 
 export const api = {
-  listSites: () => request("/sites"),
+  listLandmarks: () => request("/landmarks"),
   generateItinerary: (payload) =>
     request("/itinerary/generate", { method: "POST", body: JSON.stringify(payload) }),
-  listProviders: (site) => request(`/providers${site ? `?site=${site}` : ""}`),
+  listProviders: (landmarkId) =>
+    request(`/providers${landmarkId ? `?landmark_id=${landmarkId}` : ""}`),
   createRequest: (payload) =>
     request("/requests", { method: "POST", body: JSON.stringify(payload) }),
   listBids: (requestId) => request(`/requests/${requestId}/bids`),

@@ -26,7 +26,7 @@ export default function ProviderDirectory() {
               )}
             </div>
             <div className="text-sm text-stone-600">
-              {p.role} · rating {p.rating} · sites: {p.sites.join(", ")}
+              {p.role} · rating {p.rating} · attractions: {p.landmark_ids.join(", ")}
             </div>
           </li>
         ))}

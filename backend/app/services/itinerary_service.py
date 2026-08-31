@@ -1,20 +1,21 @@
-"""Builds a multi-site day-by-day itinerary from the curated site knowledge base.
+"""Builds a multi-attraction day-by-day itinerary from the curated knowledge base.
 
-Rule-based for the MVP demo: spreads sites across the requested trip length and
-excludes sites the accessibility notes flag as unsuitable when accessibility
-needs are set. Swap in an LLM-backed reorder/optimizer here post-MVP.
+Rule-based for the MVP demo: spreads attractions across the requested trip
+length and excludes any the accessibility notes flag as unsuitable when
+accessibility needs are set. Swap in an LLM-backed reorder/optimizer here
+post-MVP.
 """
-from app.data.sites import SITES
-from app.models import Itinerary, ItineraryRequest, ItineraryStop, SiteId
+from app.data.landmarks import LANDMARKS
+from app.models import Itinerary, ItineraryRequest, ItineraryStop
 from app.store import store
 
 DEFAULT_ORDER = [
-    SiteId.wadi_musa,
-    SiteId.petra,
-    SiteId.little_petra,
-    SiteId.wadi_trails,
-    SiteId.shobak_castle,
-    SiteId.udhruh,
+    "wadi_musa",
+    "petra",
+    "little_petra",
+    "wadi_trails",
+    "shobak_castle",
+    "udhruh",
 ]
 
 START_TIMES = ["08:00", "13:30", "16:00"]
@@ -22,24 +23,26 @@ START_TIMES = ["08:00", "13:30", "16:00"]
 
 def generate_itinerary(req: ItineraryRequest) -> Itinerary:
     candidates = [
-        s for s in DEFAULT_ORDER
-        if not req.accessibility_needs or "not wheelchair" not in SITES[s].accessibility_notes.lower()
-        and "not accessible" not in SITES[s].accessibility_notes.lower()
+        landmark_id for landmark_id in DEFAULT_ORDER
+        if not req.accessibility_needs or (
+            "not wheelchair" not in LANDMARKS[landmark_id].accessibility_notes.lower()
+            and "not accessible" not in LANDMARKS[landmark_id].accessibility_notes.lower()
+        )
     ] or DEFAULT_ORDER
 
     max_stops = min(len(candidates), max(1, req.trip_days) * 2)
     chosen = candidates[:max_stops]
 
     stops: list[ItineraryStop] = []
-    for i, site_id in enumerate(chosen):
-        site = SITES[site_id]
+    for i, landmark_id in enumerate(chosen):
+        landmark = LANDMARKS[landmark_id]
         stops.append(
             ItineraryStop(
-                site=site_id,
+                landmark_id=landmark_id,
                 order=i + 1,
                 start_time=START_TIMES[i % len(START_TIMES)],
-                duration_minutes=site.avg_visit_minutes,
-                notes=site.accessibility_notes if req.accessibility_needs else "",
+                duration_minutes=landmark.avg_visit_minutes,
+                notes=landmark.accessibility_notes if req.accessibility_needs else "",
             )
         )
 

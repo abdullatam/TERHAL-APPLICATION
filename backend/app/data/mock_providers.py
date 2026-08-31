@@ -1,12 +1,12 @@
 """Seed mock provider accounts so the bidding marketplace has offers to demo."""
-from app.models import Language, Provider, ProviderRole, SiteId
+from app.models import Language, Provider, ProviderRole
 
 MOCK_PROVIDERS: list[Provider] = [
     Provider(
         id="prov-1",
         name="Ahmad Bdoul",
         role=ProviderRole.guide,
-        sites=[SiteId.petra, SiteId.little_petra],
+        landmark_ids=["petra", "little_petra"],
         languages=[Language.ar, Language.en],
         rating=4.8,
         verified=True,
@@ -17,7 +17,7 @@ MOCK_PROVIDERS: list[Provider] = [
         id="prov-2",
         name="Sara Nawafleh",
         role=ProviderRole.guide,
-        sites=[SiteId.shobak_castle, SiteId.wadi_musa],
+        landmark_ids=["shobak_castle", "wadi_musa"],
         languages=[Language.en],
         rating=4.5,
         verified=True,
@@ -28,7 +28,7 @@ MOCK_PROVIDERS: list[Provider] = [
         id="prov-3",
         name="Khalid Transport",
         role=ProviderRole.driver,
-        sites=[SiteId.petra, SiteId.shobak_castle, SiteId.wadi_musa],
+        landmark_ids=["petra", "shobak_castle", "wadi_musa"],
         languages=[Language.ar, Language.en],
         rating=4.6,
         verified=True,
@@ -39,7 +39,7 @@ MOCK_PROVIDERS: list[Provider] = [
         id="prov-4",
         name="Fatima Handicrafts",
         role=ProviderRole.vendor,
-        sites=[SiteId.wadi_musa],
+        landmark_ids=["wadi_musa"],
         languages=[Language.ar],
         rating=4.9,
         verified=True,
@@ -50,7 +50,7 @@ MOCK_PROVIDERS: list[Provider] = [
         id="prov-5",
         name="Petra Horse & Cart Co-op",
         role=ProviderRole.animal_operator,
-        sites=[SiteId.petra],
+        landmark_ids=["petra"],
         languages=[Language.ar, Language.en],
         rating=4.2,
         verified=True,

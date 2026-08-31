@@ -1,16 +1,16 @@
 from fastapi import APIRouter, HTTPException
 
-from app.models import Provider, ProviderRegistration, SiteId
+from app.models import Provider, ProviderRegistration
 from app.store import store
 
 router = APIRouter(prefix="/providers", tags=["providers"])
 
 
 @router.get("", response_model=list[Provider])
-def list_providers(site: SiteId | None = None) -> list[Provider]:
+def list_providers(landmark_id: str | None = None) -> list[Provider]:
     providers = list(store.providers.values())
-    if site:
-        providers = [p for p in providers if site in p.sites]
+    if landmark_id:
+        providers = [p for p in providers if landmark_id in p.landmark_ids]
     return providers
 
 
@@ -20,7 +20,7 @@ def register_provider(payload: ProviderRegistration) -> Provider:
         id=store.new_id("prov"),
         name=payload.name,
         role=payload.role,
-        sites=payload.sites,
+        landmark_ids=payload.landmark_ids,
         languages=payload.languages,
         verified=False,  # pending admin verification, per Section 2.3.D
     )

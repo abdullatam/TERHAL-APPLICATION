@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException
 
+from app.data.landmarks import LANDMARKS
 from app.models import Bid, BidCreate, TripRequest, TripRequestCreate
 from app.store import store
 
@@ -10,6 +11,8 @@ router = APIRouter(tags=["bidding"])
 def create_request(payload: TripRequestCreate) -> TripRequest:
     if payload.itinerary_id not in store.itineraries:
         raise HTTPException(status_code=404, detail="Itinerary not found")
+    if payload.landmark_id not in LANDMARKS:
+        raise HTTPException(status_code=404, detail="Landmark not found")
     trip_request = TripRequest(id=store.new_id("req"), **payload.model_dump())
     store.requests[trip_request.id] = trip_request
     return trip_request

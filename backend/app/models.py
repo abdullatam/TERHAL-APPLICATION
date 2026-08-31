@@ -6,15 +6,6 @@ from typing import Optional
 from pydantic import BaseModel, Field
 
 
-class SiteId(str, Enum):
-    petra = "petra"
-    little_petra = "little_petra"
-    shobak_castle = "shobak_castle"
-    wadi_musa = "wadi_musa"
-    wadi_trails = "wadi_trails"
-    udhruh = "udhruh"
-
-
 class ProviderRole(str, Enum):
     guide = "guide"
     driver = "driver"
@@ -27,29 +18,26 @@ class Language(str, Enum):
     en = "en"
 
 
-class Site(BaseModel):
-    id: SiteId
+class Landmark(BaseModel):
+    """A tourist attraction in Ma'an governorate — the sole place entity in
+    the data model. Ranges from a whole area (Petra, Wadi Musa town) to a
+    single monument (the Treasury, the Siq) — there's no separate "site"
+    grouping above it, every attraction stands on its own.
+    """
+
+    id: str
     name_en: str
     name_ar: str
     description_en: str
     description_ar: str
     avg_visit_minutes: int
     accessibility_notes: str
-
-
-class Landmark(BaseModel):
-    id: str
-    site: SiteId
-    name_en: str
-    name_ar: str
-    description_en: str
-    description_ar: str
     image_url: Optional[str] = None
     image_attribution: Optional[str] = None
 
 
 class ItineraryStop(BaseModel):
-    site: SiteId
+    landmark_id: str
     order: int
     start_time: str
     duration_minutes: int
@@ -73,7 +61,7 @@ class Provider(BaseModel):
     id: str
     name: str
     role: ProviderRole
-    sites: list[SiteId]
+    landmark_ids: list[str]
     languages: list[Language]
     rating: float = Field(ge=0, le=5, default=5.0)
     verified: bool = False
@@ -84,14 +72,14 @@ class Provider(BaseModel):
 class ProviderRegistration(BaseModel):
     name: str
     role: ProviderRole
-    sites: list[SiteId]
+    landmark_ids: list[str]
     languages: list[Language]
 
 
 class TripRequest(BaseModel):
     id: str
     itinerary_id: str
-    site: SiteId
+    landmark_id: str
     date: date
     group_size: int
     language: Language
@@ -101,7 +89,7 @@ class TripRequest(BaseModel):
 
 class TripRequestCreate(BaseModel):
     itinerary_id: str
-    site: SiteId
+    landmark_id: str
     date: date
     group_size: int = Field(ge=1)
     language: Language = Language.en
@@ -125,7 +113,7 @@ class BidCreate(BaseModel):
 
 
 class VisionIdentifyResult(BaseModel):
-    site: Optional[SiteId]
+    landmark_id: Optional[str]
     landmark: str
     narration: str
     language: Language

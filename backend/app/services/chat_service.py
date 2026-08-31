@@ -1,15 +1,15 @@
 """Bilingual AI chat assistant — fallback AI feature if the camera guide proves
-too heavy to finish reliably. Grounds answers in the site knowledge base.
+too heavy to finish reliably. Grounds answers in the attractions knowledge base.
 """
 import anthropic
 
 from app.config import settings
-from app.data.sites import SITES
+from app.data.landmarks import LANDMARKS
 from app.models import Language
 
 _KB_SUMMARY = "\n".join(
-    f"- {s.id.value}: {s.name_en} / {s.name_ar} — {s.description_en} (accessibility: {s.accessibility_notes})"
-    for s in SITES.values()
+    f"- {l.id}: {l.name_en} / {l.name_ar} — {l.description_en} (accessibility: {l.accessibility_notes})"
+    for l in LANDMARKS.values()
 )
 
 

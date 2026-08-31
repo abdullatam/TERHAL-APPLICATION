@@ -73,7 +73,7 @@ export default function TripPlanner() {
           {itinerary.stops.map((stop) => (
             <li key={stop.order} className="rounded border p-3">
               <div className="font-semibold">
-                {stop.order}. {stop.site} — {stop.start_time} ({stop.duration_minutes} min)
+                {stop.order}. {stop.landmark_id} — {stop.start_time} ({stop.duration_minutes} min)
               </div>
               {stop.notes && <div className="text-sm text-stone-600">{stop.notes}</div>}
             </li>
