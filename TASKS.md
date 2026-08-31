@@ -88,45 +88,47 @@ who didn't write it.
 
 File: `data/scraped_group_a.csv`
 
-### 1. Settle these first — Mon 31 Aug, before scraping
+### 1. Settle these first — Mon 31 Aug, before scraping ✅ done
 
 They change what gets scraped. Full detail in [PLAN.md](PLAN.md) §7.
 
-- [x] **Q1** `OPM` vs `PAM` — probably the same museum. Merge and drop one, or prove they're distinct. *Blocks `OPM` below.*
-- [x] **Q2** `PET-QAB` "Dushares" &rarr; **Dushara**. *Tell Pulga — it's in Group C.*
-- [x] **Q3** `PET-HAB` "Cave de Sueth" — unverified, likely a different site in the Yarmouk. Source it or drop the parenthetical.
-- [x] **Q4** Painted Biclinium at Little Petra is missing from the 41. Add it with `parent_site = LPET`, or record why not.
-- [x] **Q5** `MPL` (Hijaz Railway Station) unverified, on `HOLD`. Confirm by the gate or cut it.
+- [x] **Q1** `OPM` vs `PAM` — confirmed distinct (1963 cave museum vs. 2019 visitor-center museum, sourced independently). Both now in Group A.
+- [x] **Q2** `PET-QAB` "Dushares" &rarr; **Dushara**. Fixed in master_list.csv; matches Pulga's fix in Group C.
+- [x] **Q3** `PET-HAB` "Cave de Sueth" — confirmed unrelated (that name belongs to Ayn al-Habis in the Yarmouk gorge). Parenthetical dropped.
+- [x] **Q4** Painted Biclinium — Mahdi folded it into the `LPET` description in Group B rather than a separate row.
+- [x] **Q5** `MPL` — confirmed, not cut. Found the official listing (museums.visitjordan.com) and a dedicated Arabic Wikipedia article; released from HOLD into Group A.
 
-### 2. Scrape Group A — 14 entries (13 + `PAM`, released from HOLD by Q1)
+### 2. Scrape Group A — 15 entries (13 + `PAM` and `MPL`, released from HOLD by Q1/Q5) ✅ done
 
 Yours are the hardest to source — castles, Neolithic sites, desert towns — and five of
 the seven missing-coordinate entries are yours.
 
 | ✓ | ID | Name | Extra gaps | Note |
 |---|---|---|---|---|
-| ☐ | `AMS` | Ain Musa (Moses Spring) | `name_ar`, **coords**, **source** | — |
-| ☐ | `BAJ` | Ba'ja (Neolithic site) | `name_ar` | — |
-| ☐ | `BAS` | Basta (Neolithic site) | `name_ar` | — |
-| ☐ | `BEI` | Beidha (Neolithic site) | `name_ar`, **coords** | — |
-| ☐ | `JHR` | Jebel Harun / Tomb of Aaron | `name_ar` | — |
-| ☐ | `OPM` | Old Petra Museum | `name_ar`, **coords**, **source** | — |
-| ☐ | `SHB` | Shobak Castle (Montreal) | **coords** | — |
-| ☐ | `UDH` | Udhruh (Roman legionary fort) | `name_ar` | — |
-| ☐ | `UNZ` | Qasr Uneizah (Unayzah) | **coords**, **source** | — |
-| ☐ | `USH` | Umm Sayhoun (Bedouin village) | — | — |
-| ☐ | `WMU` | Wadi Musa (town) | — | — |
-| ☐ | `WUA` | Wu'ayra Castle (Vaux Moise) | — | — |
-| ☐ | `PET-HAB` | Al-Habis Castle (Cave de Sueth) | — | — |
+| ✅ | `AMS` | Ain Musa (Moses Spring) | `name_ar`, **coords**, **source** | Sourced and described; no confident coordinates found anywhere, left blank rather than guessed. |
+| ✅ | `BAJ` | Ba'ja (Neolithic site) | `name_ar` | — |
+| ✅ | `BAS` | Basta (Neolithic site) | `name_ar` | — |
+| ✅ | `BEI` | Beidha (Neolithic site) | `name_ar`, **coords** | — |
+| ✅ | `JHR` | Jebel Harun / Tomb of Aaron | `name_ar` | — |
+| ✅ | `OPM` | Old Petra Museum | `name_ar`, **coords**, **source** | — |
+| ✅ | `SHB` | Shobak Castle (Montreal) | **coords** | — |
+| ✅ | `UDH` | Udhruh (Roman legionary fort) | `name_ar` | — |
+| ✅ | `UNZ` | Qasr Uneizah (Unayzah) | **coords**, **source** | Turned out to have a dedicated Wikipedia article after all. |
+| ✅ | `USH` | Umm Sayhoun (Bedouin village) | — | No free image found, flagged `no_free_image`. |
+| ✅ | `WMU` | Wadi Musa (town) | — | — |
+| ✅ | `WUA` | Wu'ayra Castle (Vaux Moise) | — | — |
+| ✅ | `PET-HAB` | Al-Habis Castle | — | Renamed per Q3. |
+| ✅ | `PAM` | Petra Museum (visitor center) | `name_ar`, **source** | Released from HOLD by Q1. No free image found, flagged `no_free_image`. |
+| ✅ | `MPL` | Founding King's Palace (Ma'an Railway Station) | `name_ar`, **coords**, **source** | Released from HOLD by Q5. No confident coordinates found. |
 
-### 3. Merge — Thu 3 Sept, 18:00
+### 3. Merge — done
 
-- [ ] Concatenate all three group files into `data/merged.csv`, header once
-- [ ] No duplicate `id`
-- [ ] Every `parent_site` matches a real `id`
-- [ ] No row blank on both `description_en` and `content_flags`
-- [ ] Push, and tell Pulga it's up
-- [ ] Fix whatever validation bounces — Fri 4 Sept
+- [x] Concatenate all three group files into `data/merged.csv`, header once (automated by `scripts/build_dataset.py`)
+- [x] No duplicate `id`
+- [x] Every `parent_site` matches a real `id`
+- [x] No row blank on both `description_en` and `content_flags`
+- [x] Push, and tell Pulga it's up
+- [x] Fix whatever validation bounces — nothing outstanding; `validate_data.py --merged --check-images` passes with 0 errors across all 42 rows
 
 ---
 
@@ -171,7 +173,7 @@ not read a CSV**, so `data/merged.csv` currently connects to nothing.
 - [ ] Write the `merged.csv` &rarr; `landmarks.py` converter (or a direct CSV seed path)
 - [ ] Fold `image_license` into `image_attribution` — the DB has no licence column
 - [ ] Decide what happens to `lat` / `lon` and `source_url`, which have no columns either. Dropping them loses the audit trail; adding two columns and a migration is cheap.
-- [ ] Confirm `python -m app.seed` runs clean against all 41 rows
+- [ ] Confirm `python -m app.seed` runs clean against all 42 rows
 - [ ] **Don't hand-edit `landmarks.py` while the CSVs are being filled** — two sources of truth for the same rows will diverge within a day
 
 ---

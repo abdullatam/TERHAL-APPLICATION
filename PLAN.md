@@ -34,10 +34,11 @@ new places, and you are not re-checking which governorate they are in.
 | Verified places, boundary-checked | **41** |
 | — removed as not-a-landmark | 1 (`AMM`, see §6) |
 | — released from `HOLD` by Q1 | 1 (`PAM`, distinct from `OPM`) |
-| **Landmark rows to scrape** | **41** |
-| — sites | 16 |
+| — released from `HOLD` by Q5 | 1 (`MPL`, confirmed via museums.visitjordan.com and Arabic Wikipedia) |
+| **Landmark rows to scrape** | **42** |
+| — sites | 17 |
 | — landmarks | 25 |
-| On `HOLD`, unverified | 1 (`MPL`) |
+| On `HOLD`, unverified | 0 |
 | Confirmed outside Ma'an, excluded | 4 |
 | Already have coordinates | 34 / 41 |
 | Already have a source URL | 37 / 41 |
@@ -224,32 +225,43 @@ The only museum feature in the Petra map extract is a single *Petra Museum* node
 `OPM`. Either merge them into one entry and drop the other, or produce a source
 showing the in-park archaeological museum is a distinct, currently-open venue.
 *Blocks:* `OPM` in Group A, and `PAM` leaving `HOLD`.
-**SETTLED (Abd, 2ef845b):** they are distinct — `OPM` is the 1963 cave museum, `PAM` the
+**SETTLED (Abd):** they are distinct — `OPM` is the 1963 cave museum, `PAM` the
 2019 visitor-centre museum. `PAM` is released from `HOLD` into Group A with its own
-sourcing, so Group A is 14 rows.
+sourcing.
 
 **Q2 — `PET-QAB` says "Temple of Dushares".**
 The Nabataean deity is **Dushara**. Fix `name_en` before the Arabic pass, or the
 error propagates into both languages.
 *Blocks:* `PET-QAB` in Group C.
+**SETTLED (Abd):** fixed in master_list.csv to `Qasr al-Bint`; matches Pulga's fix in
+`scraped_group_c.csv`.
 
 **Q3 — `PET-HAB`'s alternate name "Cave de Sueth" is unverified.**
 That name normally refers to Habis Jaldak in the Yarmouk region, not al-Habis in
 Petra. The site itself is real and Crusader — it is the alternate name that is
 suspect. Either source it or drop the parenthetical.
 *Blocks:* `PET-HAB` in Group A.
+**SETTLED (Abd):** confirmed unrelated — `Cave de Sueth` / `Habis Jaldak` is a distinct
+Wikipedia article (`Ayn al-Habis`) about a different castle in the Yarmouk gorge.
+Parenthetical dropped from `name_en`.
 
 **Q4 — the Painted Biclinium at Little Petra is missing.**
 It was in the original seed [backend/app/data/landmarks.py](backend/app/data/landmarks.py)
 but is not among the 41. Add it as a landmark with `parent_site = LPET`, or record
 why it was dropped. It is a strong camera-guide subject — painted ceiling frescoes
 are visually distinctive.
+**SETTLED:** Mahdi folded it into the `LPET` description in `scraped_group_b.csv` rather
+than adding it as a separate row.
 
 **Q5 — `MPL` (Hijaz Railway Station, Ma'an city) is unverified.**
 Currently `HOLD`. If it is not confirmed by the Thursday gate, cut it. Do not seed an
 unverified entry.
-**SETTLED (Abd):** stays on `HOLD` — the Hejaz Railway reached Ma'an in 1904, but nothing
-confirms this specific building. Deferred to the gate.
+**SETTLED (Abd):** confirmed, not cut — it is the Founding King's Palace, a real,
+well-documented building (part of the 1904 Ma'an Hejaz Railway station, repurposed as
+Prince Abdullah's HQ in 1920, restored and reopened as a national museum in March
+2024), sourced via museums.visitjordan.com and a dedicated Arabic Wikipedia article
+(`قصر معان`). Released from `HOLD` into Group A. No reliable coordinates found
+anywhere, so `lat`/`lon` are left blank.
 
 ---
 
@@ -257,31 +269,31 @@ confirms this specific building. Deferred to the gate.
 
 Since the flattening, **every entry needs the same 7 content fields** — the old
 "sites need more work than landmarks" asymmetry is gone. The split is therefore
-balanced on entry count plus each entry's existing gaps: **13 / 14 / 13 entries**
-(Group C was 14 until `AMM` was removed — see below),
-working out at 106 / 111 / 109 cells, a 5% spread.
+balanced on entry count plus each entry's existing gaps: **15 / 14 / 13 entries**
+(Group A grew by two when `PAM` and `MPL` were released from `HOLD` by Q1/Q5; Group C
+was 14 until `AMM` was removed — see below).
 
+### Group A — Abdelrahman (Abd) ✅ done
 
-### Group A — Abdelrahman (Abd)
+**15 entries** File: `data/scraped_group_a.csv`
 
-**13 entries** · **~106 cells to fill**
-File: `data/scraped_group_a.csv`
-
-| ID | Name | Scope | Cells | Still missing | Where to look / watch out |
-|---|---|---|---|---|---|
-| `AMS` | Ain Musa (Moses Spring) | area | 10 | `name_ar`, **coords**, **source** | **No page, no OSM feature, no coords.** Local tourism listings for Wadi Musa; visitjordan.com. Also spelled Ain Musa / Ayn Musa / Moses' Spring. |
-| `BAJ` | Ba'ja (Neolithic site) | area | 8 | `name_ar` | Wikipedia *Ba'ja*; PPNB excavation reports. Coords from OSM. |
-| `BAS` | Basta (Neolithic site) | area | 8 | `name_ar` | Wikipedia *Basta*; Neolithic-Jordan literature. Coords already in. Needs `name_ar` — بسطة. |
-| `BEI` | Beidha (Neolithic site) | area | 9 | `name_ar`, **coords** | Wikipedia *Beidha*; Diana Kirkbride excavation reports. **Coords missing.** Often spelled Beidha/Baidha/Beida — search all three. |
-| `JHR` | Jebel Harun / Tomb of Aaron | area | 8 | `name_ar` | Wikipedia *Jabal Harun*; UNESCO Petra documentation (it's inside the WHS buffer). Note the existing 'no formal entrance — guide required' note; that belongs in `accessibility_notes`. |
-| `OPM` | Old Petra Museum | area | 10 | `name_ar`, **coords**, **source** | **Resolve Q1 first.** Do not scrape until the OPM/PAM duplicate question is settled — you may be writing a description for an entry that gets deleted. |
-| `SHB` | Shobak Castle (Montreal) | area | 8 | **coords** | Wikipedia *Montreal (castle)*; Jordan Dept. of Antiquities. **Coords missing** — take them from the Wikipedia infobox, not from OSM (the OSM name match hit 'Shobak Wind Farm'). |
-| `UDH` | Udhruh (Roman legionary fort) | area | 8 | `name_ar` | Wikipedia *Udhruh*; the Udhruh Archaeological Project has published extensively — good source for real detail. |
-| `UNZ` | Qasr Uneizah (Unayzah) | area | 9 | **coords**, **source** | **Hardest entry in the set** — no Wikipedia page, no OSM feature, no coords. Try Dept. of Antiquities records and Jordanian archaeology surveys. If nothing reliable surfaces by the gate, flag `no_source` and say so; do not write from inference. |
-| `USH` | Umm Sayhoun (Bedouin village) | area | 7 | — | Bedouin village built for the Bdoul community relocated from Petra's caves — handle with care and accuracy; this is a living community, not a ruin. |
-| `WMU` | Wadi Musa (town) | area | 7 | — | Wikipedia *Wadi Musa*; visitjordan.com. It's the accommodation/services town — `accessibility_notes` should say paved streets, generally accessible. |
-| `WUA` | Wu'ayra Castle (Vaux Moise) | area | 7 | — | Wikipedia *Wu'ayra Castle*; Crusader-period archaeology papers. OSM feature is tagged *Vaux Moise*. |
-| `PET-HAB` | Al-Habis Castle (Cave de Sueth) | monument | 7 | — | Crusader Petra literature. Note the *Cave de Sueth* naming problem in Q3 before you write anything historical. |
+| ID | Name | Scope | Still missing | Where to look / watch out |
+|---|---|---|---|---|
+| `AMS` | Ain Musa (Moses Spring) | area | ~~`name_ar`, **coords**, **source**~~ done, coords still blank | Sourced via dannythedigger.com and the Wikipedia *Wadi Musa* article. No confident coordinates found anywhere — an OSM name search returned an ambiguous nearby feature ('Ain al-Sadr'), so `lat`/`lon` left blank. |
+| `BAJ` | Ba'ja (Neolithic site) | area | ~~`name_ar`~~ done | Wikipedia *Ba'ja*; PPNB excavation reports. |
+| `BAS` | Basta (Neolithic site) | area | ~~`name_ar`~~ done | Wikipedia *Basta*. |
+| `BEI` | Beidha (Neolithic site) | area | ~~`name_ar`, **coords**~~ done | Wikipedia *Beidha*; coords cross-checked against a Commons photo's embedded location. |
+| `JHR` | Jebel Harun / Tomb of Aaron | area | ~~`name_ar`~~ done | Wikipedia *Mount Hor*; visitpetra.jo trail page for the ~4h one-way duration. |
+| `OPM` | Old Petra Museum | area | ~~`name_ar`, **coords**, **source**~~ done | Resolved via Q1 — distinct from `PAM`. Wikipedia *Old Petra Museum* had coords/name_ar/source all along. |
+| `SHB` | Shobak Castle (Montreal) | area | ~~**coords**~~ done | Coords taken from the Wikipedia infobox, not OSM (which hit 'Shobak Wind Farm'). |
+| `UDH` | Udhruh (Roman legionary fort) | area | ~~`name_ar`~~ done | Wikipedia *Udhruh*. |
+| `UNZ` | Qasr Uneizah (Unayzah) | area | ~~**coords**, **source**~~ done | Turned out to have a dedicated Wikipedia article (*Unayzah, Jordan*) after all — not the dead end it looked like. |
+| `USH` | Umm Sayhoun (Bedouin village) | area | done | No free image found on Commons; flagged `no_free_image`. |
+| `WMU` | Wadi Musa (town) | area | done | Wikipedia *Wadi Musa*. |
+| `WUA` | Wu'ayra Castle (Vaux Moise) | area | done | Wikipedia *Wu'ayra Castle*. |
+| `PET-HAB` | Al-Habis Castle | monument | done | Renamed per Q3. Confirmed via vici.org, distinct from the Yarmouk castle. |
+| `PAM` | Petra Museum (visitor center) | area | done | Released from `HOLD` by Q1. No confidently-dated exterior photo found on Commons; flagged `no_free_image`. |
+| `MPL` | Founding King's Palace (Ma'an Railway Station) | area | done | Released from `HOLD` by Q5. No reliable coordinates found. |
 
 ### Group B — Mahdi
 
@@ -444,7 +456,7 @@ sources — so do not read day one as the pace.
 
 ## 15. What Phase 1 hands over
 
-One file — `data/merged.csv` — containing 41 rows (or fewer, with every removal
+One file — `data/merged.csv` — containing 42 rows (or fewer, with every removal
 recorded), each with bilingual names and descriptions, a citable source, coordinates,
 a free-licensed and attributed image, site-level visit duration and accessibility
 notes, and an explicit flag wherever something genuinely could not be found.

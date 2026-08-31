@@ -3,15 +3,15 @@
     "title": "Maan Project - FINAL Verified Places List",
     "status": "BLOCKER CLOSED - three-way split assigned, schema-conformant, handed off",
     "governorate": "Ma'an Governorate, Jordan ONLY",
-    "total_verified_places": 42,
-    "total_needs_verification": 2,
+    "total_verified_places": 43,
+    "total_needs_verification": 0,
     "total_excluded": 4,
     "verification_method": "Each place confirmed against at least one of: Wikipedia/Wikidata infobox stating 'Ma'an Governorate' directly, official Jordan tourism sources (visitjordan.com, visitpetra.jo), Jordan News Agency (Petra) reporting, or physical containment inside the Petra district (itself explicitly confirmed as one of Ma'an governorate's official districts, area 240 km2). Cross-checked visually against the official Jordan governorates map - the verified set sits entirely inside the Ma'an boundary, west-central through eastern desert (Al-Jafr).",
     "note_on_ids": "IDs prefixed PET- are physically inside the Petra archaeological park boundary. All other IDs are standalone macro sites elsewhere in the governorate.",
     "schema": "flat entries[]; field names match backend/app/models.py and data/README.md",
     "group_split": {
       "A": 15,
-      "B": 13,
+      "B": 14,
       "C": 13
     },
     "enrichment": "Coordinates and some name:ar pulled from OpenStreetMap (Overpass, small-bbox sweep of the Petra park + Shobak + governorate-wide historic/tourism features); source_url also carries the matching en.wikipedia page where one exists. Nothing was hand-invented: entries without a confident match carry needs_coords / needs_source / needs_name_ar in flags.",
@@ -378,12 +378,8 @@
       "lon": 35.46797,
       "group": "A",
       "source_url": "https://en.wikipedia.org/wiki/Old_Petra_Museum",
-      "flags": [
-        "needs_coords",
-        "needs_name_ar",
-        "needs_source"
-      ],
-      "notes": "DUPLICATE RISK: the only museum feature in the Petra extract is a single 'Petra Museum' node at 30.32532,35.46784 - the same entity as PAM, and ~10m from the coords originally recorded for OPM. Decide: merge into PAM and drop OPM, or source the in-park archaeological museum separately. The 0.93 match was the 'Petra' node itself."
+      "flags": [],
+      "notes": "Q1 resolved: distinct from PAM, not a duplicate. OPM = the original museum, est. 1963, inside a Nabataean cave on the path to Al-Habis Castle. PAM = the new Petra Museum near the visitor center, opened 2019. Coords/source/name_ar from en.wikipedia.org/wiki/Old_Petra_Museum."
     },
     {
       "id": "WMU",
@@ -767,26 +763,27 @@
       "source_url": "https://www.openstreetmap.org/way/156571190 | https://www.petramuseum.jo/ar-jo/",
       "flags": [],
       "notes": "Q1 resolved: confirmed as a real, distinct entity (not a duplicate of OPM) - the new Petra Museum near the visitor center, opened 2019, Japan-funded (~$7M, 1,800 sqm), purpose-built to replace the cramped Old Petra Museum (OPM). Sourced via petramuseum.jo (official site) and independent coverage (wowjordan.com, Amman Journal). Released from HOLD into Group A for scraping."
-    }
-  ],
-  "needs_verification": [
+    },
     {
       "id": "MPL",
-      "name_en": "Founder King's Palace / Hijaz Railway Station (Ma'an city)",
-      "in_maan_governorate": "unsure",
+      "name_en": "Founding King's Palace (Ma'an Railway Station)",
+      "in_maan_governorate": "yes",
       "lat": null,
       "lon": null,
-      "group": "HOLD",
-      "source_url": "https://en.wikipedia.org/wiki/Ma%27an",
+      "group": "A",
+      "source_url": "https://museums.visitjordan.com/en/Museum/84 | https://ar.wikipedia.org/wiki/%D9%82%D8%B5%D8%B1_%D9%85%D8%B9%D8%A7%D9%86 | https://museums.visitjordan.com/ar/Museum/85",
       "flags": [
-        "needs_coords",
-        "needs_name_ar",
-        "do_not_scrape",
-        "do_not_seed"
+        "needs_coords"
       ],
-      "issue": "Located in Ma'an city (governorate capital) so almost certainly within Ma'an, but the specific building/site details were never confirmed against a direct source. Verify before publishing historical claims about it."
+      "type": "site",
+      "parent_site": null,
+      "category": "other_tourism_places",
+      "name_ar": "قصر الملك المؤسس",
+      "era": "1904, Ottoman/Hejaz Railway",
+      "notes": "Q5 resolved: confirmed, not cut. Part of the 1904 Ma'an Hejaz Railway station, repurposed as Prince Abdullah's HQ in 1920, restored and reopened as a national museum in March 2024. No reliable coordinates found anywhere - left blank rather than guessed."
     }
   ],
+  "needs_verification": [],
   "excluded_confirmed_outside_maan": [
     {
       "candidate": "Wadi Rum",
