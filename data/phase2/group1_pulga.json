@@ -36,8 +36,9 @@
       "https://www.historyhit.com/locations/shobak-montreal-castle/",
       "https://en.wikipedia.org/wiki/Montreal_(castle)"
     ],
-    "confidence": "verified",
-    "researcher": "Pulga"
+    "confidence": "needs_review",
+    "researcher": "Pulga",
+    "notes": "Needs review: has an UNKNOWN field."
   },
   {
     "id": "WUA",
@@ -75,8 +76,9 @@
       "https://www.openstreetmap.org/way/751173171",
       "https://en.wikipedia.org/wiki/Wu%27ayra_Castle"
     ],
-    "confidence": "verified",
-    "researcher": "Pulga"
+    "confidence": "needs_review",
+    "researcher": "Pulga",
+    "notes": "Needs review: has an UNKNOWN field."
   },
   {
     "id": "UNZ",
@@ -270,8 +272,9 @@
       "https://en.wikipedia.org/wiki/Nabataean_architecture",
       "https://www.openstreetmap.org/node/4527086510"
     ],
-    "confidence": "verified",
-    "researcher": "Pulga"
+    "confidence": "needs_review",
+    "researcher": "Pulga",
+    "notes": "Needs review: has an UNKNOWN field."
   },
   {
     "id": "PET-WMD",
@@ -335,7 +338,7 @@
       "estimated_time_there": "A full day; two days to see it properly",
       "accessibility_notes": "Main trail from the Siq to the Street of Facades is wheelchair-passable with assistance on packed sand/gravel; onward climbs to the Monastery or High Place of Sacrifice are not accessible for reduced mobility.",
       "requires_guide": false,
-      "entrance_fee_notes": "Ticketed at the visitor centre; the Jordan Pass covers entry. UNKNOWN - flag for team review for current prices"
+      "entrance_fee_notes": "Ticketed at the visitor centre. The Jordan Pass includes entry to Petra along with 40+ other attractions and covers the tourist entry visa; buying it before arrival is usually cheaper than a standalone ticket. Current prices are not reproduced here because they change."
     },
     "narration_script_en": "Everything you're about to see was cut, not built — the Nabataeans carved a capital city into the cliffs instead of stacking one on the ground. They could do it here because they solved water: the dams and channels you'll pass caught the flash floods and stored them, and that is what turned a hidden bowl of rock into a city of real wealth. Rome took over in AD 106, an earthquake broke the place in 363, and for centuries afterwards only the local Bedouin knew what was in here. Give yourself a full day — the Siq and the Treasury are the opening, not the visit.",
     "narration_script_ar": "كل ما أنت على وشك رؤيته منحوت لا مبني، فقد نحت الأنباط عاصمتهم في المنحدرات بدل أن يرصفوها على الأرض. واستطاعوا ذلك هنا لأنهم حلّوا مسألة الماء: فالسدود والقنوات التي ستمرّ بها كانت تلتقط السيول وتخزّنها، وهذا ما حوّل حوضاً صخرياً مختبئاً إلى مدينة ذات ثراء حقيقي. ثم حكمتها روما عام 106م، وكسرها زلزال عام 363م، وبعد ذلك بقرون لم يكن يعرف ما في داخلها إلا بدو المنطقة. خصّص لنفسك يوماً كاملاً، فالسيق والخزنة هما الافتتاحية لا الزيارة.",
@@ -348,7 +351,8 @@
     "sources": [
       "https://www.openstreetmap.org/node/802556924",
       "https://en.wikipedia.org/wiki/Petra",
-      "https://whc.unesco.org/en/list/326/"
+      "https://whc.unesco.org/en/list/326/",
+      "https://jordanpass.jo/"
     ],
     "confidence": "verified",
     "researcher": "Pulga"
@@ -430,8 +434,9 @@
       "https://en.wikipedia.org/wiki/Basta_%28archaeological_site%29",
       "https://en.wikipedia.org/wiki/Basta_(archaeological_site)"
     ],
-    "confidence": "verified",
-    "researcher": "Pulga"
+    "confidence": "needs_review",
+    "researcher": "Pulga",
+    "notes": "Needs review: has an UNKNOWN field."
   },
   {
     "id": "BAJ",
@@ -580,10 +585,10 @@
     "narration_script_en": "You are looking at the edge of the Roman Empire. This fort is one of the best-preserved in Jordan, and it was built on this black basalt rise for two reasons — the flood water goes around it, and from up here you can see anyone coming for miles. It was not alone: there was a legion at Udhruh thirty kilometres that way, and a line of watchtowers signalling northeast. What you are standing in is not a ruin of a city, it is a piece of a border.",
     "narration_script_ar": "أنت تنظر إلى حافة الإمبراطورية الرومانية. هذه القلعة من أفضل ما بقي محفوظاً في الأردن، وقد بُنيت على هذا المرتفع البازلتي الأسود لسببين: السيول تدور حوله، ومن هنا ترى أي قادم من على بُعد أميال. ولم تكن وحدها، فقد كان هناك فيلق في أذرح على بعد ثلاثين كيلومتراً في ذلك الاتجاه، وخط من أبراج المراقبة يرسل الإشارات شمال شرقاً. وما تقف فيه ليس أطلال مدينة، بل قطعة من حدود.",
     "image": {
-      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kastell_Dajaniya%2C_Limes_Arabicus%2C_1989.svg",
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Da%27ajaniya.jpg",
       "source": "Wikimedia Commons",
-      "license": "CC BY-SA 3.0",
-      "attribution_text": "vectorized by, CC BY-SA 3.0, via Wikimedia Commons"
+      "license": "CC BY-SA 4.0",
+      "attribution_text": "Photo by Bashar Tabbah, CC BY-SA 4.0, via Wikimedia Commons"
     },
     "sources": [
       "https://de.wikipedia.org/wiki/Kastell_Dajaniya",
@@ -591,7 +596,7 @@
     ],
     "confidence": "needs_review",
     "researcher": "Pulga",
-    "notes": "NEW in Phase 2 (Job B). Boundary-verified: Wikidata P131 = Ma'an Governorate (Q606340) and coordinates fall inside the Ma'an bounding box. Image is a 1989 site plan, not a photograph — fine as a record, not usable as a camera-guide reference."
+    "notes": "NEW in Phase 2 (Job B). Boundary-verified: Wikidata P131 = Ma'an Governorate (Q606340) and coordinates fall inside the Ma'an bounding box. Image is a photograph of the fort by Bashar Tabbah (CC BY-SA 4.0), replacing the site plan first selected. Needs review: has an UNKNOWN field; new in Phase 2 — Arabic name is my own rendering, not attested."
   },
   {
     "id": "RTI",
@@ -631,7 +636,7 @@
     ],
     "confidence": "needs_review",
     "researcher": "Pulga",
-    "notes": "NEW in Phase 2 (Job B). Boundary-verified via Wikidata P131 = Q606340 and the Ma'an bounding box. No freely licensed image found."
+    "notes": "NEW in Phase 2 (Job B). Boundary-verified via Wikidata P131 = Q606340 and the Ma'an bounding box. No freely licensed image found. Needs review: no image found; new in Phase 2 — Arabic name is my own rendering, not attested."
   },
   {
     "id": "QIR",
@@ -671,7 +676,7 @@
     ],
     "confidence": "needs_review",
     "researcher": "Pulga",
-    "notes": "NEW in Phase 2 (Job B). Boundary-verified via Wikidata P131 = Q606340 and the Ma'an bounding box. No freely licensed image found."
+    "notes": "NEW in Phase 2 (Job B). Boundary-verified via Wikidata P131 = Q606340 and the Ma'an bounding box. No freely licensed image found. Needs review: no image found; new in Phase 2 — Arabic name is my own rendering, not attested."
   },
   {
     "id": "ABH",
@@ -711,7 +716,7 @@
     ],
     "confidence": "needs_review",
     "researcher": "Pulga",
-    "notes": "NEW in Phase 2 (Job B). Boundary-verified via Wikidata P131 = Q606340 and the Ma'an bounding box. No freely licensed image found — the Commons search returned an unrelated microform scan, which was rejected."
+    "notes": "NEW in Phase 2 (Job B). Boundary-verified via Wikidata P131 = Q606340 and the Ma'an bounding box. No freely licensed image found — the Commons search returned an unrelated microform scan, which was rejected. Needs review: no image found; new in Phase 2 — Arabic name is my own rendering, not attested."
   },
   {
     "id": "MUT",
@@ -751,6 +756,6 @@
     ],
     "confidence": "needs_review",
     "researcher": "Pulga",
-    "notes": "NEW in Phase 2 (Job B). Boundary-verified via Wikidata P131 = Q606340 and the Ma'an bounding box. FLAGGED FOR THE TEAM: roughly two thirds of this site was bulldozed in 2018 and its interpretation was never settled, so it should NOT be presented to tourists as a destination. Recommend including it only as a documented heritage-loss record, or excluding it from the visitor-facing dataset entirely — a product decision, not a data one. Image is a site plan, not a photograph."
+    "notes": "NEW in Phase 2 (Job B). Boundary-verified via Wikidata P131 = Q606340 and the Ma'an bounding box. FLAGGED FOR THE TEAM: roughly two thirds of this site was bulldozed in 2018 and its interpretation was never settled, so it should NOT be presented to tourists as a destination. Recommend including it only as a documented heritage-loss record, or excluding it from the visitor-facing dataset entirely — a product decision, not a data one. Image is a site plan, not a photograph. Needs review: new in Phase 2 — Arabic name is my own rendering, not attested; site largely destroyed; inclusion is a product decision."
   }
 ]

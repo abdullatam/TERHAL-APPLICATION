@@ -90,16 +90,68 @@ Add anything verified to your own file with the same template and `confidence: n
 
 ## 5. Done means
 
-- [ ] Every assigned place filled, or the gap marked `UNKNOWN - flag for team review`
-- [ ] `python scripts/validate_phase2.py data/phase2/group1_pulga.json` passes with 0 errors
-- [ ] Every entry has at least one real URL in `sources`
-- [ ] No image with an `NC` or `ND` licence
-- [ ] Arabic written alongside English, entry by entry — not left to the end
-- [ ] Job B candidates boundary-verified before being added
-- [ ] Anything still `needs_review` raised with the group, not merged silently
+- [x] Every assigned place filled, or the gap marked `UNKNOWN - flag for team review`
+- [x] `python scripts/validate_phase2.py data/phase2/group1_pulga.json` passes with 0 errors
+- [x] Every entry has at least one real URL in `sources` — 47 URLs across 19 entries
+- [x] No image with an `NC` or `ND` licence — 16 images, all CC BY / CC BY-SA / CC0
+- [x] Arabic written alongside English, entry by entry — not left to the end
+- [x] Job B candidates boundary-verified before being added — 5 accepted, 5 rejected
+- [x] Anything still `needs_review` raised with the group — see Section 7 below
 
 ---
 
-## Status: complete
+## 6. Job B result — 5 accepted, 5 rejected
 
-All 14 places filled, plus 5 new sites found in Job B (DAJ, RTI, QIR, ABH, MUT). 19 entries, 0 validation errors. See the commit for details.
+Accepted, both checks passed (Wikidata `P131` = Ma'an **and** coordinates inside the bounding box):
+
+| ID | Site | What it is |
+|---|---|---|
+| `DAJ` | Dajaniya Roman Fort | Late Roman camp on the Limes Arabicus, moved to Palaestina Tertia under Diocletian; among the best-preserved garrisons in Jordan |
+| `RTI` | Rujm Tawil Ifjeij | Iron Age tower on a 1,242 m volcanic cone, re-garrisoned Nabataean-Roman to early Byzantine |
+| `QIR` | Khirbet el-Qirana | *Quadriburgium* fort with its civilian vicus still readable |
+| `ABH` | Abu Hutana | *Burgus* in the Dajaniya signalling chain |
+| `MUT` | El-Mutrab | Bulldozed in 2018 — see the flag in Section 7 |
+
+Rejected, and why the two-check method matters in **both** directions:
+
+| Candidate | Rejected because |
+|---|---|
+| Aqaba Marine Reserve | Claims `P131` = Ma'an on Wikidata; coordinates are in Aqaba |
+| Qatar Nature Reserve | Same — wrong `P131`, coordinates outside |
+| **Jurf ed-Darawish** | **Coordinates fall *inside* my bounding box, but its governorate is Tafilah.** The bbox alone would have wrongly accepted it |
+| Rujm al-Qiran | Article names Tafilah; no Ma'an `P131` |
+| Rujm el-Jeheirah | No Ma'an `P131`, no coordinates to check |
+
+The lesson for Mahdi and Dam3a: the bounding box is a rectangle and it overlaps
+neighbouring governorates at the edges. `P131` and the bbox must **both** agree —
+either one alone produces a wrong answer.
+
+---
+
+## 7. Raised with the group — 9 entries at `needs_review`
+
+Not merged silently, per the last checklist item.
+
+| ID | Why it needs a second pair of eyes |
+|---|---|
+| `MUT` | **Product decision, not a data one.** Two thirds bulldozed in 2018, never excavated, so fort/caravanserai/estate/palace can no longer be settled. Should not be offered to tourists. Keep as a heritage-loss record or drop from the visitor-facing set |
+| `DAJ` `RTI` `QIR` `ABH` `MUT` | Arabic names are my own renderings back from the Latin transliteration, not attested forms. A native reader should confirm them |
+| `RTI` `QIR` `ABH` | No free image exists. Their German articles only illustrate *other* comparison sites (Betthorus, Qasr Bshir, Gasr Duib), which I rejected rather than attach |
+| `SHB` `WUA` `PET-WSA` `BAS` `DAJ` | Entrance fee unsourced. Official Jordanian tourism sites are JS-rendered and returned no usable text; I did not want to publish prices I could not verify |
+
+---
+
+## Status: COMPLETE
+
+**19 entries — 14 assigned + 5 found. 0 validation errors.**
+
+| | |
+|---|---|
+| `verified` | 10 |
+| `needs_review` | 9 — each with its reason recorded in the entry's `notes` |
+| Images | 16/19, every licence read off the Commons file page |
+| Sources | 47 URLs |
+| Prose | ~69,000 characters across 8 text fields |
+| `UNKNOWN` markers | 5, all entrance fees |
+
+Run `python scripts/validate_phase2.py data/phase2/group1_pulga.json` to confirm.
