@@ -1,0 +1,756 @@
+[
+  {
+    "id": "SHB",
+    "name_en": "Shobak Castle (Montreal)",
+    "name_ar": "قلعة الشوبك",
+    "category": "castle",
+    "parent_site_id": null,
+    "coordinates": {
+      "lat": 30.5313,
+      "lng": 35.56
+    },
+    "short_description_en": "Shobak Castle, known to its Crusader builders as Montreal, was raised in 1115 by Baldwin I of Jerusalem on a conical hill commanding the trade and pilgrimage route between Egypt and Syria. A staircase cut into the rock descends roughly 75 metres inside the hill to a spring, letting a besieged garrison reach water without leaving the walls. Saladin besieged the castle for about 18 months before it surrendered in May 1189, and the Mamluks who later held it added towers and Arabic inscriptions still visible today, alongside the remains of two Crusader chapels.",
+    "short_description_ar": "قلعة الشوبك، التي أطلق عليها الصليبيون اسم مونتريال، بناها بلدوين الأول ملك بيت المقدس عام 1115 فوق تلة مخروطية تشرف على طريق التجارة والحج الرابط بين مصر والشام. يهبط من داخل التلة درج منحوت في الصخر بعمق نحو 75 متراً يصل إلى نبع ماء، كان يتيح لحامية القلعة المحاصرة الوصول إلى الماء دون مغادرة الأسوار. حاصر صلاح الدين القلعة نحو 18 شهراً قبل أن تستسلم في أيار 1189، وأضاف المماليك الذين تولوا القلعة لاحقاً أبراجاً ونقوشاً عربية ما تزال ظاهرة على الأطلال، إلى جانب بقايا كنيستين صليبيتين.",
+    "history_en": "Baldwin I of Jerusalem built the castle in 1115, during the expedition on which he took Aqaba the following year, and named it Mons Regalis — Royal Mountain — for his own part in raising it. It stayed with the royal family of the Kingdom of Jerusalem until 1142, when it passed to the Lordship of Oultrejourdain and the lordship's centre moved north to Kerak. Its most notorious holder was Raynald of Châtillon, who broke the truce protecting the caravans and had ships built here to be carried overland to the Red Sea for a raid toward Mecca. Saladin invaded in 1187 and besieged Montreal after taking Jerusalem; the garrison held out so long that chroniclers say they sold their wives and children for food and went blind from lack of salt. The Mamluks later took the ruin over and expanded it, and it was not systematically excavated until an Italian team from the University of Florence began work.",
+    "history_ar": "بنى بلدوين الأول ملك بيت المقدس القلعة عام 1115م خلال الحملة التي استولى فيها على العقبة في العام التالي، وسمّاها مونس ريغاليس أي «الجبل الملكي» نسبةً إلى دوره في تشييدها. وبقيت في يد العائلة المالكة لمملكة بيت المقدس حتى عام 1142م حين آلت إلى إمارة ما وراء الأردن وانتقل مركز الإمارة شمالاً إلى الكرك. وأشهر من حكمها رينالد دي شاتيون الذي نقض الهدنة التي كانت تحمي القوافل، وأمر ببناء سفن تُحمل براً إلى البحر الأحمر في محاولة للإغارة باتجاه مكة. فغزا صلاح الدين المنطقة عام 1187م وحاصر القلعة بعد فتحه القدس، وصمدت الحامية طويلاً حتى ذكرت المصادر أنهم باعوا نساءهم وأطفالهم طلباً للطعام وأصابهم العمى من انعدام الملح. ثم استولى المماليك على الموقع لاحقاً ووسّعوه، ولم يُنقّب فيه بشكل منهجي إلا حين بدأ فريق إيطالي من جامعة فلورنسا العمل فيه.",
+    "significance_en": "Montreal sat astride the main road between Egypt and Syria, so whoever held it could tax both merchant caravans and pilgrims travelling to Mecca and Medina — which is why control of it mattered far beyond its size. It also solved the problem that defeated Crusader castles everywhere: a tunnel cut down through the hill to spring-fed cisterns let the garrison draw water without ever stepping outside the walls.",
+    "significance_ar": "كانت القلعة تتحكم بالطريق الرئيسي بين مصر والشام، فمن يملكها يستطيع فرض الضرائب على قوافل التجارة وعلى الحجاج المتجهين إلى مكة والمدينة، ولذلك تجاوزت أهميتها حجمها بكثير. كما حلّت المشكلة التي أسقطت قلاعاً صليبية كثيرة: نفق محفور نزولاً في الجبل يصل إلى صهاريج تغذّيها الينابيع، يتيح للحامية جلب الماء دون الخروج من الأسوار.",
+    "visiting_info": {
+      "best_time_to_visit": "Early morning or the last two hours before sunset — the hill is fully exposed and the low sun picks out the masonry on the slope",
+      "difficulty": "moderate",
+      "estimated_time_there": "60-90 minutes",
+      "accessibility_notes": "Hilltop ruin reached by a paved approach road, but the interior is uneven rubble and the water-tunnel staircase is steep, dark, and not accessible for reduced mobility.",
+      "requires_guide": false,
+      "entrance_fee_notes": "Separate from the Petra ticket; UNKNOWN - flag for team review for the current fee"
+    },
+    "narration_script_en": "You're standing on a hill that a Crusader king chose in 1115 because from up here you can see everyone coming — and everyone coming had to pay. Look down at the orchards: that green is why this spot was worth fighting for in the middle of a desert plateau. Somewhere beneath your feet a tunnel drops through the rock to a spring, and it is the only reason the garrison survived Saladin's siege as long as they did. When it finally fell in 1189, the defenders had reportedly gone blind from lack of salt.",
+    "narration_script_ar": "أنت تقف الآن على تلّة اختارها ملك صليبي عام 1115م لأنك من هنا ترى كل قادم، وكل قادم كان عليه أن يدفع. انظر إلى البساتين في الأسفل: هذا الاخضرار هو سبب استحقاق هذه البقعة للقتال من أجلها في قلب هضبة صحراوية. وتحت قدميك في مكان ما نفق ينزل في الصخر إلى نبع ماء، وهو وحده سبب صمود الحامية أمام حصار صلاح الدين كل تلك المدة. وحين سقطت أخيراً عام 1189م كان المدافعون قد أصابهم العمى من انعدام الملح، كما تروي المصادر.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Montr%C3%A9al_Castle_04.jpg",
+      "source": "Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "attribution_text": "Photo by Davide Mauro, CC BY-SA 4.0, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Montreal_%28castle%29",
+      "https://www.historyhit.com/locations/shobak-montreal-castle/",
+      "https://en.wikipedia.org/wiki/Montreal_(castle)"
+    ],
+    "confidence": "verified",
+    "researcher": "Pulga"
+  },
+  {
+    "id": "WUA",
+    "name_en": "Wu'ayra Castle (Vaux Moise)",
+    "name_ar": "قلعة الوعيرة",
+    "category": "castle",
+    "parent_site_id": null,
+    "coordinates": {
+      "lat": 30.3327377,
+      "lng": 35.4656377
+    },
+    "short_description_en": "Wu'ayra Castle was built in 1115-16 by Baldwin I of Jerusalem as an outpost of the larger Montreal Castle at Shobak, guarding the approach to the valley the Crusaders called Vaux Moise. Its most distinctive feature is a gatehouse cut directly from the rock to guard the narrow approach into the fortress, and the ruins also include a small church hall about 13 by 6 metres. Perched on a remote, steep-sided outcrop at roughly 1,050 metres, the site's isolation was itself a defence, and it held out until the Ayyubids captured it in 1188.",
+    "short_description_ar": "بُنيت قلعة الوعيرة عامي 1115-1116 على يد بلدوين الأول ملك بيت المقدس كموقع تابع لقلعة الشوبك (مونتريال) الأكبر، لحراسة المدخل إلى الوادي الذي أسماه الصليبيون فو موييز. أبرز معالمها بوابة منحوتة مباشرة في الصخر تحرس الممر الضيق المؤدي إلى الحصن، وتضم الأطلال أيضاً بقايا كنيسة صغيرة بمساحة نحو 13 في 6 أمتار. تقع القلعة على قمة صخرية معزولة شديدة الانحدار على ارتفاع نحو 1050 متراً، وكانت عزلتها نفسها خط دفاعها الأول، إلى أن سقطت بيد الأيوبيين عام 1188.",
+    "history_en": "Baldwin I of Jerusalem founded Wu'ayra as a forward outpost of Montreal, about 34 km to its north, to hold the country southeast of the Dead Sea. From here the Crusaders could watch the commercial, military and pilgrimage roads linking the Levant, Egypt and the Hijaz. Saladin's forces took it in 1188, shortly after Montreal fell. The geographer Yaqut al-Hamawi still mentioned it in his Mu'jam al-Buldan in the 1220s, after which the castle was abandoned and remembered mainly by people living nearby.",
+    "history_ar": "أسّس بلدوين الأول ملك بيت المقدس قلعة الوعيرة موقعاً متقدماً تابعاً لقلعة الشوبك التي تبعد عنها نحو 34 كم شمالاً، ليضبط البلاد الواقعة جنوب شرق البحر الميت. ومن هنا كان الصليبيون يراقبون طرق التجارة والجيوش والحج التي تربط بلاد الشام بمصر والحجاز. واستولت عليها قوات صلاح الدين عام 1188م بُعيد سقوط الشوبك. ولا يزال الجغرافي ياقوت الحموي يذكرها في «معجم البلدان» في عشرينيات القرن الثالث عشر، ثم هُجرت القلعة وبقيت معروفة لدى أهل المنطقة وحدهم.",
+    "significance_en": "Wu'ayra is the Crusader presence inside Petra itself — a reminder that the valley had a second military life a thousand years after the Nabataeans. Its strength was never its walls but its ground: a narrow spur with smooth sides, entered across a bridge through a gatehouse cut directly out of the solid rock.",
+    "significance_ar": "تمثّل الوعيرة الحضور الصليبي داخل البتراء نفسها، وتذكّر بأن الوادي عرف حياة عسكرية ثانية بعد الأنباط بألف عام. ولم تكن قوتها يوماً في أسوارها بل في أرضها: نتوء صخري ضيق أملس الجوانب، يُدخل إليه عبر جسر يفضي إلى بوابة منحوتة مباشرة في الصخر الصلد.",
+    "visiting_info": {
+      "best_time_to_visit": "Morning, and only with someone who knows the approach — the ground around the ridge is genuinely rough",
+      "difficulty": "difficult",
+      "estimated_time_there": "45-60 minutes",
+      "accessibility_notes": "Reached by a steep, narrow rock-cut path with a natural rock bridge; rugged terrain throughout and not accessible for reduced mobility.",
+      "requires_guide": true,
+      "entrance_fee_notes": "Outside the main Petra gate; UNKNOWN - flag for team review for whether a separate fee applies"
+    },
+    "narration_script_en": "This is the Crusader castle almost nobody visits, a kilometre north of the Petra gate. Notice they barely bothered with walls — the ridge itself is the defence, smooth-sided and cut off on every approach. The one piece of real engineering is the gatehouse ahead of you, carved straight out of the bedrock to guard the bridge. Saladin's men took it in 1188, and after a geographer noted it down in the 1220s the place simply dropped out of history.",
+    "narration_script_ar": "هذه هي القلعة الصليبية التي لا يكاد يزورها أحد، على بُعد كيلومتر شمال مدخل البتراء. لاحظ أنهم لم يكلّفوا أنفسهم عناء الأسوار كثيراً، فالنتوء الصخري نفسه هو الدفاع، أملس الجوانب مقطوع من كل جهة. والعمل الهندسي الحقيقي الوحيد هو البوابة أمامك، منحوتة في الصخر الأم لحماية الجسر. استولى عليها رجال صلاح الدين عام 1188م، وبعد أن دوّنها جغرافي في عشرينيات القرن الثالث عشر خرج المكان من التاريخ ببساطة.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Wu%E2%80%99era_Castle_(Interior).jpg",
+      "source": "Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "attribution_text": "Photo by Bashar Tabbah, CC BY-SA 4.0, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/751173171",
+      "https://en.wikipedia.org/wiki/Wu%27ayra_Castle"
+    ],
+    "confidence": "verified",
+    "researcher": "Pulga"
+  },
+  {
+    "id": "UNZ",
+    "name_en": "Qasr Uneizah (Unayzah)",
+    "name_ar": "قصر عنيزة",
+    "category": "castle",
+    "parent_site_id": null,
+    "coordinates": {
+      "lat": 30.4882,
+      "lng": 35.7954
+    },
+    "short_description_en": "Qasr Uneizah is an Ottoman fortress built under Sultan Suleiman the Magnificent to guard pilgrims on the Hajj route through the desert, standing about 36 km north of Ma'an on what is now the Amman-Aqaba highway. It takes its name from the nearby Jabal Uneizah, known for its black volcanic stone, and the site also preserves a water cistern and a station from the later Hejaz Railway line that followed the same corridor. At roughly 1,000 metres elevation, it is one of a chain of Ottoman desert forts spaced along the pilgrimage road to protect and resupply caravans.",
+    "short_description_ar": "قصر عنيزة حصن عثماني بُني في عهد السلطان سليمان القانوني لحماية حجاج طريق الحج عبر الصحراء، ويقع على بعد نحو 36 كم شمال معان على طريق عمان-العقبة الحالي. يستمد اسمه من جبل عنيزة المجاور المعروف بصخوره البركانية السوداء، ويضم الموقع أيضاً خزان مياه ومحطة من خط سكة حديد الحجاز الذي مر لاحقاً بالممر نفسه. يقع القصر على ارتفاع نحو 1000 متر، وهو واحد من سلسلة حصون عثمانية صحراوية توزعت على طريق الحج لحماية القوافل وتزويدها بالمؤن.",
+    "history_en": "Qasr Uneizah was raised under the Ottoman sultan Suleiman the Magnificent as one of a chain of forts strung along the Hajj road through the desert, each a day's march or so apart, to shelter and resupply the pilgrim caravans moving south toward the Hijaz. It takes its name from the neighbouring Jabal Uneizah, a hill known for its black volcanic stone. Centuries later the Hejaz Railway was laid along the same corridor, and a station from that line survives beside the fort, together with a water cistern. The modern Amman-Aqaba highway now follows the route for a third time, so three eras of the same journey sit within sight of one another.",
+    "history_ar": "شُيّد قصر عنيزة في عهد السلطان العثماني سليمان القانوني ضمن سلسلة من القلاع الممتدة على طريق الحج عبر الصحراء، تفصل بين الواحدة والأخرى مسيرة يوم تقريباً، لإيواء قوافل الحجاج المتجهة جنوباً نحو الحجاز وتزويدها بالمؤن. ويستمد اسمه من جبل عنيزة المجاور المعروف بحجارته البركانية السوداء. وبعد قرون مُدّ خط سكة حديد الحجاز في الممر نفسه، ولا تزال محطة من ذلك الخط قائمة بجوار القلعة إلى جانب صهريج للمياه. ثم جاء طريق عمّان-العقبة الحديث ليسلك المسار للمرة الثالثة، فاجتمعت ثلاث حقب من الرحلة ذاتها على مرمى البصر.",
+    "significance_en": "The fort is a piece of infrastructure rather than a monument: it exists because a caravan crossing open desert needs water and walls at predictable intervals, and it shows how the Ottoman state organised the pilgrimage as a logistical system. Standing beside its Hejaz Railway station and the modern highway, it also makes the continuity of this corridor visible in a way few sites in the governorate can.",
+    "significance_ar": "القلعة منشأة خدمية لا نصباً تذكارياً: فهي قائمة لأن القافلة العابرة للصحراء المفتوحة تحتاج ماءً وجدراناً على مسافات معلومة، وهي تُظهر كيف نظّمت الدولة العثمانية الحج بوصفه منظومة لوجستية. وبوقوفها إلى جانب محطة سكة حديد الحجاز والطريق السريع الحديث، تجعل استمرارية هذا الممر مرئية على نحو لا تضاهيها فيه مواقع كثيرة في المحافظة.",
+    "visiting_info": {
+      "best_time_to_visit": "Any daylight hour, but avoid midday — there is no shade at all and no facilities on site",
+      "difficulty": "easy",
+      "estimated_time_there": "20-30 minutes",
+      "accessibility_notes": "Isolated desert site off the highway with no paved paths or visitor facilities; rough, unimproved ground throughout.",
+      "requires_guide": false,
+      "entrance_fee_notes": "Open desert site beside the highway, no gate; free"
+    },
+    "narration_script_en": "What you're looking at is a service station, four hundred years old. Pilgrims walking to Mecca needed water and a wall to sleep behind roughly every day's march, and the Ottomans built a chain of these forts to provide exactly that. Turn around and you'll see the old Hejaz Railway station, and past it the modern highway — three different centuries all choosing the same line across the desert. The black stone in the hills nearby is volcanic, and it gave the place its name.",
+    "narration_script_ar": "ما تراه أمامك محطة خدمة عمرها أربعمئة عام. كان الحجاج السائرون إلى مكة يحتاجون ماءً وجداراً ينامون خلفه كل مسيرة يوم تقريباً، فبنى العثمانيون سلسلة من هذه القلاع لتوفير ذلك بالضبط. استدر وستجد محطة سكة حديد الحجاز القديمة، ومن ورائها الطريق السريع الحديث: ثلاثة قرون مختلفة اختارت جميعها الخط نفسه عبر الصحراء. والحجر الأسود في التلال المجاورة حجر بركاني، ومنه جاء اسم المكان.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/%D9%82%D9%84%D8%B9%D8%A9_%D8%B9%D9%86%D9%8A%D8%B2%D8%A9_%D8%A7%D9%84%D8%B9%D8%AB%D9%85%D8%A7%D9%86%D9%8A%D8%A9%D8%8C_30%D9%83%D9%84%D9%85_%D8%B4%D9%85%D8%A7%D9%84_%D9%85%D8%B9%D8%A7%D9%86.jpg",
+      "source": "Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "attribution_text": "Photo by د. أنور الجازي (Anwar Al-Jazi), CC BY-SA 4.0, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Unayzah,_Jordan"
+    ],
+    "confidence": "verified",
+    "researcher": "Pulga"
+  },
+  {
+    "id": "PET-HAB",
+    "name_en": "Al-Habis Castle",
+    "name_ar": "قلعة الحبيس",
+    "category": "castle",
+    "parent_site_id": "PET",
+    "coordinates": {
+      "lat": 30.3290508,
+      "lng": 35.4388177
+    },
+    "short_description_en": "Al-Habis Castle is a small Crusader fortress built in the 12th century on Jebal al-Habis, a hill inside Petra itself, part of the same regional network Baldwin I built around Wu'ayra and Montreal to hold the approaches to the Petra valley. Little survives beyond scattered wall foundations near the summit, since the hill's Nabataean-cut chambers were reused for later building work, and the same hill carries Nabataean cultic shrines that predate the Crusader fortress. It fell along with the area's other Crusader outposts during the Ayyubid conquest of 1188, and the path up it today passes close to the Old Petra Museum.",
+    "short_description_ar": "قلعة الحبيس حصن صليبي صغير بُني في القرن الثاني عشر فوق جبل الحبيس، وهو تل داخل البتراء نفسها، كجزء من الشبكة الإقليمية ذاتها التي أقامها بلدوين الأول حول الوعيرة ومونتريال للسيطرة على المداخل المؤدية إلى وادي البتراء. لم يبق من الحصن سوى أسس متفرقة قرب القمة، إذ أعيد استخدام الغرف النبطية المنحوتة في الصخر لأعمال بناء لاحقة، ويحمل التل نفسه مزارات نبطية أقدم من العهد الصليبي. سقطت القلعة مع باقي المواقع الصليبية في المنطقة خلال الفتح الأيوبي عام 1188، ويمر الطريق الصاعد إليها اليوم قرب متحف البتراء القديم.",
+    "history_en": "Al-Habis is a hill inside Petra itself, and the Crusaders put a small fort on its summit in the 12th century as part of the same network Baldwin I built around Wu'ayra and Montreal to hold the approaches to the valley. The hill was already old when they arrived: its Nabataean rock-cut chambers and cultic shrines predate the fortress by more than a thousand years, and some were reused in the later building work. Very little of the Crusader structure survives beyond scattered wall foundations near the top. It fell with the region's other Crusader outposts during the Ayyubid conquest of 1188.",
+    "history_ar": "الحبيس تلّة داخل البتراء نفسها، أقام الصليبيون على قمتها حصناً صغيراً في القرن الثاني عشر ضمن الشبكة ذاتها التي بناها بلدوين الأول حول الوعيرة والشوبك للسيطرة على مداخل الوادي. وكانت التلة قديمة قبل وصولهم: فغرفها النبطية المنحوتة في الصخر ومقاماتها الدينية تسبق الحصن بأكثر من ألف عام، وأُعيد استخدام بعضها في أعمال البناء اللاحقة. ولم يبقَ من البناء الصليبي إلا أساسات جدران متناثرة قرب القمة. وسقط الحصن مع بقية المواقع الصليبية في المنطقة خلال الفتح الأيوبي عام 1188م.",
+    "significance_en": "Al-Habis is the clearest single place in Petra where three periods stack on one another — Nabataean shrines cut into the rock, a Crusader fort built on top of them, and the modern path that takes visitors past both. It is also the reason the Crusader episode is not a footnote here: they did not camp near Petra, they fortified inside it.",
+    "significance_ar": "الحبيس أوضح موضع منفرد في البتراء تتراكب فيه ثلاث حقب: مقامات نبطية منحوتة في الصخر، وحصن صليبي بُني فوقها، ودرب حديث يمرّ بالزائر عليهما معاً. وهو أيضاً سبب ألا تكون الحقبة الصليبية هامشاً هنا، فهم لم يعسكروا قرب البتراء بل تحصّنوا داخلها.",
+    "visiting_info": {
+      "best_time_to_visit": "Late afternoon, when the valley floor below is in warm light and the climb is out of the worst heat",
+      "difficulty": "moderate",
+      "estimated_time_there": "45-60 minutes",
+      "accessibility_notes": "Reached by a rock-cut climb from the Wadi Siyagh path; uneven surfaces and steps throughout, not accessible for reduced mobility.",
+      "requires_guide": false,
+      "entrance_fee_notes": "Inside the Petra Archaeological Park; covered by the Petra ticket"
+    },
+    "narration_script_en": "Most people walk right past this hill on the way to the museum without knowing there's a castle on top of it. The Crusaders fortified Al-Habis in the twelfth century — inside Petra, not near it — because whoever held this rock watched the whole valley floor. Climb it and you pass Nabataean shrines cut into the stone a thousand years before the Crusaders ever arrived. There's not much left of the fort itself; the view is the reason to come up.",
+    "narration_script_ar": "يمرّ معظم الناس بهذه التلة في طريقهم إلى المتحف دون أن يعرفوا أن على قمتها قلعة. حصّن الصليبيون الحبيس في القرن الثاني عشر، داخل البتراء لا بجوارها، لأن من يملك هذه الصخرة يراقب أرض الوادي كلها. وإذا صعدتها مررت بمقامات نبطية منحوتة في الحجر قبل وصول الصليبيين بألف عام. ولم يبقَ من الحصن نفسه الكثير، والمنظر هو سبب الصعود.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Petra_Crusader_Castle_(36104433290).jpg",
+      "source": "Wikimedia Commons",
+      "license": "CC BY 2.0",
+      "attribution_text": "Photo by David Stanley, CC BY 2.0, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://www.openstreetmap.org/node/2533844440",
+      "https://vici.org/vici/32256/",
+      "https://en.wikipedia.org/wiki/Wu%27ayra_Castle"
+    ],
+    "confidence": "verified",
+    "researcher": "Pulga"
+  },
+  {
+    "id": "PET-SIQ",
+    "name_en": "The Siq",
+    "name_ar": "السيق",
+    "category": "wadi",
+    "parent_site_id": "PET",
+    "coordinates": {
+      "lat": 30.3242359,
+      "lng": 35.4482366
+    },
+    "short_description_en": "The Siq is Petra's grand natural entrance, a winding sandstone gorge about 1.2 km long that narrows to just 3-4 metres wide in places. Its walls still show Nabataean carved niches that once held sacred stones (baetyls) and channels from the water system that supplied the city, making the walk itself part of Petra's story before the Treasury even comes into view.",
+    "short_description_ar": "السيق هو المدخل الطبيعي الكبير للبتراء، ممر صخري متعرج يمتد نحو 1.2 كم ويضيق في بعض الأماكن إلى 3-4 أمتار فقط. لا تزال جدرانه تحمل تجاويف نبطية منحوتة كانت تضم أحجاراً مقدسة، وقنوات من نظام المياه الذي كان يغذي المدينة، ما يجعل السير فيه جزءاً من قصة البتراء قبل ظهور الخزنة.",
+    "history_en": "The Siq is not a water-carved slot canyon but a tectonic fault: the rock was split apart by earth movement and only afterwards worn smooth by water. The Nabataeans turned that accident of geology into a controlled approach, damming the mouth between the 1st century BC and the early 1st century AD to divert Wadi Musa away from the gorge — the dam standing there now is a reconstruction of theirs, rebuilt in 1963 and again in 1991. A monumental arch once spanned the entrance; it collapsed in an earthquake in 1896 and is known today mainly from 19th-century lithographs. In 1998, lowering the roadbed uncovered near-twice-lifesize carvings of two merchants each leading a pair of camels, still visible though badly eroded above.",
+    "history_ar": "السيق ليس مضيقاً حفره الماء بل صدع تكتوني: انشقّ الصخر بفعل حركة الأرض ثم صقلته المياه بعد ذلك. وقد حوّل الأنباط هذه المصادفة الجيولوجية إلى مدخل محكوم، فسدّوا فمه بين القرن الأول قبل الميلاد ومطلع القرن الأول الميلادي لتحويل مياه وادي موسى بعيداً عن المضيق، والسد القائم اليوم إعادة بناء لسدّهم، أُعيد تشييده عام 1963 ثم عام 1991. وكان قوس ضخم يعلو المدخل، فانهار في زلزال عام 1896م ولا يُعرف اليوم إلا من رسوم القرن التاسع عشر الحجرية. وفي عام 1998م، كشف خفض مستوى الطريق عن منحوتات لتاجرين يقود كل منهما جملين، بحجم يقارب ضعف الحجم الطبيعي، ولا تزال ظاهرة رغم شدة تآكل أعلاها.",
+    "significance_en": "The Siq is the reason Petra works as theatre: a 1.2 km walk between walls up to 180 metres high and at points barely three metres apart, ending without warning at the Treasury. Votive niches cut along both walls once held baetyls — sacred stones — which tells us the Nabataeans treated the approach itself as sacred ground, not merely a road.",
+    "significance_ar": "السيق هو سبب نجاح البتراء كمشهد مسرحي: مسير 1.2 كم بين جدران يبلغ ارتفاعها 180 متراً ولا يتجاوز التباعد بينها في مواضع ثلاثة أمتار، ينتهي فجأة عند الخزنة. وكانت التجاويف النذرية المنحوتة على الجدارين تضم أحجاراً مقدسة، ما يدل على أن الأنباط عاملوا المدخل نفسه أرضاً مقدسة لا مجرد طريق.",
+    "visiting_info": {
+      "best_time_to_visit": "Before 9am — the gorge is cool and quiet, and the morning light falls down the walls onto the Treasury facade at the end",
+      "difficulty": "easy",
+      "estimated_time_there": "30-45 minutes walking",
+      "accessibility_notes": "Wide enough for wheelchair passage with assistance in most sections; uneven sandy/paved surface.",
+      "requires_guide": false,
+      "entrance_fee_notes": "Inside the Petra Archaeological Park; covered by the Petra ticket"
+    },
+    "narration_script_en": "Everything about this walk was designed to make you wait. The gorge itself is a crack in the earth — a fault line, not a river bed — but the Nabataeans took it over completely: they dammed the entrance to push the flood water away, and they cut niches into these walls to hold sacred stones, so you were walking through a shrine before you ever reached the city. Look low on the left as you go and you may catch two merchants and their camels, carved almost twice life-size and only found again in 1998. Keep your eyes on the ground for another minute — the Treasury arrives all at once, and it is better if you don't see it coming.",
+    "narration_script_ar": "كل شيء في هذا الممر صُمّم ليجعلك تنتظر. المضيق نفسه شقّ في الأرض، صدع لا مجرى نهر، لكن الأنباط استولوا عليه تماماً: سدّوا المدخل ليدفعوا مياه السيول بعيداً، ونحتوا في هذه الجدران تجاويف تحمل أحجاراً مقدسة، فكنت تمشي في مزار قبل أن تبلغ المدينة. وانظر أسفل يسارك وأنت تسير، فقد تلمح تاجرين وجمليهما منحوتين بحجم يقارب ضعف الحجم الطبيعي، لم يُعثر عليهما مجدداً إلا عام 1998م. وأبقِ عينيك على الأرض دقيقة أخرى، فالخزنة تظهر دفعة واحدة، والأفضل ألا تراها قادمة.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Petra_Siq,_entrance_to_the_ancient_Nabatean_city_of_Petra,_Jordan.jpg",
+      "source": "Wikimedia Commons",
+      "license": "CC BY 4.0",
+      "attribution_text": "Photo by Vyacheslav Argenberg, CC BY 4.0, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/35049641",
+      "https://en.wikipedia.org/wiki/Siq"
+    ],
+    "confidence": "verified",
+    "researcher": "Pulga"
+  },
+  {
+    "id": "PET-WFA",
+    "name_en": "Wadi Farasa",
+    "name_ar": "وادي الفراسة",
+    "category": "wadi",
+    "parent_site_id": "PET",
+    "coordinates": {
+      "lat": 30.3235921,
+      "lng": 35.4419705
+    },
+    "short_description_en": "A valley running south of the Petra city centre, followed as a walking route that links several monuments including the Tomb of the Roman Soldier complex. It carried part of the Nabataean water system: rainwater was collected in a network of basins and cisterns connected by pipes that fed back into the city, and whether the valley also had a substantial spring supply is still uncertain.",
+    "short_description_ar": "وادٍ يمتد جنوب وسط مدينة البتراء، ويُسلَك كمسار مشي يربط عدداً من المعالم، منها مجمّع قبر الجندي الروماني. وقد حمل الوادي جزءاً من منظومة المياه النبطية، إذ كانت مياه الأمطار تُجمع في شبكة من الأحواض والصهاريج المتصلة بأنابيب تعيدها إلى المدينة، ولا يزال من غير المؤكد ما إذا كان الوادي يتمتع أيضاً بمصدر وفير من مياه النبع.",
+    "history_en": "Wadi Farasa runs south of the Petra city centre and was never a single monument but a worked valley: the Nabataeans cut tombs, a triclinium and a garden terrace along it and threaded the whole length with water infrastructure. Rainwater was caught in a network of basins and cisterns linked by pipes that fed back toward the city, and the Tomb of the Roman Soldier complex at its heart had its own supply within that system. Whether the valley also drew on a substantial spring is still debated. The route is walked today as the descent from the High Place of Sacrifice back down to the city floor.",
+    "history_ar": "يمتد وادي الفراسة جنوب وسط مدينة البتراء، ولم يكن يوماً معلماً واحداً بل وادياً مشغولاً: نحت فيه الأنباط مدافن وتريكلينيوم ومصطبة حديقة، وضفّروا طوله كله بمنشآت المياه. فكانت مياه الأمطار تُجمع في شبكة من الأحواض والصهاريج تربطها أنابيب تعيدها نحو المدينة، وكان لمجمّع قبر الجندي الروماني في قلبه إمداده الخاص ضمن تلك المنظومة. ولا يزال الجدل قائماً حول ما إذا كان الوادي يعتمد أيضاً على نبع وفير. ويُسلك المسار اليوم هبوطاً من المذبح المرتفع إلى أرض المدينة.",
+    "significance_en": "Wadi Farasa is where Petra's hydraulic engineering stops being an abstraction: the basins, channels and cisterns are visible along the path rather than buried. It is also the quiet counterweight to the main trail — the same quality of rock-cut architecture with a fraction of the crowd.",
+    "significance_ar": "في وادي الفراسة تتوقف هندسة المياه في البتراء عن كونها فكرة مجردة: فالأحواض والقنوات والصهاريج ظاهرة على امتداد الدرب لا مطمورة. وهو أيضاً الثقل الهادئ المقابل للمسار الرئيسي، بالجودة نفسها من العمارة المنحوتة في الصخر وبجزء يسير من الزحام.",
+    "visiting_info": {
+      "best_time_to_visit": "Walk it downhill from the High Place of Sacrifice in the morning; going up in the afternoon heat is punishing",
+      "difficulty": "difficult",
+      "estimated_time_there": "90 minutes",
+      "accessibility_notes": "An unpaved hiking route with rock-cut steps, loose ground and exposed sections; not accessible for reduced-mobility visitors and best walked with a guide.",
+      "requires_guide": true,
+      "entrance_fee_notes": "Inside the Petra Archaeological Park; covered by the Petra ticket"
+    },
+    "narration_script_en": "Coming down this valley you're walking through Petra's plumbing. Every basin and channel you pass was part of a system that caught the winter rain here and piped it back into the city — in a place with this little rainfall, that engineering was the difference between a caravan stop and a capital. The big facade ahead with the three figures is the Tomb of the Roman Soldier, and it had its own water supply built in. Most visitors never come this way, which is exactly why you should.",
+    "narration_script_ar": "وأنت تهبط هذا الوادي فأنت تسير داخل شبكة مياه البتراء. كل حوض وكل قناة تمرّ بها كانت جزءاً من منظومة تجمع مطر الشتاء هنا وتعيده بالأنابيب إلى المدينة، وفي مكان بهذا الشح من الأمطار كانت تلك الهندسة هي الفارق بين محطة قوافل وعاصمة. والواجهة الكبيرة أمامك ذات التماثيل الثلاثة هي قبر الجندي الروماني، وكان له إمداد مائي خاص مدمج فيه. ولا يسلك معظم الزوار هذا الطريق، وهذا بالضبط سبب وجوب سلوكه.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Wadi_al-Farasa_tombs.jpg",
+      "source": "Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "attribution_text": "Photo by Davide Mauro, CC BY-SA 4.0, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/303937147",
+      "https://en.wikipedia.org/wiki/Nabataean_architecture"
+    ],
+    "confidence": "verified",
+    "researcher": "Pulga"
+  },
+  {
+    "id": "PET-WSA",
+    "name_en": "Wadi Sabra",
+    "name_ar": "وادي سبرة",
+    "category": "wadi",
+    "parent_site_id": "PET",
+    "coordinates": {
+      "lat": 30.27758,
+      "lng": 35.41349
+    },
+    "short_description_en": "A remote wadi well south of the Petra city centre, holding a Nabataean satellite settlement that is rarely visited. Among its remains are thermal baths, where the praefurnium — the below-floor heating hearth used across the Roman world — was set at a lower level so heat spread upward through the rooms, following the natural slope of the ground.",
+    "short_description_ar": "وادٍ منعزل يقع إلى الجنوب البعيد من وسط مدينة البتراء، ويضم مستوطنة نبطية تابعة قلّ من يزورها. ومن بين بقاياه حمّامات حرارية جُعل فيها بيت النار — أي موقد التسخين تحت الأرضية الذي استُخدم في أنحاء العالم الروماني — في مستوى أدنى ليتصاعد الحر عبر الغرف، تبعاً للانحدار الطبيعي للأرض.",
+    "history_en": "Wadi Sabra holds a Nabataean satellite settlement roughly 6 km south of the Petra city centre, well outside the archaeological park and outside most visitors' itineraries. Its remains include a small theatre and a set of thermal baths built on the Roman model, with the praefurnium — the below-floor furnace that heated the rooms — set at a lower level so the heat rose through the building, using the natural slope of the ground. The settlement shows Petra was not a single walled place but a region of dependent sites. It is largely unexcavated and much of its chronology remains open.",
+    "history_ar": "يضم وادي سبرة مستوطنة نبطية تابعة تبعد نحو 6 كم جنوب وسط مدينة البتراء، خارج المحمية الأثرية وخارج برامج معظم الزوار. وتشمل بقاياه مسرحاً صغيراً ومجموعة حمّامات حرارية على الطراز الروماني، جُعل فيها بيت النار، أي الموقد الواقع تحت الأرضية والذي كان يدفئ الغرف، في مستوى أدنى ليتصاعد الحرّ عبر المبنى مستفيداً من انحدار الأرض الطبيعي. وتُظهر المستوطنة أن البتراء لم تكن مكاناً واحداً مسوّراً بل إقليماً من المواقع التابعة. والموقع غير منقّب في معظمه ولا يزال كثير من تسلسله الزمني مفتوحاً.",
+    "significance_en": "Sabra is the corrective to thinking of Petra as one site: a full satellite settlement with its own theatre and baths, far enough out that almost nobody sees it. For anyone interested in how the Nabataeans actually lived rather than how they buried their dead, it is one of the more informative places in the governorate.",
+    "significance_ar": "سبرة تصحيح لفكرة أن البتراء موقع واحد: مستوطنة تابعة كاملة لها مسرحها وحمّاماتها، وتقع بعيداً بما يكفي ليكاد لا يراها أحد. ولمن يهتم بكيفية عيش الأنباط فعلاً لا بكيفية دفنهم موتاهم، فهي من أكثر المواضع إفادة في المحافظة.",
+    "visiting_info": {
+      "best_time_to_visit": "Set out early — this is a half-day trip on foot or a 4x4 approach, with no shade or water once you leave the main site",
+      "difficulty": "difficult",
+      "estimated_time_there": "3 hours including the approach",
+      "accessibility_notes": "Remote desert wadi with no facilities, no marked path and no shade; reachable only on a long walk or by 4x4 with a local guide. Not accessible.",
+      "requires_guide": true,
+      "entrance_fee_notes": "Outside the Petra Archaeological Park boundary; UNKNOWN - flag for team review for whether the Petra ticket covers access"
+    },
+    "narration_script_en": "You have come a long way to get here, and that is the point — almost no one does. This was a working Nabataean settlement, not a cemetery: there is a theatre over there, and the ruins by the slope are bath houses. Look for where the ground steps down; the furnace sat at the low end so the heat would climb through the rooms above it. Most of what is under your feet has never been excavated.",
+    "narration_script_ar": "لقد قطعت طريقاً طويلاً للوصول إلى هنا، وهذا هو المقصود، إذ لا يكاد أحد يفعل. كانت هذه مستوطنة نبطية عاملة لا مقبرة: هناك مسرح، والأطلال عند المنحدر حمّامات. ابحث عن الموضع الذي تهبط فيه الأرض درجةً، فقد كان الموقد في الطرف المنخفض ليصعد الحرّ عبر الغرف فوقه. ومعظم ما تحت قدميك لم يُنقّب فيه قط.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/P%C3%A9tra._Plan_de_la_r%C3%A9gion_des_thermes_de_Sabra_en_1830.jpg",
+      "source": "Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "attribution_text": "Photo by Leon Laborde and Linant de Bellefonds., CC BY-SA 4.0, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Nabataean_architecture",
+      "https://www.openstreetmap.org/node/4527086510"
+    ],
+    "confidence": "verified",
+    "researcher": "Pulga"
+  },
+  {
+    "id": "PET-WMD",
+    "name_en": "Wadi al-Mudhlim (Nabataean Dam & Tunnel)",
+    "name_ar": "وادي المذلم",
+    "category": "wadi",
+    "parent_site_id": "PET",
+    "coordinates": {
+      "lat": 30.3235419,
+      "lng": 35.460945
+    },
+    "short_description_en": "A narrow gorge north of the Siq, used as an alternative and far quieter approach into Petra. It is a piece of Nabataean flood engineering rather than a monument: the Nabataeans controlled the flash floods that funnel through this area with dams, cisterns and cut water conduits, diverting the flow away from the main entrance and storing it against drought — the water control that made the desert city possible.",
+    "short_description_ar": "مضيق ضيق يقع شمال السيق، ويُستخدم كمدخل بديل وأكثر هدوءاً إلى البتراء. وهو قطعة من الهندسة النبطية للسيول أكثر منه معلماً أثرياً: فقد تحكّم الأنباط في السيول المفاجئة التي تتجمع في هذه المنطقة بواسطة السدود والصهاريج وقنوات المياه المنحوتة، فحوّلوا مسارها بعيداً عن المدخل الرئيسي وخزّنوها لمواجهة الجفاف، وهو التحكم بالمياه الذي جعل قيام المدينة الصحراوية ممكناً.",
+    "history_en": "Wadi al-Mudhlim is the other way into Petra, and it exists in its present form because the Nabataeans re-engineered it. Rather than let the winter floods pour down Wadi Musa and through the Siq, they dammed the Siq's mouth and drove a tunnel through the rock to throw the water into this gorge instead. The dam standing at the Siq today is a modern reconstruction of that work, but the tunnel is theirs. The same instinct runs through the whole city: dams, cisterns and cut conduits that caught flash floods and held the water against the dry months, which is what let a city of this size stand in this landscape at all.",
+    "history_ar": "وادي المذلم هو المدخل الآخر إلى البتراء، وهو على صورته الحالية لأن الأنباط أعادوا هندسته. فبدلاً من ترك سيول الشتاء تنصبّ في وادي موسى ثم في السيق، سدّوا فم السيق وحفروا نفقاً في الصخر ليقذفوا الماء إلى هذا المضيق. والسد القائم عند السيق اليوم إعادة بناء حديثة لذلك العمل، أما النفق فمن صنعهم. والنزعة نفسها تسري في المدينة كلها: سدود وصهاريج وقنوات منحوتة تلتقط السيول وتحبس الماء لمواجهة أشهر الجفاف، وهو ما سمح لمدينة بهذا الحجم أن تقوم في هذه الأرض أصلاً.",
+    "significance_en": "This is the clearest surviving demonstration that Petra was an engineered city before it was a carved one — the Nabataeans did not adapt to the flash floods, they redirected them. Walking it also gives the rarest thing at Petra: the approach to the city with almost nobody else on it.",
+    "significance_ar": "هذا أوضح دليل باقٍ على أن البتراء كانت مدينة مهندَسة قبل أن تكون منحوتة، فالأنباط لم يتكيّفوا مع السيول بل حوّلوا مسارها. وسلوكه يمنحك أندر ما في البتراء: الوصول إلى المدينة دون أن يكون معك أحد تقريباً.",
+    "visiting_info": {
+      "best_time_to_visit": "Morning, and never when rain is forecast anywhere upstream — the gorge floods and is closed on those days",
+      "difficulty": "difficult",
+      "estimated_time_there": "60 minutes",
+      "accessibility_notes": "A narrow unpaved gorge route with boulders and scrambling sections, subject to closure in flood risk; not accessible, and not to be entered alone.",
+      "requires_guide": true,
+      "entrance_fee_notes": "Inside the Petra Archaeological Park; covered by the Petra ticket"
+    },
+    "narration_script_en": "This gorge is here on purpose. The Nabataeans didn't want the winter floods tearing down the Siq where all their traffic was, so they dammed that entrance and cut a tunnel through solid rock to send the water this way instead. You are standing in their overflow channel. It's narrow, it's dark in places, and after rain it can close without warning — which is the same reason they built it in the first place.",
+    "narration_script_ar": "هذا المضيق موجود عن قصد. لم يُرد الأنباط أن تجتاح سيول الشتاء السيق حيث تمرّ حركتهم كلها، فسدّوا ذلك المدخل وحفروا نفقاً في الصخر الصلد ليصرفوا الماء من هنا بدلاً منه. أنت تقف الآن في قناة التصريف التي بنوها. وهي ضيقة ومعتمة في مواضع، وقد تُغلق بعد المطر دون إنذار، وهو السبب نفسه الذي بُنيت من أجله.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Petra_Wadi_Muthlim_2110.jpg",
+      "source": "Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "attribution_text": "Photo by Dosseman, CC BY-SA 4.0, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/488821487",
+      "https://en.wikipedia.org/wiki/Petra",
+      "https://en.wikipedia.org/wiki/Siq"
+    ],
+    "confidence": "verified",
+    "researcher": "Pulga"
+  },
+  {
+    "id": "PET",
+    "name_en": "Petra",
+    "name_ar": "البتراء",
+    "category": "macro_site",
+    "parent_site_id": null,
+    "coordinates": {
+      "lat": 30.3333331,
+      "lng": 35.4333329
+    },
+    "short_description_en": "Petra is the rock-cut Nabataean capital in southern Jordan, settled from the 4th century BC and inscribed as a UNESCO World Heritage Site in 1985. Visitors enter through the Siq, a narrow sandstone gorge only 3-4 metres wide in places, before the site opens onto dozens of carved facades, tombs, and temples spread across roughly 264 square kilometres. It draws close to a million visitors a year, and a full visit covering the Siq, Treasury, Street of Facades, and one of the high climbs typically takes a full day.",
+    "short_description_ar": "البتراء هي العاصمة النبطية المنحوتة في الصخر جنوب الأردن، استوطنها الأنباط منذ القرن الرابع قبل الميلاد، وأُدرجت موقعاً للتراث العالمي لليونسكو عام 1985. يدخل الزوار عبر السيق، وهو ممر صخري ضيق لا يتجاوز عرضه 3-4 أمتار في بعض الأماكن، قبل أن تنكشف عشرات الواجهات والمقابر والمعابد المنحوتة على مساحة نحو 264 كيلومتراً مربعاً. يستقبل الموقع قرابة مليون زائر سنوياً، وتستغرق الزيارة الكاملة - السيق والخزنة وشارع الواجهات وأحد المرتفعات - يوماً كاملاً عادة.",
+    "history_en": "The Nabataeans, originally one of several nomadic Bedouin peoples of the Arabian desert, settled this basin from around the 4th century BC and made it the capital of a kingdom that grew rich controlling the caravan routes running to Gaza, Damascus, the Red Sea and the Persian Gulf. Their real advantage was water: dams, cisterns and cut conduits that captured flash floods and held them through drought, turning a defensible bowl of rock into an artificial oasis. Rome annexed the kingdom in AD 106 and rebuilt the city centre in its own idiom. An earthquake in AD 363 destroyed much of the city and crippled the water system it depended on; Petra continued as a Byzantine provincial centre, then faded, and was known mainly to local Bedouin until European travellers reached it again in the 19th century. It was inscribed as a UNESCO World Heritage Site in 1985.",
+    "history_ar": "استوطن الأنباط، وكانوا في الأصل من الشعوب البدوية الرحّالة في الصحراء العربية، هذا الحوض منذ نحو القرن الرابع قبل الميلاد وجعلوه عاصمة مملكة أثرت من سيطرتها على طرق القوافل الممتدة إلى غزة ودمشق والبحر الأحمر والخليج. وكانت ميزتهم الحقيقية الماء: سدود وصهاريج وقنوات منحوتة تلتقط السيول وتحفظها في مواسم الجفاف، فحوّلت حوضاً صخرياً حصيناً إلى واحة اصطناعية. ثم ضمّت روما المملكة عام 106م وأعادت بناء وسط المدينة بأسلوبها. ودمّر زلزال عام 363م جزءاً كبيراً من المدينة وأعطب منظومة المياه التي قامت عليها؛ واستمرت البتراء مركزاً بيزنطياً ثم خبت، وظلت معروفة لدى بدو المنطقة وحدهم حتى بلغها الرحّالة الأوروبيون من جديد في القرن التاسع عشر. وأُدرجت على قائمة التراث العالمي لليونسكو عام 1985م.",
+    "significance_en": "Petra is the reason Ma'an governorate is on the world map: a UNESCO World Heritage Site and the single most recognisable place in Jordan, drawing close to a million visitors a year. What makes it exceptional is not one monument but a whole city argued out of the rock face — hundreds of tombs, temples and facades across roughly 264 square kilometres — built by a people who left very little writing and whose civilisation is largely read from what they carved.",
+    "significance_ar": "البتراء هي سبب وجود محافظة معان على خريطة العالم: موقع تراث عالمي لليونسكو وأشهر مكان في الأردن على الإطلاق، يستقبل قرابة مليون زائر سنوياً. وما يجعلها استثنائية ليس معلماً واحداً بل مدينة كاملة انتُزعت من واجهة الصخر، مئات المدافن والمعابد والواجهات على مساحة نحو 264 كيلومتراً مربعاً، شيّدها قوم لم يتركوا كتابة تُذكر وتُقرأ حضارتهم في معظمها مما نحتوه.",
+    "visiting_info": {
+      "best_time_to_visit": "Enter at opening, around 6am in summer; the Siq is cool and empty and you reach the Treasury before the tour groups",
+      "difficulty": "moderate",
+      "estimated_time_there": "A full day; two days to see it properly",
+      "accessibility_notes": "Main trail from the Siq to the Street of Facades is wheelchair-passable with assistance on packed sand/gravel; onward climbs to the Monastery or High Place of Sacrifice are not accessible for reduced mobility.",
+      "requires_guide": false,
+      "entrance_fee_notes": "Ticketed at the visitor centre; the Jordan Pass covers entry. UNKNOWN - flag for team review for current prices"
+    },
+    "narration_script_en": "Everything you're about to see was cut, not built — the Nabataeans carved a capital city into the cliffs instead of stacking one on the ground. They could do it here because they solved water: the dams and channels you'll pass caught the flash floods and stored them, and that is what turned a hidden bowl of rock into a city of real wealth. Rome took over in AD 106, an earthquake broke the place in 363, and for centuries afterwards only the local Bedouin knew what was in here. Give yourself a full day — the Siq and the Treasury are the opening, not the visit.",
+    "narration_script_ar": "كل ما أنت على وشك رؤيته منحوت لا مبني، فقد نحت الأنباط عاصمتهم في المنحدرات بدل أن يرصفوها على الأرض. واستطاعوا ذلك هنا لأنهم حلّوا مسألة الماء: فالسدود والقنوات التي ستمرّ بها كانت تلتقط السيول وتخزّنها، وهذا ما حوّل حوضاً صخرياً مختبئاً إلى مدينة ذات ثراء حقيقي. ثم حكمتها روما عام 106م، وكسرها زلزال عام 363م، وبعد ذلك بقرون لم يكن يعرف ما في داخلها إلا بدو المنطقة. خصّص لنفسك يوماً كاملاً، فالسيق والخزنة هما الافتتاحية لا الزيارة.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Central_Petra.jpg",
+      "source": "Wikimedia Commons",
+      "license": "CC BY-SA 3.0",
+      "attribution_text": "Photo by Clem23, CC BY-SA 3.0, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://www.openstreetmap.org/node/802556924",
+      "https://en.wikipedia.org/wiki/Petra",
+      "https://whc.unesco.org/en/list/326/"
+    ],
+    "confidence": "verified",
+    "researcher": "Pulga"
+  },
+  {
+    "id": "LPET",
+    "name_en": "Little Petra (Siq al-Barid)",
+    "name_ar": "البتراء الصغيرة (سيق البريد)",
+    "category": "macro_site",
+    "parent_site_id": null,
+    "coordinates": {
+      "lat": 30.3751131,
+      "lng": 35.4509057
+    },
+    "short_description_en": "Little Petra, known in Arabic as Siq al-Barid ('the cold canyon'), is a smaller Nabataean site about 8 km north of Petra, built in the 1st century AD to house traders passing through on the Silk Road. Its 450-metre canyon opens into three wider chambers lined with rock-cut facades, dining halls, and water channels, and one chamber holds rare Nabataean ceiling paintings dated to between 40 BC and 25 AD.",
+    "short_description_ar": "البتراء الصغيرة، المعروفة بالعربية باسم سيق البريد، موقع نبطي أصغر يبعد نحو 8 كم شمال البتراء، بُني في القرن الأول الميلادي لإيواء التجار المارّين على طريق الحرير. يمتد وادٍ ضيق طوله 450 متراً إلى ثلاث ساحات أوسع تحيط بها واجهات منحوتة وقاعات طعام وقنوات مياه، وتحتفظ إحدى غرفها برسوم سقفية نبطية نادرة يعود تاريخها إلى ما بين 40 ق.م و25م.",
+    "history_en": "Little Petra, known in Arabic as Siq al-Barid — 'the cold gorge' — lies about 8 km north of Petra and was built in the 1st century AD as a working annexe to the capital rather than a monumental one. A narrow gorge some 450 metres long opens into three wider courtyards lined with carved facades, dining halls and water channels, the infrastructure of a place where caravans arriving on the trade routes were housed, fed and provisioned. One chamber preserves painted ceiling frescoes dated between roughly 40 BC and AD 25 — the most complete painted scene surviving anywhere in the Nabataean record, and the only one still in place. It falls within Petra's UNESCO World Heritage inscription.",
+    "history_ar": "تقع البتراء الصغيرة، المعروفة بالعربية باسم سيق البريد، على بُعد نحو 8 كم شمال البتراء، وقد بُنيت في القرن الأول الميلادي ملحقاً عملياً للعاصمة لا معلماً تذكارياً. ويفضي مضيق ضيق طوله نحو 450 متراً إلى ثلاث ساحات أوسع تصطف فيها واجهات منحوتة وقاعات طعام وقنوات مياه، وهي بنية مكان كانت تُؤوى فيه القوافل الوافدة على طرق التجارة وتُطعَم وتُزوَّد. وتحتفظ إحدى غرفه برسوم سقفية ملوّنة يعود تاريخها إلى ما بين نحو 40 ق.م و25م، وهي أكمل مشهد مرسوم باقٍ في السجل النبطي كله، والوحيد الذي لا يزال في موضعه الأصلي. ويقع الموقع ضمن إدراج البتراء على قائمة التراث العالمي.",
+    "significance_en": "The painted biclinium here is the single most important surviving example of Nabataean painting — everywhere else only fragments remain, and nowhere else is the scene still in the room it was made for. Little Petra also shows the unglamorous half of the Nabataean economy: not tombs and temples, but the lodging and supply that kept the caravan trade running.",
+    "significance_ar": "البيكلينيوم المرسوم هنا هو أهم مثال باقٍ على التصوير النبطي على الإطلاق، إذ لم يبقَ في غيره إلا شذرات، ولا يوجد مكان آخر لا يزال المشهد فيه في الغرفة التي صُنع لها. كما تُظهر البتراء الصغيرة النصف غير البرّاق من الاقتصاد النبطي: لا المدافن والمعابد، بل الإيواء والتموين الذي أبقى تجارة القوافل قائمة.",
+    "visiting_info": {
+      "best_time_to_visit": "Late afternoon — the gorge is named 'the cold one' for its shade, and the light reaches into the painted chamber late in the day",
+      "difficulty": "easy",
+      "estimated_time_there": "45-60 minutes",
+      "accessibility_notes": "Mostly flat but narrow canyon passage with uneven rock surfaces in places; not wheelchair accessible.",
+      "requires_guide": false,
+      "entrance_fee_notes": "Free to enter; separate site from the main Petra gate, about 8 km north, reached by road"
+    },
+    "narration_script_en": "This was the service entrance to the Nabataean world. Caravans coming in off the trade routes stopped here first — those carved rooms up the steps are dining halls, and the channels in the rock are for water, because six hundred camels arriving at once is a logistics problem before it's anything else. Go up the stairs on your right and look at the ceiling: those painted vines and figures are the most complete Nabataean painting left anywhere in the world, and the only one still in the room it was made for. It's a fifteen-minute walk end to end, and it is usually almost empty.",
+    "narration_script_ar": "كان هذا مدخل الخدمة إلى العالم النبطي. فالقوافل القادمة من طرق التجارة كانت تتوقف هنا أولاً، وتلك الغرف المنحوتة أعلى الدرج قاعات طعام، والقنوات في الصخر للماء، لأن وصول ستمئة جمل دفعة واحدة مسألة لوجستية قبل أن يكون أي شيء آخر. اصعد الدرج عن يمينك وانظر إلى السقف: تلك الكروم والأشكال المرسومة هي أكمل تصوير نبطي باقٍ في العالم، والوحيد الذي لا يزال في الغرفة التي صُنع لها. والمسير من طرفه إلى طرفه خمس عشرة دقيقة، وهو خالٍ تقريباً في العادة.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/05_Little_Petra_Canyon_Trail_-_The_Trail_Starts_at_the_End_of_Little_Petra_-_panoramio.jpg",
+      "source": "Wikimedia Commons",
+      "license": "CC BY-SA 3.0",
+      "attribution_text": "Photo by hikinginjordan, CC BY-SA 3.0, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://www.openstreetmap.org/node/546597034",
+      "https://en.wikipedia.org/wiki/Little_Petra",
+      "https://whc.unesco.org/en/list/326/",
+      "https://www.wikidata.org/wiki/Q2284751"
+    ],
+    "confidence": "verified",
+    "researcher": "Pulga"
+  },
+  {
+    "id": "BAS",
+    "name_en": "Basta (Neolithic site)",
+    "name_ar": "بسطة",
+    "category": "macro_site",
+    "parent_site_id": null,
+    "coordinates": {
+      "lat": 30.233,
+      "lng": 35.533
+    },
+    "short_description_en": "Basta is a Pre-Pottery Neolithic B settlement founded around 7000 BC and abandoned roughly two thousand years later, one of the earliest known places in the region where people combined farming with settled village life. Excavations found circular limestone houses with wooden floors, along with grinding stones, flint tools, and zoomorphic figurines suggesting early religious practice. At its height the village held around 1,000 people, making it, alongside nearby Beidha, one of the largest known settlements of its era; researchers still debate whether its abandonment came from overpopulation, earthquakes, or resource strain.",
+    "short_description_ar": "بسطة موقع استيطاني من العصر الحجري الحديث قبل الفخاري (ب)، تأسس نحو عام 7000 ق.م وهُجر بعد نحو ألفي عام، وهو من أقدم الأماكن المعروفة في المنطقة التي جمع سكانها بين الزراعة والاستقرار القروي. كشفت التنقيبات عن بيوت دائرية من الحجر الجيري بأرضيات خشبية، إلى جانب أدوات طحن وأدوات صوانية وتماثيل على هيئة حيوانات تشير إلى ممارسات دينية مبكرة. بلغ عدد سكان القرية في أوجها نحو 1000 نسمة، ما يجعلها إلى جانب بيضا من أكبر المستوطنات المعروفة في عصرها، فيما ما زال الباحثون يختلفون حول سبب هجرها بين الاكتظاظ السكاني أو الزلازل أو استنزاف الموارد.",
+    "history_en": "Basta was founded around 7000 BC and belongs to the Pre-Pottery Neolithic B, the period when people in this region first settled permanently, grew crops and kept domesticated animals. Its houses were built of local limestone, and the dead were buried not in a cemetery but beneath the floors of the homes themselves — a practice archaeologists read as tying a family to its house and, through that, inventing something like ownership of place. Because the settlement predates pottery, its surviving household goods are stone and bone: grinding tools, mills, flint arrowheads, and small carved animal figures whose purpose may have been religious. At its height Basta held perhaps a thousand people and worked as a regional centre for trade and for making stone tools.",
+    "history_ar": "أُسّست بسطة نحو عام 7000 ق.م وتنتمي إلى العصر الحجري الحديث ما قبل الفخاري (ب)، وهي الحقبة التي استقر فيها الناس في هذه المنطقة استقراراً دائماً لأول مرة وزرعوا المحاصيل وربّوا الحيوانات المدجّنة. وبُنيت بيوتها من الحجر الجيري المحلي، ودُفن الموتى لا في مقبرة بل تحت أرضيات البيوت نفسها، وهي ممارسة يقرأها الأثريون على أنها ربط للعائلة ببيتها، ومن خلاله ابتكار لشيء يشبه ملكية المكان. ولأن المستوطنة تسبق اختراع الفخار، فإن أدواتها المنزلية الباقية من الحجر والعظم: أدوات طحن وأرحية ورؤوس سهام من الصوان وتماثيل حيوانية صغيرة منحوتة ربما كان لها معنى ديني. وفي أوجها ضمّت بسطة نحو ألف نسمة وعملت مركزاً إقليمياً للتجارة ولصناعة الأدوات الحجرية.",
+    "significance_en": "Basta is one of the earliest places anywhere with a settled, farming population, which puts a site in Ma'an governorate at the beginning of one of the largest changes in human history — the shift from moving with the herds to staying put. It matters for the same reason Petra does, nine thousand years earlier and with none of the recognition.",
+    "significance_ar": "بسطة من أقدم المواضع في العالم التي عرفت سكاناً مستقرين يمارسون الزراعة، وهو ما يضع موقعاً في محافظة معان عند بداية واحد من أكبر التحولات في تاريخ البشر: الانتقال من الترحال مع القطعان إلى الاستقرار. وهي مهمة للسبب نفسه الذي يجعل البتراء مهمة، قبلها بتسعة آلاف عام ودون أي من الشهرة.",
+    "visiting_info": {
+      "best_time_to_visit": "Morning; the site is an open excavation with no shade, about 36 km southeast of Petra",
+      "difficulty": "easy",
+      "estimated_time_there": "30-45 minutes",
+      "accessibility_notes": "Open excavation area with uneven, unpaved ground and no visitor facilities; not accessible for reduced mobility.",
+      "requires_guide": true,
+      "entrance_fee_notes": "Open archaeological site with no visitor gate; UNKNOWN - flag for team review for whether access is formally regulated"
+    },
+    "narration_script_en": "There is nothing dramatic to look at here, and that is worth sitting with for a second — this is one of the first places on earth where people stopped moving. Nine thousand years ago, families here built limestone houses, planted crops, and kept animals, and when someone died they buried them under the floor of the house rather than outside the village. Archaeologists think that was the point: your dead were in your home, so the home was yours. Everything they owned was stone and bone — they lived before anyone here had thought of pottery.",
+    "narration_script_ar": "لا يوجد هنا ما يبهر النظر، وهذا يستحق أن تتوقف عنده لحظة: فهذا من أوائل المواضع على وجه الأرض التي توقف فيها الناس عن الترحال. قبل تسعة آلاف عام بنت عائلات هنا بيوتاً من الحجر الجيري وزرعت المحاصيل وربّت الحيوانات، وحين كان أحدهم يموت دفنوه تحت أرضية البيت لا خارج القرية. ويرى الأثريون أن هذا هو المقصود: موتاك في بيتك، فالبيت لك. وكل ما امتلكوه كان حجراً وعظماً، فقد عاشوا قبل أن يخطر الفخار ببال أحد هنا.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Basta_01.jpg",
+      "source": "Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "attribution_text": "Photo by Ana al'ain, CC BY-SA 4.0, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Basta_%28archaeological_site%29",
+      "https://en.wikipedia.org/wiki/Basta_(archaeological_site)"
+    ],
+    "confidence": "verified",
+    "researcher": "Pulga"
+  },
+  {
+    "id": "BAJ",
+    "name_en": "Ba'ja (Neolithic site)",
+    "name_ar": "بعجة",
+    "category": "macro_site",
+    "parent_site_id": null,
+    "coordinates": {
+      "lat": 30.4134083,
+      "lng": 35.4612934
+    },
+    "short_description_en": "Ba'ja is one of the largest Neolithic villages found in Jordan, settled around 7000 BC and reachable today only by climbing a narrow, steep canyon route to its perch at 1,160 metres. Its houses were multi-storey, with walls up to 4.2 metres thick built into the slope and internal staircases connecting basement levels, and stone axes and bowls were found ritually buried within the walls and floors. An ossuary held the remains of three adults and nine children with elaborate grave goods - a multi-strand bead necklace, a carved pendant, arrowheads, flint daggers, and mother-of-pearl jewellery, all covered in red ochre - pointing to a community with genuine craft specialisation in sandstone-ring making, living by herding and hunting.",
+    "short_description_ar": "بعجة واحدة من أكبر القرى النيوليتية المكتشفة في الأردن، استوطنت نحو عام 7000 ق.م، ولا يمكن الوصول إليها اليوم إلا عبر تسلق ممر ضيق شديد الانحدار يؤدي إلى موقعها على ارتفاع 1160 متراً. كانت بيوتها متعددة الطوابق بجدران يصل سمكها إلى 4.2 أمتار مبنية على المنحدر، مع سلالم داخلية تصل الطوابق السفلية، وعُثر على فؤوس وأوعية حجرية دُفنت طقسياً داخل الجدران والأرضيات. ضمت إحدى المدافن الجماعية رفات ثلاثة بالغين وتسعة أطفال مع مقتنيات جنائزية غنية شملت عقداً من عدة صفوف من الخرز وقلادة منحوتة ورؤوس سهام وخناجر صوانية وحلياً من الصدف، وكلها مغطاة بمسحوق المغرة الأحمر، ما يدل على مجتمع متخصص فعلياً في صناعة الخواتم الحجرية ويعيش على الرعي والصيد.",
+    "history_en": "Ba'ja is a Pre-Pottery Neolithic B village of around 7000 BC, built on a hilltop at about 1,160 metres and reachable only by climbing a narrow, steep canyon — a defensive position so awkward that it shaped the settlement itself. With only 1.2 to 1.5 hectares of usable ground for a presumed 600 people, houses were pressed against slopes of up to 45 degrees and packed against each other, many with more than one storey linked by internal staircases and walls up to 4.2 metres thick. Stone axes and bowls were buried deliberately between walls and under floors, alongside human and animal remains. One small room, its walls painted in fresco with abstract and geometric motifs, held the bones of three adults and nine young children, buried at different times with earlier bones pushed aside to make room.",
+    "history_ar": "بعجة قرية من العصر الحجري الحديث ما قبل الفخاري (ب) تعود إلى نحو عام 7000 ق.م، بُنيت على قمة تل على ارتفاع نحو 1160 متراً، ولا يُوصل إليها إلا بتسلق واد ضيق شديد الانحدار، وهو موقع دفاعي عسير إلى حد أنه شكّل المستوطنة نفسها. فمع مساحة صالحة للاستعمال لا تتجاوز 1.2 إلى 1.5 هكتار لنحو 600 نسمة مفترضين، أُلصقت البيوت بمنحدرات تبلغ 45 درجة وتراصّت بعضها إلى بعض، وكان لكثير منها أكثر من طابق تربطها سلالم داخلية وجدران يصل سمكها إلى 4.2 متر. ودُفنت فؤوس وأوعية حجرية عن قصد بين الجدران وتحت الأرضيات، إلى جانب رفات بشرية وحيوانية. واحتوت غرفة صغيرة مزيّنة جدرانها برسوم جصية ذات زخارف تجريدية وهندسية على عظام ثلاثة بالغين وتسعة أطفال صغار، دُفنوا في أوقات مختلفة مع إزاحة العظام الأقدم جانباً لإفساح المجال.",
+    "significance_en": "Ba'ja is one of the largest Neolithic villages in Jordan and among the most revealing, because its cramped, vertical, multi-storey building is a direct answer to a hostile site — the earliest kind of urban problem-solving we can still walk through. The painted ossuary is rarer still: deliberate, repeated burial in a decorated room, nine thousand years ago.",
+    "significance_ar": "بعجة من أكبر قرى العصر الحجري الحديث في الأردن ومن أكثرها إفصاحاً، لأن بناءها المتضاغط الرأسي المتعدد الطوابق جواب مباشر عن موقع عسير، وهو أقدم نوع من حلّ المشكلات العمرانية لا يزال بوسعنا السير فيه. أما مستودع العظام المرسوم فأندر: دفن متعمد متكرر في غرفة مزخرفة قبل تسعة آلاف عام.",
+    "visiting_info": {
+      "best_time_to_visit": "Early morning, cool weather only; the canyon approach involves scrambling and should not be attempted in heat",
+      "difficulty": "difficult",
+      "estimated_time_there": "2-3 hours including the climb",
+      "accessibility_notes": "Only reachable by climbing a narrow, steep canyon trail; not accessible for reduced mobility.",
+      "requires_guide": true,
+      "entrance_fee_notes": "No gate or fee; access is by canyon scramble and a local guide is strongly recommended"
+    },
+    "narration_script_en": "Getting up here is hard, and it was meant to be — the only way in is the canyon you just climbed. Six hundred people lived on a patch of hilltop barely a hectare across, so they built upward instead of outward: houses of two storeys and more, walls four metres thick, stairs inside, everything pressed against a slope. In one small room they painted the walls and laid three adults and nine children to rest, returning over years and moving the older bones aside to make space. All of this is nine thousand years old.",
+    "narration_script_ar": "الصعود إلى هنا شاق، وقد أُريد له أن يكون كذلك، فالمدخل الوحيد هو الوادي الذي تسلقته للتو. عاش ستمئة إنسان على رقعة من قمة التل لا تكاد تبلغ هكتاراً، فبنوا إلى الأعلى بدل الاتساع: بيوت من طابقين فأكثر، وجدران سمكها أربعة أمتار، وسلالم في الداخل، وكل شيء ملتصق بالمنحدر. وفي غرفة صغيرة زيّنوا الجدران بالرسوم وأرقدوا ثلاثة بالغين وتسعة أطفال، عائدين إليها على مدى سنين ويزيحون العظام الأقدم جانباً لإفساح المكان. وكل هذا عمره تسعة آلاف عام.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Ba%27ja_01.jpg",
+      "source": "Wikimedia Commons",
+      "license": "CC BY-SA 3.0",
+      "attribution_text": "Photo by Ana al'ain, CC BY-SA 3.0, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://www.openstreetmap.org/node/8855258827",
+      "https://en.wikipedia.org/wiki/Ba%27ja"
+    ],
+    "confidence": "verified",
+    "researcher": "Pulga"
+  },
+  {
+    "id": "BEI",
+    "name_en": "Beidha (Neolithic site)",
+    "name_ar": "البيضا",
+    "category": "macro_site",
+    "parent_site_id": null,
+    "coordinates": {
+      "lat": 30.37078,
+      "lng": 35.44776
+    },
+    "short_description_en": "Beidha holds three separate occupation layers - a Natufian camp from the 11th millennium BC, a Pre-Pottery Neolithic B village from around 7200-6500 BC, and a later Nabataean phase from the 1st-2nd century BC - making it one of the clearest records anywhere of the shift from hunting and gathering to settled farming. Diana Kirkbride's excavations from 1957, continued later by Brian Byrd, traced the village's houses changing from round semi-subterranean huts to rectangular above-ground buildings, alongside evidence of early barley and emmer wheat cultivation, goat herding, and long-distance trade in Anatolian obsidian and Red Sea shell. The Petra Regional Authority now manages the site for visitors, with life-size reconstructed Neolithic houses at the entrance.",
+    "short_description_ar": "يضم موقع بيضا ثلاث طبقات استيطانية منفصلة: معسكر نطوفي من الألف الحادي عشر قبل الميلاد، وقرية من العصر الحجري الحديث قبل الفخاري (ب) يعود تاريخها إلى نحو 7200-6500 ق.م، ثم طور نبطي متأخر من القرنين الأول والثاني قبل الميلاد، ما يجعله أحد أوضح السجلات في أي مكان للتحول من الصيد وجمع الثمار إلى الاستقرار الزراعي. تتبعت تنقيبات ديانا كيركبرايد منذ عام 1957، التي واصلها لاحقاً براين بيرد، تطور بيوت القرية من أكواخ دائرية شبه جوفية إلى مبان مستطيلة فوق سطح الأرض، إلى جانب أدلة على زراعة مبكرة للشعير والقمح العلسي وتربية الماعز، وتجارة بعيدة المدى بحجر السج الأناضولي وصدف البحر الأحمر. تتولى سلطة إقليم البترا اليوم إدارة الموقع للزوار، مع نماذج بالحجم الطبيعي لبيوت نيوليتية معاد بناؤها عند المدخل.",
+    "history_en": "Beidha — al-Bayda, 'the white one' — was occupied in three distinct eras. First came a Natufian seasonal camp in the 11th millennium BC, used again and again for hunting, with no permanent buildings, storage or burials. Then, between about 7200 and 6500 BC, it became one of the earliest villages known: 50 to 115 people at first, living in round houses with sunken floors behind a wall, cultivating barley and emmer wheat at an early stage of domestication, herding goats and hunting ibex. Fire destroyed the village around 6650 BC and it was rebuilt with rectangular above-ground buildings and specialised workshops, growing to perhaps 235 people before being abandoned around 6500 BC for reasons still unknown. Nabataeans occupied the site again in the 1st or 2nd century BC. First excavated by Diana Kirkbride from 1957, and later by Brian Byrd, it is included in Petra's UNESCO World Heritage inscription.",
+    "history_ar": "سُكنت البيضا في ثلاث حقب متمايزة. أولاها مخيّم نطوفي موسمي في الألف الحادية عشرة قبل الميلاد، استُخدم مراراً للصيد، بلا مبانٍ دائمة ولا مخازن ولا مدافن. ثم صارت بين نحو 7200 و6500 ق.م واحدة من أقدم القرى المعروفة: من 50 إلى 115 نسمة في البداية، يسكنون بيوتاً دائرية غائرة الأرضيات خلف سور، ويزرعون الشعير والقمح المكرونة في طور مبكر من التدجين، ويرعون الماعز ويصطادون الوعول. ودمّرت النار القرية نحو 6650 ق.م فأُعيد بناؤها بمبانٍ مستطيلة فوق الأرض وورش متخصصة، ونمت إلى نحو 235 نسمة قبل أن تُهجر نحو 6500 ق.م لأسباب لا تزال مجهولة. ثم سكنها الأنباط مجدداً في القرن الأول أو الثاني قبل الميلاد. وقد نقّبت فيها ديانا كيركبرايد أول مرة عام 1957 ثم براين بيرد، وهي مدرجة ضمن إدراج البتراء على قائمة التراث العالمي لليونسكو.",
+    "significance_en": "Beidha records a change that shaped every city since: the move from round houses to right-angled ones. Rectangular rooms can share walls and be added to, and archaeologists read that shift here as a step toward the kind of dense settlement that eventually becomes urban life. Obsidian from Anatolia and mother-of-pearl from the Red Sea found on site also show these villagers were already connected to long-distance exchange nine thousand years ago.",
+    "significance_ar": "تسجّل البيضا تحولاً شكّل كل مدينة بعده: الانتقال من البيوت الدائرية إلى البيوت القائمة الزوايا. فالغرف المستطيلة يمكن أن تتشارك الجدران وأن يُضاف إليها، ويقرأ الأثريون هذا التحول هنا خطوةً نحو نمط الاستيطان الكثيف الذي يصير في النهاية حياة مدينية. كما يدل الأوبسيديان القادم من الأناضول وعرق اللؤلؤ من البحر الأحمر، مما عُثر عليه في الموقع، على أن هؤلاء القرويين كانوا موصولين بالتبادل بعيد المدى قبل تسعة آلاف عام.",
+    "visiting_info": {
+      "best_time_to_visit": "Combine it with Little Petra — the two are adjacent, and morning light is best on the exposed foundations",
+      "difficulty": "easy",
+      "estimated_time_there": "30-45 minutes",
+      "accessibility_notes": "Open-air excavation with uneven, unpaved paths across the site; not accessible for reduced mobility.",
+      "requires_guide": true,
+      "entrance_fee_notes": "Adjacent to Little Petra (Siq al-Barid); free to enter"
+    },
+    "narration_script_en": "Look at the foundations in front of you and notice the shape changes. The older houses here are round; the later ones are rectangular — and that sounds trivial until you realise a rectangle can share a wall with its neighbour and a circle cannot. That single change is how villages become dense enough to turn into towns, and it happened here around nine thousand years ago, after a fire burned the first village down. They were already trading, too: obsidian from Turkey and shell from the Red Sea have both been found in this ground.",
+    "narration_script_ar": "انظر إلى الأساسات أمامك ولاحظ كيف يتغير الشكل. البيوت الأقدم هنا دائرية، والأحدث مستطيلة، وقد يبدو ذلك تافهاً حتى تدرك أن المستطيل يستطيع أن يتشارك جداراً مع جاره بينما الدائرة لا تستطيع. هذا التغيير وحده هو ما يجعل القرى كثيفة بما يكفي لتصير بلدات، وقد حدث هنا قبل نحو تسعة آلاف عام، بعد أن أحرقت النار القرية الأولى. وكانوا يتاجرون أيضاً: فقد عُثر في هذه الأرض على أوبسيديان من تركيا وصدف من البحر الأحمر.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Beidha_(Ruins).jpg",
+      "source": "Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "attribution_text": "Photo by Bashar Tabbah, CC BY-SA 4.0, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Beidha_%28archaeological_site%29",
+      "https://en.wikipedia.org/wiki/Beidha_(archaeological_site)",
+      "https://whc.unesco.org/en/list/326/"
+    ],
+    "confidence": "verified",
+    "researcher": "Pulga"
+  },
+  {
+    "id": "JHR",
+    "name_en": "Jabal Harun (Mount Hor / Tomb of Aaron)",
+    "name_ar": "جبل النبي هارون",
+    "category": "macro_site",
+    "parent_site_id": null,
+    "coordinates": {
+      "lat": 30.316791,
+      "lng": 35.406715
+    },
+    "short_description_en": "Jebel Harun, the highest point in the Petra area at about 1,350 metres, is venerated as the burial place of Aaron, brother of Moses. A mosque built on the summit in the 14th century marks the traditional tomb, standing over the remains of an earlier Byzantine church, and a 5th-century memorial complex in the saddle just west of the peak grew into a major monastic pilgrimage centre in its own right. The trail to the summit runs roughly 4 hours each way from central Petra past rock-cut water cisterns and Nabataean inscriptions, with no formal marked entrance, so hiring a local guide is standard practice.",
+    "short_description_ar": "يُعد جبل هارون، أعلى نقطة في منطقة البترا على ارتفاع نحو 1350 متراً، موقعاً مقدساً يُعتقد أنه مدفن هارون شقيق النبي موسى. يقوم على قمته مسجد بُني في القرن الرابع عشر يعلّم المقام التقليدي، وهو مشيد فوق بقايا كنيسة بيزنطية أقدم، فيما نشأ في السرج الواقع غرب القمة مجمع تذكاري من القرن الخامس تطور إلى مركز حج رهباني كبير بحد ذاته. يمتد المسار إلى القمة نحو أربع ساعات سيراً من وسط البترا، مروراً بآبار مياه منحوتة في الصخر ونقوش نبطية، ولا يوجد له مدخل رسمي محدد، لذلك يُعد الاستعانة بدليل محلي أمراً معتاداً.",
+    "history_en": "Jabal Harun — 'the mountain of the Prophet Aaron' — is a twin-peaked mountain of about 1,350 metres in the Edomite range near Petra, identified since antiquity with the biblical Mount Hor where Aaron, the brother of Moses, died and was buried. Josephus is the basis of that identification, though it has been disputed. A memorial church built on the mountain in the 5th century AD grew into a monastic and pilgrimage centre; a document among the Petra Papyri, dated 573, calls it 'the House of our Lord the Saint High-Priest Aaron'. The Byzantine monastery's remains still lie in the saddle west of the summit. On the peak itself stands a Mamluk-period white shrine, traditionally the Tomb of Aaron, built over the ruins of the Byzantine church.",
+    "history_ar": "جبل النبي هارون جبل ذو قمتين يرتفع نحو 1350 متراً في سلسلة جبال أدوم قرب البتراء، ويُعرَّف منذ القدم بجبل هور المذكور في الكتاب المقدس حيث توفي هارون أخو موسى ودُفن. ويستند هذا التعريف إلى يوسيفوس، وإن كان محل خلاف. وقد نمت كنيسة تذكارية بُنيت على الجبل في القرن الخامس الميلادي حتى صارت مركزاً رهبانياً وحجّياً، وتسميها وثيقة من برديات البتراء مؤرخة عام 573م «بيت سيدنا القديس رئيس الكهنة هارون». ولا تزال بقايا الدير البيزنطي في السرج الواقع غرب القمة. أما على القمة نفسها فيقوم مقام أبيض من العصر المملوكي يُعرف تقليدياً بضريح هارون، بُني فوق أنقاض الكنيسة البيزنطية.",
+    "significance_en": "Jabal Harun is the one place in the governorate held sacred in Judaism, Christianity and Islam at once, and it has drawn pilgrims continuously for at least sixteen centuries — a Byzantine monastery, then a Mamluk shrine, on the same summit. Its white dome is visible from much of Petra, which makes it the horizon line of the whole site.",
+    "significance_ar": "جبل النبي هارون هو الموضع الوحيد في المحافظة الذي تقدّسه اليهودية والمسيحية والإسلام معاً، وقد ظل يجتذب الحجاج بلا انقطاع منذ ستة عشر قرناً على الأقل: دير بيزنطي ثم مقام مملوكي على القمة ذاتها. وقبته البيضاء مرئية من معظم أنحاء البتراء، ما يجعلها خط الأفق للموقع كله.",
+    "visiting_info": {
+      "best_time_to_visit": "Start at dawn — it is a long exposed ascent and the summit is best reached before the middle of the day",
+      "difficulty": "difficult",
+      "estimated_time_there": "5-6 hours round trip from Petra",
+      "accessibility_notes": "Strenuous multi-hour mountain trail with no formal entrance or marked path; a local guide is required; not accessible for reduced mobility.",
+      "requires_guide": true,
+      "entrance_fee_notes": "No formal entrance or gate; reached on foot or by donkey from inside Petra, and a local guide is required in practice"
+    },
+    "narration_script_en": "That white dome on the peak is the horizon of Petra — you can see it from almost anywhere in the valley. Tradition holds this is where Aaron, the brother of Moses, died and was buried, and people have been climbing up to it for at least sixteen hundred years. There was a church here in the fifth century, then a monastery whose ruins are still in the dip just west of the summit, and the shrine you can see now was built over the church in Mamluk times. Jews, Christians and Muslims all hold this mountain sacred, which is rare anywhere.",
+    "narration_script_ar": "تلك القبة البيضاء على القمة هي أفق البتراء، تراها من كل مكان في الوادي تقريباً. تقول الرواية إن هارون أخا موسى توفي هنا ودُفن، والناس يصعدون إليه منذ ألف وستمئة عام على الأقل. كانت هنا كنيسة في القرن الخامس، ثم دير لا تزال أطلاله في المنخفض غرب القمة مباشرة، والمقام الذي تراه الآن بُني فوق الكنيسة في العهد المملوكي. ويقدّس هذا الجبل اليهود والمسيحيون والمسلمون جميعاً، وهو أمر نادر في أي مكان.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Mt_Harun_from_Taybe.JPG",
+      "source": "Wikimedia Commons",
+      "license": "CC BY-SA 3.0",
+      "attribution_text": "Photo by Uri Juda, CC BY-SA 3.0, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://www.openstreetmap.org/node/3379067633",
+      "https://en.wikipedia.org/wiki/Mount_Hor",
+      "https://www.visitpetra.jo/en/Trail/20",
+      "https://www.wikidata.org/wiki/Q2915115"
+    ],
+    "confidence": "verified",
+    "researcher": "Pulga"
+  },
+  {
+    "id": "DAJ",
+    "name_en": "Dajaniya Roman Fort (Kastell Dajaniya)",
+    "name_ar": "قلعة الدجانية الرومانية",
+    "category": "castle",
+    "parent_site_id": null,
+    "coordinates": {
+      "lat": 30.55272,
+      "lng": 35.76163
+    },
+    "short_description_en": "A remarkably well-preserved late Roman military camp on a basalt outcrop in the desert west of Al-Husseiniyeh, built as a front-line post of the Limes Arabicus.",
+    "short_description_ar": "معسكر عسكري روماني متأخر محفوظ إلى حد لافت، يقوم على نتوء بازلتي في الصحراء غرب الحسينية، وقد بُني موقعاً أمامياً على خط الليمس العربي.",
+    "history_en": "Dajaniya was raised as an almost square fortification on a flood-safe basalt outcrop, part of the deep border system Rome maintained along the Limes Arabicus. It belonged first to the province of Arabia and was transferred to the newly created province of Palaestina Tertia during the reign of Diocletian, between 284 and 305. It sat on a road running forward of the Via Traiana Nova, the highway Trajan's engineers laid between 107 and 114 to hold the territory Rome had just annexed from the Nabataeans. The fort anchored a local network: the legionary base at Udhruh lies about 30 km to its south-southwest, and a chain of watchtowers linked it northeast to the small garrison at Jurf ed-Darawish.",
+    "history_ar": "أُقيمت الدجانية تحصيناً شبه مربع على نتوء بازلتي في مأمن من السيول، ضمن منظومة الحدود العميقة التي حفظت بها روما خط الليمس العربي. وتبعت أولاً ولاية العربية ثم نُقلت إلى ولاية فلسطين الثالثة المستحدثة في عهد الإمبراطور ديوكلتيانوس بين عامي 284 و305م. وكانت تقع على طريق يتقدم طريق تراجان الجديد، وهو الطريق الذي شقّه مهندسو تراجان بين عامي 107 و114م لضبط الأراضي التي ضمّتها روما لتوّها من الأنباط. وقد شكّلت القلعة مرتكز شبكة محلية: فقاعدة الفيلق في أذرح تبعد نحو 30 كم جنوب غربها، وسلسلة من أبراج المراقبة تربطها شمال شرقاً بالحامية الصغيرة في جرف الدراويش.",
+    "significance_en": "Dajaniya is one of the best-preserved late Roman garrisons in Jordan, which makes it a standing record of how the empire actually held a desert frontier — not with a wall, but with forts, roads and lines of sight. That same preservation has made it a target for looting, so its condition is not guaranteed to last.",
+    "significance_ar": "الدجانية من أفضل الحاميات الرومانية المتأخرة حفظاً في الأردن، ما يجعلها سجلاً قائماً لكيفية إمساك الإمبراطورية فعلياً بحدود صحراوية: لا بجدار، بل بقلاع وطرق وخطوط رؤية. وقد جعلها هذا الحفظ نفسه هدفاً للنبش غير المشروع، فحالتها ليست مضمونة البقاء.",
+    "visiting_info": {
+      "best_time_to_visit": "Cooler months and early in the day; it is open desert with no shade",
+      "difficulty": "moderate",
+      "estimated_time_there": "45-60 minutes",
+      "accessibility_notes": "Remote desert site on a raised basalt outcrop with no paths, no signage and no facilities; not accessible for reduced mobility and reached only by vehicle over rough ground.",
+      "requires_guide": true,
+      "entrance_fee_notes": "Unenclosed archaeological site with no gate; free, but UNKNOWN - flag for team review for whether Department of Antiquities permission is needed"
+    },
+    "narration_script_en": "You are looking at the edge of the Roman Empire. This fort is one of the best-preserved in Jordan, and it was built on this black basalt rise for two reasons — the flood water goes around it, and from up here you can see anyone coming for miles. It was not alone: there was a legion at Udhruh thirty kilometres that way, and a line of watchtowers signalling northeast. What you are standing in is not a ruin of a city, it is a piece of a border.",
+    "narration_script_ar": "أنت تنظر إلى حافة الإمبراطورية الرومانية. هذه القلعة من أفضل ما بقي محفوظاً في الأردن، وقد بُنيت على هذا المرتفع البازلتي الأسود لسببين: السيول تدور حوله، ومن هنا ترى أي قادم من على بُعد أميال. ولم تكن وحدها، فقد كان هناك فيلق في أذرح على بعد ثلاثين كيلومتراً في ذلك الاتجاه، وخط من أبراج المراقبة يرسل الإشارات شمال شرقاً. وما تقف فيه ليس أطلال مدينة، بل قطعة من حدود.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kastell_Dajaniya%2C_Limes_Arabicus%2C_1989.svg",
+      "source": "Wikimedia Commons",
+      "license": "CC BY-SA 3.0",
+      "attribution_text": "vectorized by, CC BY-SA 3.0, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://de.wikipedia.org/wiki/Kastell_Dajaniya",
+      "https://www.wikidata.org/wiki/Q100273568"
+    ],
+    "confidence": "needs_review",
+    "researcher": "Pulga",
+    "notes": "NEW in Phase 2 (Job B). Boundary-verified: Wikidata P131 = Ma'an Governorate (Q606340) and coordinates fall inside the Ma'an bounding box. Image is a 1989 site plan, not a photograph — fine as a record, not usable as a camera-guide reference."
+  },
+  {
+    "id": "RTI",
+    "name_en": "Rujm Tawil Ifjeij",
+    "name_ar": "رجم طويل افجيج",
+    "category": "castle",
+    "parent_site_id": null,
+    "coordinates": {
+      "lat": 30.57124,
+      "lng": 35.71205
+    },
+    "short_description_en": "An Iron Age tower fortification on the summit of a 1,242 m extinct volcanic cone, reused as a military lookout from Nabataean-Roman times into the early Byzantine period.",
+    "short_description_ar": "تحصين برجي من العصر الحديدي على قمة مخروط بركاني خامد يبلغ ارتفاعه 1242 متراً، أُعيد استخدامه مرصداً عسكرياً من العهد النبطي الروماني حتى مطلع العهد البيزنطي.",
+    "history_en": "The tower was first built in the Iron Age on the highest point of Jebel ed-Dajaniya, an extinct volcanic cone that dominates the country around it. Later occupants found the position too useful to abandon, and it was garrisoned again from the early Roman-Nabataean period through to early Byzantine times. It stands about five kilometres north-northwest of the Dajaniya fort, overlooking the steep drop to Wadi Iseimir, and two further prehistoric fortifications — Rujm Ras el-Hala and Rujm el-Jeheirah — were visible from it. The biblical archaeologist Nelson Glueck surveyed the site on 25 May 1934, and the Edom Survey Project examined it again in 1984.",
+    "history_ar": "بُني البرج أول مرة في العصر الحديدي على أعلى نقطة في جبل الدجانية، وهو مخروط بركاني خامد يهيمن على ما حوله من الأرض. ووجد من جاء بعدهم الموقع أنفع من أن يُترك، فأُعيدت إليه الحامية من مطلع العهد الروماني النبطي حتى مطلع العهد البيزنطي. ويقع على بُعد نحو خمسة كيلومترات شمال غرب قلعة الدجانية، مطلاً على الهبوط الحاد إلى وادي إسيمر، وكان يُرى منه تحصينان آخران من عصور ما قبل التاريخ هما رجم رأس الحلا ورجم الجهيرة. وقد مسح الموقعَ عالمُ الآثار التوراتي نلسون غلوك في 25 أيار 1934، ثم فحصه مشروع مسح أدوم عام 1984.",
+    "significance_en": "Rujm Tawil Ifjeij shows that the Roman frontier here was not built from nothing — the Romans inherited a landscape whose high points had already been fortified for a thousand years and simply reoccupied them. Its intervisibility with the Dajaniya fort and with two other prehistoric towers makes the signalling logic of the whole system legible on the ground.",
+    "significance_ar": "يُظهر رجم طويل افجيج أن الحدود الرومانية هنا لم تُبنَ من العدم، فقد ورث الرومان أرضاً كانت مرتفعاتها محصّنة منذ ألف عام واكتفوا بإعادة شغلها. وتَرائيه مع قلعة الدجانية ومع برجين آخرين من عصور ما قبل التاريخ يجعل منطق الإشارات في المنظومة كلها مقروءاً على الأرض.",
+    "visiting_info": {
+      "best_time_to_visit": "Early morning in the cooler months; the summit is fully exposed",
+      "difficulty": "difficult",
+      "estimated_time_there": "60-90 minutes including the ascent",
+      "accessibility_notes": "A climb to the top of a volcanic cone on unmade ground with no path or handrail; not accessible, and not advisable alone.",
+      "requires_guide": true,
+      "entrance_fee_notes": "Open hilltop site with no gate or fee"
+    },
+    "narration_script_en": "Climb to the top of this old volcano and you will understand instantly why people fortified it. You can see for miles in every direction, which is exactly why there has been a tower up here since the Iron Age — and why the Nabataeans, the Romans and the Byzantines all reused it rather than building somewhere new. The big fort at Dajaniya is five kilometres that way, and on a clear day the garrisons could signal to each other. Nelson Glueck walked up here to record it in 1934.",
+    "narration_script_ar": "اصعد إلى قمة هذا البركان القديم وستدرك على الفور لماذا حصّنه الناس. فأنت ترى أميالاً في كل اتجاه، وهذا بالضبط سبب وجود برج هنا منذ العصر الحديدي، وسبب إعادة استخدامه من الأنباط والرومان والبيزنطيين بدل أن يبنوا في مكان جديد. وقلعة الدجانية الكبيرة على بعد خمسة كيلومترات في ذلك الاتجاه، وفي الأيام الصافية كانت الحاميتان تتبادلان الإشارات. وقد صعد نلسون غلوك إلى هنا ليسجّل الموقع عام 1934.",
+    "image": {
+      "url": "",
+      "source": "",
+      "license": "",
+      "attribution_text": ""
+    },
+    "sources": [
+      "https://de.wikipedia.org/wiki/Rujm_Tawil_Ifjeij",
+      "https://www.wikidata.org/wiki/Q105965869"
+    ],
+    "confidence": "needs_review",
+    "researcher": "Pulga",
+    "notes": "NEW in Phase 2 (Job B). Boundary-verified via Wikidata P131 = Q606340 and the Ma'an bounding box. No freely licensed image found."
+  },
+  {
+    "id": "QIR",
+    "name_en": "Khirbet el-Qirana",
+    "name_ar": "خربة القرانة",
+    "category": "castle",
+    "parent_site_id": null,
+    "coordinates": {
+      "lat": 29.98606,
+      "lng": 35.54052
+    },
+    "short_description_en": "A late Roman and Byzantine fort of the quadriburgium type on the southern edge of the Shera'a highland, with the remains of its camp village beside it.",
+    "short_description_ar": "حصن روماني متأخر وبيزنطي من طراز القلاع رباعية الأبراج على الطرف الجنوبي لهضبة الشراة، وإلى جانبه بقايا القرية العسكرية التابعة له.",
+    "history_en": "Khirbet el-Qirana is a rectangular fortification of the quadriburgium type — a compact fort with a tower at each corner — founded in the late-antique province of Arabia to hold a section of the Limes Arabicus. It stood in the front line of a border system built in depth rather than as a single wall. The garrison was placed at the highest point of a ridge running north off the southern Shera'a highland, about five kilometres east-southeast of the modern village of Ras en-Naqb, where the ground falls away from roughly 1,640 metres to about 1,135 within a few kilometres. A civilian settlement, a vicus, grew up around it, and its traces are still readable beside the fort despite heavy decay.",
+    "history_ar": "خربة القرانة تحصين مستطيل من طراز القلاع رباعية الأبراج، أي حصن متضام له برج في كل ركن، أُسّس في ولاية العربية في العصور القديمة المتأخرة لضبط قطاع من خط الليمس العربي. وقد قام في الخط الأمامي لمنظومة حدودية بُنيت على العمق لا كجدار واحد. ووُضعت الحامية في أعلى نقطة من حرف جبلي يمتد شمالاً عن هضبة الشراة الجنوبية، على بُعد نحو خمسة كيلومترات شرق جنوب شرق قرية رأس النقب الحديثة، حيث تهبط الأرض من نحو 1640 متراً إلى نحو 1135 متراً خلال كيلومترات قليلة. ونشأت حولها قرية مدنية تابعة لا تزال آثارها مقروءة إلى جانب الحصن رغم شدة التهدّم.",
+    "significance_en": "Qirana is one of the few Limes forts in the governorate where the fort and its civilian camp village survive together, so it shows the frontier as a place people lived rather than only garrisoned. Its position also explains itself: from the ridge the whole Hisma desert opens up to the south, which is precisely what the garrison was there to watch.",
+    "significance_ar": "القرانة من قلاع الليمس القليلة في المحافظة التي بقي فيها الحصن وقريته المدنية معاً، فهي تُظهر الحدود مكاناً عاش فيه الناس لا موضع حامية فحسب. وموقعها يفسّر نفسه: فمن الحرف الجبلي تنفتح صحراء حسمى كلها جنوباً، وهو بالضبط ما جاءت الحامية لمراقبته.",
+    "visiting_info": {
+      "best_time_to_visit": "Cooler months, mid-morning, for the long view south over the Hisma",
+      "difficulty": "moderate",
+      "estimated_time_there": "45-60 minutes",
+      "accessibility_notes": "Hilltop ruin on unmade ground at about 1,640 m with no path or railings and a steep drop nearby; not accessible for reduced mobility.",
+      "requires_guide": true,
+      "entrance_fee_notes": "Open archaeological site with no gate or fee"
+    },
+    "narration_script_en": "Stand at the edge here and look south — that whole expanse is the Hisma desert, and watching it was this garrison's entire job. The fort is the rectangle behind you with a tower at each corner, a standard late Roman design, and the scattered stone beside it is not collapse: that was the village where the soldiers' families lived. The Romans put this at 1,640 metres, and the ground drops five hundred metres within a couple of kilometres. Nobody was approaching unseen.",
+    "narration_script_ar": "قف عند الحافة هنا وانظر جنوباً، فذلك الامتداد كله هو صحراء حسمى، ومراقبته كانت مهمة هذه الحامية بأكملها. والحصن هو المستطيل خلفك بأبراجه الأربعة في الأركان، وهو تصميم روماني متأخر معتاد، والحجارة المتناثرة بجانبه ليست انهياراً: تلك كانت القرية التي عاشت فيها عائلات الجنود. وقد وضع الرومان هذا الموقع على ارتفاع 1640 متراً، والأرض تهبط خمسمئة متر خلال كيلومترين. فلم يكن أحد يقترب دون أن يُرى.",
+    "image": {
+      "url": "",
+      "source": "",
+      "license": "",
+      "attribution_text": ""
+    },
+    "sources": [
+      "https://de.wikipedia.org/wiki/Khirbet_el-Qirana",
+      "https://www.wikidata.org/wiki/Q106463830"
+    ],
+    "confidence": "needs_review",
+    "researcher": "Pulga",
+    "notes": "NEW in Phase 2 (Job B). Boundary-verified via Wikidata P131 = Q606340 and the Ma'an bounding box. No freely licensed image found."
+  },
+  {
+    "id": "ABH",
+    "name_en": "Abu Hutana",
+    "name_ar": "أبو حطانة",
+    "category": "castle",
+    "parent_site_id": null,
+    "coordinates": {
+      "lat": 30.57288,
+      "lng": 35.82744
+    },
+    "short_description_en": "A late Roman burgus — a small fortified tower post — on a hill east of Highway 15, one link in the chain of watchposts connecting the Dajaniya fort to the garrison at Jurf ed-Darawish.",
+    "short_description_ar": "برج حراسة روماني متأخر محصّن على تلة شرق الطريق الصحراوي رقم 15، وهو حلقة في سلسلة المراصد التي تربط قلعة الدجانية بحامية جرف الدراويش.",
+    "history_en": "Abu Hutana was a burgus, the small fortified tower the late Roman army used to hold ground between its larger forts. It sits on a hill of the same name southeast of Al Husayniyya al Janubiyya, on a limestone-chert step above older marls, with Wadi Burma draining north from its foot and Wadi ar-Ruwayshid closing it in on the east. Another late Roman stone tower stands within sight five and a half kilometres to the north. The post belonged to a chain of small stations that linked the large fort at Dajaniya, by way of the watchtowers at Tell Burma and Qasr el-Bint, to the small garrison at Jurf ed-Darawish. It was recorded by the British archaeologist George Macrae Findlater during the Dana Archaeological Survey between 1994 and 1996.",
+    "history_ar": "كان أبو حطانة برج حراسة محصّناً من النوع الذي استخدمه الجيش الروماني المتأخر لضبط الأرض بين قلاعه الكبرى. ويقوم على تلة تحمل الاسم نفسه جنوب شرق الحسينية الجنوبية، على درجة من الحجر الجيري والصوّان تعلو مارلاً أقدم، وينحدر وادي برمة شمالاً من سفحها ويحدّها وادي الرويشد من الشرق. ويقوم برج حجري روماني متأخر آخر على مرمى البصر شمالها بخمسة كيلومترات ونصف. وقد انتمى المرصد إلى سلسلة من المحطات الصغيرة تربط قلعة الدجانية الكبيرة، عبر برجَي المراقبة في تل برمة وقصر البنت، بحامية جرف الدراويش الصغيرة. وسجّله عالم الآثار البريطاني جورج ماكري فندليتر ضمن مسح دانا الأثري بين عامي 1994 و1996.",
+    "significance_en": "Abu Hutana is a small thing that explains a big one: on its own it is a tower on a hill, but as one link in a sightline chain it shows how Rome actually controlled this desert — by relay, not by mass. It also sits where the Hejaz Railway and Highway 15 now run, so the same corridor has carried Roman signals, Ottoman pilgrims and modern traffic in turn.",
+    "significance_ar": "أبو حطانة شيء صغير يفسّر شيئاً كبيراً: فهو وحده برج على تلة، لكنه كحلقة في سلسلة تَرائٍ يُظهر كيف سيطرت روما فعلياً على هذه الصحراء، بالتناوب لا بالحشد. كما يقع حيث يمرّ اليوم خط سكة حديد الحجاز والطريق رقم 15، فحمل الممر نفسه إشارات الرومان ثم حجاج العثمانيين ثم حركة المرور الحديثة تباعاً.",
+    "visiting_info": {
+      "best_time_to_visit": "Cooler months; there is no shade and the hill is fully exposed",
+      "difficulty": "moderate",
+      "estimated_time_there": "30 minutes",
+      "accessibility_notes": "Small hilltop ruin reached by a short walk up unmade ground; no path, signage or facilities, and not accessible for reduced mobility.",
+      "requires_guide": true,
+      "entrance_fee_notes": "Open site with no gate or fee"
+    },
+    "narration_script_en": "This is a watchtower, and on its own it is not much to look at — but that is rather the point. Rome did not hold this desert with a wall; it held it with a relay of small posts like this one, each in sight of the next. From here a signal could reach the big fort at Dajaniya, and from there onward. Look west and you will see the highway and the old Hejaz Railway running the same line — this corridor has been the way through for two thousand years.",
+    "narration_script_ar": "هذا برج مراقبة، وهو وحده لا يستوقف النظر كثيراً، لكن هذا هو المقصود تحديداً. لم تمسك روما بهذه الصحراء بجدار، بل بسلسلة متناوبة من المراصد الصغيرة كهذا، كل واحد منها على مرمى بصر التالي. فمن هنا كان بوسع الإشارة أن تبلغ قلعة الدجانية الكبيرة، ومنها إلى ما بعدها. وانظر غرباً تجد الطريق السريع وخط سكة حديد الحجاز القديم يسيران على الخط نفسه، فهذا الممر هو طريق العبور منذ ألفي عام.",
+    "image": {
+      "url": "",
+      "source": "",
+      "license": "",
+      "attribution_text": ""
+    },
+    "sources": [
+      "https://de.wikipedia.org/wiki/Abu_Hutana",
+      "https://www.wikidata.org/wiki/Q100268236"
+    ],
+    "confidence": "needs_review",
+    "researcher": "Pulga",
+    "notes": "NEW in Phase 2 (Job B). Boundary-verified via Wikidata P131 = Q606340 and the Ma'an bounding box. No freely licensed image found — the Commons search returned an unrelated microform scan, which was rejected."
+  },
+  {
+    "id": "MUT",
+    "name_en": "El-Mutrab",
+    "name_ar": "المطرب",
+    "category": "castle",
+    "parent_site_id": null,
+    "coordinates": {
+      "lat": 30.20424,
+      "lng": 35.78966
+    },
+    "short_description_en": "An archaeological site five kilometres east of Ma'an city, traditionally read as a small late Roman frontier fort — and largely destroyed by bulldozing in 2018 before it was ever excavated.",
+    "short_description_ar": "موقع أثري يبعد خمسة كيلومترات شرق مدينة معان، قُرئ تقليدياً على أنه حصن روماني متأخر صغير على الحدود، وقد دُمّر معظمه بالجرافات عام 2018 قبل أن يُنقَّب فيه قط.",
+    "history_en": "El-Mutrab was long interpreted as a late Roman Kleinkastell, a small fort whose garrison watched the forward Limes Arabiae et Palaestinae in the late-antique province of Arabia. More recent work has questioned that reading and proposed alternatives: an ancient or Islamic caravanserai, part of a large late-antique and early Islamic agricultural estate, or an Umayyad desert palace. The question is now unlikely ever to be settled. The site was still largely intact in September 2017, but by March 2018 roughly two thirds of it had been flattened by bulldozers as farmland expanded, taking with it a monument that had never been archaeologically excavated. The destruction was documented from the air by the Aerial Photographic Archive for Archaeology in the Middle East, a project run by David Kennedy and Bob Bewley of the University of Western Australia.",
+    "history_ar": "فُسِّر المطرب طويلاً على أنه حصن روماني متأخر صغير كانت حاميته تراقب الخط الأمامي لليمس العربية وفلسطين في ولاية العربية في العصور القديمة المتأخرة. وقد شكّكت أبحاث أحدث في هذه القراءة واقترحت بدائل: خان قوافل قديم أو إسلامي، أو جزء من ضيعة زراعية كبيرة تعود إلى أواخر العصور القديمة ومطلع العصر الإسلامي، أو قصر صحراوي أموي. ومن غير المرجّح أن تُحسم المسألة الآن. فقد كان الموقع لا يزال سليماً في معظمه في أيلول 2017، لكن بحلول آذار 2018 كانت الجرافات قد سوّت نحو ثلثيه بالأرض مع توسع الأراضي الزراعية، فأزالت معها أثراً لم يُنقَّب فيه أثرياً قط. وقد وثّق التدمير جواً «الأرشيف المصوّر الجوي لآثار الشرق الأوسط»، وهو مشروع يديره ديفيد كينيدي وبوب بيولي من جامعة غرب أستراليا.",
+    "significance_en": "El-Mutrab matters now mostly as a warning. It was a site whose very identity was still an open research question — fort, caravanserai, estate or palace — and it was destroyed before anyone could answer it, which is a loss no excavation can undo. For this project it belongs in the record as documented heritage loss in Ma'an governorate, not as a place to send visitors.",
+    "significance_ar": "تكمن أهمية المطرب اليوم في كونه تحذيراً في المقام الأول. فقد كان موقعاً لا تزال هويته نفسها سؤالاً بحثياً مفتوحاً: حصن أم خان قوافل أم ضيعة أم قصر، ودُمّر قبل أن يجيب أحد، وهي خسارة لا يردّها تنقيب. ومكانه في هذا المشروع أن يُسجَّل بوصفه فقداً موثّقاً للتراث في محافظة معان، لا بوصفه موضعاً يُرسَل إليه الزوار.",
+    "visiting_info": {
+      "best_time_to_visit": "Not recommended as a visit — roughly two thirds of the site was bulldozed in 2018 and what remains sits within active farmland",
+      "difficulty": "easy",
+      "estimated_time_there": "Not applicable; little remains to see",
+      "accessibility_notes": "Largely destroyed and now within cultivated land east of Ma'an city; there is no prepared access, and visiting risks further damage to what survives.",
+      "requires_guide": true,
+      "entrance_fee_notes": "No gate or fee; the surviving remains lie on agricultural land and permission from the landowner and the Department of Antiquities would be needed"
+    },
+    "narration_script_en": "There is not much left here, and that is the story. Until 2017 this was a substantial ancient complex — archaeologists argued about whether it was a Roman frontier fort, a caravanserai, a farming estate or an Umayyad desert palace, and nobody had excavated it to find out. Then, over a few months in 2018, bulldozers clearing land for farming removed about two thirds of it. Aerial archaeologists photographed it before and after, so we know exactly what was lost, and we will never now know what it was.",
+    "narration_script_ar": "لم يبقَ هنا الكثير، وهذه هي القصة. فحتى عام 2017 كان هذا مجمّعاً أثرياً كبيراً، اختلف علماء الآثار في كونه حصناً رومانياً حدودياً أم خان قوافل أم ضيعة زراعية أم قصراً أموياً صحراوياً، ولم يكن أحد قد نقّب فيه ليعرف. ثم في غضون أشهر قليلة من عام 2018 أزالت الجرافات، وهي تجهّز الأرض للزراعة، نحو ثلثيه. وقد صوّره علماء الآثار الجوية قبل ذلك وبعده، فنحن نعرف بالضبط ما فُقد، ولن نعرف أبداً ما كان.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/El_Mutrab_-_Limes_Arabicus%2C_Mediatus.svg",
+      "source": "Wikimedia Commons",
+      "license": "CC BY-SA 3.0",
+      "attribution_text": "Mediatus, CC BY-SA 3.0, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://de.wikipedia.org/wiki/El-Mutrab",
+      "https://www.wikidata.org/wiki/Q99238798"
+    ],
+    "confidence": "needs_review",
+    "researcher": "Pulga",
+    "notes": "NEW in Phase 2 (Job B). Boundary-verified via Wikidata P131 = Q606340 and the Ma'an bounding box. FLAGGED FOR THE TEAM: roughly two thirds of this site was bulldozed in 2018 and its interpretation was never settled, so it should NOT be presented to tourists as a destination. Recommend including it only as a documented heritage-loss record, or excluding it from the visitor-facing dataset entirely — a product decision, not a data one. Image is a site plan, not a photograph."
+  }
+]
