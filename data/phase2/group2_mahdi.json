@@ -1,0 +1,516 @@
+[
+  {
+    "id": "AMS",
+    "name_en": "Ain Musa (Moses Spring)",
+    "name_ar": "عين موسى",
+    "category": "landmark",
+    "parent_site_id": null,
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "short_description_en": "Ain Musa, Arabic for Moses' Spring, is a natural perennial spring at the northern entrance to Wadi Musa, about 5 km from Petra, which local Bedouin tradition holds was struck from the rock by Moses on the biblical journey through the desert. A three-domed structure built over the spring still channels its flowing water today. In antiquity the Nabataeans engineered an aqueduct from this spring into Petra, part of the water system that let a desert capital support a large population.",
+    "short_description_ar": "عين موسى نبع طبيعي دائم الجريان عند المدخل الشمالي لوادي موسى، على بعد نحو 5 كم من البترا، وتقول الرواية البدوية المحلية إن موسى ضرب الصخر فتفجر منه الماء أثناء رحلته عبر الصحراء. لا تزال قبة ثلاثية مبنية فوق النبع تُصرّف مياهه المتدفقة حتى اليوم. وفي العصر النبطي، شق الأنباط قناة مائية من هذا النبع إلى البترا، كجزء من شبكة المياه التي مكّنت عاصمة صحراوية من إعالة عدد كبير من السكان.",
+    "history_en": "Local Bedouin tradition holds that Moses struck the rock here with his staff during the Israelites' desert wandering, an episode drawn from the biblical account in Numbers 20:2-13, and the spring's Arabic name preserves that story directly. The site sits at the northern junction into Wadi Musa, about 5 km from Petra's entrance, and gave the modern town its own name, valley of Moses. In the Nabataean period the spring fed one end of an engineered aqueduct that carried water down through the Siq into Petra, part of the water system that let a desert capital sustain a large population. A simple three-domed structure was later built to shelter and channel the flowing water, and it still stands over the source today.",
+    "history_ar": "تقول الرواية البدوية المحلية إن موسى ضرب الصخرة هنا بعصاه خلال تيه بني إسرائيل في الصحراء، في حادثة مستمدة من الرواية التوراتية في سفر العدد 20: 2-13، ويحفظ اسم النبع العربي هذه القصة مباشرة. يقع الموقع عند المفترق الشمالي المؤدي إلى وادي موسى، على بعد نحو 5 كم من مدخل البتراء، وهو ما أعطى البلدة الحديثة اسمها. وفي العصر النبطي، غذّى النبع أحد طرفي قناة مائية هندسها الأنباط لنقل الماء عبر السيق إلى داخل البتراء، كجزء من شبكة المياه التي مكّنت عاصمة صحراوية من إعالة عدد كبير من السكان. وشُيّدت لاحقاً قبة ثلاثية بسيطة لحماية المياه المتدفقة وتوجيهها، ولا تزال قائمة فوق مصدر النبع حتى اليوم.",
+    "significance_en": "Ain Musa is one of the few water sources in this arid stretch of Ma'an that has been in continuous use across millennia, from Nabataean engineers to the modern town it now feeds. Its religious association with Moses gives it meaning well beyond its size, drawing pilgrims and curious travellers who stop here before ever reaching Petra's gate.",
+    "significance_ar": "عين موسى واحد من مصادر المياه القليلة في هذا الجزء القاحل من محافظة معان التي ظل استخدامها مستمراً عبر آلاف السنين، من المهندسين الأنباط إلى البلدة الحديثة التي يغذّيها اليوم. وارتباطها الديني بموسى يمنحها أهمية تتجاوز حجمها بكثير، فيقصدها الحجاج والمسافرون الفضوليون قبل وصولهم إلى بوابة البتراء.",
+    "visiting_info": {
+      "best_time_to_visit": "Any time of day — it's a brief roadside stop, best combined with the drive into or out of Wadi Musa rather than a dedicated visit",
+      "difficulty": "easy",
+      "estimated_time_there": "15 minutes",
+      "accessibility_notes": "Roadside stop with uneven stone paving immediately around the spring structure; not purpose-built for wheelchair access.",
+      "requires_guide": false,
+      "entrance_fee_notes": "Free and open, on the public road; not part of the ticketed Petra Archaeological Park"
+    },
+    "narration_script_en": "You're standing at the spot Bedouin tradition says Moses struck with his staff and water broke from the rock. Look at the little triple-domed shelter over it — that water is still flowing, the same source the Nabataeans once piped all the way down through the Siq to supply Petra itself. This is the last stop before the road climbs into Wadi Musa, so travellers have been pausing here for water, and for the story, for a very long time.",
+    "narration_script_ar": "أنت تقف الآن في المكان الذي تقول الرواية البدوية إن موسى ضرب فيه الصخرة فتفجر منها الماء. انظر إلى القبة الثلاثية الصغيرة التي تحمي النبع، فما زال الماء يتدفق منه، وهو المصدر نفسه الذي مدّ الأنباط منه أنابيب عبر السيق لتزويد البتراء بالماء. هذه آخر محطة قبل أن يصعد الطريق إلى وادي موسى، فالمسافرون يتوقفون هنا منذ زمن طويل، للماء وللقصة معاً.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Petra_(Wadi_Musa)._Ain_Mus._Spring_of_Moses,_near_Eldji_on_road_from_Ma%27an_LOC_matpc.03066.jpg",
+      "source": "Wikimedia Commons",
+      "license": "Public domain",
+      "attribution_text": "Library of Congress, G. Eric and Edith Matson Photograph Collection, 1920, public domain, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://dannythedigger.com/ayn-musa/",
+      "https://en.wikipedia.org/wiki/Wadi_Musa",
+      "https://commons.wikimedia.org/wiki/File:Petra_(Wadi_Musa)._Ain_Mus._Spring_of_Moses,_near_Eldji_on_road_from_Ma%27an_LOC_matpc.03066.jpg"
+    ],
+    "confidence": "needs_review",
+    "researcher": "Mahdi"
+  },
+  {
+    "id": "UDH",
+    "name_en": "Udhruh (Roman legionary fort)",
+    "name_ar": "اذرح",
+    "category": "castle",
+    "parent_site_id": null,
+    "coordinates": {
+      "lat": 30.3304905,
+      "lng": 35.5954027
+    },
+    "short_description_en": "Udhruh was built as a Roman legionary fort soon after Rome annexed the Nabataean kingdom in 106 AD, and by the late 3rd or early 4th century it housed Legio VI Ferrata, with major rebuilding recorded in 303-304 AD. The fort remained active through the Byzantine period, and an Ottoman-era fort similar in design to the one in Ma'an was later built nearby before the site was abandoned; the modern village of Udhruh was only founded in the late 1930s. The Udhruh Archaeological Project has published extensively on the site, making it one of the better-documented Roman military installations in the Ma'an region.",
+    "short_description_ar": "بُني حصن أذرح كقلعة لفيلق روماني بُعيد ضم روما للمملكة النبطية عام 106 م، وبحلول أواخر القرن الثالث أو أوائل الرابع كان يضم الفيلق السادس فيراتا، مع أعمال إعادة بناء كبرى مسجلة في عامي 303-304 م. ظل الحصن نشطاً خلال العصر البيزنطي، وشُيّد لاحقاً قربه حصن عثماني مشابه في تصميمه لحصن معان قبل أن يُهجر الموقع، فيما لم تُؤسس قرية أذرح الحديثة إلا في أواخر ثلاثينيات القرن العشرين. نشر مشروع أذرح الأثري أبحاثاً موسعة عن الموقع، ما يجعله من أفضل المنشآت العسكرية الرومانية توثيقاً في منطقة معان.",
+    "history_en": "The Roman legionary fortress at Udhruh, 15 km east of Petra, was rebuilt in AD 303-304 under Emperor Diocletian's reorganisation of the eastern frontier, as recorded in a building inscription on its west gate crediting the Legio VI Ferrata. The 4.7-hectare fort with its large U-shaped external towers stands on ground that was already an important Nabataean settlement well before the Romans arrived, part of a wider network the Nabataeans had built to link Petra to its desert hinterland. Since 2011 the Udhruh Archaeological Project, a partnership between Al-Hussein Bin Talal University and Leiden University, has reconstructed an elaborate ancient water-harvesting system here and traced a chain of watchtowers and fortlets connecting Udhruh back to Petra, showing the frontier defence line reused and adapted infrastructure the Nabataeans had built centuries earlier.",
+    "history_ar": "أُعيد بناء الحصن الروماني في أذرح، الذي يبعد 15 كم شرق البتراء، عام 303-304م في إطار إعادة تنظيم الإمبراطور دقلديانوس للحدود الشرقية، وفق نقش بناء على بوابته الغربية ينسب العمل إلى الفرقة السادسة فيراتا. ويقوم الحصن الذي تبلغ مساحته 4.7 هكتار وتحيط به أبراج خارجية كبيرة على شكل حرف U فوق أرض كانت مستوطنة نبطية مهمة قبل وصول الرومان بزمن طويل، وجزءاً من شبكة أوسع بناها الأنباط لربط البتراء بمحيطها الصحراوي. ومنذ عام 2011، أعاد مشروع أذرح الأثري، وهو شراكة بين جامعة الحسين بن طلال وجامعة لايدن، بناء نظام متطور لحصاد المياه في الموقع، وتتبّع سلسلة من أبراج المراقبة والحصون الصغيرة التي تربط أذرح بالبتراء، ما يُظهر أن خط الدفاع الحدودي أعاد استخدام وتكييف بنية تحتية بناها الأنباط قبل ذلك بقرون.",
+    "significance_en": "Udhruh shows the same desert corridor being fought over and engineered by three different powers in turn — Nabataean, Roman, and later Ottoman — each reusing what the last had built rather than starting over. Its water-harvesting system is one of the best-documented examples anywhere of how a settlement this far from a river sustained a Roman legion in an arid landscape.",
+    "significance_ar": "تُظهر أذرح كيف تنافست ثلاث قوى مختلفة على التوالي — النبطية والرومانية ثم العثمانية لاحقاً — على السيطرة على الممر الصحراوي نفسه وهندسته، وأعادت كل واحدة استخدام ما بنته سابقتها بدلاً من البدء من الصفر. ويُعد نظام حصاد المياه فيها من أفضل الأمثلة الموثقة في أي مكان على كيفية إعالة فيلق روماني في بيئة قاحلة بعيدة عن أي نهر.",
+    "visiting_info": {
+      "best_time_to_visit": "Morning, before the midday heat — the site is fully exposed with no shade",
+      "difficulty": "moderate",
+      "estimated_time_there": "45 minutes",
+      "accessibility_notes": "Open desert ruin with uneven, unpaved ground and no marked paths; not accessible for reduced mobility.",
+      "requires_guide": false,
+      "entrance_fee_notes": "Open desert ruin site with no ticket booth; UNKNOWN - flag for team review for whether any fee applies"
+    },
+    "narration_script_en": "Fifteen kilometres east of Petra, this fort was rebuilt by Roman soldiers in the year 303, and the inscription proving that date is still cut into the west gate behind you. But the Romans weren't the first here — the Nabataeans had already been running water and watchtowers through this exact stretch of desert long before Rome showed up. Archaeologists are still out here today, tracing how each empire quietly reused what the one before it had built.",
+    "narration_script_ar": "على بعد خمسة عشر كيلومتراً شرق البتراء، أعاد الجنود الرومان بناء هذا الحصن عام 303 ميلادي، والنقش الذي يثبت هذا التاريخ ما زال محفوراً في البوابة الغربية خلفك. لكن الرومان لم يكونوا أول من وطئ هذا المكان، فالأنباط كانوا قد أداروا شبكة مياه وأبراج مراقبة في هذا الجزء من الصحراء قبل وصول روما بزمن طويل. وما زال علماء الآثار يعملون هنا حتى اليوم، يتتبعون كيف أعادت كل إمبراطورية استخدام ما بنته التي سبقتها بهدوء.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Udhruh_(Arch).jpg",
+      "source": "Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "attribution_text": "Photo by Bashar Tabbah, CC BY-SA 4.0, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://www.openstreetmap.org/node/9205489036",
+      "https://en.wikipedia.org/wiki/Udhruh",
+      "https://www.universiteitleiden.nl/en/research/research-projects/archaeology/power-in-the-sands-a-monumental-desert-gateway-to-the-roman-world-at-udhruh-jordan"
+    ],
+    "confidence": "verified",
+    "researcher": "Mahdi"
+  },
+  {
+    "id": "AJF",
+    "name_en": "Al-Jafr (desert town & basin)",
+    "name_ar": "الجفر",
+    "category": "macro_site",
+    "parent_site_id": null,
+    "coordinates": {
+      "lat": 30.3175067,
+      "lng": 36.1852741
+    },
+    "short_description_en": "Al-Jafr is a desert town and basin in Ma'an Governorate, about 300 km east of Amman, sitting at roughly 865 m elevation in a flat, semi-arid depression far from the Petra cluster. Known locally for the vast open playa used for land-speed record attempts, it has a population of about 6,400 and is also home to Al-Jafr prison. Visitors come for the stark desert scenery and open horizons rather than any single monument.",
+    "short_description_ar": "الجفر بلدة صحراوية وحوض واسع في محافظة معان، يبعد نحو 300 كم شرق عمان على ارتفاع نحو 865 متراً في منخفض شبه جاف بعيداً عن مجمع البتراء. يشتهر محلياً بسهله المفتوح الذي استُخدم لمحاولات تحطيم أرقام قياسية في السرعة على الأرض، ويقطنه نحو 6400 نسمة، ويضم سجن الجفر. يقصده الزوار لمشاهدة المشهد الصحراوي الفسيح أكثر من أي معلم واحد.",
+    "history_en": "Al-Jafr sits inside the Al-Jafr Basin, a roughly 15,000 sq km closed desert depression on the southern edge of the Transjordan plateau, where prehistoric communities were already adapting to this hyper-arid environment as far back as the Pre-Pottery Neolithic B period, some 8,000-10,000 years ago. Excavated sites such as Wadi Ghuwayr 17 in the basin document early transhumant herding and water-management strategies tied to shifting climate, among the region's earliest evidence for that lifestyle. The modern town, about 300 km southeast of Amman at roughly 865 m elevation, had a recorded population of 6,380 in the 2015 census and today hosts a well-known prison. Its vast, flat mudflat has also drawn international attention as a testing ground for land-speed record attempts, and briefly made headlines in 2010 when a local April Fools' hoax was compared to Orson Welles' 1938 War of the Worlds broadcast.",
+    "history_ar": "يقع الجفر داخل حوض الجفر، وهو منخفض صحراوي مغلق تبلغ مساحته نحو 15 ألف كيلومتر مربع عند الطرف الجنوبي لهضبة شرق الأردن، حيث كانت مجتمعات ما قبل التاريخ تتكيّف بالفعل مع هذه البيئة شديدة الجفاف منذ العصر الحجري الحديث ما قبل الفخاري ب، أي قبل نحو 8 إلى 10 آلاف عام. وتوثّق مواقع منقّبة مثل وادي غوير 17 في الحوض أساليب رعي متنقلة مبكرة وإدارة للمياه ارتبطت بتغيّرات مناخية، وهي من أقدم الأدلة على هذا النمط في المنطقة. أما البلدة الحديثة، التي تبعد نحو 300 كم جنوب شرق عمّان على ارتفاع نحو 865 متراً، فقد بلغ عدد سكانها 6380 نسمة بحسب تعداد 2015، وتضم اليوم سجناً معروفاً. كما جذب سهلها الطيني الواسع المستوي اهتماماً دولياً كأرض اختبار لمحاولات تحطيم الرقم القياسي العالمي للسرعة على الأرض، وتصدّر عناوين الأخبار لفترة وجيزة عام 2010 حين قورنت خدعة أول أبريل محلية ببث أورسون ويلز الشهير «حرب العوالم» عام 1938.",
+    "significance_en": "Al-Jafr's basin holds some of the deepest evidence anywhere in Ma'an for how people first adapted to permanent desert life, making it a genuinely different kind of stop from the rock-cut monuments around Petra. Its flat, featureless mudflat later found an entirely unrelated fame as one of the world's most extreme land-speed testing grounds — the same emptiness that once challenged Neolithic herders now attracts engineers chasing speed records.",
+    "significance_ar": "يحمل حوض الجفر بعضاً من أعمق الأدلة في محافظة معان على كيفية تكيّف الإنسان أول مرة مع الحياة الصحراوية الدائمة، ما يجعله محطة مختلفة تماماً عن المعالم المنحوتة في الصخر حول البتراء. ووجد سهله الطيني المستوي الخالي من المعالم شهرة أخرى منفصلة تماماً بوصفه أحد أكثر أراضي اختبار السرعة تطرفاً في العالم، إذ يجذب اليوم مهندسين يطاردون أرقاماً قياسية في السرعة، الخلاء ذاته الذي كان يوماً تحدياً لرعاة العصر الحجري.",
+    "visiting_info": {
+      "best_time_to_visit": "Cooler months (autumn through spring) — summer daytime heat on the open basin is extreme",
+      "difficulty": "easy",
+      "estimated_time_there": "90 minutes",
+      "accessibility_notes": "Flat open desert terrain with easy driving access; no paved paths or visitor facilities, not set up for wheelchair use without assistance.",
+      "requires_guide": false,
+      "entrance_fee_notes": "Open desert town and basin, no entrance fee"
+    },
+    "narration_script_en": "This flat, empty basin doesn't look like much at first, but people have been surviving out here for close to ten thousand years — among the earliest evidence anywhere in the region of humans learning to live permanently in true desert. That same flatness is exactly why speed-record teams love it today: nothing to interrupt a car doing several hundred kilometres an hour across the mudflat. Two completely different kinds of extreme, ten thousand years apart, on the same ground.",
+    "narration_script_ar": "قد لا يبدو هذا الحوض المسطّح الفارغ مثيراً للاهتمام للوهلة الأولى، لكن الناس يعيشون هنا منذ ما يقارب عشرة آلاف عام، وهو من أقدم الأدلة في المنطقة على تعلّم الإنسان العيش الدائم في صحراء حقيقية. وهذا الانبساط نفسه هو ما يجذب فرق تحطيم أرقام السرعة اليوم، إذ لا شيء يعترض سيارة تسير بمئات الكيلومترات في الساعة عبر السهل الطيني. نوعان مختلفان تماماً من التطرف، يفصل بينهما عشرة آلاف عام، على الأرض نفسها.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Al-Jafr_main_road.jpg",
+      "source": "Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "attribution_text": "Photo by Davide Mauro, CC BY-SA 4.0, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://www.openstreetmap.org/node/9206525690",
+      "https://en.wikipedia.org/wiki/Al-Jafr",
+      "https://en.wikipedia.org/wiki/Al-Jafr,_Jordan"
+    ],
+    "confidence": "verified",
+    "researcher": "Mahdi"
+  },
+  {
+    "id": "USH",
+    "name_en": "Umm Sayhoun (Bedouin village)",
+    "name_ar": "أم صيحون",
+    "category": "macro_site",
+    "parent_site_id": null,
+    "coordinates": {
+      "lat": 30.343334,
+      "lng": 35.45547
+    },
+    "short_description_en": "Umm Sayhoun is a Bedouin village built in the mid-1980s to house the Bdoul tribe after Petra's 1985 UNESCO World Heritage listing led the Jordanian government to relocate residents out of the ancient city. Before the move, around 150 Bdoul families lived inside Petra itself; today only a handful remain there, while most of the tribe lives in Umm Sayhoun. Roughly 95 percent of the village's residents now work in Petra's tourism economy, as guides, souvenir sellers, or transport operators.",
+    "short_description_ar": "أم صيحون قرية بدوية بُنيت في منتصف ثمانينيات القرن العشرين لإسكان قبيلة البدول بعد أن دفع إدراج البترا على لائحة التراث العالمي لليونسكو عام 1985 الحكومة الأردنية إلى نقل السكان خارج المدينة الأثرية. قبل الترحيل، كانت نحو 150 عائلة من البدول تقيم داخل البترا نفسها؛ واليوم لا يبقى فيها سوى عدد قليل، بينما يقيم معظم أبناء القبيلة في أم صيحون. يعمل نحو 95 بالمئة من سكان القرية حالياً في قطاع السياحة بالبترا، كأدلاء أو بائعي هدايا تذكارية أو في خدمات النقل.",
+    "history_en": "Umm Sayhoun was built by the Jordanian government in 1985, the same year Petra was inscribed as a UNESCO World Heritage Site, to resettle the Bdoul Bedouin who had lived for generations in Petra's caves. The move had been recommended as early as 1968 in the first master plan for the park, drawn up by the United States National Park Service, but the government housing was not actually built until nearly two decades later. Before the resettlement roughly 150 Bdoul families lived inside Petra itself; today only around ten still do, most having moved to the new village. Umm Sayhoun has since more than tripled in population, even though all the land originally allocated for building was distributed at the time of the move, and the Petra Development and Tourism Regional Authority has restricted new residential and economic construction there since 2014.",
+    "history_ar": "بنت الحكومة الأردنية أم صيحون عام 1985، وهو نفس العام الذي أُدرجت فيه البتراء موقعاً للتراث العالمي لليونسكو، لإعادة توطين البدو من قبيلة البدول الذين عاشوا لأجيال في كهوف البتراء. وكانت هذه الخطوة قد أُوصي بها منذ عام 1968 في أول مخطط رئيسي للحديقة أعدته دائرة المتنزهات الوطنية الأمريكية، إلا أن المساكن الحكومية لم تُبنَ فعلياً إلا بعد ذلك بما يقارب عقدين. وقبل إعادة التوطين، كانت نحو 150 عائلة من البدول تعيش داخل البتراء نفسها، أما اليوم فلا يتجاوز عددها عشر عائلات، بعد أن انتقل معظمها إلى القرية الجديدة. وقد تضاعف عدد سكان أم صيحون أكثر من ثلاث مرات منذ ذلك الحين، رغم أن كل الأراضي المخصصة للبناء وُزّعت وقت الانتقال، وتمنع سلطة إقليم البتراء للتنمية السياحية أي بناء سكني أو اقتصادي جديد في القرية منذ عام 2014.",
+    "significance_en": "Umm Sayhoun is the human counterpart to Petra's ruins — a living community whose displacement was the direct price of the site becoming a protected World Heritage attraction. Visiting it, or simply knowing it's there beside the park, is a reminder that Petra's Bedouin history didn't end with the Nabataeans; it's still being lived out a few kilometres from the Treasury, by people with a much more recent and unresolved story.",
+    "significance_ar": "تمثّل أم صيحون الوجه الإنساني المقابل لأطلال البتراء، فهي مجتمع حيّ دفع ثمن تحويل الموقع إلى معلم محمي ضمن التراث العالمي بتشريده منها. وزيارتها، أو مجرد معرفة وجودها إلى جانب الحديقة، تذكّر بأن تاريخ البدو في البتراء لم ينتهِ مع الأنباط، بل ما زال يُعاش على بعد كيلومترات قليلة من الخزنة، عند أناس لديهم قصة أحدث بكثير ولم تُحسم بعد.",
+    "visiting_info": {
+      "best_time_to_visit": "Daytime; it's an inhabited village, so visit respectfully as you would any residential community",
+      "difficulty": "easy",
+      "estimated_time_there": "30 minutes",
+      "accessibility_notes": "Paved village roads, but many homes sit on sloped ground; no dedicated tourist infrastructure - this is a residential community, not a visitor site.",
+      "requires_guide": false,
+      "entrance_fee_notes": "No entrance fee — it is a residential village, not a ticketed site"
+    },
+    "narration_script_en": "This isn't a ruin — it's where the people who used to live inside Petra's caves live now. In 1985, the same year Petra became a World Heritage site, the government moved around 150 Bdoul families out of the caves and into houses here. Fewer than ten families still live inside Petra today; the rest, and their children, call this village home. It's worth remembering, walking through the Treasury or the Siq, that the people who know this valley best didn't disappear — they just moved a few kilometres away.",
+    "narration_script_ar": "هذه ليست أطلالاً، بل مكان يعيش فيه اليوم من كانوا يسكنون كهوف البتراء. ففي عام 1985، وهو نفس العام الذي أصبحت فيه البتراء موقعاً للتراث العالمي، نقلت الحكومة نحو 150 عائلة من البدول من الكهوف إلى بيوت هنا. أقل من عشر عائلات ما زالت تعيش داخل البتراء اليوم، أما البقية وأبناؤهم فقد صارت هذه القرية بيتهم. يستحق الأمر أن تتذكره وأنت تمشي في الخزنة أو السيق: أهل هذا الوادي الأعرف به لم يختفوا، بل انتقلوا فقط بضعة كيلومترات.",
+    "image": {
+      "url": "",
+      "source": "",
+      "license": "",
+      "attribution_text": ""
+    },
+    "sources": [
+      "https://www.openstreetmap.org/node/802551597",
+      "https://www.nationalgeographic.com/travel/article/petra-unesco-world-heritage-bedouin",
+      "https://www.culturalsurvival.org/publications/cultural-survival-quarterly/bedul-bedouin-petra-jordan-traditions-tourism-and"
+    ],
+    "confidence": "needs_review",
+    "researcher": "Mahdi"
+  },
+  {
+    "id": "OPM",
+    "name_en": "Old Petra Museum",
+    "name_ar": "متحف البتراء القديم",
+    "category": "macro_site",
+    "parent_site_id": null,
+    "coordinates": {
+      "lat": 30.3246,
+      "lng": 35.46797
+    },
+    "short_description_en": "The Old Petra Museum opened in 1963 inside a Nabataean rock-cut chamber on the path along Wadi Syagh toward Al-Habis Castle, making the building itself part of the exhibit. Its seven small showcases display architectural fragments and stone sculpture spanning the Nabataean, Roman, and Byzantine periods, drawn from excavations by foreign missions and Jordan's Department of Antiquities. It has been overshadowed since the 2019 opening of the larger Petra Museum near the visitor centre, and the Department of Antiquities is reorganising its displays.",
+    "short_description_ar": "افتُتح متحف البتراء القديم عام 1963 داخل غرفة منحوتة في الصخر النبطي على طريق وادي السياغ المؤدي إلى قلعة الحبيس، ما يجعل المبنى نفسه جزءاً من المعروضات. تعرض واجهاته السبع الصغيرة قطعاً معمارية ومنحوتات حجرية تعود إلى العصور النبطي والروماني والبيزنطي، جُمعت من تنقيبات بعثات أجنبية ودائرة الآثار العامة الأردنية. تراجع دور المتحف منذ افتتاح متحف البترا الأكبر قرب مركز الزوار عام 2019، وتعمل دائرة الآثار حالياً على إعادة تنظيم معروضاته.",
+    "history_en": "The Old Petra Museum opened in 1963 inside a Nabataean rock-cut tomb carved into Jabal al-Habis, making the museum building itself part of Petra's ancient fabric. Its single main hall and two side rooms held seven display cases of Nabataean, Roman, and Byzantine artefacts recovered by foreign missions and the Department of Antiquities working inside the park. It closed in 2011 as the Department of Antiquities began reorganising Petra's exhibits ahead of a larger successor museum, and following a Jordanian-Japanese agreement signed in 2014, a new, roughly 1,800 sq m visitor-centre museum took over its role after five years of construction and over seven million dollars of investment. That successor is a separate institution from the old cave museum and is treated as its own entry (PAM) in this dataset, so this entry covers only the original 1963 building.",
+    "history_ar": "افتُتح متحف البتراء القديم عام 1963 داخل مقبرة نبطية منحوتة في الصخر ضمن جبل الحبيس، ما يجعل مبنى المتحف نفسه جزءاً من نسيج البتراء الأثري القديم. وضمّت قاعته الرئيسية الواحدة وغرفتاه الجانبيتان سبع واجهات عرض للقطع الأثرية النبطية والرومانية والبيزنطية التي عثرت عليها بعثات أجنبية ودائرة الآثار العامة العاملة داخل الموقع. وأُغلق المتحف عام 2011 حين بدأت دائرة الآثار إعادة تنظيم معروضات البتراء تمهيداً لمتحف بديل أكبر، وبعد اتفاقية أردنية يابانية وُقّعت عام 2014، حلّ محله متحف حديث لمركز الزوار بمساحة نحو 1800 متر مربع بعد خمس سنوات من الإنشاء واستثمار تجاوز سبعة ملايين دولار. وذلك المتحف الخلف مؤسسة منفصلة عن متحف الكهف القديم وله مدخل خاص به (PAM) في قاعدة البيانات هذه، فهذا المدخل يغطي فقط المبنى الأصلي لعام 1963.",
+    "significance_en": "As one of the earliest on-site museums built directly into an ancient monument anywhere in Jordan, the Old Petra Museum represents an early approach to Petra's own heritage management, decades before the park had the visitor infrastructure it has today. Its closure and replacement mark a clear before-and-after in how Petra presents its archaeology to the public.",
+    "significance_ar": "بوصفه أحد أوائل المتاحف المقامة مباشرة داخل معلم أثري في أي مكان في الأردن، يمثّل متحف البتراء القديم نهجاً مبكراً في إدارة تراث البتراء نفسها، قبل عقود من امتلاك الحديقة البنية التحتية للزوار التي تملكها اليوم. وإغلاقه واستبداله يمثّلان فاصلاً واضحاً في طريقة عرض البتراء لآثارها على الجمهور.",
+    "visiting_info": {
+      "best_time_to_visit": "UNKNOWN - flag for team review — the museum has been closed since 2011; confirm current access status before listing it as an active stop",
+      "difficulty": "moderate",
+      "estimated_time_there": "20 minutes",
+      "accessibility_notes": "Reached via a climb into a rock-cut chamber along the Wadi Syagh path; uneven surfaces and steps, not accessible for reduced mobility.",
+      "requires_guide": false,
+      "entrance_fee_notes": "UNKNOWN - flag for team review — historically covered by the Petra Archaeological Park ticket, but the building has been closed since 2011 and current accessibility is unconfirmed"
+    },
+    "narration_script_en": "This little museum has been closed since 2011, but for almost fifty years before that, it was the only place inside Petra where you could see the objects the archaeologists were actually digging up — and it's built inside an ancient Nabataean tomb, so the building itself is as old as anything on display. When Petra got a modern, purpose-built museum near the visitor centre, this one quietly closed its doors. It's a nice reminder that even the way we display the past has its own history.",
+    "narration_script_ar": "هذا المتحف الصغير مغلق منذ عام 2011، لكنه ظل لما يقارب خمسين عاماً قبل ذلك المكان الوحيد داخل البتراء الذي يمكنك فيه رؤية القطع التي كان علماء الآثار يكتشفونها فعلياً، وهو مبنيّ داخل مقبرة نبطية قديمة، فالمبنى نفسه بعمر أي قطعة معروضة فيه تقريباً. وحين حصلت البتراء على متحف حديث مخصص قرب مركز الزوار، أغلق هذا المتحف أبوابه بهدوء. إنه تذكير لطيف بأن طريقة عرضنا للماضي لها تاريخها الخاص أيضاً.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Petra_museum_along_Wadi_Syagh_2360.jpg",
+      "source": "Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "attribution_text": "Photo by Dick Osseman, CC BY-SA 4.0, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Old_Petra_Museum"
+    ],
+    "confidence": "needs_review",
+    "researcher": "Mahdi"
+  },
+  {
+    "id": "WMU",
+    "name_en": "Wadi Musa (town)",
+    "name_ar": "وادي موسى",
+    "category": "macro_site",
+    "parent_site_id": null,
+    "coordinates": {
+      "lat": 30.3216568,
+      "lng": 35.4800889
+    },
+    "short_description_en": "Wadi Musa is the administrative centre of the Petra Department and the closest town to the Petra archaeological site, sitting about 3.5 km from its entrance with a population of roughly 17,000. Its economy runs almost entirely on tourism, with more than 50 hotels and a large network of restaurants serving Petra's visitors, and it hosts a campus of Al-Hussein Bin Talal University's College of Archaeology, Tourism and Hotel Management. The name means 'Valley of Moses,' after the tradition that Moses passed through on his journey and struck water from a nearby spring.",
+    "short_description_ar": "وادي موسى هي المركز الإداري للواء البترا وأقرب بلدة إلى موقع البترا الأثري، إذ تبعد نحو 3.5 كم عن مدخله ويبلغ عدد سكانها نحو 17 ألف نسمة. يقوم اقتصادها بالكامل تقريباً على السياحة، بأكثر من 50 فندقاً وشبكة واسعة من المطاعم التي تخدم زوار البترا، وتضم فرعاً لكلية الآثار والسياحة والفندقة التابعة لجامعة الحسين بن طلال. يعني اسمها نسبة إلى الرواية القائلة إن النبي موسى مر بالمكان وفجّر الماء من نبع قريب.",
+    "history_en": "Wadi Musa, 'the Valley of Moses,' takes its name from the tradition that the prophet passed through with his followers and drew water from the rock at nearby Ain Musa. Archaeological evidence points to human habitation in the area since the Neolithic period, roughly 10,000 BC, with Edomites, Nabataeans and Romans all leaving their mark on the wider valley over the millennia that followed. The town only grew into its modern role after Swiss explorer Johann Ludwig Burckhardt's 1812 rediscovery of Petra for the West brought a steady stream of visitors who needed somewhere to stay and be provisioned. Wadi Musa also had a role in the 1917 Arab Revolt against Ottoman rule, and through the twentieth century it grew from a small agricultural settlement into the service town it is today.",
+    "history_ar": "يستمد وادي موسى اسمه من الرواية القائلة إن النبي مرّ من هنا مع أتباعه واستخرج الماء من الصخرة في عين موسى القريبة. وتشير الأدلة الأثرية إلى استيطان بشري في المنطقة منذ العصر الحجري الحديث، أي نحو 10 آلاف سنة قبل الميلاد، وترك الأدوميون والأنباط والرومان بصماتهم جميعاً على الوادي الأوسع عبر آلاف السنين التي تلت. ولم تنمُ البلدة إلى دورها الحديث إلا بعد أن أعاد المستكشف السويسري يوهان لودفيغ بوركهارت اكتشاف البتراء للغرب عام 1812، ما جلب تدفقاً مستمراً من الزوار الذين احتاجوا مكاناً للإقامة والتزوّد بالمؤن. وكان لوادي موسى أيضاً دور في الثورة العربية الكبرى ضد الحكم العثماني عام 1917، ونمت البلدة خلال القرن العشرين من مستوطنة زراعية صغيرة إلى بلدة الخدمات التي هي عليها اليوم.",
+    "significance_en": "Wadi Musa is the practical counterweight to Petra's ancient ruins — the modern town that makes visiting them possible at all, with the hotels, restaurants and transport that a purely archaeological park could never provide on its own. Its economy is now almost entirely tied to Petra's fortunes, which is exactly the kind of dependence the wider Maan Project is trying to spread across more of the governorate.",
+    "significance_ar": "يمثّل وادي موسى الثقل العملي المقابل لأطلال البتراء القديمة، فهو البلدة الحديثة التي تجعل زيارتها ممكنة أصلاً، بما توفره من فنادق ومطاعم ووسائل نقل لا يمكن لحديقة أثرية بحتة أن توفرها بمفردها. وأصبح اقتصادها اليوم مرتبطاً بشكل شبه كامل بمصير البتراء، وهو بالضبط نوع الاعتماد الذي يحاول مشروع معان الأوسع توزيعه على مزيد من أنحاء المحافظة.",
+    "visiting_info": {
+      "best_time_to_visit": "Any time — it's the base town for Petra visits, useful year-round for lodging and services",
+      "difficulty": "easy",
+      "estimated_time_there": "60 minutes",
+      "accessibility_notes": "Paved streets and standard town infrastructure, generally accessible, though some residential areas sit on steep hillside grades.",
+      "requires_guide": false,
+      "entrance_fee_notes": "No entrance fee — a regular town, not a ticketed site"
+    },
+    "narration_script_en": "Everything you needed for your visit to Petra today — your hotel, your dinner, your ride to the gate — comes from this town, and that's a relatively recent job for it. People have lived in this valley since the Stone Age, but Wadi Musa only became what it is now after a Swiss explorer brought Petra back onto the map in 1812. Since then it's grown almost entirely around one thing: getting you into the site you're about to see.",
+    "narration_script_ar": "كل ما احتجته لزيارتك للبتراء اليوم، من الفندق إلى العشاء إلى السيارة التي أوصلتك إلى البوابة، يأتي من هذه البلدة، وهذا دور حديث نسبياً بالنسبة لها. فقد سكن الناس هذا الوادي منذ العصر الحجري، لكن وادي موسى لم يصبح على ما هو عليه الآن إلا بعد أن أعاد مستكشف سويسري البتراء إلى الخريطة عام 1812. ومنذ ذلك الحين نمت البلدة حول هدف واحد تقريباً: إيصالك إلى الموقع الذي أنت مقبل على رؤيته.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Wadi_Musa,_Jordan.jpg",
+      "source": "Wikimedia Commons",
+      "license": "CC BY-SA 3.0",
+      "attribution_text": "Photo by Bernard Gagnon, CC BY-SA 3.0, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://www.openstreetmap.org/node/411050499",
+      "https://en.wikipedia.org/wiki/Wadi_Musa"
+    ],
+    "confidence": "verified",
+    "researcher": "Mahdi"
+  },
+  {
+    "id": "PET-TRE",
+    "name_en": "Treasury (Al-Khazneh)",
+    "name_ar": "الخزنة",
+    "category": "landmark",
+    "parent_site_id": "PET",
+    "coordinates": {
+      "lat": 30.3220754,
+      "lng": 35.4515251
+    },
+    "short_description_en": "Al-Khazneh, or 'the Treasury,' is Petra's most photographed monument, carved into the sandstone cliff face at the end of the Siq in the early 1st century AD under Nabataean king Aretas IV, most likely as a royal tomb and crypt. Its ornate facade includes eagle carvings, Amazon reliefs, and statues of Castor and Pollux flanking the entrance, and its name comes from a Bedouin legend that treasure was hidden inside the stone urn carved at its top.",
+    "short_description_ar": "الخزنة أكثر معالم البتراء تصويراً، مُنحوتة في الواجهة الصخرية عند نهاية السيق مطلع القرن الأول الميلادي في عهد الملك النبطي الحارث الرابع، ويُرجّح أنها بُنيت كمقبرة ملكية. تضم واجهتها الغنية بالزخارف نسوراً وتماثيل أمازونيات وتمثالين لكاستور وبولوكس عند المدخل، واسمها مستمد من أسطورة بدوية عن كنز مخبأ داخل الجرة الحجرية المنحوتة أعلاها.",
+    "history_en": "Al-Khazneh is generally dated to the reign of the Nabataean king Aretas IV (9 BC-AD 40), though the precise date was long debated until 2003 excavations led by Suleiman Farajat uncovered a graveyard beneath its forecourt, with tombs dated to roughly 25/20-10 BC, that helped anchor the chronology. Those same excavations found bowls that had held incense and other offerings in front of the monument, evidence that it functioned as an active place of worship as well as a tomb, part of a larger religious complex rather than a single isolated facade. Its Hellenistic-influenced decoration includes six Corinthian capitals, a frieze of vases and winged figures, and a central relief of the goddess Isis flanked by dancing Amazons, all carved from a single sandstone cliff face roughly 39.5 m tall. The name 'Treasury' itself is a much later invention, from a Bedouin legend that a pharaoh had hidden gold inside the stone urn carved at the very top of the facade.",
+    "history_ar": "تُنسب الخزنة عموماً إلى عهد الملك النبطي الحارث الرابع (9 ق.م - 40م)، رغم أن التاريخ الدقيق ظل موضع جدل طويل حتى كشفت تنقيبات عام 2003 بقيادة سليمان فرجات عن مقبرة تحت الساحة الأمامية للمبنى، تعود مدافنها إلى ما بين 25/20 و10 ق.م تقريباً، ما ساعد في تثبيت التسلسل الزمني. وعثرت التنقيبات نفسها على أوعية كانت تحمل بخوراً وقرابين أخرى أمام المبنى، وهو دليل على أنه كان مكاناً نشطاً للعبادة إضافة إلى كونه مقبرة، وجزءاً من مجمّع ديني أوسع لا مجرد واجهة منفردة. وتضم زخرفتها المتأثرة بالفن الهلنستي ستة تيجان كورنثية، وإفريزاً من الجرار وأشكال مجنحة، ونقشاً مركزياً للإلهة إيزيس تحيط بها أمازونيات راقصات، وكل ذلك منحوت من واجهة صخرية رملية واحدة يبلغ ارتفاعها نحو 39.5 متراً. أما اسم «الخزنة» نفسه فهو اختراع لاحق بكثير، مستمد من أسطورة بدوية عن فرعون أخفى ذهباً داخل الجرة الحجرية المنحوتة أعلى الواجهة.",
+    "significance_en": "The Treasury is where Nabataean funerary architecture, Hellenistic decorative vocabulary and active religious practice all meet on the same facade, and it is the single image most people picture when they hear the word Petra. It is also the flagship test case for this project's camera-guide feature — the monument any visitor is most likely to point a phone at first.",
+    "significance_ar": "تجتمع في الخزنة العمارة الجنائزية النبطية مع المفردات الزخرفية الهلنستية مع الممارسة الدينية الفعلية، كلها على الواجهة نفسها، وهي الصورة الوحيدة التي يتخيلها معظم الناس حين يسمعون كلمة البتراء. وهي أيضاً الحالة الاختبارية الرئيسية لميزة الدليل بالكاميرا في هذا المشروع، فهي المعلم الذي يرجّح أن يوجّه إليه أي زائر هاتفه أولاً.",
+    "visiting_info": {
+      "best_time_to_visit": "Early morning, right after the Siq opens — direct sunlight hits the facade and the crowds are thinnest",
+      "difficulty": "easy",
+      "estimated_time_there": "20 minutes",
+      "accessibility_notes": "Viewed from ground level at the end of the Siq; wheelchair-accessible approach.",
+      "requires_guide": false,
+      "entrance_fee_notes": "Covered by the standard Petra Archaeological Park entrance ticket; no separate fee"
+    },
+    "narration_script_en": "You've just walked out of the Siq, and this is the moment everyone comes for. Nabataean engineers carved this whole facade — nearly 40 metres of it — out of one single piece of the cliff, in the first century AD. It's called the Treasury because of an old legend about a pharaoh hiding gold in that stone urn at the very top, but archaeologists digging beneath your feet in 2003 found something more interesting: evidence this was actually a working temple, with offering bowls and incense, not just a tomb.",
+    "narration_script_ar": "لقد خرجت للتو من السيق، وهذه هي اللحظة التي يأتي الجميع من أجلها. نحت المهندسون الأنباط هذه الواجهة كاملة، بارتفاع يقارب 40 متراً، من قطعة واحدة من الجبل، في القرن الأول الميلادي. سُمّيت الخزنة بسبب أسطورة قديمة عن فرعون خبّأ ذهباً في تلك الجرة الحجرية أعلى الواجهة، لكن علماء الآثار الذين نقّبوا تحت قدميك عام 2003 وجدوا شيئاً أكثر إثارة: أدلة على أن هذا كان معبداً فعلياً يعمل، فيه أوعية للقرابين والبخور، لا مجرد مقبرة.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Al-Khazneh_(The_Treasury),_Petra,_Jordan.jpg",
+      "source": "Wikimedia Commons",
+      "license": "CC BY 4.0",
+      "attribution_text": "Photo by Vyacheslav Argenberg, CC BY 4.0, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/488848937",
+      "https://en.wikipedia.org/wiki/Al-Khazneh"
+    ],
+    "confidence": "verified",
+    "researcher": "Mahdi"
+  },
+  {
+    "id": "PET-MON",
+    "name_en": "Monastery (Ad-Deir)",
+    "name_ar": "الدير",
+    "category": "landmark",
+    "parent_site_id": "PET",
+    "coordinates": {
+      "lat": 30.3382074,
+      "lng": 35.4309778
+    },
+    "short_description_en": "Ad-Deir, or 'the Monastery,' is Petra's largest rock-cut facade at 47 m tall and 48 m wide, reached by climbing roughly 800-900 rock-cut steps from the city centre, about 40 minutes each way. Carved in the mid-1st century AD, its original purpose was likely religious rather than funerary; crosses later carved inside point to reuse as a Byzantine church or hermitage, which is how it earned its current Arabic name.",
+    "short_description_ar": "الدير هو أكبر واجهة صخرية منحوتة في البتراء بارتفاع 47 متراً وعرض 48 متراً، يُصعد إليها عبر نحو 800-900 درجة منحوتة في الصخر من مركز المدينة، أي نحو 40 دقيقة في كل اتجاه. نُحتت في منتصف القرن الأول الميلادي، ويُرجّح أن غرضها الأصلي كان دينياً لا جنائزياً، وتشير صلبان نُقشت داخلها لاحقاً إلى إعادة استخدامها ككنيسة أو صومعة بيزنطية، وهو ما منحها اسمها العربي الحالي.",
+    "history_en": "Despite its tomb-like facade, Ad-Deir has no burial niches inside; instead it holds a carved votive niche for a sacred stone, or betyl, and wide benches lining its interior walls, which points scholars toward a religious or ceremonial rather than funerary original purpose. An inscription found near the monument links it to memorial gatherings held in honour of the Nabataean king Obodas III, who was deified by his people after his death. Crosses later carved inside show it was reused during the Byzantine period, and medieval sources record two Greek monks living in the building as late as 1217 AD, which is where its Arabic name, 'the Monastery,' comes from — even though most scholars now consider that name something of a misnomer for what was originally a Nabataean temple. It is reached by a climb of roughly 800-900 rock-cut steps from the city centre, a detail that shapes almost every visitor's experience of the site.",
+    "history_ar": "رغم واجهتها الشبيهة بواجهات المقابر، لا يوجد داخل الدير أي تجاويف دفن، بل تحمل تجويفاً نذرياً منحوتاً لحجر مقدس (بيتيل) ومقاعد عريضة تصطف على جدرانها الداخلية، ما يدفع الباحثين إلى ترجيح غرض ديني أو احتفالي أصلي لا جنائزي. ويربطها نقش عُثر عليه قرب المبنى بتجمعات تذكارية أُقيمت تكريماً للملك النبطي عبادة الثالث، الذي أُلّه بعد وفاته. وتُظهر صلبان نُحتت داخلها لاحقاً إعادة استخدامها في العصر البيزنطي، وتذكر مصادر من العصور الوسطى أن راهبين يونانيين سكنا المبنى حتى عام 1217م، وهو أصل اسمها العربي «الدير»، رغم أن معظم الباحثين يعتبرون اليوم هذا الاسم غير دقيق لما كان أصلاً معبداً نبطياً. ويُصعد إليها عبر نحو 800 إلى 900 درجة منحوتة في الصخر من مركز المدينة، وهو تفصيل يشكّل تجربة معظم الزوار للموقع.",
+    "significance_en": "Ad-Deir shows how a single Nabataean monument can pick up new layers of meaning over centuries — built for one god's memorial cult, later reused by Christian monks, and finally renamed by later visitors who read its crosses as proof of a monastery that was never quite there. At roughly the same scale as the Treasury but far less crowded, it also gives visitors a genuine sense of how vast and empty the rest of Petra is beyond the main trail.",
+    "significance_ar": "يُظهر الدير كيف يمكن لمعلم نبطي واحد أن يكتسب طبقات جديدة من المعنى عبر القرون، فقد بُني لعبادة تذكارية لملك مؤلّه، ثم أعاد رهبان مسيحيون استخدامه لاحقاً، ثم أطلق عليه زوار لاحقون اسماً جديداً بعد أن قرأوا صلبانه دليلاً على دير لم يكن موجوداً فعلياً بهذا المعنى. وبمقياس قريب من الخزنة لكن بازدحام أقل بكثير، يمنح الموقع الزوار إحساساً حقيقياً باتساع البتراء وخلائها خارج المسار الرئيسي.",
+    "visiting_info": {
+      "best_time_to_visit": "Mid-to-late afternoon, when the climb is in shade and the light on the facade is best",
+      "difficulty": "difficult",
+      "estimated_time_there": "120 minutes",
+      "accessibility_notes": "Reached via ~800-900 rock-cut steps (about 40 minutes each way); not accessible for reduced mobility.",
+      "requires_guide": false,
+      "entrance_fee_notes": "Covered by the standard Petra Archaeological Park entrance ticket; no separate fee"
+    },
+    "narration_script_en": "That eight-hundred-step climb you just did was worth it — this facade is nearly as big as the Treasury, but almost nobody makes it up here. It was probably built as a memorial temple for a deified Nabataean king, not a tomb — notice there's no burial chamber inside. Centuries later, Christian monks moved in and carved crosses on the walls, which is the only reason it's called 'the Monastery' today, even though that name isn't really accurate.",
+    "narration_script_ar": "تلك الثماني مئة درجة التي صعدتها كانت تستحق العناء، فهذه الواجهة تقارب حجم الخزنة تقريباً، لكن قلّة من يصلون إلى هنا. بُنيت على الأرجح كمعبد تذكاري لملك نبطي مؤلّه، لا كمقبرة، ولاحظ أنه لا توجد غرفة دفن في الداخل. وبعد قرون، سكنها رهبان مسيحيون ونقشوا صلباناً على جدرانها، وهذا هو السبب الوحيد لتسميتها «الدير» اليوم، رغم أن هذا الاسم ليس دقيقاً تماماً.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Ad_Deir_(The_Monastery),_El_Deir,_Petra,_Jordan.jpg",
+      "source": "Wikimedia Commons",
+      "license": "CC BY 4.0",
+      "attribution_text": "Photo by Vyacheslav Argenberg, CC BY 4.0, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/41032088",
+      "https://en.wikipedia.org/wiki/Ed-Deir%2C_Petra"
+    ],
+    "confidence": "verified",
+    "researcher": "Mahdi"
+  },
+  {
+    "id": "PET-SOF",
+    "name_en": "Street of Facades",
+    "name_ar": "شارع الواجهات",
+    "category": "landmark",
+    "parent_site_id": "PET",
+    "coordinates": {
+      "lat": 30.323142,
+      "lng": 35.4501264
+    },
+    "short_description_en": "The Street of Facades is a row of more than 40 tomb and house facades cut side by side into the cliffs just past the Treasury, in a stepped 'crow-step' style drawing on Assyrian and Hellenistic influences. Dating from about 50 BC to 50 AD, they are thought to be the burial places of senior Nabataean officials, and traces of paint on one facade hint they were once brightly coloured.",
+    "short_description_ar": "شارع الواجهات صف من أكثر من 40 واجهة لمدافن ومنازل منحوتة جنباً إلى جنب في المنحدرات بعد الخزنة مباشرة، بطراز مدرّج متأثر بالعمارة الآشورية والهلنستية. يعود تاريخها إلى ما بين 50 ق.م و50م تقريباً، ويُعتقد أنها كانت مدافن لكبار المسؤولين النبطيين، وتشير بقايا طلاء على إحدى الواجهات إلى أنها كانت ملوّنة يوماً ما.",
+    "history_en": "The Street of Facades is a run of more than forty tomb and house facades cut side by side into the cliff face just past the Treasury, generally dated to between about 50 BC and AD 50. Their stepped, 'crow-step' cresting draws on both Assyrian and Hellenistic architectural traditions, a blend that shows up across Nabataean funerary art of the period. The facades are thought to belong to senior Nabataean officials rather than royalty, based on their scale and position relative to the more elaborate Royal Tombs further along the same cliff. Faint traces of paint surviving on one facade are among the few clues that these monuments, now uniformly sandstone-coloured, were originally brightly painted.",
+    "history_ar": "شارع الواجهات هو صف من أكثر من أربعين واجهة لمدافن ومنازل منحوتة جنباً إلى جنب في وجه المنحدر بعد الخزنة مباشرة، ويعود تاريخها عموماً إلى ما بين 50 ق.م و50م تقريباً. ويستمد تيجانها المدرّجة على طراز «خطوة الغراب» من تقاليد معمارية آشورية وهلنستية معاً، وهو مزيج يظهر في الفن الجنائزي النبطي في تلك الحقبة على نطاق واسع. ويُرجَّح أن الواجهات تعود لكبار المسؤولين النبطيين لا لأفراد من العائلة الملكية، استناداً إلى حجمها وموقعها مقارنة بالمدافن الملكية الأكثر فخامة الواقعة على امتداد المنحدر نفسه. وتُعد بقايا طلاء باهتة على إحدى الواجهات من الأدلة القليلة على أن هذه المعالم، التي تبدو اليوم بلون الحجر الرملي الموحّد، كانت ملوّنة بألوان زاهية في الأصل.",
+    "significance_en": "Walking the Street of Facades is the clearest way to see Nabataean funerary architecture as a repeated, evolving style rather than a single one-off monument like the Treasury — forty variations on the same idea, carved by the same society over roughly a century. It also marks the transition from the narrow Siq into the open heart of the city, so it is usually the first wide view visitors get of Petra's scale.",
+    "significance_ar": "المشي على طول شارع الواجهات هو أوضح طريقة لرؤية العمارة الجنائزية النبطية بوصفها طرازاً متكرراً ومتطوراً، لا معلماً فريداً واحداً مثل الخزنة، إذ يضم أربعين تنويعة على الفكرة نفسها، نحتها المجتمع نفسه على مدى قرن تقريباً. كما يمثّل الشارع نقطة الانتقال من ضيق السيق إلى قلب المدينة المفتوح، ولذلك يُعد عادة أول منظر واسع يحصل عليه الزوار على حجم البتراء الحقيقي.",
+    "visiting_info": {
+      "best_time_to_visit": "Morning, on the walk from the Treasury toward the Theatre — a natural stop along the main route",
+      "difficulty": "easy",
+      "estimated_time_there": "15 minutes",
+      "accessibility_notes": "Viewable from the main path at ground level; generally accessible.",
+      "requires_guide": false,
+      "entrance_fee_notes": "Covered by the standard Petra Archaeological Park entrance ticket; no separate fee"
+    },
+    "narration_script_en": "Take a second here — this is more than forty tombs in a row, all cut into the same cliff, and it's easy to walk past them fast on your way to the next big thing. Each one belonged to a senior Nabataean official, not royalty, which is exactly why there are so many of them side by side instead of one grand monument. If you look closely at the stone you can still find faint traces of paint — these were once brightly coloured, not the plain sandstone you see today.",
+    "narration_script_ar": "توقف لحظة هنا، فهذا أكثر من أربعين مقبرة متتالية، كلها منحوتة في المنحدر نفسه، ومن السهل أن تمر بها سريعاً في طريقك إلى المعلم الكبير التالي. كل واحدة منها كانت تعود لمسؤول نبطي كبير، لا لأحد من العائلة الملكية، وهذا بالضبط سبب وجود هذا العدد الكبير منها جنباً إلى جنب بدلاً من معلم فخم واحد. إذا نظرت عن قرب إلى الحجر، ستجد آثاراً باهتة من الطلاء، فقد كانت هذه الواجهات ملوّنة بألوان زاهية يوماً ما، لا بلون الحجر الرملي الطبيعي الذي تراه اليوم.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Street_of_Facades,_Petra.jpg",
+      "source": "Wikimedia Commons",
+      "license": "CC BY-SA 3.0",
+      "attribution_text": "Photo by Bernard Gagnon, CC BY-SA 3.0, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://www.openstreetmap.org/node/4788669947",
+      "https://padc.pdtra.gov.jo/en/sitesdtls/18/The-Street-of-Facades",
+      "https://nabataea.net/explore/petra/petra-street-of-facades/"
+    ],
+    "confidence": "verified",
+    "researcher": "Mahdi"
+  },
+  {
+    "id": "PET-URN",
+    "name_en": "Urn Tomb (Royal Tombs)",
+    "name_ar": "قبر الجرة",
+    "category": "landmark",
+    "parent_site_id": "PET",
+    "coordinates": {
+      "lat": 30.327551,
+      "lng": 35.449262
+    },
+    "short_description_en": "The Urn Tomb is the uppermost of Petra's Royal Tombs, fronted by a deep, colonnaded courtyard built partly from carved rock and partly from constructed columns. Its facade measures about 26 by 16.5 metres and is attributed to the Nabataean king Malichus II, who died in 70 AD; a red-painted inscription records its later consecration as a church in 447 AD.",
+    "short_description_ar": "قبر الجرة هو الأعلى موقعاً بين المدافن الملكية في البتراء، وتتقدمه ساحة عميقة محاطة بأعمدة، بعضها منحوت من الصخر وبعضها مبني. تبلغ أبعاد واجهته نحو 26×16.5 متراً، وتُنسب إلى الملك النبطي مالخوس الثاني الذي توفي عام 70م، ويوثّق نقش بالحبر الأحمر تكريسه لاحقاً ككنيسة عام 447م.",
+    "history_en": "The Urn Tomb takes its name from the small urn-shaped finial carved at the top of its pediment, and is traditionally attributed to the Nabataean king Malichus II, who died in AD 70, making it a probable royal tomb. Some scholars, notably Andreas Schmidt-Colinet, have argued instead for an attribution to Aretas IV, so the identification is not fully settled. A deep, partly rock-cut and partly built colonnaded courtyard fronts the tomb, an unusual combination of carved and constructed architecture among Petra's Royal Tombs. A red-painted inscription inside records that the tomb was later consecrated as a Byzantine church in AD 447, giving it one of the more precisely dated reuse events among Petra's monuments.",
+    "history_ar": "يستمد قبر الجرة اسمه من الجرة الصغيرة المنحوتة أعلى واجهته، ويُنسب تقليدياً إلى الملك النبطي مالخوس الثاني الذي توفي عام 70م، ما يجعله على الأرجح مقبرة ملكية. لكن بعض الباحثين، وأبرزهم أندرياس شميت-كولينيه، رجّحوا نسبته إلى الحارث الرابع بدلاً من ذلك، فالهوية لم تُحسم بشكل كامل بعد. وتتقدم المقبرة ساحة معمّدة عميقة، جزء منها منحوت في الصخر وجزء آخر مبني، وهو مزيج غير معتاد بين العمارة المنحوتة والمشيّدة بين المدافن الملكية في البتراء. ويسجّل نقش بالحبر الأحمر في داخلها أن المقبرة كُرّست لاحقاً ككنيسة بيزنطية عام 447م، ما يمنحها واحداً من أدق أحداث إعادة الاستخدام الموثقة زمنياً بين معالم البتراء.",
+    "significance_en": "The Urn Tomb sits highest among the four Royal Tombs and commands the widest view over the city centre, which is likely part of why later Byzantines chose it, of all Petra's monuments, to formally consecrate as a church. Its dated inscription is one of the few fixed points that help archaeologists anchor the timeline of Christian-era reuse across the site.",
+    "significance_ar": "يقع قبر الجرة في أعلى موقع بين المدافن الملكية الأربعة، ويوفر أوسع إطلالة على مركز المدينة، وهو على الأرجح جزء من سبب اختيار البيزنطيين له لاحقاً، من بين كل معالم البتراء، ليكرّسوه رسمياً ككنيسة. ويُعد نقشه المؤرَّخ واحداً من النقاط الثابتة القليلة التي تساعد علماء الآثار على تحديد الخط الزمني لإعادة الاستخدام في العصر المسيحي عبر الموقع.",
+    "visiting_info": {
+      "best_time_to_visit": "Afternoon — the facade faces a direction that catches good light later in the day",
+      "difficulty": "moderate",
+      "estimated_time_there": "20 minutes",
+      "accessibility_notes": "Viewable from the path below; the facades themselves are not climbable or accessible.",
+      "requires_guide": false,
+      "entrance_fee_notes": "Covered by the standard Petra Archaeological Park entrance ticket; no separate fee"
+    },
+    "narration_script_en": "Look up at that small urn shape crowning the facade — that's where this tomb gets its name. It's usually linked to King Malichus II, who died in the year 70, though not everyone agrees on that. What's certain is what happened centuries later: an inscription inside, still visible today, records that this tomb was turned into a church in the year 447 — one of the few exact dates we have for Petra's Christian period.",
+    "narration_script_ar": "انظر إلى شكل الجرة الصغير الذي يعلو الواجهة، فمنه استمدت هذه المقبرة اسمها. عادة ما تُنسب إلى الملك مالخوس الثاني الذي توفي عام 70م، رغم أن هذا غير متفق عليه بين الجميع. لكن المؤكد ما حدث بعد قرون: نقش في الداخل، ما زال ظاهراً حتى اليوم، يسجّل أن هذه المقبرة تحوّلت إلى كنيسة عام 447م، وهو أحد التواريخ الدقيقة القليلة التي نملكها عن العصر المسيحي في البتراء.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Urn_Tomb,_Petra_01.jpg",
+      "source": "Wikimedia Commons",
+      "license": "CC BY-SA 3.0",
+      "attribution_text": "Photo by Bernard Gagnon, CC BY-SA 3.0, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://www.openstreetmap.org/node/2437205310",
+      "https://madainproject.com/urn_tomb",
+      "https://www.visitpetra.jo/en/Location/119"
+    ],
+    "confidence": "verified",
+    "researcher": "Mahdi"
+  },
+  {
+    "id": "PET-SLK",
+    "name_en": "Silk Tomb (Royal Tombs)",
+    "name_ar": "قبر الحرير",
+    "category": "landmark",
+    "parent_site_id": "PET",
+    "coordinates": {
+      "lat": 30.3280388,
+      "lng": 35.4492607
+    },
+    "short_description_en": "The Silk Tomb is the smallest of Petra's four Royal Tombs, set back in a recess in the Khubtha cliff face, and is named for the swirling pink, white, and yellow bands of sandstone that weathering has exposed across its facade. It dates to the first half of the 1st century AD, though no record survives of who it was built for.",
+    "short_description_ar": "قبر الحرير أصغر المدافن الملكية الأربعة في البتراء، ويقع في تجويف داخل منحدر الخبثة، وسُمّي بذلك لتموجات الحجر الرملي الوردية والبيضاء والصفراء التي كشفها التآكل على واجهته. يعود تاريخه إلى النصف الأول من القرن الأول الميلادي، رغم عدم بقاء سجل يوضح لمن بُني.",
+    "history_en": "The Silk Tomb is the smallest of Petra's four Royal Tombs, set back in a deep natural recess in the Khubtha cliff face rather than standing forward like its neighbours. It owes its name entirely to its appearance: natural weathering has exposed bands of pink, white, red and yellow running through the sandstone facade in swirling patterns that early visitors compared to the sheen of silk fabric. It is generally dated to the first half of the first century AD, in line with the other Royal Tombs, but unlike the Urn or Corinthian tombs no historical record or inscription identifies who it was built for.",
+    "history_ar": "قبر الحرير أصغر المدافن الملكية الأربعة في البتراء، ويقع في تجويف طبيعي عميق داخل منحدر الخبثة بدلاً من أن يبرز إلى الأمام كجيرانه. وهو مدين باسمه بالكامل لمظهره، إذ كشف التآكل الطبيعي عن أشرطة من اللونين الوردي والأبيض والأحمر والأصفر تتموّج عبر واجهته الرملية، شبّهها الزوار الأوائل بلمعان قماش الحرير. ويعود تاريخه عموماً إلى النصف الأول من القرن الأول الميلادي، بما يتوافق مع بقية المدافن الملكية، لكن على عكس مقبرتي الجرة وكورنثيان، لا يوجد سجل تاريخي أو نقش يحدد لمن بُني.",
+    "significance_en": "The Silk Tomb is the clearest demonstration in Petra of how much the Nabataeans relied on the natural colour of the sandstone itself as decoration, choosing this exact spot in the cliff for the pattern the rock would reveal rather than for size or prominence. Its anonymity — no name, no inscription — is itself a reminder of how much about Petra's individual monuments remains genuinely unknown.",
+    "significance_ar": "يُعد قبر الحرير أوضح مثال في البتراء على مدى اعتماد الأنباط على اللون الطبيعي للحجر الرملي نفسه كعنصر زخرفي، إذ اختاروا هذه البقعة بالذات من المنحدر لما سيكشفه النمط الصخري لا لحجمها أو بروزها. ويُذكّر غموض هويته، من دون اسم أو نقش، بمدى ما يظل مجهولاً فعلاً عن معالم البتراء الفردية.",
+    "visiting_info": {
+      "best_time_to_visit": "Midday, when direct light best brings out the coloured banding in the sandstone",
+      "difficulty": "moderate",
+      "estimated_time_there": "15 minutes",
+      "accessibility_notes": "Viewable from the path below; set in a recessed cliff face, not climbable.",
+      "requires_guide": false,
+      "entrance_fee_notes": "Covered by the standard Petra Archaeological Park entrance ticket; no separate fee"
+    },
+    "narration_script_en": "Notice how this one sits back in the cliff, almost hidden compared to its neighbours — and look at the colour running through the stone, those swirling bands of pink and white and yellow. Nobody added that; it's entirely natural weathering, and it's exactly why early visitors nicknamed this the Silk Tomb. We don't actually know who it was built for — no inscription survives to tell us, which makes it one of Petra's quieter mysteries.",
+    "narration_script_ar": "لاحظ كيف ينزوي هذا القبر داخل المنحدر، وكأنه شبه مخفي مقارنة بجيرانه، وانظر إلى اللون المتموّج عبر الحجر، تلك الأشرطة الوردية والبيضاء والصفراء. لم يُضف أحد هذا اللون، فهو تآكل طبيعي بالكامل، وهو بالضبط سبب تسمية الزوار الأوائل له بقبر الحرير. لا نعرف فعلياً لمن بُني، إذ لم يبقَ أي نقش يخبرنا بذلك، ما يجعله أحد ألغاز البتراء الأكثر هدوءاً.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Silk_Tomb,_Petra_01.jpg",
+      "source": "Wikimedia Commons",
+      "license": "CC BY-SA 3.0",
+      "attribution_text": "Photo by Bernard Gagnon, CC BY-SA 3.0, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://www.openstreetmap.org/node/2437205299",
+      "https://universes.art/en/art-destinations/jordan/petra/royal-tombs/silk-tomb",
+      "https://madainproject.com/royal_tombs_(petra)"
+    ],
+    "confidence": "verified",
+    "researcher": "Mahdi"
+  },
+  {
+    "id": "PET-COR",
+    "name_en": "Corinthian Tomb (Royal Tombs)",
+    "name_ar": "القبر الكورنثي",
+    "category": "landmark",
+    "parent_site_id": "PET",
+    "coordinates": {
+      "lat": 30.3285277,
+      "lng": 35.4495453
+    },
+    "short_description_en": "The Corinthian Tomb is one of Petra's Royal Tombs, its facade closely modelled on the Treasury (Al-Khazneh) but with squatter proportions and more eclectic Nabataean-Corinthian capitals, which is why some visitors nickname it a 'mini Treasury.' Dated to roughly 40-70 AD, its 27.5-metre-wide facade has weathered heavily, softening details that once closely echoed its far more famous neighbour.",
+    "short_description_ar": "القبر الكورنثي أحد المدافن الملكية في البتراء، وواجهته مصممة على غرار الخزنة تقريباً لكن بنسب أكثر تربّعاً وتيجان نبطية-كورنثية أكثر تنوعاً، حتى إن بعض الزوار يسمونه ‘الخزنة المصغّرة’. يعود تاريخه إلى ما بين 40 و70م تقريباً، وقد تآكلت واجهته التي يبلغ عرضها 27.5 متراً تآكلاً شديداً، ما طمس تفاصيل كانت تحاكي جاره الأشهر عن قرب.",
+    "history_en": "The Corinthian Tomb takes its name from its Corinthian-style capitals and is deliberately patterned after the Treasury, though built with squatter proportions and a more eclectic mix of Nabataean and classical details across its two storeys. It is generally attributed to the reign of Malichus II (AD 40-70), the same period as the neighbouring Urn Tomb, though no inscription or historical source links it to a specific person. Centuries of weathering have softened the facade considerably compared to the well-preserved Treasury, blurring details that once echoed its famous neighbour much more closely than they do today.",
+    "history_ar": "يستمد قبر كورنثيان اسمه من تيجانه بالطراز الكورنثي، وهو مصمم عمداً على غرار الخزنة، وإن كان بنسب أكثر تربّعاً ومزيج أكثر تنوعاً من التفاصيل النبطية والكلاسيكية عبر طابقيه. ويُنسب عموماً إلى عهد مالخوس الثاني (40-70م)، وهي الفترة نفسها التي يعود إليها قبر الجرة المجاور، رغم عدم وجود نقش أو مصدر تاريخي يربطه بشخص بعينه. وقد لطّف التآكل عبر القرون واجهته كثيراً مقارنة بالخزنة المحفوظة جيداً، ما طمس تفاصيل كانت يوماً أقرب بكثير في محاكاتها لجارتها الشهيرة مما هي عليه اليوم.",
+    "significance_en": "Because its design so closely echoes the Treasury, the Corinthian Tomb is the most likely monument in Petra to be mistaken for it in a photograph, especially from a distance or in poor light — a real risk for any tool trying to identify Petra's monuments automatically. Recognising the difference matters: the Corinthian Tomb is squatter, more weathered, and set among the other Royal Tombs rather than standing alone at the end of the Siq.",
+    "significance_ar": "لأن تصميمه يحاكي الخزنة عن قرب، يُعد قبر كورنثيان المعلم الأكثر عرضة للخلط بها في أي صورة في البتراء، خصوصاً من مسافة بعيدة أو في إضاءة ضعيفة، وهو خطر حقيقي لأي أداة تحاول التعرف تلقائياً على معالم البتراء. والتمييز بينهما مهم: فقبر كورنثيان أكثر تربّعاً وتآكلاً، ويقع بين المدافن الملكية الأخرى لا منفرداً عند نهاية السيق.",
+    "visiting_info": {
+      "best_time_to_visit": "Late morning, alongside the other Royal Tombs on the same stretch of cliff",
+      "difficulty": "moderate",
+      "estimated_time_there": "15 minutes",
+      "accessibility_notes": "Viewable from the path below; heavily weathered facade, not climbable.",
+      "requires_guide": false,
+      "entrance_fee_notes": "Covered by the standard Petra Archaeological Park entrance ticket; no separate fee"
+    },
+    "narration_script_en": "If this looks a little familiar, that's the point — the Nabataeans built it as an echo of the Treasury you saw earlier, just with squatter proportions and a busier mix of details across two storeys. Centuries of weather have softened it more than its famous neighbour, which is actually the easiest way to tell them apart. Whoever it was built for, we don't know — there's no inscription naming them, only the resemblance to guide the guess.",
+    "narration_script_ar": "إذا بدت لك هذه الواجهة مألوفة قليلاً، فهذا هو المقصود، إذ بناها الأنباط كصدى للخزنة التي رأيتها سابقاً، لكن بنسب أكثر تربّعاً ومزيج أكثر ازدحاماً من التفاصيل عبر طابقين. وقد لطّفها تآكل القرون أكثر من جارتها الشهيرة، وهذه في الواقع أسهل طريقة للتمييز بينهما. أما لمن بُنيت فلا نعرف، إذ لا يوجد نقش يسمّي صاحبها، ولا شيء سوى التشابه ليقودنا إلى تخمين.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Corinthian_Tomb,_Petra_01.jpg",
+      "source": "Wikimedia Commons",
+      "license": "CC BY-SA 3.0",
+      "attribution_text": "Photo by Bernard Gagnon, CC BY-SA 3.0, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://www.openstreetmap.org/node/2437205269",
+      "https://universes.art/en/art-destinations/jordan/petra/royal-tombs/corinthian-tomb",
+      "https://madainproject.com/royal_tombs_(petra)"
+    ],
+    "confidence": "verified",
+    "researcher": "Mahdi"
+  },
+  {
+    "id": "PET-PAL",
+    "name_en": "Palace Tomb (Royal Tombs)",
+    "name_ar": "قبر القصر",
+    "category": "landmark",
+    "parent_site_id": "PET",
+    "coordinates": {
+      "lat": 30.3291065,
+      "lng": 35.4499137
+    },
+    "short_description_en": "The Palace Tomb is one of Petra's Royal Tombs and, at 49 m wide and 46 m tall, among its largest facades. Its name comes from a resemblance to grand Roman palace architecture rather than any proven royal use, and it is unusual for mixing carved rock with built masonry - the upper-left corner of its top storey was constructed from stone blocks rather than cut from the cliff. It likely dates to the late 1st century AD.",
+    "short_description_ar": "قبر القصر أحد المدافن الملكية في البتراء، وتُعد واجهته من أكبر واجهات البتراء بعرض 49 متراً وارتفاع 46 متراً. جاء اسمه من تشابهه مع العمارة الرومانية الفخمة لا من دليل مؤكد على استخدام ملكي، ويتميز بمزجه بين الصخر المنحوت والبناء الحجري، إذ شُيّدت الزاوية العليا اليسرى من طابقه العلوي بكتل حجرية بدلاً من نحتها من المنحدر، ويُرجّح أنه يعود إلى أواخر القرن الأول الميلادي.",
+    "history_en": "The Palace Tomb is the largest and most elaborate of Petra's four Royal Tombs, its facade running about 49 m wide and 46 m tall across what was originally a four-storey design, though the uppermost level has partly collapsed. Its name comes from its resemblance to grand Roman palace facades of the period rather than from any confirmed royal occupant. Unusually for Petra, part of its upper storey was built from stacked masonry blocks rather than cut directly from the cliff, since the rock face itself was not tall enough to carve the full design, making it one of the clearest examples of the Nabataeans combining carved and constructed architecture in a single monument. It is generally dated to the late first century AD.",
+    "history_ar": "قبر القصر هو الأكبر والأكثر فخامة بين المدافن الملكية الأربعة في البتراء، وتمتد واجهته نحو 49 متراً عرضاً و46 متراً ارتفاعاً في تصميم كان أصلاً من أربعة طوابق، وإن كان الطابق العلوي قد تهدّم جزئياً. ويعود اسمه إلى تشابهه مع واجهات القصور الرومانية الفخمة في تلك الحقبة، لا إلى وجود دليل مؤكد على شاغل ملكي له. وبشكل غير معتاد في البتراء، بُني جزء من طابقه العلوي بكتل حجرية مصفوفة بدلاً من نحته مباشرة من المنحدر، إذ لم يكن وجه الصخر مرتفعاً بما يكفي لنحت التصميم كاملاً، ما يجعله أحد أوضح الأمثلة على مزج الأنباط بين العمارة المنحوتة والمشيّدة في معلم واحد. ويعود تاريخه عموماً إلى أواخر القرن الأول الميلادي.",
+    "significance_en": "The Palace Tomb represents the technical limit of Nabataean rock-cutting at Petra — the moment their ambition for scale outran what the cliff face alone could provide, forcing them to build upward in stone rather than only carve inward. Standing beside the other three Royal Tombs, it shows the range of the same building tradition, from the modest, hidden Silk Tomb to this, the most overtly monumental facade in the group.",
+    "significance_ar": "يمثّل قبر القصر الحد التقني لنحت الصخر عند الأنباط في البتراء، إذ تجاوز طموحهم في الحجم ما يمكن أن يوفره وجه المنحدر وحده، ما اضطرهم إلى البناء صعوداً بالحجر لا الاكتفاء بالنحت داخل الصخر. ووقوفه إلى جانب المدافن الملكية الثلاثة الأخرى يُظهر مدى تنوع التقليد المعماري نفسه، من قبر الحرير المتواضع والمختبئ إلى هذا المعلم، الأكثر ضخامة وبروزاً بينها.",
+    "visiting_info": {
+      "best_time_to_visit": "Late morning to early afternoon, alongside the other Royal Tombs",
+      "difficulty": "moderate",
+      "estimated_time_there": "15 minutes",
+      "accessibility_notes": "Viewable from the path below; the widest of the four Royal Tombs, not climbable.",
+      "requires_guide": false,
+      "entrance_fee_notes": "Covered by the standard Petra Archaeological Park entrance ticket; no separate fee"
+    },
+    "narration_script_en": "This is the widest facade in the whole Royal Tombs group — nearly 50 metres across — and it's not entirely carved. Look at the upper level: when the cliff face ran out of height, the Nabataeans just kept building upward with cut stone blocks instead of stopping. They called it the Palace Tomb because it looks like a grand Roman-style palace front, not because we actually know a king lived — or was buried — here.",
+    "narration_script_ar": "هذه أوسع واجهة في مجموعة المدافن الملكية كلها، بعرض يقارب 50 متراً، وهي ليست منحوتة بالكامل. انظر إلى الطابق العلوي: حين نفد ارتفاع وجه الصخر، واصل الأنباط البناء صعوداً بكتل حجرية مقطوعة بدلاً من التوقف. سُمّي قبر القصر لأنه يشبه واجهة قصر روماني فخم، لا لأننا نعرف فعلاً أن ملكاً عاش، أو دُفن، هنا.",
+    "image": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Palace_Tomb,_Petra.jpg",
+      "source": "Wikimedia Commons",
+      "license": "CC BY-SA 3.0",
+      "attribution_text": "Photo by Bernard Gagnon, CC BY-SA 3.0, via Wikimedia Commons"
+    },
+    "sources": [
+      "https://www.openstreetmap.org/node/2437205291",
+      "https://en.wikipedia.org/wiki/Palace_Tomb"
+    ],
+    "confidence": "verified",
+    "researcher": "Mahdi"
+  }
+]
