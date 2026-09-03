@@ -225,5 +225,16 @@
   "profile.notInBuild": "غير متوفر في هذه النسخة",
   "profile.signOut": "تسجيل الخروج",
   "profile.reviewsEmpty": "لا تقييمات بعد",
-  "profile.starsShort": "{n}★"
+  "profile.starsShort": "{n}★",
+  "passport.rewardNamed": "{n} أخرى تفتح خصم المبيت في مخيّم العمارين",
+  "passport.lockedNear": "سجّل حضورك خلال ٢٠٠ م للحصول على الطابع",
+  "passport.lockedFar": "مقفل · {n} كم {dir}",
+  "passport.dir.n": "شمالاً",
+  "passport.dir.s": "جنوباً",
+  "passport.dir.e": "شرقاً",
+  "passport.dir.w": "غرباً",
+  "passport.dir.ne": "شمال شرق",
+  "passport.dir.nw": "شمال غرب",
+  "passport.dir.se": "جنوب شرق",
+  "passport.dir.sw": "جنوب غرب"
 }

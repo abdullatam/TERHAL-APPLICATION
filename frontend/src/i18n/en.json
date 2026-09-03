@@ -225,5 +225,16 @@
   "profile.notInBuild": "Not in this build",
   "profile.signOut": "Sign out",
   "profile.reviewsEmpty": "No reviews yet",
-  "profile.starsShort": "{n}★"
+  "profile.starsShort": "{n}★",
+  "passport.rewardNamed": "{n} more unlocks the Ammarin Camp overnight discount",
+  "passport.lockedNear": "Check in within 200 m to stamp",
+  "passport.lockedFar": "Locked · {n} km {dir}",
+  "passport.dir.n": "north",
+  "passport.dir.s": "south",
+  "passport.dir.e": "east",
+  "passport.dir.w": "west",
+  "passport.dir.ne": "north-east",
+  "passport.dir.nw": "north-west",
+  "passport.dir.se": "south-east",
+  "passport.dir.sw": "south-west"
 }

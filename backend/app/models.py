@@ -225,6 +225,10 @@ class PassportStamp(BaseModel):
     name_en: str
     name_ar: str
     image_url: Optional[str] = None
+    # Where it is, so a locked stamp can say how far away it still is rather
+    # than repeating the same generic sentence on every row.
+    lat: Optional[float] = None
+    lon: Optional[float] = None
     stamped: bool
     # Set only when stamped: the booking that earned it.
     stamped_on: Optional[date] = None
