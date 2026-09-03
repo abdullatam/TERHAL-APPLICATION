@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    body { margin:0; background:#E7E2DA; font-family:Poppins, system-ui, sans-serif; -webkit-font-smoothing:antialiased; text-wrap:pretty; }
+    a { color:#B2543A; text-decoration:none; }
+    a:hover { color:#8E4230; }
+  </style>
+</helmet>
+
+<div style="padding:64px 56px 96px;display:flex;flex-direction:column;gap:56px;background:#E7E2DA;min-height:100vh">
+
+  <div style="display:flex;gap:56px;align-items:flex-start;flex-wrap:wrap;max-width:1560px">
+    <div style="background:#FAF6F2;border-radius:28px;padding:30px 40px;flex:none">
+      <img src="brand/terhal-lockup.png" alt="Terhal logo lockup" style="display:block;width:280px;height:auto" />
+    </div>
+    <div style="flex:1;min-width:420px;display:flex;flex-direction:column;gap:22px;padding-top:6px">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font:400 12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.22em;color:#B2543A">MOBILE APP · UI SYSTEM · v1</span>
+        <h1 style="margin:0;font:600 44px/1.05 Poppins,sans-serif;letter-spacing:-.02em;color:#3A2A21">Terhal — 17 screens, branded</h1>
+        <p style="margin:0;max-width:640px;font:300 17px/1.6 Poppins,sans-serif;color:#5C4A3E">Official palette and Poppins applied throughout. Group&nbsp;B screens are designed fresh against the brand kit — logo lockup, path, mountain, birds and location marks. Group&nbsp;A screens carry the reconciled colour and type only; layout, components and interactions are untouched.</p>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;gap:7px"><div style="width:74px;height:44px;border-radius:10px;background:#B2543A"></div><span style="font:400 10px ui-monospace,SFMono-Regular,Menlo,monospace;color:#5C4A3E">#B2543A</span></div>
+        <div style="display:flex;flex-direction:column;gap:7px"><div style="width:74px;height:44px;border-radius:10px;background:#3A2A21"></div><span style="font:400 10px ui-monospace,SFMono-Regular,Menlo,monospace;color:#5C4A3E">#3A2A21</span></div>
+        <div style="display:flex;flex-direction:column;gap:7px"><div style="width:74px;height:44px;border-radius:10px;background:#D9B28C"></div><span style="font:400 10px ui-monospace,SFMono-Regular,Menlo,monospace;color:#5C4A3E">#D9B28C</span></div>
+        <div style="display:flex;flex-direction:column;gap:7px"><div style="width:74px;height:44px;border-radius:10px;background:#F2E7DA"></div><span style="font:400 10px ui-monospace,SFMono-Regular,Menlo,monospace;color:#5C4A3E">#F2E7DA</span></div>
+        <div style="display:flex;flex-direction:column;gap:7px"><div style="width:74px;height:44px;border-radius:10px;background:#FAF6F2"></div><span style="font:400 10px ui-monospace,SFMono-Regular,Menlo,monospace;color:#5C4A3E">#FAF6F2</span></div>
+        <div style="display:flex;flex-direction:column;gap:7px"><div style="width:74px;height:44px;border-radius:10px;background:#E7E2DA;box-shadow:inset 0 0 0 1px rgba(58,42,33,.12)"></div><span style="font:400 10px ui-monospace,SFMono-Regular,Menlo,monospace;color:#5C4A3E">#E7E2DA</span></div>
+        <div style="display:flex;flex-direction:column;gap:7px"><div style="width:110px;height:44px;border-radius:10px;background:linear-gradient(90deg,#B2543A,#D9B28C)"></div><span style="font:400 10px ui-monospace,SFMono-Regular,Menlo,monospace;color:#5C4A3E">gradient · rare</span></div>
+      </div>
+    </div>
+  </div>
+
+  <sc-if value="{{ showBrandNotes }}" hint-placeholder-val="{{ true }}">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px;max-width:1560px">
+    <div style="background:#FAF6F2;border-radius:20px;padding:24px 26px;display:flex;flex-direction:column;gap:10px">
+      <span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.16em;color:#B2543A">FLAG · COLOUR RECONCILIATION</span>
+      <p style="margin:0;font:400 14px/1.55 Poppins,sans-serif;color:#3A2A21">Terracotta is an exact match to <span style="font-family:ui-monospace,monospace">rose-500</span>. The four neutrals drift slightly. Recommendation for whoever owns the Tailwind config: a one-line find-and-replace of the neutral scale to the official hex values — brand formalisation, not a redesign. Not applied unilaterally.</p>
+    </div>
+    <div style="background:#FAF6F2;border-radius:20px;padding:24px 26px;display:flex;flex-direction:column;gap:10px">
+      <span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.16em;color:#B2543A">FLAG · TYPOGRAPHY MIGRATION</span>
+      <p style="margin:0;font:400 14px/1.55 Poppins,sans-serif;color:#3A2A21">Poppins 300/400/500/600/700 replaces the system stack app-wide — a dedicated migration task, not a per-screen choice. Arabic is paired with Noto Sans Arabic; flag if the team wants something more distinctive later.</p>
+    </div>
+    <div style="background:#FAF6F2;border-radius:20px;padding:24px 26px;display:flex;flex-direction:column;gap:10px">
+      <span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.16em;color:#B2543A">FLAG · MISSING CONTEXT</span>
+      <p style="margin:0;font:400 14px/1.55 Poppins,sans-serif;color:#3A2A21">Group A was rebuilt from the written inventory, not from the existing codebase. Photography is shown as marked placeholders throughout — drop real imagery in and nothing else moves.</p>
+    </div>
+  </div>
+  </sc-if>
+
+  <div style="display:flex;flex-direction:column;gap:36px">
+    <div style="display:flex;align-items:center;gap:20px">
+      <span style="font:600 13px Poppins,sans-serif;letter-spacing:.2em;color:#B2543A">GROUP B</span>
+      <h2 style="margin:0;font:600 24px Poppins,sans-serif;letter-spacing:-.01em;color:#3A2A21">New screens — full brand application</h2>
+      <div style="flex:1;height:1px;background:rgba(58,42,33,.16)"></div>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:56px 48px">
+
+      <div data-screen-label="01 Splash" style="display:flex;flex-direction:column;align-items:center;gap:14px">
+        <div style="position:relative;width:390px;height:844px;flex:none;background:linear-gradient(168deg,#B2543A 0%,#BE6949 45%,#D9B28C 100%);border:9px solid #3A2A21;border-radius:46px;box-shadow:0 30px 60px -22px rgba(58,42,33,.5);overflow:hidden;display:flex;flex-direction:column">
+          <div style="flex:none;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 26px 0 30px;font:600 14px Poppins,sans-serif;color:#FAF6F2"><span>9:41</span><span style="display:flex;align-items:center;gap:6px"><svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"></rect><rect x="4.6" y="5" width="3" height="6" rx="1"></rect><rect x="9.2" y="2.5" width="3" height="8.5" rx="1"></rect><rect x="13.8" y="0" width="3" height="11" rx="1"></rect></svg><svg width="26" height="12" viewBox="0 0 26 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="currentColor" opacity=".45"></rect><rect x="2.5" y="2.5" width="15" height="7" rx="2" fill="currentColor"></rect><path d="M23.4 4.3v3.4a2.2 2.2 0 0 0 0-3.4Z" fill="currentColor" opacity=".45"></path></svg></span></div>
+          <svg viewBox="0 0 60 12" preserveAspectRatio="none" style="position:absolute;top:112px;right:34px;width:66px;height:14px;opacity:.55" fill="none" stroke="#FAF6F2" stroke-width="1.1" stroke-linecap="round"><path d="M2 7c2.2-3.4 4.4-3.4 6.6 0 2.2-3.4 4.4-3.4 6.6 0"></path><path d="M22 3.4c1.6-2.4 3.2-2.4 4.8 0 1.6-2.4 3.2-2.4 4.8 0"></path><path d="M38 8.6c1.3-2 2.6-2 3.9 0 1.3-2 2.6-2 3.9 0"></path></svg>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;padding:0 34px">
+            <div style="background:#FAF6F2;border-radius:34px;padding:34px 30px 30px;box-shadow:0 22px 44px -18px rgba(58,42,33,.4)">
+              <img src="brand/terhal-lockup.png" alt="Terhal" style="display:block;width:236px;height:auto" />
+            </div>
+            <div style="display:flex;gap:8px">
+              <div style="width:8px;height:8px;border-radius:50%;background:#FAF6F2"></div>
+              <div style="width:8px;height:8px;border-radius:50%;background:#FAF6F2;opacity:.55"></div>
+              <div style="width:8px;height:8px;border-radius:50%;background:#FAF6F2;opacity:.3"></div>
+            </div>
+          </div>
+          <div style="position:relative;flex:none;height:180px">
+            <svg viewBox="0 0 390 180" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%" fill="none"><path d="M0 148 78 84l46 40 52-56 62 66 54-44 98 82v88H0Z" fill="#FAF6F2" opacity=".14"></path><path d="M0 170 96 108l60 44 66-52 74 62 94-40v88H0Z" fill="#FAF6F2" opacity=".2"></path></svg>
+            <div style="position:absolute;left:0;right:0;bottom:52px;text-align:center;font:400 11px Poppins,sans-serif;letter-spacing:.34em;color:#FAF6F2;opacity:.82">AMMAN · PETRA · WADI RUM</div>
+          </div>
+          <div style="flex:none;height:26px;display:flex;align-items:center;justify-content:center"><div style="width:134px;height:5px;border-radius:3px;background:#FAF6F2;opacity:.75"></div></div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:9px"><span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:#B2543A">01</span><span style="font:500 12px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#3A2A21">Splash · full lockup + gradient</span></div>
+      </div>
+
+      <div data-screen-label="02 Onboarding Discover" style="display:flex;flex-direction:column;align-items:center;gap:14px">
+        <div style="position:relative;width:390px;height:844px;flex:none;background:#FAF6F2;border:9px solid #3A2A21;border-radius:46px;box-shadow:0 30px 60px -22px rgba(58,42,33,.5);overflow:hidden;display:flex;flex-direction:column">
+          <div style="flex:none;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 26px 0 30px;font:600 14px Poppins,sans-serif;color:#3A2A21"><span>9:41</span><span style="display:flex;align-items:center;gap:6px"><svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"></rect><rect x="4.6" y="5" width="3" height="6" rx="1"></rect><rect x="9.2" y="2.5" width="3" height="8.5" rx="1"></rect><rect x="13.8" y="0" width="3" height="11" rx="1"></rect></svg><svg width="26" height="12" viewBox="0 0 26 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="currentColor" opacity=".45"></rect><rect x="2.5" y="2.5" width="15" height="7" rx="2" fill="currentColor"></rect><path d="M23.4 4.3v3.4a2.2 2.2 0 0 0 0-3.4Z" fill="currentColor" opacity=".45"></path></svg></span></div>
+          <div style="position:relative;flex:none;height:396px;margin:0 0 0 0;border-bottom-left-radius:72px;overflow:hidden;background:repeating-linear-gradient(135deg,#E3C7A8 0 10px,#D9B28C 10px 20px)">
+            <svg viewBox="0 0 390 130" preserveAspectRatio="none" style="position:absolute;left:0;right:0;bottom:0;width:100%;height:130px" fill="none"><path d="M0 108 84 44l50 38 58-52 70 62 50-32 78 54v66H0Z" fill="#B2543A" opacity=".28"></path></svg>
+            <div style="position:absolute;top:20px;left:22px;display:flex;align-items:center;gap:9px;background:rgba(250,246,242,.92);border-radius:999px;padding:7px 14px 7px 10px">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B2543A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.7 7-11.3A7 7 0 0 0 5 9.7C5 14.3 12 21 12 21Z"></path><circle cx="12" cy="9.6" r="2.4"></circle></svg>
+              <span style="font:500 12px Poppins,sans-serif;color:#3A2A21">Wu'ayra Castle</span>
+            </div>
+            <div style="position:absolute;left:22px;bottom:22px;font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;color:#4A362A;background:rgba(250,246,242,.86);padding:5px 10px;border-radius:6px">PHOTO · crusader ruin at dusk</div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;padding:38px 30px 0;gap:16px">
+            <span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.22em;color:#B2543A">01 · DISCOVER</span>
+            <h2 style="margin:0;font:600 34px/1.12 Poppins,sans-serif;letter-spacing:-.02em;color:#3A2A21">Curated journeys to hidden gems</h2>
+            <sc-if value="{{ showArabic }}" hint-placeholder-val="{{ true }}"><p dir="rtl" style="margin:0;font:400 17px 'Noto Sans Arabic',sans-serif;color:#B2543A">رحلات مختارة إلى كنوز خفية</p></sc-if>
+            <p style="margin:0;font:300 15px/1.65 Poppins,sans-serif;color:#5C4A3E">Swipe through places most itineraries skip — Wu'ayra Castle, the Neolithic terraces at Basta, the back route into Little Petra. Keep what you like; it lands straight in your trip.</p>
+          </div>
+          <div style="flex:none;padding:0 30px 26px;display:flex;flex-direction:column;gap:22px">
+            <div style="display:flex;gap:7px;align-items:center">
+              <div style="width:26px;height:6px;border-radius:3px;background:#B2543A"></div>
+              <div style="width:6px;height:6px;border-radius:3px;background:#D9B28C"></div>
+              <div style="width:6px;height:6px;border-radius:3px;background:#D9B28C"></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px">
+              <button style="flex:none;border:0;background:transparent;padding:14px 6px;font:500 14px Poppins,sans-serif;color:#9A8B7E;cursor:pointer">Skip</button>
+              <div style="flex:1;height:54px;border-radius:16px;background:#B2543A;display:flex;align-items:center;justify-content:center;gap:10px;color:#FAF6F2;font:600 15px Poppins,sans-serif;cursor:pointer">Next<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6.5 18.5 12 13 17.5"></path></svg></div>
+            </div>
+          </div>
+          <div style="flex:none;height:26px;display:flex;align-items:center;justify-content:center"><div style="width:134px;height:5px;border-radius:3px;background:#3A2A21;opacity:.28"></div></div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:9px"><span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:#B2543A">02</span><span style="font:500 12px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#3A2A21">Onboarding · Discover</span></div>
+      </div>
+
+      <div data-screen-label="03 Onboarding Plan" style="display:flex;flex-direction:column;align-items:center;gap:14px">
+        <div style="position:relative;width:390px;height:844px;flex:none;background:#FAF6F2;border:9px solid #3A2A21;border-radius:46px;box-shadow:0 30px 60px -22px rgba(58,42,33,.5);overflow:hidden;display:flex;flex-direction:column">
+          <div style="flex:none;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 26px 0 30px;font:600 14px Poppins,sans-serif;color:#3A2A21"><span>9:41</span><span style="display:flex;align-items:center;gap:6px"><svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"></rect><rect x="4.6" y="5" width="3" height="6" rx="1"></rect><rect x="9.2" y="2.5" width="3" height="8.5" rx="1"></rect><rect x="13.8" y="0" width="3" height="11" rx="1"></rect></svg><svg width="26" height="12" viewBox="0 0 26 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="currentColor" opacity=".45"></rect><rect x="2.5" y="2.5" width="15" height="7" rx="2" fill="currentColor"></rect><path d="M23.4 4.3v3.4a2.2 2.2 0 0 0 0-3.4Z" fill="currentColor" opacity=".45"></path></svg></span></div>
+          <div style="position:relative;flex:none;height:396px;background:#F2E7DA;border-bottom-right-radius:72px;overflow:hidden;padding:34px 30px;display:flex;flex-direction:column;justify-content:center;gap:14px">
+            <svg viewBox="0 0 200 300" style="position:absolute;left:34px;top:56px;width:110px;height:250px;opacity:.9" fill="none" stroke="#B2543A" stroke-width="3" stroke-linecap="round"><path d="M28 12c66 30-52 70 12 108 62 36-40 76 6 160"></path></svg>
+            <div style="position:relative;margin-left:74px;background:#FAF6F2;border-radius:14px;padding:13px 16px;box-shadow:0 8px 20px -12px rgba(58,42,33,.5)"><div style="font:500 13px Poppins,sans-serif;color:#3A2A21">08:30 · Walk the Siq</div><div style="font:300 12px Poppins,sans-serif;color:#7A6959">1.2 km · before the crowds</div></div>
+            <div style="position:relative;margin-left:74px;background:#FAF6F2;border-radius:14px;padding:13px 16px;box-shadow:0 8px 20px -12px rgba(58,42,33,.5)"><div style="font:500 13px Poppins,sans-serif;color:#3A2A21">10:00 · Al-Khazneh</div><div style="font:300 12px Poppins,sans-serif;color:#7A6959">Golden light until 10:40</div></div>
+            <div style="position:relative;margin-left:74px;background:#FAF6F2;border-radius:14px;padding:13px 16px;box-shadow:0 8px 20px -12px rgba(58,42,33,.5)"><div style="font:500 13px Poppins,sans-serif;color:#3A2A21">12:30 · Ammarin Camp</div><div style="font:300 12px Poppins,sans-serif;color:#7A6959">Bedouin lunch · booked</div></div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;padding:38px 30px 0;gap:16px">
+            <span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.22em;color:#B2543A">02 · PLAN</span>
+            <h2 style="margin:0;font:600 34px/1.12 Poppins,sans-serif;letter-spacing:-.02em;color:#3A2A21">Smart itineraries made for you</h2>
+            <sc-if value="{{ showArabic }}" hint-placeholder-val="{{ true }}"><p dir="rtl" style="margin:0;font:400 17px 'Noto Sans Arabic',sans-serif;color:#B2543A">برامج ذكية مصممة لك</p></sc-if>
+            <p style="margin:0;font:300 15px/1.65 Poppins,sans-serif;color:#5C4A3E">Terhal orders your saved places by opening hours, light and driving time, then leaves room to sit still. Reorder any stop and the day re-times itself.</p>
+          </div>
+          <div style="flex:none;padding:0 30px 26px;display:flex;flex-direction:column;gap:22px">
+            <div style="display:flex;gap:7px;align-items:center">
+              <div style="width:6px;height:6px;border-radius:3px;background:#D9B28C"></div>
+              <div style="width:26px;height:6px;border-radius:3px;background:#B2543A"></div>
+              <div style="width:6px;height:6px;border-radius:3px;background:#D9B28C"></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px">
+              <button style="flex:none;border:0;background:transparent;padding:14px 6px;font:500 14px Poppins,sans-serif;color:#9A8B7E;cursor:pointer">Skip</button>
+              <div style="flex:1;height:54px;border-radius:16px;background:#B2543A;display:flex;align-items:center;justify-content:center;gap:10px;color:#FAF6F2;font:600 15px Poppins,sans-serif;cursor:pointer">Next<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6.5 18.5 12 13 17.5"></path></svg></div>
+            </div>
+          </div>
+          <div style="flex:none;height:26px;display:flex;align-items:center;justify-content:center"><div style="width:134px;height:5px;border-radius:3px;background:#3A2A21;opacity:.28"></div></div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:9px"><span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:#B2543A">03</span><span style="font:500 12px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#3A2A21">Onboarding · Plan</span></div>
+      </div>
+
+      <div data-screen-label="04 Onboarding Experience" style="display:flex;flex-direction:column;align-items:center;gap:14px">
+        <div style="position:relative;width:390px;height:844px;flex:none;background:#FAF6F2;border:9px solid #3A2A21;border-radius:46px;box-shadow:0 30px 60px -22px rgba(58,42,33,.5);overflow:hidden;display:flex;flex-direction:column">
+          <div style="flex:none;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 26px 0 30px;font:600 14px Poppins,sans-serif;color:#3A2A21"><span>9:41</span><span style="display:flex;align-items:center;gap:6px"><svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"></rect><rect x="4.6" y="5" width="3" height="6" rx="1"></rect><rect x="9.2" y="2.5" width="3" height="8.5" rx="1"></rect><rect x="13.8" y="0" width="3" height="11" rx="1"></rect></svg><svg width="26" height="12" viewBox="0 0 26 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="currentColor" opacity=".45"></rect><rect x="2.5" y="2.5" width="15" height="7" rx="2" fill="currentColor"></rect><path d="M23.4 4.3v3.4a2.2 2.2 0 0 0 0-3.4Z" fill="currentColor" opacity=".45"></path></svg></span></div>
+          <div style="position:relative;flex:none;height:396px;border-bottom-left-radius:72px;overflow:hidden;background:repeating-linear-gradient(135deg,#E8D3BC 0 10px,#DFC4A6 10px 20px);padding:30px;display:flex;flex-direction:column;justify-content:flex-end;gap:12px">
+            <svg viewBox="0 0 60 12" style="position:absolute;top:30px;right:30px;width:74px;height:16px;opacity:.6" fill="none" stroke="#B2543A" stroke-width="1.2" stroke-linecap="round"><path d="M2 7c2.2-3.4 4.4-3.4 6.6 0 2.2-3.4 4.4-3.4 6.6 0"></path><path d="M22 3.4c1.6-2.4 3.2-2.4 4.8 0 1.6-2.4 3.2-2.4 4.8 0"></path><path d="M38 8.6c1.3-2 2.6-2 3.9 0 1.3-2 2.6-2 3.9 0"></path></svg>
+            <div style="display:flex;align-items:center;gap:12px;background:#FAF6F2;border-radius:16px;padding:12px 16px;width:270px;box-shadow:0 10px 24px -14px rgba(58,42,33,.55)">
+              <div style="width:40px;height:40px;border-radius:50%;flex:none;background:repeating-linear-gradient(135deg,#D9B28C 0 5px,#C99C73 5px 10px)"></div>
+              <div style="display:flex;flex-direction:column;gap:2px"><span style="font:500 13px Poppins,sans-serif;color:#3A2A21">Suleiman Al-Ammarin</span><span style="font:300 12px Poppins,sans-serif;color:#7A6959">Bedouin guide · Little Petra</span></div>
+            </div>
+            <div style="align-self:flex-end;background:#B2543A;color:#FAF6F2;border-radius:16px 16px 4px 16px;padding:12px 16px;max-width:250px;font:400 13px/1.5 Poppins,sans-serif">"Come by the camp at dusk — my brother makes the tea."</div>
+            <div style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:#4A362A;background:rgba(250,246,242,.86);padding:5px 10px;border-radius:6px;align-self:flex-start">PHOTO · camp fire, Wadi Rum</div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;padding:38px 30px 0;gap:16px">
+            <span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.22em;color:#B2543A">03 · EXPERIENCE</span>
+            <h2 style="margin:0;font:600 34px/1.12 Poppins,sans-serif;letter-spacing:-.02em;color:#3A2A21">Authentic moments, real connections</h2>
+            <sc-if value="{{ showArabic }}" hint-placeholder-val="{{ true }}"><p dir="rtl" style="margin:0;font:400 17px 'Noto Sans Arabic',sans-serif;color:#B2543A">لحظات أصيلة وصداقات حقيقية</p></sc-if>
+            <p style="margin:0;font:300 15px/1.65 Poppins,sans-serif;color:#5C4A3E">Book local advisors directly, ask the guide anything mid-walk, and let the camera coach you to the shot. Every dinar of a booking goes to the family hosting you.</p>
+          </div>
+          <div style="flex:none;padding:0 30px 26px;display:flex;flex-direction:column;gap:18px">
+            <div style="display:flex;gap:7px;align-items:center">
+              <div style="width:6px;height:6px;border-radius:3px;background:#D9B28C"></div>
+              <div style="width:6px;height:6px;border-radius:3px;background:#D9B28C"></div>
+              <div style="width:26px;height:6px;border-radius:3px;background:#B2543A"></div>
+            </div>
+            <div style="height:54px;border-radius:16px;background:#B2543A;display:flex;align-items:center;justify-content:center;color:#FAF6F2;font:600 15px Poppins,sans-serif;cursor:pointer">Create account</div>
+            <div style="height:54px;border-radius:16px;background:#FAF6F2;box-shadow:inset 0 0 0 1.5px #D9B28C;display:flex;align-items:center;justify-content:center;color:#3A2A21;font:500 15px Poppins,sans-serif;cursor:pointer;margin-top:-6px">Continue as guest</div>
+          </div>
+          <div style="flex:none;height:26px;display:flex;align-items:center;justify-content:center"><div style="width:134px;height:5px;border-radius:3px;background:#3A2A21;opacity:.28"></div></div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:9px"><span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:#B2543A">04</span><span style="font:500 12px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#3A2A21">Onboarding · Experience</span></div>
+      </div>
+
+      <div data-screen-label="05 Maan Passport" style="display:flex;flex-direction:column;align-items:center;gap:14px">
+        <div style="position:relative;width:390px;height:844px;flex:none;background:#FAF6F2;border:9px solid #3A2A21;border-radius:46px;box-shadow:0 30px 60px -22px rgba(58,42,33,.5);overflow:hidden;display:flex;flex-direction:column">
+          <div style="flex:none;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 26px 0 30px;font:600 14px Poppins,sans-serif;color:#3A2A21"><span>9:41</span><span style="display:flex;align-items:center;gap:6px"><svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"></rect><rect x="4.6" y="5" width="3" height="6" rx="1"></rect><rect x="9.2" y="2.5" width="3" height="8.5" rx="1"></rect><rect x="13.8" y="0" width="3" height="11" rx="1"></rect></svg><svg width="26" height="12" viewBox="0 0 26 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="currentColor" opacity=".45"></rect><rect x="2.5" y="2.5" width="15" height="7" rx="2" fill="currentColor"></rect><path d="M23.4 4.3v3.4a2.2 2.2 0 0 0 0-3.4Z" fill="currentColor" opacity=".45"></path></svg></span></div>
+          <div style="position:relative;flex:none;padding:14px 24px 22px;background:#F2E7DA;overflow:hidden">
+            <svg viewBox="0 0 390 120" preserveAspectRatio="none" style="position:absolute;inset:auto 0 0 0;width:100%;height:120px;opacity:.5" fill="none"><path d="M0 96 82 40l48 34 56-44 66 54 52-30 86 62v20H0Z" fill="#D9B28C"></path></svg>
+            <div style="position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+              <div style="display:flex;flex-direction:column;gap:3px">
+                <h2 style="margin:0;font:600 26px Poppins,sans-serif;letter-spacing:-.01em;color:#3A2A21">Ma'an Passport</h2>
+                <sc-if value="{{ showArabic }}" hint-placeholder-val="{{ true }}"><span dir="rtl" style="font:400 14px 'Noto Sans Arabic',sans-serif;color:#B2543A">جواز معان</span></sc-if>
+              </div>
+              <img src="brand/terhal-icon.png" alt="" style="width:38px;height:38px;object-fit:contain;opacity:.9" />
+            </div>
+            <div style="position:relative;margin-top:18px;display:flex;flex-direction:column;gap:9px">
+              <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:500 13px Poppins,sans-serif;color:#3A2A21">8 of 13 stamps collected</span><span style="font:400 12px ui-monospace,SFMono-Regular,Menlo,monospace;color:#B2543A">62%</span></div>
+              <div style="height:12px;border-radius:999px;background:#FAF6F2;overflow:hidden"><div style="width:62%;height:100%;border-radius:999px;background:linear-gradient(90deg,#B2543A,#D9B28C)"></div></div>
+              <span style="font:300 12px Poppins,sans-serif;color:#7A6959">5 more unlocks the Ammarin Camp overnight discount</span>
+            </div>
+          </div>
+          <div style="position:relative;flex:1;overflow:hidden;padding:26px 24px 0">
+            <svg viewBox="0 0 342 470" preserveAspectRatio="none" style="position:absolute;left:24px;top:26px;width:342px;height:470px" fill="none" stroke-linecap="round">
+              <path d="M62 16c96 26-58 78 8 118 64 38-70 74 4 118" stroke="#B2543A" stroke-width="2.5"></path>
+              <path d="M74 252c60 34-42 78 10 122 40 34 28 62 22 82" stroke="#B2543A" stroke-width="2.5" stroke-dasharray="6 9" opacity=".45"></path>
+            </svg>
+            <div style="position:relative;display:flex;flex-direction:column;gap:20px">
+              <div style="display:flex;align-items:center;gap:16px;margin-left:34px">
+                <div style="width:52px;height:52px;flex:none;border-radius:50%;background:#B2543A;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FAF6F2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg></div>
+                <div style="flex:1;background:#FAF6F2;border-radius:14px;padding:12px 15px;box-shadow:0 0 0 1px #E7E2DA"><div style="font:500 14px Poppins,sans-serif;color:#3A2A21">Al-Khazneh</div><div style="font:300 12px Poppins,sans-serif;color:#7A6959">Stamped 14 Mar · 07:20</div></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:16px;margin-left:62px">
+                <div style="width:52px;height:52px;flex:none;border-radius:50%;background:#B2543A;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FAF6F2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg></div>
+                <div style="flex:1;background:#FAF6F2;border-radius:14px;padding:12px 15px;box-shadow:0 0 0 1px #E7E2DA"><div style="font:500 14px Poppins,sans-serif;color:#3A2A21">Little Petra · Siq al-Barid</div><div style="font:300 12px Poppins,sans-serif;color:#7A6959">Stamped 15 Mar · 16:05</div></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:16px;margin-left:26px">
+                <div style="width:52px;height:52px;flex:none;border-radius:50%;background:#B2543A;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FAF6F2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg></div>
+                <div style="flex:1;background:#FAF6F2;border-radius:14px;padding:12px 15px;box-shadow:0 0 0 1px #E7E2DA"><div style="font:500 14px Poppins,sans-serif;color:#3A2A21">Ammarin Bedouin Camp</div><div style="font:300 12px Poppins,sans-serif;color:#7A6959">Stamped 15 Mar · 20:40</div></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:16px;margin-left:70px;opacity:.62">
+                <div style="width:52px;height:52px;flex:none;border-radius:50%;background:#FAF6F2;box-shadow:inset 0 0 0 2px #D9B28C;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B2543A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="9" rx="2.5"></rect><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"></path></svg></div>
+                <div style="flex:1;background:#FAF6F2;border-radius:14px;padding:12px 15px;box-shadow:0 0 0 1px #E7E2DA"><div style="font:500 14px Poppins,sans-serif;color:#3A2A21">Wu'ayra Castle</div><div style="font:300 12px Poppins,sans-serif;color:#7A6959">Check in within 200 m to stamp</div></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:16px;margin-left:34px;opacity:.62">
+                <div style="width:52px;height:52px;flex:none;border-radius:50%;background:#FAF6F2;box-shadow:inset 0 0 0 2px #D9B28C;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B2543A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="9" rx="2.5"></rect><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"></path></svg></div>
+                <div style="flex:1;background:#FAF6F2;border-radius:14px;padding:12px 15px;box-shadow:0 0 0 1px #E7E2DA"><div style="font:500 14px Poppins,sans-serif;color:#3A2A21">Basta Neolithic site</div><div style="font:300 12px Poppins,sans-serif;color:#7A6959">Locked · 26 km south</div></div>
+              </div>
+            </div>
+          </div>
+          <dc-import name="TabBar" active="trip" hint-size="100%,78px"></dc-import>
+          <div style="flex:none;height:26px;background:#FAF6F2;display:flex;align-items:center;justify-content:center"><div style="width:134px;height:5px;border-radius:3px;background:#3A2A21;opacity:.28"></div></div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:9px"><span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:#B2543A">05</span><span style="font:500 12px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#3A2A21">Ma'an Passport · path + gradient</span></div>
+      </div>
+
+      <div data-screen-label="06 Marketplace" style="display:flex;flex-direction:column;align-items:center;gap:14px">
+        <div style="position:relative;width:390px;height:844px;flex:none;background:#FAF6F2;border:9px solid #3A2A21;border-radius:46px;box-shadow:0 30px 60px -22px rgba(58,42,33,.5);overflow:hidden;display:flex;flex-direction:column">
+          <div style="flex:none;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 26px 0 30px;font:600 14px Poppins,sans-serif;color:#3A2A21"><span>9:41</span><span style="display:flex;align-items:center;gap:6px"><svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"></rect><rect x="4.6" y="5" width="3" height="6" rx="1"></rect><rect x="9.2" y="2.5" width="3" height="8.5" rx="1"></rect><rect x="13.8" y="0" width="3" height="11" rx="1"></rect></svg><svg width="26" height="12" viewBox="0 0 26 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="currentColor" opacity=".45"></rect><rect x="2.5" y="2.5" width="15" height="7" rx="2" fill="currentColor"></rect><path d="M23.4 4.3v3.4a2.2 2.2 0 0 0 0-3.4Z" fill="currentColor" opacity=".45"></path></svg></span></div>
+          <div style="flex:none;padding:8px 22px 14px;display:flex;flex-direction:column;gap:14px">
+            <h2 style="margin:0;font:600 26px Poppins,sans-serif;letter-spacing:-.01em;color:#3A2A21">Artisans</h2>
+            <div style="height:46px;border-radius:14px;background:#F2E7DA;display:flex;align-items:center;gap:10px;padding:0 15px">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9A8B7E" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
+              <span style="font:300 14px Poppins,sans-serif;color:#9A8B7E">Search makers, crafts, villages</span>
+            </div>
+            <div style="display:flex;gap:8px;overflow:hidden">
+              <div style="flex:none;padding:8px 15px;border-radius:999px;background:#B2543A;color:#FAF6F2;font:500 12px Poppins,sans-serif">All</div>
+              <div style="flex:none;padding:8px 15px;border-radius:999px;background:#F2E7DA;color:#3A2A21;font:400 12px Poppins,sans-serif">Ceramics</div>
+              <div style="flex:none;padding:8px 15px;border-radius:999px;background:#F2E7DA;color:#3A2A21;font:400 12px Poppins,sans-serif">Textiles</div>
+              <div style="flex:none;padding:8px 15px;border-radius:999px;background:#F2E7DA;color:#3A2A21;font:400 12px Poppins,sans-serif">Silver</div>
+              <div style="flex:none;padding:8px 15px;border-radius:999px;background:#F2E7DA;color:#3A2A21;font:400 12px Poppins,sans-serif">Spice</div>
+            </div>
+          </div>
+          <div style="flex:1;overflow:hidden;padding:0 22px;display:flex;flex-direction:column;gap:16px">
+            <div style="display:flex;align-items:center;gap:13px;background:#F2E7DA;border-radius:16px;padding:14px 16px">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#B2543A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13.5 6.5 10l3 2.5 3-2.5 3 2.5L21 10"></path><path d="M4.5 15.5c2 2.6 4.6 4 7.5 4s5.5-1.4 7.5-4"></path></svg>
+              <p style="margin:0;font:400 12.5px/1.45 Poppins,sans-serif;color:#3A2A21"><span style="font-weight:600">Local First.</span> Every purchase pays the maker directly — no middle seller, no commission on their craft.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="position:relative;height:132px;border-radius:14px;background:repeating-linear-gradient(135deg,#E3C7A8 0 9px,#D9B28C 9px 18px);display:flex;align-items:flex-end;padding:8px"><span style="font:400 9px ui-monospace,SFMono-Regular,Menlo,monospace;color:#4A362A;background:rgba(250,246,242,.86);padding:3px 6px;border-radius:4px">PHOTO · sand bottle</span></div>
+                <div style="font:500 13px Poppins,sans-serif;color:#3A2A21">Layered sand bottle</div>
+                <div style="font:300 11.5px Poppins,sans-serif;color:#7A6959">Rania · Umm Sayhoun</div>
+                <div style="font:600 13px Poppins,sans-serif;color:#B2543A">JOD 12</div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="position:relative;height:132px;border-radius:14px;background:repeating-linear-gradient(135deg,#E8D3BC 0 9px,#DFC4A6 9px 18px);display:flex;align-items:flex-end;padding:8px"><span style="font:400 9px ui-monospace,SFMono-Regular,Menlo,monospace;color:#4A362A;background:rgba(250,246,242,.86);padding:3px 6px;border-radius:4px">PHOTO · woven rug</span></div>
+                <div style="font:500 13px Poppins,sans-serif;color:#3A2A21">Bedouin floor rug</div>
+                <div style="font:300 11.5px Poppins,sans-serif;color:#7A6959">Ammarin women's co-op</div>
+                <div style="font:600 13px Poppins,sans-serif;color:#B2543A">JOD 68</div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="position:relative;height:132px;border-radius:14px;background:repeating-linear-gradient(135deg,#E3C7A8 0 9px,#D9B28C 9px 18px);display:flex;align-items:flex-end;padding:8px"><span style="font:400 9px ui-monospace,SFMono-Regular,Menlo,monospace;color:#4A362A;background:rgba(250,246,242,.86);padding:3px 6px;border-radius:4px">PHOTO · silver cuff</span></div>
+                <div style="font:500 13px Poppins,sans-serif;color:#3A2A21">Nabataean silver cuff</div>
+                <div style="font:300 11.5px Poppins,sans-serif;color:#7A6959">Khaled · Wadi Musa</div>
+                <div style="font:600 13px Poppins,sans-serif;color:#B2543A">JOD 45</div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="position:relative;height:132px;border-radius:14px;background:repeating-linear-gradient(135deg,#E8D3BC 0 9px,#DFC4A6 9px 18px);display:flex;align-items:flex-end;padding:8px"><span style="font:400 9px ui-monospace,SFMono-Regular,Menlo,monospace;color:#4A362A;background:rgba(250,246,242,.86);padding:3px 6px;border-radius:4px">PHOTO · za'atar jars</span></div>
+                <div style="font:500 13px Poppins,sans-serif;color:#3A2A21">Wild za'atar · 3 jars</div>
+                <div style="font:300 11.5px Poppins,sans-serif;color:#7A6959">Basta family farm</div>
+                <div style="font:600 13px Poppins,sans-serif;color:#B2543A">JOD 9</div>
+              </div>
+            </div>
+          </div>
+          <dc-import name="TabBar" active="explore" hint-size="100%,78px"></dc-import>
+          <div style="flex:none;height:26px;background:#FAF6F2;display:flex;align-items:center;justify-content:center"><div style="width:134px;height:5px;border-radius:3px;background:#3A2A21;opacity:.28"></div></div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:9px"><span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:#B2543A">06</span><span style="font:500 12px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#3A2A21">Marketplace · Local First</span></div>
+      </div>
+
+      <div data-screen-label="07 Post-Trip Review" style="display:flex;flex-direction:column;align-items:center;gap:14px">
+        <div style="position:relative;width:390px;height:844px;flex:none;background:#FAF6F2;border:9px solid #3A2A21;border-radius:46px;box-shadow:0 30px 60px -22px rgba(58,42,33,.5);overflow:hidden;display:flex;flex-direction:column">
+          <div style="flex:none;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 26px 0 30px;font:600 14px Poppins,sans-serif;color:#3A2A21"><span>9:41</span><span style="display:flex;align-items:center;gap:6px"><svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"></rect><rect x="4.6" y="5" width="3" height="6" rx="1"></rect><rect x="9.2" y="2.5" width="3" height="8.5" rx="1"></rect><rect x="13.8" y="0" width="3" height="11" rx="1"></rect></svg><svg width="26" height="12" viewBox="0 0 26 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="currentColor" opacity=".45"></rect><rect x="2.5" y="2.5" width="15" height="7" rx="2" fill="currentColor"></rect><path d="M23.4 4.3v3.4a2.2 2.2 0 0 0 0-3.4Z" fill="currentColor" opacity=".45"></path></svg></span></div>
+          <div style="flex:none;display:flex;align-items:center;gap:14px;padding:6px 22px 16px">
+            <div style="width:38px;height:38px;border-radius:12px;background:#F2E7DA;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3A2A21" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H6M11 6.5 5.5 12 11 17.5"></path></svg></div>
+            <span style="font:600 18px Poppins,sans-serif;color:#3A2A21">How was Petra?</span>
+          </div>
+          <div style="flex:1;overflow:hidden;padding:0 22px;display:flex;flex-direction:column;gap:20px">
+            <div style="display:flex;gap:13px;background:#F2E7DA;border-radius:16px;padding:13px">
+              <div style="width:60px;height:60px;flex:none;border-radius:12px;background:repeating-linear-gradient(135deg,#E3C7A8 0 8px,#D9B28C 8px 16px)"></div>
+              <div style="display:flex;flex-direction:column;gap:3px;justify-content:center">
+                <span style="font:500 14px Poppins,sans-serif;color:#3A2A21">Petra &amp; Wadi Rum</span>
+                <span style="font:300 12px Poppins,sans-serif;color:#7A6959">14–17 Mar · 3 days · 9 stops</span>
+                <span style="font:300 12px Poppins,sans-serif;color:#7A6959">Guided by Suleiman Al-Ammarin</span>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <span style="font:500 14px Poppins,sans-serif;color:#3A2A21">Overall</span>
+              <div style="display:flex;gap:10px">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="#B2543A"><path d="m12 3.6 2.5 5.4 5.9.7-4.4 4 1.2 5.8L12 16.6 6.8 19.5 8 13.7l-4.4-4 5.9-.7Z"></path></svg>
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="#B2543A"><path d="m12 3.6 2.5 5.4 5.9.7-4.4 4 1.2 5.8L12 16.6 6.8 19.5 8 13.7l-4.4-4 5.9-.7Z"></path></svg>
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="#B2543A"><path d="m12 3.6 2.5 5.4 5.9.7-4.4 4 1.2 5.8L12 16.6 6.8 19.5 8 13.7l-4.4-4 5.9-.7Z"></path></svg>
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="#B2543A"><path d="m12 3.6 2.5 5.4 5.9.7-4.4 4 1.2 5.8L12 16.6 6.8 19.5 8 13.7l-4.4-4 5.9-.7Z"></path></svg>
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#D9B28C" stroke-width="1.6" stroke-linejoin="round"><path d="m12 3.6 2.5 5.4 5.9.7-4.4 4 1.2 5.8L12 16.6 6.8 19.5 8 13.7l-4.4-4 5.9-.7Z"></path></svg>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <span style="font:500 14px Poppins,sans-serif;color:#3A2A21">What stood out?</span>
+              <div style="display:flex;flex-wrap:wrap;gap:8px">
+                <div style="padding:9px 15px;border-radius:999px;background:#B2543A;color:#FAF6F2;font:500 12.5px Poppins,sans-serif">Hidden gems</div>
+                <div style="padding:9px 15px;border-radius:999px;background:#B2543A;color:#FAF6F2;font:500 12.5px Poppins,sans-serif">Local guide</div>
+                <div style="padding:9px 15px;border-radius:999px;background:#FAF6F2;box-shadow:inset 0 0 0 1.5px #D9B28C;color:#3A2A21;font:400 12.5px Poppins,sans-serif">Food</div>
+                <div style="padding:9px 15px;border-radius:999px;background:#FAF6F2;box-shadow:inset 0 0 0 1.5px #D9B28C;color:#3A2A21;font:400 12.5px Poppins,sans-serif">Sunset views</div>
+                <div style="padding:9px 15px;border-radius:999px;background:#FAF6F2;box-shadow:inset 0 0 0 1.5px #D9B28C;color:#3A2A21;font:400 12.5px Poppins,sans-serif">Pacing</div>
+                <div style="padding:9px 15px;border-radius:999px;background:#FAF6F2;box-shadow:inset 0 0 0 1.5px #D9B28C;color:#3A2A21;font:400 12.5px Poppins,sans-serif">Value</div>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <span style="font:500 14px Poppins,sans-serif;color:#3A2A21">Tell other travellers</span>
+              <div style="height:92px;border-radius:14px;background:#F2E7DA;padding:13px 15px;font:300 13px/1.5 Poppins,sans-serif;color:#9A8B7E">The back route into Little Petra at dusk was the whole trip…</div>
+            </div>
+            <div style="display:flex;gap:10px">
+              <div style="width:72px;height:72px;border-radius:12px;background:repeating-linear-gradient(135deg,#E3C7A8 0 8px,#D9B28C 8px 16px)"></div>
+              <div style="width:72px;height:72px;border-radius:12px;background:repeating-linear-gradient(135deg,#E8D3BC 0 8px,#DFC4A6 8px 16px)"></div>
+              <div style="width:72px;height:72px;border-radius:12px;background:#FAF6F2;box-shadow:inset 0 0 0 1.5px #D9B28C;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B2543A" stroke-width="1.8" stroke-linecap="round"><path d="M12 5.5v13M5.5 12h13"></path></svg></div>
+            </div>
+          </div>
+          <div style="flex:none;padding:16px 22px 10px;display:flex;flex-direction:column;gap:9px">
+            <div style="height:54px;border-radius:16px;background:#B2543A;display:flex;align-items:center;justify-content:center;color:#FAF6F2;font:600 15px Poppins,sans-serif;cursor:pointer">Submit review</div>
+            <span style="text-align:center;font:300 11.5px Poppins,sans-serif;color:#7A6959">Reviews go straight to the advisor and their community</span>
+          </div>
+          <div style="flex:none;height:26px;display:flex;align-items:center;justify-content:center"><div style="width:134px;height:5px;border-radius:3px;background:#3A2A21;opacity:.28"></div></div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:9px"><span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:#B2543A">07</span><span style="font:500 12px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#3A2A21">Post-trip review</span></div>
+      </div>
+
+      <div data-screen-label="08 Toast system" style="display:flex;flex-direction:column;align-items:center;gap:14px">
+        <div style="width:390px;min-height:844px;flex:none;background:#F2E7DA;border-radius:28px;padding:28px 22px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:4px">
+            <span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.2em;color:#B2543A">COMPONENT</span>
+            <h3 style="margin:0;font:600 22px Poppins,sans-serif;color:#3A2A21">Toast / notification</h3>
+            <p style="margin:4px 0 0;font:300 13px/1.5 Poppins,sans-serif;color:#5C4A3E">Ivory surface, 16px radius, 20px shadow. Semantic tones stay exactly as implemented; the brand palette owns the surface, text and action.</p>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;background:#FAF6F2;border-radius:16px;padding:14px 15px;box-shadow:0 14px 28px -18px rgba(58,42,33,.55)">
+            <div style="width:30px;height:30px;flex:none;border-radius:9px;background:rgba(16,185,129,.14);display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:500 13.5px Poppins,sans-serif;color:#3A2A21">Booking confirmed</span><span style="font:300 12px Poppins,sans-serif;color:#7A6959">Suleiman · 16 Mar, 09:00</span></div>
+            <span style="font:600 12.5px Poppins,sans-serif;color:#B2543A;padding-top:2px">View</span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;background:#FAF6F2;border-radius:16px;padding:14px 15px;box-shadow:0 14px 28px -18px rgba(58,42,33,.55)">
+            <div style="width:30px;height:30px;flex:none;border-radius:9px;background:rgba(245,158,11,.16);display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.1" stroke-linecap="round"><path d="M12 6.5v7M12 17.2v.3"></path></svg></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:500 13.5px Poppins,sans-serif;color:#3A2A21">Site closes in 45 minutes</span><span style="font:300 12px Poppins,sans-serif;color:#7A6959">Wu'ayra Castle · last entry 17:30</span></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;background:#FAF6F2;border-radius:16px;padding:14px 15px;box-shadow:0 14px 28px -18px rgba(58,42,33,.55)">
+            <div style="width:30px;height:30px;flex:none;border-radius:9px;background:rgba(14,165,233,.14);display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2.1" stroke-linecap="round"><path d="M12 11v6.5M12 7.2v.3"></path></svg></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:500 13.5px Poppins,sans-serif;color:#3A2A21">Day 2 re-timed</span><span style="font:300 12px Poppins,sans-serif;color:#7A6959">Moving Basta earlier saved 40 min of driving</span></div>
+            <span style="font:600 12.5px Poppins,sans-serif;color:#B2543A;padding-top:2px">Undo</span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;background:#FAF6F2;border-radius:16px;padding:14px 15px;box-shadow:0 14px 28px -18px rgba(58,42,33,.55)">
+            <div style="width:30px;height:30px;flex:none;border-radius:9px;background:rgba(37,99,235,.13);display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.7 7-11.3A7 7 0 0 0 5 9.7C5 14.3 12 21 12 21Z"></path><circle cx="12" cy="9.6" r="2.4"></circle></svg></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:500 13.5px Poppins,sans-serif;color:#3A2A21">You're 180 m from a stamp</span><span style="font:300 12px Poppins,sans-serif;color:#7A6959">Wu'ayra Castle · Ma'an Passport</span></div>
+            <span style="font:600 12.5px Poppins,sans-serif;color:#B2543A;padding-top:2px">Open</span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;background:#FAF6F2;border-radius:16px;padding:14px 15px;box-shadow:0 14px 28px -18px rgba(58,42,33,.55)">
+            <div style="width:30px;height:30px;flex:none;border-radius:9px;background:rgba(178,84,58,.13);display:flex;align-items:center;justify-content:center"><img src="brand/terhal-icon.png" alt="" style="width:19px;height:19px;object-fit:contain" /></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:500 13.5px Poppins,sans-serif;color:#3A2A21">Stamp collected</span><span style="font:300 12px Poppins,sans-serif;color:#7A6959">8 of 13 · 5 to unlock your reward</span></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;background:#3A2A21;border-radius:16px;padding:14px 15px">
+            <div style="flex:1;font:400 13px Poppins,sans-serif;color:#FAF6F2">Removed from My Trip</div>
+            <span style="font:600 12.5px Poppins,sans-serif;color:#D9B28C">Undo</span>
+          </div>
+          <div style="margin-top:6px;display:flex;flex-direction:column;gap:8px">
+            <span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.16em;color:#B2543A">RULES</span>
+            <p style="margin:0;font:300 12.5px/1.6 Poppins,sans-serif;color:#5C4A3E">Top-anchored, 16px inset, stack max 2. Auto-dismiss 4s; toasts with an action hold 7s. Deep-brown variant is reserved for destructive undo. Never use the gradient here.</p>
+          </div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:9px"><span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:#B2543A">08</span><span style="font:500 12px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#3A2A21">Toast system</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <sc-if value="{{ showGroupA }}" hint-placeholder-val="{{ true }}">
+  <div style="display:flex;flex-direction:column;gap:36px">
+    <div style="display:flex;align-items:center;gap:20px">
+      <span style="font:600 13px Poppins,sans-serif;letter-spacing:.2em;color:#B2543A">GROUP A</span>
+      <h2 style="margin:0;font:600 24px Poppins,sans-serif;letter-spacing:-.01em;color:#3A2A21">Existing screens — colour + type reconciliation only</h2>
+      <div style="flex:1;height:1px;background:rgba(58,42,33,.16)"></div>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:56px 48px">
+
+      <div data-screen-label="09 Explore" style="display:flex;flex-direction:column;align-items:center;gap:14px">
+        <div style="position:relative;width:390px;height:844px;flex:none;background:#FAF6F2;border:9px solid #3A2A21;border-radius:46px;box-shadow:0 30px 60px -22px rgba(58,42,33,.5);overflow:hidden;display:flex;flex-direction:column">
+          <div style="flex:none;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 26px 0 30px;font:600 14px Poppins,sans-serif;color:#3A2A21"><span>9:41</span><span style="display:flex;align-items:center;gap:6px"><svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"></rect><rect x="4.6" y="5" width="3" height="6" rx="1"></rect><rect x="9.2" y="2.5" width="3" height="8.5" rx="1"></rect><rect x="13.8" y="0" width="3" height="11" rx="1"></rect></svg><svg width="26" height="12" viewBox="0 0 26 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="currentColor" opacity=".45"></rect><rect x="2.5" y="2.5" width="15" height="7" rx="2" fill="currentColor"></rect><path d="M23.4 4.3v3.4a2.2 2.2 0 0 0 0-3.4Z" fill="currentColor" opacity=".45"></path></svg></span></div>
+          <div style="flex:none;display:flex;align-items:center;justify-content:space-between;padding:4px 22px 14px">
+            <div style="display:flex;align-items:center;gap:10px"><img src="brand/terhal-icon.png" alt="" style="width:26px;height:26px;object-fit:contain" /><span style="font:600 20px Poppins,sans-serif;color:#3A2A21">Explore</span></div>
+            <div style="width:38px;height:38px;border-radius:12px;background:#F2E7DA;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#3A2A21" stroke-width="1.7" stroke-linecap="round"><path d="M4 7h16M7 12h10M10 17h4"></path></svg></div>
+          </div>
+          <div style="flex:1;position:relative;padding:0 26px">
+            <div style="position:absolute;left:44px;right:44px;top:16px;height:474px;border-radius:24px;background:#E7DBC9"></div>
+            <div style="position:absolute;left:35px;right:35px;top:8px;height:482px;border-radius:24px;background:#E3CDB2"></div>
+            <div style="position:absolute;left:26px;right:26px;top:0;height:490px;border-radius:24px;overflow:hidden;background:repeating-linear-gradient(135deg,#E3C7A8 0 11px,#D9B28C 11px 22px);box-shadow:0 22px 40px -22px rgba(58,42,33,.6);display:flex;flex-direction:column;justify-content:space-between">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:16px">
+                <div style="display:flex;align-items:center;gap:7px;background:#B2543A;border-radius:999px;padding:7px 13px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FAF6F2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.7 7-11.3A7 7 0 0 0 5 9.7C5 14.3 12 21 12 21Z"></path><circle cx="12" cy="9.6" r="2.2"></circle></svg><span style="font:600 11px Poppins,sans-serif;letter-spacing:.09em;color:#FAF6F2">HIDDEN GEM</span></div>
+                <div style="font:400 9.5px ui-monospace,SFMono-Regular,Menlo,monospace;color:#4A362A;background:rgba(250,246,242,.86);padding:4px 7px;border-radius:5px">PHOTO · 4:5</div>
+              </div>
+              <div style="padding:22px 20px;background:linear-gradient(180deg,rgba(58,42,33,0),rgba(58,42,33,.82) 55%);display:flex;flex-direction:column;gap:7px">
+                <h3 style="margin:0;font:600 27px Poppins,sans-serif;letter-spacing:-.01em;color:#FAF6F2">Wu'ayra Castle</h3>
+                <span style="font:300 13.5px Poppins,sans-serif;color:#F2E7DA">Crusader ruin · 18 min from Wadi Musa</span>
+                <div style="display:flex;gap:7px;margin-top:5px">
+                  <span style="padding:5px 11px;border-radius:999px;background:rgba(250,246,242,.16);font:400 11.5px Poppins,sans-serif;color:#FAF6F2">Free entry</span>
+                  <span style="padding:5px 11px;border-radius:999px;background:rgba(250,246,242,.16);font:400 11.5px Poppins,sans-serif;color:#FAF6F2">45 min</span>
+                  <span style="padding:5px 11px;border-radius:999px;background:rgba(250,246,242,.16);font:400 11.5px Poppins,sans-serif;color:#FAF6F2">Rarely busy</span>
+                </div>
+              </div>
+            </div>
+            <div style="position:absolute;left:26px;right:26px;top:516px;display:flex;align-items:center;justify-content:center;gap:22px">
+              <div style="width:56px;height:56px;border-radius:50%;background:#FAF6F2;box-shadow:inset 0 0 0 1.5px #D9B28C;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9A8B7E" stroke-width="2" stroke-linecap="round"><path d="m7 7 10 10M17 7 7 17"></path></svg></div>
+              <div style="width:48px;height:48px;border-radius:50%;background:#F2E7DA;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3A2A21" stroke-width="1.9" stroke-linecap="round"><path d="M12 11v6M12 7.3v.3"></path></svg></div>
+              <div style="width:68px;height:68px;border-radius:50%;background:#B2543A;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 24px -10px rgba(178,84,58,.8)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FAF6F2" stroke-width="2.1" stroke-linecap="round"><path d="M12 5.5v13M5.5 12h13"></path></svg></div>
+            </div>
+          </div>
+          <dc-import name="TabBar" active="explore" hint-size="100%,78px"></dc-import>
+          <div style="flex:none;height:26px;display:flex;align-items:center;justify-content:center"><div style="width:134px;height:5px;border-radius:3px;background:#3A2A21;opacity:.28"></div></div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:9px"><span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:#B2543A">09</span><span style="font:500 12px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#3A2A21">Explore · swipe deck</span></div>
+      </div>
+
+      <div data-screen-label="10 Landmark Detail Sheet" style="display:flex;flex-direction:column;align-items:center;gap:14px">
+        <div style="position:relative;width:390px;height:844px;flex:none;background:#FAF6F2;border:9px solid #3A2A21;border-radius:46px;box-shadow:0 30px 60px -22px rgba(58,42,33,.5);overflow:hidden;display:flex;flex-direction:column">
+          <div style="flex:none;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 26px 0 30px;font:600 14px Poppins,sans-serif;color:#3A2A21"><span>9:41</span><span style="display:flex;align-items:center;gap:6px"><svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"></rect><rect x="4.6" y="5" width="3" height="6" rx="1"></rect><rect x="9.2" y="2.5" width="3" height="8.5" rx="1"></rect><rect x="13.8" y="0" width="3" height="11" rx="1"></rect></svg><svg width="26" height="12" viewBox="0 0 26 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="currentColor" opacity=".45"></rect><rect x="2.5" y="2.5" width="15" height="7" rx="2" fill="currentColor"></rect><path d="M23.4 4.3v3.4a2.2 2.2 0 0 0 0-3.4Z" fill="currentColor" opacity=".45"></path></svg></span></div>
+          <div style="flex:1;position:relative;overflow:hidden">
+            <div style="position:absolute;inset:0;padding:18px 26px;opacity:.5"><div style="height:420px;border-radius:24px;background:repeating-linear-gradient(135deg,#E3C7A8 0 11px,#D9B28C 11px 22px)"></div></div>
+            <div style="position:absolute;inset:0;background:rgba(58,42,33,.42)"></div>
+            <div style="position:absolute;left:0;right:0;bottom:0;height:660px;background:#FAF6F2;border-radius:28px 28px 0 0;display:flex;flex-direction:column;gap:16px;padding:12px 22px 0;box-shadow:0 -20px 40px -24px rgba(58,42,33,.7)">
+              <div style="align-self:center;width:44px;height:5px;border-radius:3px;background:#D9B28C"></div>
+              <div style="display:flex;gap:10px">
+                <div style="flex:1.6;height:132px;border-radius:14px;background:repeating-linear-gradient(135deg,#E3C7A8 0 9px,#D9B28C 9px 18px);display:flex;align-items:flex-end;padding:8px"><span style="font:400 9px ui-monospace,SFMono-Regular,Menlo,monospace;color:#4A362A;background:rgba(250,246,242,.86);padding:3px 6px;border-radius:4px">PHOTO · gatehouse</span></div>
+                <div style="flex:1;height:132px;border-radius:14px;background:repeating-linear-gradient(135deg,#E8D3BC 0 9px,#DFC4A6 9px 18px)"></div>
+              </div>
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+                <div style="display:flex;flex-direction:column;gap:3px">
+                  <h3 style="margin:0;font:600 25px Poppins,sans-serif;letter-spacing:-.01em;color:#3A2A21">Wu'ayra Castle</h3>
+                  <sc-if value="{{ showArabic }}" hint-placeholder-val="{{ true }}"><span dir="rtl" style="font:400 14px 'Noto Sans Arabic',sans-serif;color:#B2543A">قلعة الوعيرة</span></sc-if>
+                </div>
+                <div style="width:40px;height:40px;flex:none;border-radius:12px;background:#F2E7DA;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#B2543A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-6.5-4.3-6.5-9A3.8 3.8 0 0 1 12 8.4a3.8 3.8 0 0 1 6.5 2.6c0 4.7-6.5 9-6.5 9Z"></path></svg></div>
+              </div>
+              <div style="display:flex;gap:7px;flex-wrap:wrap">
+                <span style="padding:6px 12px;border-radius:999px;background:#B2543A;font:500 11.5px Poppins,sans-serif;color:#FAF6F2">Hidden gem</span>
+                <span style="padding:6px 12px;border-radius:999px;background:#F2E7DA;font:400 11.5px Poppins,sans-serif;color:#3A2A21">Free entry</span>
+                <span style="padding:6px 12px;border-radius:999px;background:#F2E7DA;font:400 11.5px Poppins,sans-serif;color:#3A2A21">45 min</span>
+                <span style="padding:6px 12px;border-radius:999px;background:#F2E7DA;font:400 11.5px Poppins,sans-serif;color:#3A2A21">Moderate climb</span>
+              </div>
+              <p style="margin:0;font:300 14px/1.65 Poppins,sans-serif;color:#5C4A3E">The only Crusader castle in the Petra basin — a 12th-century outpost cut off by a rock-hewn ditch, reached by a single bridge. Most visitors drive past it on the road to Little Petra.</p>
+              <div style="background:#F2E7DA;border-radius:16px;padding:14px 16px;display:flex;gap:12px">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B2543A" stroke-width="1.7" stroke-linecap="round" style="flex:none"><path d="M3 17 8 9l3.4 4.6L15 8l6 9Z"></path></svg>
+                <p style="margin:0;font:400 12.5px/1.5 Poppins,sans-serif;color:#3A2A21"><span style="font-weight:600">Why it's a gem.</span> Roughly 40 visitors a day against Petra's 4,000. Best light is 16:30–17:30, when the ditch throws shadow across the gatehouse.</p>
+              </div>
+              <div style="display:flex;align-items:center;gap:11px">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.7 7-11.3A7 7 0 0 0 5 9.7C5 14.3 12 21 12 21Z"></path><circle cx="12" cy="9.6" r="2.4"></circle></svg>
+                <span style="font:400 13px Poppins,sans-serif;color:#5C4A3E">Al-Wu'ayra, Wadi Musa · 3.1 km from your hotel</span>
+              </div>
+              <div style="display:flex;gap:11px;padding-top:2px">
+                <div style="flex:none;width:54px;height:54px;border-radius:16px;background:#FAF6F2;box-shadow:inset 0 0 0 1.5px #D9B28C;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3A2A21" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 20 5l-7.5 15-1.8-6.2Z"></path></svg></div>
+                <div style="flex:1;height:54px;border-radius:16px;background:#B2543A;display:flex;align-items:center;justify-content:center;color:#FAF6F2;font:600 15px Poppins,sans-serif">Add to My Trip</div>
+              </div>
+            </div>
+          </div>
+          <div style="flex:none;height:26px;background:#FAF6F2;display:flex;align-items:center;justify-content:center"><div style="width:134px;height:5px;border-radius:3px;background:#3A2A21;opacity:.28"></div></div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:9px"><span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:#B2543A">10</span><span style="font:500 12px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#3A2A21">Landmark detail sheet</span></div>
+      </div>
+
+      <div data-screen-label="11 My Trip" style="display:flex;flex-direction:column;align-items:center;gap:14px">
+        <div style="position:relative;width:390px;height:844px;flex:none;background:#FAF6F2;border:9px solid #3A2A21;border-radius:46px;box-shadow:0 30px 60px -22px rgba(58,42,33,.5);overflow:hidden;display:flex;flex-direction:column">
+          <div style="flex:none;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 26px 0 30px;font:600 14px Poppins,sans-serif;color:#3A2A21"><span>9:41</span><span style="display:flex;align-items:center;gap:6px"><svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"></rect><rect x="4.6" y="5" width="3" height="6" rx="1"></rect><rect x="9.2" y="2.5" width="3" height="8.5" rx="1"></rect><rect x="13.8" y="0" width="3" height="11" rx="1"></rect></svg><svg width="26" height="12" viewBox="0 0 26 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="currentColor" opacity=".45"></rect><rect x="2.5" y="2.5" width="15" height="7" rx="2" fill="currentColor"></rect><path d="M23.4 4.3v3.4a2.2 2.2 0 0 0 0-3.4Z" fill="currentColor" opacity=".45"></path></svg></span></div>
+          <div style="flex:none;padding:4px 22px 14px;display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;align-items:flex-end;justify-content:space-between">
+              <div style="display:flex;flex-direction:column;gap:2px"><span style="font:600 24px Poppins,sans-serif;color:#3A2A21">My Trip</span><span style="font:300 12.5px Poppins,sans-serif;color:#7A6959">Petra &amp; Wadi Rum · 14–17 Mar</span></div>
+              <div style="width:38px;height:38px;border-radius:12px;background:#F2E7DA;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#3A2A21" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="5.5" r="1.4"></circle><circle cx="12" cy="12" r="1.4"></circle><circle cx="12" cy="18.5" r="1.4"></circle></svg></div>
+            </div>
+            <div style="display:flex;gap:8px">
+              <div style="padding:9px 17px;border-radius:999px;background:#B2543A;color:#FAF6F2;font:500 12.5px Poppins,sans-serif">Day 1</div>
+              <div style="padding:9px 17px;border-radius:999px;background:#F2E7DA;color:#3A2A21;font:400 12.5px Poppins,sans-serif">Day 2</div>
+              <div style="padding:9px 17px;border-radius:999px;background:#F2E7DA;color:#3A2A21;font:400 12.5px Poppins,sans-serif">Day 3</div>
+            </div>
+          </div>
+          <div style="flex:1;overflow:hidden;padding:0 22px;position:relative">
+            <div style="position:absolute;left:37px;top:14px;bottom:24px;width:2px;background:#E7DBC9"></div>
+            <div style="position:relative;display:flex;flex-direction:column;gap:14px">
+              <div style="display:flex;gap:14px;align-items:flex-start">
+                <div style="width:32px;flex:none;display:flex;justify-content:center;padding-top:16px"><div style="width:13px;height:13px;border-radius:50%;background:#B2543A;box-shadow:0 0 0 4px #FAF6F2"></div></div>
+                <div style="flex:1;background:#FAF6F2;border-radius:16px;padding:14px;box-shadow:0 0 0 1px #E7E2DA;display:flex;gap:12px">
+                  <div style="width:54px;height:54px;flex:none;border-radius:12px;background:repeating-linear-gradient(135deg,#E3C7A8 0 8px,#D9B28C 8px 16px)"></div>
+                  <div style="display:flex;flex-direction:column;gap:2px"><span style="font:400 11.5px ui-monospace,SFMono-Regular,Menlo,monospace;color:#B2543A">08:30</span><span style="font:500 14.5px Poppins,sans-serif;color:#3A2A21">Walk the Siq</span><span style="font:300 12px Poppins,sans-serif;color:#7A6959">1.2 km · 40 min before the buses</span></div>
+                </div>
+              </div>
+              <div style="display:flex;gap:14px;align-items:flex-start">
+                <div style="width:32px;flex:none;display:flex;justify-content:center;padding-top:16px"><div style="width:13px;height:13px;border-radius:50%;background:#B2543A;box-shadow:0 0 0 4px #FAF6F2"></div></div>
+                <div style="flex:1;background:#FAF6F2;border-radius:16px;padding:14px;box-shadow:0 0 0 1px #E7E2DA;display:flex;gap:12px">
+                  <div style="width:54px;height:54px;flex:none;border-radius:12px;background:repeating-linear-gradient(135deg,#E8D3BC 0 8px,#DFC4A6 8px 16px)"></div>
+                  <div style="display:flex;flex-direction:column;gap:2px"><span style="font:400 11.5px ui-monospace,SFMono-Regular,Menlo,monospace;color:#B2543A">10:00</span><span style="font:500 14.5px Poppins,sans-serif;color:#3A2A21">Al-Khazneh</span><span style="font:300 12px Poppins,sans-serif;color:#7A6959">Golden light until 10:40</span></div>
+                </div>
+              </div>
+              <div style="display:flex;gap:14px;align-items:flex-start">
+                <div style="width:32px;flex:none;display:flex;justify-content:center;padding-top:16px"><div style="width:13px;height:13px;border-radius:50%;background:#B2543A;box-shadow:0 0 0 4px #FAF6F2"></div></div>
+                <div style="flex:1;background:#F2E7DA;border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:9px">
+                  <div style="display:flex;gap:12px">
+                    <div style="width:54px;height:54px;flex:none;border-radius:12px;background:repeating-linear-gradient(135deg,#E3C7A8 0 8px,#D9B28C 8px 16px)"></div>
+                    <div style="display:flex;flex-direction:column;gap:2px"><span style="font:400 11.5px ui-monospace,SFMono-Regular,Menlo,monospace;color:#B2543A">12:30</span><span style="font:500 14.5px Poppins,sans-serif;color:#3A2A21">Lunch · Ammarin Camp</span><span style="font:300 12px Poppins,sans-serif;color:#7A6959">Hosted by Suleiman</span></div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:7px;align-self:flex-start;background:rgba(16,185,129,.14);border-radius:999px;padding:5px 11px"><div style="width:6px;height:6px;border-radius:50%;background:#10B981"></div><span style="font:500 11px Poppins,sans-serif;color:#0B7355">Booked · JOD 18</span></div>
+                </div>
+              </div>
+              <div style="display:flex;gap:14px;align-items:flex-start">
+                <div style="width:32px;flex:none;display:flex;justify-content:center;padding-top:16px"><div style="width:13px;height:13px;border-radius:50%;background:#FAF6F2;box-shadow:0 0 0 2px #D9B28C,0 0 0 6px #FAF6F2"></div></div>
+                <div style="flex:1;background:#FAF6F2;border-radius:16px;padding:14px;box-shadow:0 0 0 1px #E7E2DA;display:flex;gap:12px">
+                  <div style="width:54px;height:54px;flex:none;border-radius:12px;background:repeating-linear-gradient(135deg,#E8D3BC 0 8px,#DFC4A6 8px 16px)"></div>
+                  <div style="display:flex;flex-direction:column;gap:2px"><span style="font:400 11.5px ui-monospace,SFMono-Regular,Menlo,monospace;color:#B2543A">16:15</span><span style="font:500 14.5px Poppins,sans-serif;color:#3A2A21">Wu'ayra Castle</span><span style="font:300 12px Poppins,sans-serif;color:#7A6959">18 min drive · best light now</span></div>
+                </div>
+              </div>
+              <div style="margin-left:46px;height:50px;border-radius:16px;border:1.5px dashed #D9B28C;display:flex;align-items:center;justify-content:center;gap:8px;color:#B2543A;font:500 13.5px Poppins,sans-serif"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5.5v13M5.5 12h13"></path></svg>Add a stop</div>
+            </div>
+          </div>
+          <dc-import name="TabBar" active="trip" hint-size="100%,78px"></dc-import>
+          <div style="flex:none;height:26px;background:#FAF6F2;display:flex;align-items:center;justify-content:center"><div style="width:134px;height:5px;border-radius:3px;background:#3A2A21;opacity:.28"></div></div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:9px"><span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:#B2543A">11</span><span style="font:500 12px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#3A2A21">My Trip · itinerary</span></div>
+      </div>
+
+      <div data-screen-label="12 Advisors" style="display:flex;flex-direction:column;align-items:center;gap:14px">
+        <div style="position:relative;width:390px;height:844px;flex:none;background:#FAF6F2;border:9px solid #3A2A21;border-radius:46px;box-shadow:0 30px 60px -22px rgba(58,42,33,.5);overflow:hidden;display:flex;flex-direction:column">
+          <div style="flex:none;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 26px 0 30px;font:600 14px Poppins,sans-serif;color:#3A2A21"><span>9:41</span><span style="display:flex;align-items:center;gap:6px"><svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"></rect><rect x="4.6" y="5" width="3" height="6" rx="1"></rect><rect x="9.2" y="2.5" width="3" height="8.5" rx="1"></rect><rect x="13.8" y="0" width="3" height="11" rx="1"></rect></svg><svg width="26" height="12" viewBox="0 0 26 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="currentColor" opacity=".45"></rect><rect x="2.5" y="2.5" width="15" height="7" rx="2" fill="currentColor"></rect><path d="M23.4 4.3v3.4a2.2 2.2 0 0 0 0-3.4Z" fill="currentColor" opacity=".45"></path></svg></span></div>
+          <div style="flex:none;display:flex;align-items:center;justify-content:space-between;padding:4px 22px 12px">
+            <span style="font:600 22px Poppins,sans-serif;color:#3A2A21">Advisors</span>
+            <div style="display:flex;background:#F2E7DA;border-radius:999px;padding:3px">
+              <div style="padding:7px 15px;border-radius:999px;background:#B2543A;color:#FAF6F2;font:500 12px Poppins,sans-serif">Map</div>
+              <div style="padding:7px 15px;border-radius:999px;color:#7A6959;font:500 12px Poppins,sans-serif">List</div>
+            </div>
+          </div>
+          <div style="flex:1;position:relative;overflow:hidden">
+            <div style="position:absolute;inset:0;background:#EFE6D8">
+              <svg viewBox="0 0 390 460" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%" fill="none">
+                <path d="M0 300 90 250l70 34 90-56 140 40v186H0Z" fill="#E3D3BB"></path>
+                <path d="M0 372 110 330l96 30 84-30 100 34v96H0Z" fill="#DCC8AC"></path>
+                <path d="M-10 120 80 150l70-26 96 40 84-20 80 30" stroke="#FAF6F2" stroke-width="9"></path>
+                <path d="M40 460 70 330l60-60 40-120" stroke="#FAF6F2" stroke-width="7"></path>
+                <path d="M250 460 268 340l70-52" stroke="#FAF6F2" stroke-width="6"></path>
+              </svg>
+              <div style="position:absolute;left:64px;top:118px;display:flex;flex-direction:column;align-items:center">
+                <div style="background:#B2543A;color:#FAF6F2;border-radius:999px;padding:6px 12px;font:600 12px Poppins,sans-serif;box-shadow:0 8px 16px -8px rgba(58,42,33,.7)">JOD 25</div>
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="#B2543A" style="margin-top:-2px"><path d="M12 22s7.5-7 7.5-12A7.5 7.5 0 0 0 4.5 10c0 5 7.5 12 7.5 12Z"></path><circle cx="12" cy="10" r="3" fill="#FAF6F2"></circle><circle cx="12" cy="10" r="1.3" fill="#B2543A"></circle></svg>
+              </div>
+              <div style="position:absolute;left:206px;top:186px;display:flex;flex-direction:column;align-items:center;opacity:.92">
+                <div style="background:#FAF6F2;color:#3A2A21;border-radius:999px;padding:6px 12px;font:600 12px Poppins,sans-serif;box-shadow:0 8px 16px -8px rgba(58,42,33,.6)">JOD 40</div>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B2543A" stroke-width="1.8" style="margin-top:-2px"><path d="M12 22s7.5-7 7.5-12A7.5 7.5 0 0 0 4.5 10c0 5 7.5 12 7.5 12Z" fill="#FAF6F2"></path><circle cx="12" cy="10" r="2.6"></circle><circle cx="12" cy="10" r=".9" fill="#B2543A"></circle></svg>
+              </div>
+              <div style="position:absolute;left:284px;top:300px;display:flex;flex-direction:column;align-items:center;opacity:.92">
+                <div style="background:#FAF6F2;color:#3A2A21;border-radius:999px;padding:6px 12px;font:600 12px Poppins,sans-serif;box-shadow:0 8px 16px -8px rgba(58,42,33,.6)">JOD 18</div>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B2543A" stroke-width="1.8" style="margin-top:-2px"><path d="M12 22s7.5-7 7.5-12A7.5 7.5 0 0 0 4.5 10c0 5 7.5 12 7.5 12Z" fill="#FAF6F2"></path><circle cx="12" cy="10" r="2.6"></circle><circle cx="12" cy="10" r=".9" fill="#B2543A"></circle></svg>
+              </div>
+            </div>
+            <div style="position:absolute;left:0;right:0;bottom:0;background:#FAF6F2;border-radius:24px 24px 0 0;padding:12px 20px 18px;display:flex;flex-direction:column;gap:12px;box-shadow:0 -18px 36px -26px rgba(58,42,33,.75)">
+              <div style="align-self:center;width:44px;height:5px;border-radius:3px;background:#D9B28C"></div>
+              <span style="font:500 13px Poppins,sans-serif;color:#7A6959">14 advisors near Wadi Musa</span>
+              <div style="display:flex;gap:12px;align-items:center">
+                <div style="width:56px;height:56px;flex:none;border-radius:16px;background:repeating-linear-gradient(135deg,#D9B28C 0 6px,#C99C73 6px 12px)"></div>
+                <div style="flex:1;display:flex;flex-direction:column;gap:2px">
+                  <span style="font:500 14.5px Poppins,sans-serif;color:#3A2A21">Suleiman Al-Ammarin</span>
+                  <span style="font:300 12px Poppins,sans-serif;color:#7A6959">Bedouin guide · Little Petra</span>
+                  <span style="font:400 12px Poppins,sans-serif;color:#B2543A">★ 4.9 · 128 trips</span>
+                </div>
+                <span style="font:600 14px Poppins,sans-serif;color:#3A2A21">JOD 25</span>
+              </div>
+              <div style="height:1px;background:#E7E2DA"></div>
+              <div style="display:flex;gap:12px;align-items:center">
+                <div style="width:56px;height:56px;flex:none;border-radius:16px;background:repeating-linear-gradient(135deg,#E3C7A8 0 6px,#D4AC85 6px 12px)"></div>
+                <div style="flex:1;display:flex;flex-direction:column;gap:2px">
+                  <span style="font:500 14.5px Poppins,sans-serif;color:#3A2A21">Dina Twaissi</span>
+                  <span style="font:300 12px Poppins,sans-serif;color:#7A6959">Archaeologist · Nabataean sites</span>
+                  <span style="font:400 12px Poppins,sans-serif;color:#B2543A">★ 4.8 · 76 trips</span>
+                </div>
+                <span style="font:600 14px Poppins,sans-serif;color:#3A2A21">JOD 40</span>
+              </div>
+            </div>
+          </div>
+          <dc-import name="TabBar" active="advisors" hint-size="100%,78px"></dc-import>
+          <div style="flex:none;height:26px;background:#FAF6F2;display:flex;align-items:center;justify-content:center"><div style="width:134px;height:5px;border-radius:3px;background:#3A2A21;opacity:.28"></div></div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:9px"><span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:#B2543A">12</span><span style="font:500 12px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#3A2A21">Advisors · map + list</span></div>
+      </div>
+
+      <div data-screen-label="13 Advisor Profile" style="display:flex;flex-direction:column;align-items:center;gap:14px">
+        <div style="position:relative;width:390px;height:844px;flex:none;background:#FAF6F2;border:9px solid #3A2A21;border-radius:46px;box-shadow:0 30px 60px -22px rgba(58,42,33,.5);overflow:hidden;display:flex;flex-direction:column">
+          <div style="position:relative;flex:none;height:246px;background:repeating-linear-gradient(135deg,#E3C7A8 0 11px,#D9B28C 11px 22px)">
+            <div style="height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 26px 0 30px;font:600 14px Poppins,sans-serif;color:#3A2A21"><span>9:41</span><span style="display:flex;align-items:center;gap:6px"><svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"></rect><rect x="4.6" y="5" width="3" height="6" rx="1"></rect><rect x="9.2" y="2.5" width="3" height="8.5" rx="1"></rect><rect x="13.8" y="0" width="3" height="11" rx="1"></rect></svg><svg width="26" height="12" viewBox="0 0 26 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="currentColor" opacity=".45"></rect><rect x="2.5" y="2.5" width="15" height="7" rx="2" fill="currentColor"></rect><path d="M23.4 4.3v3.4a2.2 2.2 0 0 0 0-3.4Z" fill="currentColor" opacity=".45"></path></svg></span></div>
+            <div style="position:absolute;top:58px;left:20px;width:40px;height:40px;border-radius:13px;background:rgba(250,246,242,.92);display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3A2A21" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H6M11 6.5 5.5 12 11 17.5"></path></svg></div>
+            <div style="position:absolute;bottom:12px;left:20px;font:400 9.5px ui-monospace,SFMono-Regular,Menlo,monospace;color:#4A362A;background:rgba(250,246,242,.86);padding:4px 7px;border-radius:5px">PHOTO · advisor at camp</div>
+          </div>
+          <div style="flex:1;overflow:hidden;background:#FAF6F2;border-radius:26px 26px 0 0;margin-top:-24px;position:relative;padding:0 22px">
+            <div style="display:flex;align-items:flex-end;gap:14px;margin-top:-34px">
+              <div style="width:88px;height:88px;flex:none;border-radius:26px;background:repeating-linear-gradient(135deg,#D9B28C 0 7px,#C99C73 7px 14px);box-shadow:0 0 0 5px #FAF6F2"></div>
+              <div style="display:flex;flex-direction:column;gap:3px;padding-bottom:6px">
+                <span style="font:600 20px Poppins,sans-serif;color:#3A2A21">Suleiman Al-Ammarin</span>
+                <span style="font:300 12.5px Poppins,sans-serif;color:#7A6959">Bedouin guide · Little Petra</span>
+              </div>
+            </div>
+            <div style="display:flex;gap:22px;margin-top:18px">
+              <div style="display:flex;flex-direction:column;gap:1px"><span style="font:600 17px Poppins,sans-serif;color:#B2543A">★ 4.9</span><span style="font:300 11.5px Poppins,sans-serif;color:#7A6959">128 reviews</span></div>
+              <div style="width:1px;background:#E7E2DA"></div>
+              <div style="display:flex;flex-direction:column;gap:1px"><span style="font:600 17px Poppins,sans-serif;color:#3A2A21">9 yrs</span><span style="font:300 11.5px Poppins,sans-serif;color:#7A6959">guiding</span></div>
+              <div style="width:1px;background:#E7E2DA"></div>
+              <div style="display:flex;flex-direction:column;gap:1px"><span style="font:600 17px Poppins,sans-serif;color:#3A2A21">AR · EN</span><span style="font:300 11.5px Poppins,sans-serif;color:#7A6959">languages</span></div>
+            </div>
+            <p style="margin:18px 0 0;font:300 14px/1.65 Poppins,sans-serif;color:#5C4A3E">Born in Umm Sayhoun, third generation of the Ammarin tribe. I take small groups on the old herding routes above Little Petra, then back to the camp for supper with my family.</p>
+            <div style="margin-top:18px;display:flex;flex-direction:column;gap:10px">
+              <span style="font:500 14px Poppins,sans-serif;color:#3A2A21">Offers</span>
+              <div style="background:#F2E7DA;border-radius:16px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center">
+                <div style="display:flex;flex-direction:column;gap:2px"><span style="font:500 13.5px Poppins,sans-serif;color:#3A2A21">Sunset ridge walk + supper</span><span style="font:300 12px Poppins,sans-serif;color:#7A6959">4 hrs · max 6 people</span></div>
+                <span style="font:600 14px Poppins,sans-serif;color:#B2543A">JOD 25</span>
+              </div>
+              <div style="background:#F2E7DA;border-radius:16px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center">
+                <div style="display:flex;flex-direction:column;gap:2px"><span style="font:500 13.5px Poppins,sans-serif;color:#3A2A21">Back route into Little Petra</span><span style="font:300 12px Poppins,sans-serif;color:#7A6959">6 hrs · moderate</span></div>
+                <span style="font:600 14px Poppins,sans-serif;color:#B2543A">JOD 38</span>
+              </div>
+            </div>
+          </div>
+          <div style="flex:none;background:#FAF6F2;padding:14px 22px 12px;display:flex;align-items:center;gap:14px;box-shadow:0 -12px 26px -22px rgba(58,42,33,.8)">
+            <div style="display:flex;flex-direction:column"><span style="font:600 19px Poppins,sans-serif;color:#3A2A21">JOD 25</span><span style="font:300 11.5px Poppins,sans-serif;color:#7A6959">per person</span></div>
+            <div style="flex:1;height:54px;border-radius:16px;background:#B2543A;display:flex;align-items:center;justify-content:center;color:#FAF6F2;font:600 15px Poppins,sans-serif">Request booking</div>
+          </div>
+          <div style="flex:none;height:26px;background:#FAF6F2;display:flex;align-items:center;justify-content:center"><div style="width:134px;height:5px;border-radius:3px;background:#3A2A21;opacity:.28"></div></div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:9px"><span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:#B2543A">13</span><span style="font:500 12px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#3A2A21">Advisor profile</span></div>
+      </div>
+
+      <div data-screen-label="14 Booking Confirmed" style="display:flex;flex-direction:column;align-items:center;gap:14px">
+        <div style="position:relative;width:390px;height:844px;flex:none;background:#FAF6F2;border:9px solid #3A2A21;border-radius:46px;box-shadow:0 30px 60px -22px rgba(58,42,33,.5);overflow:hidden;display:flex;flex-direction:column">
+          <div style="flex:none;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 26px 0 30px;font:600 14px Poppins,sans-serif;color:#3A2A21"><span>9:41</span><span style="display:flex;align-items:center;gap:6px"><svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"></rect><rect x="4.6" y="5" width="3" height="6" rx="1"></rect><rect x="9.2" y="2.5" width="3" height="8.5" rx="1"></rect><rect x="13.8" y="0" width="3" height="11" rx="1"></rect></svg><svg width="26" height="12" viewBox="0 0 26 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="currentColor" opacity=".45"></rect><rect x="2.5" y="2.5" width="15" height="7" rx="2" fill="currentColor"></rect><path d="M23.4 4.3v3.4a2.2 2.2 0 0 0 0-3.4Z" fill="currentColor" opacity=".45"></path></svg></span></div>
+          <div style="flex:1;position:relative;padding:0 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px">
+            <svg viewBox="0 0 60 12" style="position:absolute;top:70px;right:38px;width:70px;height:15px;opacity:.5" fill="none" stroke="#B2543A" stroke-width="1.2" stroke-linecap="round"><path d="M2 7c2.2-3.4 4.4-3.4 6.6 0 2.2-3.4 4.4-3.4 6.6 0"></path><path d="M22 3.4c1.6-2.4 3.2-2.4 4.8 0 1.6-2.4 3.2-2.4 4.8 0"></path><path d="M38 8.6c1.3-2 2.6-2 3.9 0 1.3-2 2.6-2 3.9 0"></path></svg>
+            <div style="width:96px;height:96px;border-radius:50%;background:rgba(16,185,129,.13);display:flex;align-items:center;justify-content:center"><div style="width:64px;height:64px;border-radius:50%;background:#10B981;display:flex;align-items:center;justify-content:center"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FAF6F2" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg></div></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center">
+              <h2 style="margin:0;font:600 27px Poppins,sans-serif;letter-spacing:-.01em;color:#3A2A21">Booking confirmed</h2>
+              <p style="margin:0;max-width:270px;font:300 14px/1.6 Poppins,sans-serif;color:#5C4A3E">Suleiman has your details and will message you the evening before.</p>
+            </div>
+            <div style="align-self:stretch;background:#F2E7DA;border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:14px">
+              <div style="display:flex;gap:12px;align-items:center">
+                <div style="width:48px;height:48px;flex:none;border-radius:14px;background:repeating-linear-gradient(135deg,#D9B28C 0 6px,#C99C73 6px 12px)"></div>
+                <div style="display:flex;flex-direction:column;gap:1px"><span style="font:500 14px Poppins,sans-serif;color:#3A2A21">Sunset ridge walk + supper</span><span style="font:300 12px Poppins,sans-serif;color:#7A6959">Suleiman Al-Ammarin · 2 people</span></div>
+              </div>
+              <div style="height:1px;background:rgba(58,42,33,.1)"></div>
+              <div style="display:flex;justify-content:space-between"><span style="font:300 13px Poppins,sans-serif;color:#7A6959">When</span><span style="font:500 13px Poppins,sans-serif;color:#3A2A21">Sat 16 Mar · 16:00</span></div>
+              <div style="display:flex;justify-content:space-between"><span style="font:300 13px Poppins,sans-serif;color:#7A6959">Meeting point</span><span style="font:500 13px Poppins,sans-serif;color:#3A2A21">Ammarin Camp gate</span></div>
+              <div style="display:flex;justify-content:space-between"><span style="font:300 13px Poppins,sans-serif;color:#7A6959">Paid</span><span style="font:500 13px Poppins,sans-serif;color:#3A2A21">JOD 50</span></div>
+              <div style="height:1px;background:rgba(58,42,33,.1)"></div>
+              <div style="display:flex;justify-content:space-between;align-items:center"><span style="font:300 13px Poppins,sans-serif;color:#7A6959">Reference</span><span style="font:400 13px ui-monospace,SFMono-Regular,Menlo,monospace;color:#B2543A">TRH-4K92-PT</span></div>
+            </div>
+          </div>
+          <div style="flex:none;padding:0 24px 14px;display:flex;flex-direction:column;gap:10px">
+            <div style="height:54px;border-radius:16px;background:#B2543A;display:flex;align-items:center;justify-content:center;color:#FAF6F2;font:600 15px Poppins,sans-serif">Add to My Trip</div>
+            <div style="height:54px;border-radius:16px;background:#FAF6F2;box-shadow:inset 0 0 0 1.5px #D9B28C;display:flex;align-items:center;justify-content:center;color:#3A2A21;font:500 15px Poppins,sans-serif">Message Suleiman</div>
+          </div>
+          <div style="flex:none;height:26px;display:flex;align-items:center;justify-content:center"><div style="width:134px;height:5px;border-radius:3px;background:#3A2A21;opacity:.28"></div></div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:9px"><span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:#B2543A">14</span><span style="font:500 12px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#3A2A21">Booking confirmed</span></div>
+      </div>
+
+      <div data-screen-label="15 My Bookings" style="display:flex;flex-direction:column;align-items:center;gap:14px">
+        <div style="position:relative;width:390px;height:844px;flex:none;background:#FAF6F2;border:9px solid #3A2A21;border-radius:46px;box-shadow:0 30px 60px -22px rgba(58,42,33,.5);overflow:hidden;display:flex;flex-direction:column">
+          <div style="flex:none;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 26px 0 30px;font:600 14px Poppins,sans-serif;color:#3A2A21"><span>9:41</span><span style="display:flex;align-items:center;gap:6px"><svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"></rect><rect x="4.6" y="5" width="3" height="6" rx="1"></rect><rect x="9.2" y="2.5" width="3" height="8.5" rx="1"></rect><rect x="13.8" y="0" width="3" height="11" rx="1"></rect></svg><svg width="26" height="12" viewBox="0 0 26 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="currentColor" opacity=".45"></rect><rect x="2.5" y="2.5" width="15" height="7" rx="2" fill="currentColor"></rect><path d="M23.4 4.3v3.4a2.2 2.2 0 0 0 0-3.4Z" fill="currentColor" opacity=".45"></path></svg></span></div>
+          <div style="flex:none;padding:4px 22px 14px;display:flex;flex-direction:column;gap:14px">
+            <span style="font:600 24px Poppins,sans-serif;color:#3A2A21">My Bookings</span>
+            <div style="display:flex;background:#F2E7DA;border-radius:999px;padding:3px;align-self:flex-start">
+              <div style="padding:8px 20px;border-radius:999px;background:#B2543A;color:#FAF6F2;font:500 12.5px Poppins,sans-serif">Upcoming</div>
+              <div style="padding:8px 20px;border-radius:999px;color:#7A6959;font:500 12.5px Poppins,sans-serif">Past</div>
+            </div>
+          </div>
+          <div style="flex:1;overflow:hidden;padding:0 22px;display:flex;flex-direction:column;gap:14px">
+            <div style="background:#FAF6F2;border-radius:18px;padding:15px;box-shadow:0 0 0 1px #E7E2DA;display:flex;flex-direction:column;gap:12px">
+              <div style="display:flex;gap:12px">
+                <div style="width:56px;height:56px;flex:none;border-radius:14px;background:repeating-linear-gradient(135deg,#D9B28C 0 7px,#C99C73 7px 14px)"></div>
+                <div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:500 14.5px Poppins,sans-serif;color:#3A2A21">Sunset ridge walk + supper</span><span style="font:300 12px Poppins,sans-serif;color:#7A6959">Suleiman Al-Ammarin</span><span style="font:400 12px Poppins,sans-serif;color:#5C4A3E">Sat 16 Mar · 16:00 · 2 people</span></div>
+                <div style="display:flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:999px;background:rgba(16,185,129,.14)"><div style="width:6px;height:6px;border-radius:50%;background:#10B981"></div><span style="font:500 11px Poppins,sans-serif;color:#0B7355">Confirmed</span></div>
+              </div>
+              <div style="display:flex;gap:9px">
+                <div style="flex:1;height:40px;border-radius:12px;background:#F2E7DA;display:flex;align-items:center;justify-content:center;font:500 12.5px Poppins,sans-serif;color:#3A2A21">Message</div>
+                <div style="flex:1;height:40px;border-radius:12px;background:#F2E7DA;display:flex;align-items:center;justify-content:center;font:500 12.5px Poppins,sans-serif;color:#3A2A21">Directions</div>
+              </div>
+            </div>
+            <div style="background:#FAF6F2;border-radius:18px;padding:15px;box-shadow:0 0 0 1px #E7E2DA;display:flex;gap:12px">
+              <div style="width:56px;height:56px;flex:none;border-radius:14px;background:repeating-linear-gradient(135deg,#E3C7A8 0 7px,#D4AC85 7px 14px)"></div>
+              <div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:500 14.5px Poppins,sans-serif;color:#3A2A21">Nabataean sites, half day</span><span style="font:300 12px Poppins,sans-serif;color:#7A6959">Dina Twaissi</span><span style="font:400 12px Poppins,sans-serif;color:#5C4A3E">Sun 17 Mar · 09:00 · 2 people</span></div>
+              <div style="display:flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:999px;background:rgba(245,158,11,.16)"><div style="width:6px;height:6px;border-radius:50%;background:#F59E0B"></div><span style="font:500 11px Poppins,sans-serif;color:#96620A">Pending</span></div>
+            </div>
+            <div style="background:#FAF6F2;border-radius:18px;padding:15px;box-shadow:0 0 0 1px #E7E2DA;display:flex;gap:12px;opacity:.72">
+              <div style="width:56px;height:56px;flex:none;border-radius:14px;background:repeating-linear-gradient(135deg,#E8D3BC 0 7px,#DFC4A6 7px 14px)"></div>
+              <div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:500 14.5px Poppins,sans-serif;color:#3A2A21">Bedouin lunch at the camp</span><span style="font:300 12px Poppins,sans-serif;color:#7A6959">Ammarin Camp</span><span style="font:400 12px Poppins,sans-serif;color:#5C4A3E">Fri 15 Mar · 12:30</span></div>
+              <div style="display:flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;background:#E7E2DA"><span style="font:500 11px Poppins,sans-serif;color:#5C4A3E">Completed</span></div>
+            </div>
+          </div>
+          <dc-import name="TabBar" active="advisors" hint-size="100%,78px"></dc-import>
+          <div style="flex:none;height:26px;background:#FAF6F2;display:flex;align-items:center;justify-content:center"><div style="width:134px;height:5px;border-radius:3px;background:#3A2A21;opacity:.28"></div></div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:9px"><span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:#B2543A">15</span><span style="font:500 12px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#3A2A21">My Bookings</span></div>
+      </div>
+
+      <div data-screen-label="16 Camera Guide" style="display:flex;flex-direction:column;align-items:center;gap:14px">
+        <div style="position:relative;width:390px;height:844px;flex:none;background:#3A2A21;border:9px solid #3A2A21;border-radius:46px;box-shadow:0 30px 60px -22px rgba(58,42,33,.5);overflow:hidden;display:flex;flex-direction:column">
+          <div style="flex:none;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 26px 0 30px;font:600 14px Poppins,sans-serif;color:#FAF6F2"><span>9:41</span><span style="display:flex;align-items:center;gap:6px"><svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"></rect><rect x="4.6" y="5" width="3" height="6" rx="1"></rect><rect x="9.2" y="2.5" width="3" height="8.5" rx="1"></rect><rect x="13.8" y="0" width="3" height="11" rx="1"></rect></svg><svg width="26" height="12" viewBox="0 0 26 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="currentColor" opacity=".45"></rect><rect x="2.5" y="2.5" width="15" height="7" rx="2" fill="currentColor"></rect><path d="M23.4 4.3v3.4a2.2 2.2 0 0 0 0-3.4Z" fill="currentColor" opacity=".45"></path></svg></span></div>
+          <div style="flex:1;position:relative;background:repeating-linear-gradient(135deg,#5C4131 0 12px,#4A3427 12px 24px);overflow:hidden">
+            <svg viewBox="0 0 372 600" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%" fill="none" stroke="#FAF6F2" opacity=".2" stroke-width="1"><path d="M124 0v600M248 0v600M0 200h372M0 400h372"></path></svg>
+            <div style="position:absolute;left:78px;top:130px;width:216px;height:300px;border:2px solid rgba(250,246,242,.75);border-radius:10px"></div>
+            <div style="position:absolute;left:78px;top:112px;font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.1em;color:#FAF6F2;opacity:.85">FRAME · AL-KHAZNEH</div>
+            <div style="position:absolute;left:20px;right:20px;top:22px;display:flex;align-items:center;gap:12px;background:rgba(250,246,242,.94);border-radius:16px;padding:13px 15px">
+              <div style="width:34px;height:34px;flex:none;border-radius:11px;background:rgba(178,84,58,.13);display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#B2543A" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21M5.6 5.6l1.8 1.8M16.6 16.6l1.8 1.8M18.4 5.6l-1.8 1.8M7.4 16.6l-1.8 1.8"></path></svg></div>
+              <div style="flex:1;display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px Poppins,sans-serif;color:#3A2A21">Golden hour · 07:10–08:40</span><span style="font:300 11.5px Poppins,sans-serif;color:#7A6959">Facade lit for another 34 minutes</span></div>
+            </div>
+            <div style="position:absolute;left:20px;right:20px;bottom:118px;display:flex;align-items:center;gap:10px;background:rgba(58,42,33,.72);border-radius:14px;padding:11px 14px">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9B28C" stroke-width="1.8" stroke-linecap="round" style="flex:none"><path d="M12 8v5M12 16.4v.2"></path><circle cx="12" cy="12" r="8.5"></circle></svg>
+              <span style="font:400 12.5px/1.45 Poppins,sans-serif;color:#FAF6F2">Step back 4 m and drop low — the Siq walls will frame the full facade.</span>
+            </div>
+            <div style="position:absolute;left:0;right:0;bottom:22px;display:flex;align-items:center;justify-content:center;gap:34px">
+              <div style="width:46px;height:46px;border-radius:13px;background:repeating-linear-gradient(135deg,#D9B28C 0 6px,#C99C73 6px 12px)"></div>
+              <div style="width:72px;height:72px;border-radius:50%;background:#FAF6F2;display:flex;align-items:center;justify-content:center"><div style="width:60px;height:60px;border-radius:50%;background:#B2543A"></div></div>
+              <div style="width:46px;height:46px;border-radius:13px;background:rgba(250,246,242,.18);display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FAF6F2" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5V5.5A1.5 1.5 0 0 1 5.5 4h3M15.5 4h3A1.5 1.5 0 0 1 20 5.5v3M20 15.5v3a1.5 1.5 0 0 1-1.5 1.5h-3M8.5 20h-3A1.5 1.5 0 0 1 4 18.5v-3"></path></svg></div>
+            </div>
+          </div>
+          <dc-import name="TabBar" active="camera" hint-size="100%,78px"></dc-import>
+          <div style="flex:none;height:26px;background:#FAF6F2;display:flex;align-items:center;justify-content:center"><div style="width:134px;height:5px;border-radius:3px;background:#3A2A21;opacity:.28"></div></div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:9px"><span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:#B2543A">16</span><span style="font:500 12px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#3A2A21">Camera guide</span></div>
+      </div>
+
+      <div data-screen-label="17 Chat" style="display:flex;flex-direction:column;align-items:center;gap:14px">
+        <div style="position:relative;width:390px;height:844px;flex:none;background:#FAF6F2;border:9px solid #3A2A21;border-radius:46px;box-shadow:0 30px 60px -22px rgba(58,42,33,.5);overflow:hidden;display:flex;flex-direction:column">
+          <div style="flex:none;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 26px 0 30px;font:600 14px Poppins,sans-serif;color:#3A2A21"><span>9:41</span><span style="display:flex;align-items:center;gap:6px"><svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"></rect><rect x="4.6" y="5" width="3" height="6" rx="1"></rect><rect x="9.2" y="2.5" width="3" height="8.5" rx="1"></rect><rect x="13.8" y="0" width="3" height="11" rx="1"></rect></svg><svg width="26" height="12" viewBox="0 0 26 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="currentColor" opacity=".45"></rect><rect x="2.5" y="2.5" width="15" height="7" rx="2" fill="currentColor"></rect><path d="M23.4 4.3v3.4a2.2 2.2 0 0 0 0-3.4Z" fill="currentColor" opacity=".45"></path></svg></span></div>
+          <div style="flex:none;display:flex;align-items:center;gap:12px;padding:4px 22px 14px;border-bottom:1px solid #E7E2DA">
+            <div style="width:40px;height:40px;border-radius:13px;background:#F2E7DA;display:flex;align-items:center;justify-content:center"><img src="brand/terhal-icon.png" alt="" style="width:24px;height:24px;object-fit:contain" /></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:1px"><span style="font:500 15px Poppins,sans-serif;color:#3A2A21">Terhal Guide</span><span style="font:300 11.5px Poppins,sans-serif;color:#7A6959">Knows your itinerary · answers in Arabic too</span></div>
+          </div>
+          <div style="flex:1;overflow:hidden;padding:18px 20px;display:flex;flex-direction:column;gap:14px">
+            <div style="align-self:center;font:400 11px Poppins,sans-serif;color:#9A8B7E">Today · 15:42</div>
+            <div style="align-self:flex-start;max-width:280px;background:#F2E7DA;border-radius:18px 18px 18px 5px;padding:13px 16px;font:400 13.5px/1.55 Poppins,sans-serif;color:#3A2A21">You have 2 hours free before supper at the camp. Wu'ayra Castle is 18 minutes away and the light there is best right now.</div>
+            <div style="align-self:flex-start;max-width:290px;background:#FAF6F2;border-radius:18px;padding:12px;box-shadow:0 0 0 1px #E7E2DA;display:flex;gap:11px">
+              <div style="width:52px;height:52px;flex:none;border-radius:12px;background:repeating-linear-gradient(135deg,#E3C7A8 0 7px,#D9B28C 7px 14px)"></div>
+              <div style="flex:1;display:flex;flex-direction:column;gap:3px">
+                <span style="font:500 13.5px Poppins,sans-serif;color:#3A2A21">Wu'ayra Castle</span>
+                <span style="font:300 11.5px Poppins,sans-serif;color:#7A6959">Free · 45 min · rarely busy</span>
+                <span style="font:600 12px Poppins,sans-serif;color:#B2543A">Add to Day 1</span>
+              </div>
+            </div>
+            <div style="align-self:flex-end;max-width:250px;background:#B2543A;border-radius:18px 18px 5px 18px;padding:13px 16px;font:400 13.5px/1.55 Poppins,sans-serif;color:#FAF6F2">Is there anywhere to eat near it?</div>
+            <div style="align-self:flex-start;max-width:280px;background:#F2E7DA;border-radius:18px 18px 18px 5px;padding:13px 16px;font:400 13.5px/1.55 Poppins,sans-serif;color:#3A2A21">Nothing at the site itself. Beit Anbar in Wadi Musa is on the way back — 6 minutes, opens at 17:00.</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:2px">
+              <div style="padding:9px 14px;border-radius:999px;background:#FAF6F2;box-shadow:inset 0 0 0 1.5px #D9B28C;font:400 12.5px Poppins,sans-serif;color:#3A2A21">Add both to my trip</div>
+              <div style="padding:9px 14px;border-radius:999px;background:#FAF6F2;box-shadow:inset 0 0 0 1.5px #D9B28C;font:400 12.5px Poppins,sans-serif;color:#3A2A21">Something quieter?</div>
+            </div>
+          </div>
+          <div style="flex:none;padding:10px 20px 12px;display:flex;align-items:center;gap:10px">
+            <div style="flex:1;height:48px;border-radius:16px;background:#F2E7DA;display:flex;align-items:center;padding:0 16px;font:300 13.5px Poppins,sans-serif;color:#9A8B7E">Ask about your trip…</div>
+            <div style="width:48px;height:48px;flex:none;border-radius:16px;background:#B2543A;display:flex;align-items:center;justify-content:center"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#FAF6F2" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 20 5l-7.5 15-1.8-6.2Z"></path></svg></div>
+          </div>
+          <dc-import name="TabBar" active="chat" hint-size="100%,78px"></dc-import>
+          <div style="flex:none;height:26px;background:#FAF6F2;display:flex;align-items:center;justify-content:center"><div style="width:134px;height:5px;border-radius:3px;background:#3A2A21;opacity:.28"></div></div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:9px"><span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:#B2543A">17</span><span style="font:500 12px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#3A2A21">Chat · Terhal Guide</span></div>
+      </div>
+
+    </div>
+  </div>
+  </sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showGroupA&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Scope&quot;},&quot;showBrandNotes&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Scope&quot;},&quot;showArabic&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      showGroupA: this.props.showGroupA ?? true,
+      showArabic: this.props.showArabic ?? true,
+      showBrandNotes: this.props.showBrandNotes ?? true,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    body { margin:0; background:#E7E2DA; font-family:Poppins, system-ui, sans-serif; -webkit-font-smoothing:antialiased; text-wrap:pretty; }
+    a { color:#B2543A; text-decoration:none; }
+    a:hover { color:#8E4230; }
+  </style>
+</helmet>
+<div data-screen-label="08 Toast system" style="width:390px;min-height:844px;flex:none;background:#F2E7DA;border-radius:28px;padding:28px 22px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:4px">
+            <span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.2em;color:#B2543A">COMPONENT</span>
+            <h3 style="margin:0;font:600 22px Poppins,sans-serif;color:#3A2A21">Toast / notification</h3>
+            <p style="margin:4px 0 0;font:300 13px/1.5 Poppins,sans-serif;color:#5C4A3E">Ivory surface, 16px radius, 20px shadow. Semantic tones stay exactly as implemented; the brand palette owns the surface, text and action.</p>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;background:#FAF6F2;border-radius:16px;padding:14px 15px;box-shadow:0 14px 28px -18px rgba(58,42,33,.55)">
+            <div style="width:30px;height:30px;flex:none;border-radius:9px;background:rgba(16,185,129,.14);display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:500 13.5px Poppins,sans-serif;color:#3A2A21">Booking confirmed</span><span style="font:300 12px Poppins,sans-serif;color:#7A6959">Suleiman · 16 Mar, 09:00</span></div>
+            <span style="font:600 12.5px Poppins,sans-serif;color:#B2543A;padding-top:2px">View</span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;background:#FAF6F2;border-radius:16px;padding:14px 15px;box-shadow:0 14px 28px -18px rgba(58,42,33,.55)">
+            <div style="width:30px;height:30px;flex:none;border-radius:9px;background:rgba(245,158,11,.16);display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.1" stroke-linecap="round"><path d="M12 6.5v7M12 17.2v.3"></path></svg></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:500 13.5px Poppins,sans-serif;color:#3A2A21">Site closes in 45 minutes</span><span style="font:300 12px Poppins,sans-serif;color:#7A6959">Wu'ayra Castle · last entry 17:30</span></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;background:#FAF6F2;border-radius:16px;padding:14px 15px;box-shadow:0 14px 28px -18px rgba(58,42,33,.55)">
+            <div style="width:30px;height:30px;flex:none;border-radius:9px;background:rgba(14,165,233,.14);display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2.1" stroke-linecap="round"><path d="M12 11v6.5M12 7.2v.3"></path></svg></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:500 13.5px Poppins,sans-serif;color:#3A2A21">Day 2 re-timed</span><span style="font:300 12px Poppins,sans-serif;color:#7A6959">Moving Basta earlier saved 40 min of driving</span></div>
+            <span style="font:600 12.5px Poppins,sans-serif;color:#B2543A;padding-top:2px">Undo</span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;background:#FAF6F2;border-radius:16px;padding:14px 15px;box-shadow:0 14px 28px -18px rgba(58,42,33,.55)">
+            <div style="width:30px;height:30px;flex:none;border-radius:9px;background:rgba(37,99,235,.13);display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.7 7-11.3A7 7 0 0 0 5 9.7C5 14.3 12 21 12 21Z"></path><circle cx="12" cy="9.6" r="2.4"></circle></svg></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:500 13.5px Poppins,sans-serif;color:#3A2A21">You're 180 m from a stamp</span><span style="font:300 12px Poppins,sans-serif;color:#7A6959">Wu'ayra Castle · Ma'an Passport</span></div>
+            <span style="font:600 12.5px Poppins,sans-serif;color:#B2543A;padding-top:2px">Open</span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;background:#FAF6F2;border-radius:16px;padding:14px 15px;box-shadow:0 14px 28px -18px rgba(58,42,33,.55)">
+            <div style="width:30px;height:30px;flex:none;border-radius:9px;background:rgba(178,84,58,.13);display:flex;align-items:center;justify-content:center"><img src="brand/terhal-icon.png" alt="" style="width:19px;height:19px;object-fit:contain" /></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:500 13.5px Poppins,sans-serif;color:#3A2A21">Stamp collected</span><span style="font:300 12px Poppins,sans-serif;color:#7A6959">8 of 13 · 5 to unlock your reward</span></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;background:#3A2A21;border-radius:16px;padding:14px 15px">
+            <div style="flex:1;font:400 13px Poppins,sans-serif;color:#FAF6F2">Removed from My Trip</div>
+            <span style="font:600 12.5px Poppins,sans-serif;color:#D9B28C">Undo</span>
+          </div>
+          <div style="margin-top:6px;display:flex;flex-direction:column;gap:8px">
+            <span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.16em;color:#B2543A">RULES</span>
+            <p style="margin:0;font:300 12.5px/1.6 Poppins,sans-serif;color:#5C4A3E">Top-anchored, 16px inset, stack max 2. Auto-dismiss 4s; toasts with an action hold 7s. Deep-brown variant is reserved for destructive undo. Never use the gradient here.</p>
+          </div>
+        </div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:390,&quot;height&quot;:844},&quot;showArabic&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return { showArabic: this.props.showArabic ?? true };
+  }
+}
+</script>
+</body>
+</html>
