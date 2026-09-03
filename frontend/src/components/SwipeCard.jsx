@@ -2,7 +2,7 @@ import { useDrag } from "@use-gesture/react";
 import { useEffect, useRef, useState } from "react";
 
 import { useFormatDuration, useLanguage } from "../i18n/LanguageContext.jsx";
-import { sizedImage } from "../utils/images.js";
+import { gallery, heroImage, sizedImage } from "../utils/images.js";
 import { Badge, DifficultyBadge } from "./ui.jsx";
 
 const COMMIT_DISTANCE = 110; // px before a drag counts as a decision
@@ -85,7 +85,11 @@ export default function SwipeCard({ landmark, onSwipe, onOpen, command, depth = 
     insetInline: `${inset}px`,
   };
 
-  const image = sizedImage(landmark.image_url);
+  // Hero comes from the gallery when there is one, so replacing image 1 in
+  // data/landmark_images.csv changes the card without touching this file.
+  const shots = gallery(landmark);
+  const hero = heroImage(landmark);
+  const image = sizedImage(hero?.url);
   const intent = Math.max(-1, Math.min(1, x / COMMIT_DISTANCE));
 
   return (
@@ -135,6 +139,21 @@ export default function SwipeCard({ landmark, onSwipe, onOpen, command, depth = 
           {!image ? (
             <span className="rounded-md bg-ivory/[.86] px-[7px] py-1 font-mono text-[9.5px] text-ink-stamp">
               {t("common.noPhoto")}
+            </span>
+          ) : shots.length > 1 ? (
+            <span className="flex items-center gap-1 rounded-full bg-brown/45 px-2 py-1 font-sans text-[10px] font-medium text-ivory backdrop-blur-sm">
+              <svg
+                viewBox="0 0 24 24"
+                className="h-3 w-3"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.9"
+                strokeLinecap="round"
+              >
+                <rect x="3" y="6" width="14" height="12" rx="2" />
+                <path d="M20 8v9a1 1 0 0 1-1 1" />
+              </svg>
+              {shots.length}
             </span>
           ) : null}
         </div>

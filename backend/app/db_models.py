@@ -37,6 +37,14 @@ class LandmarkORM(Base):
     accessibility_notes: Mapped[str] = mapped_column(Text)
     image_url: Mapped[str | None] = mapped_column(String, nullable=True)
     image_attribution: Mapped[str | None] = mapped_column(String, nullable=True)
+
+    # Ordered so the API never has to sort, and cascade-deleted with the place.
+    images: Mapped[list["LandmarkImageORM"]] = relationship(
+        "LandmarkImageORM",
+        order_by="LandmarkImageORM.position",
+        cascade="all, delete-orphan",
+        lazy="selectin",  # one extra query for the whole deck, not one per card
+    )
     lat: Mapped[float | None] = mapped_column(Float, nullable=True)
     lon: Mapped[float | None] = mapped_column(Float, nullable=True)
     source_url: Mapped[str | None] = mapped_column(Text, nullable=True)

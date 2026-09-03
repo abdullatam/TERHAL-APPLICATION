@@ -24,6 +24,25 @@ class BookingStatus(str, Enum):
     cancelled = "cancelled"
 
 
+class LandmarkImage(BaseModel):
+    """One image in a landmark's gallery.
+
+    Licence and attribution are required, not optional: an image nobody can
+    prove the rights to is worse than no image, and this is a commercial
+    product pitch.
+    """
+
+    model_config = {"from_attributes": True}
+
+    position: int
+    url: str
+    source: str
+    license: str
+    attribution_text: str
+    caption_en: Optional[str] = None
+    caption_ar: Optional[str] = None
+
+
 class Landmark(BaseModel):
     """A tourist attraction in Ma'an governorate — the sole place entity in
     the data model. Ranges from a whole area (Petra, Wadi Musa town) to a
@@ -43,6 +62,9 @@ class Landmark(BaseModel):
     accessibility_notes: str
     image_url: Optional[str] = None
     image_attribution: Optional[str] = None
+    # The gallery behind the hero shot, ordered by position. Empty until the
+    # image-sourcing pass fills data/landmark_images.csv for this place.
+    images: list["LandmarkImage"] = []
     lat: Optional[float] = None
     lon: Optional[float] = None
     source_url: Optional[str] = None
