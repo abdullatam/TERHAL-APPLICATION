@@ -25,9 +25,17 @@ cp .env.example .env                     # then fill in DATABASE_URL and ANTHROP
 not the direct one — the direct host is IPv6-only and will not resolve on most
 networks. Ask Mahdi for the value; it is deliberately not in git.
 
-`ANTHROPIC_API_KEY` is only needed for the camera guide and the chat assistant.
-Everything else — the deck, the itinerary, the advisor map, booking — runs
-without it.
+The AI features need a key. The **chat assistant** uses `OPENAI_API_KEY` when
+one is set and falls back to `ANTHROPIC_API_KEY` otherwise; the **camera guide**
+uses `ANTHROPIC_API_KEY`. Everything else — the deck, the itinerary, the advisor
+map, booking, the passport — runs without either.
+
+The chat assistant's system prompt is assembled from the `landmarks` table at
+runtime (`backend/app/services/chat_service.py`), so it knows exactly what the
+app knows: all 46 places with their researched history, significance and honest
+accessibility notes, and an explicit note on the 15 that have no Phase 2 depth
+yet so it says so instead of inventing one. It is also barred from quoting any
+price, because every figure in the app is demonstration pricing.
 
 ### 2. Frontend (port 5173)
 

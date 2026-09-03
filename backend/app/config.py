@@ -12,6 +12,10 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=ENV_FILE, extra="ignore")
 
     anthropic_api_key: str = ""
+    # Chat uses OpenAI when this is set and falls back to Anthropic otherwise,
+    # so a teammate with only the Anthropic key still gets a working assistant.
+    openai_api_key: str = ""
+    openai_chat_model: str = "gpt-4o-mini"
     allowed_origins: str = "http://localhost:5173"
     database_url: str = ""
 

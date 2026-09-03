@@ -28,7 +28,17 @@ export function OnboardingProvider({ children }) {
     }
   }, []);
 
-  const value = useMemo(() => ({ seen, complete }), [seen, complete]);
+  /** Signing out puts the device back to a first run, slides included. */
+  const reset = useCallback(() => {
+    setSeen(false);
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch {
+      // Nothing was persisted to begin with.
+    }
+  }, []);
+
+  const value = useMemo(() => ({ seen, complete, reset }), [seen, complete, reset]);
   return (
     <OnboardingContext.Provider value={value}>{children}</OnboardingContext.Provider>
   );
