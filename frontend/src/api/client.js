@@ -1,29 +1,57 @@
 const BASE_URL = "/api";
 
 async function request(path, options = {}) {
+  const isForm = options.body instanceof FormData;
   const res = await fetch(`${BASE_URL}${path}`, {
-    headers: options.body instanceof FormData ? undefined : { "Content-Type": "application/json" },
     ...options,
+    headers: isForm ? options.headers : { "Content-Type": "application/json", ...options.headers },
   });
   if (!res.ok) {
-    const detail = await res.text();
-    throw new Error(`${res.status}: ${detail}`);
+    let detail = "";
+    try {
+      const body = await res.json();
+      detail = body.detail ?? JSON.stringify(body);
+    } catch {
+      detail = await res.text().catch(() => "");
+    }
+    const error = new Error(detail || `Request failed (${res.status})`);
+    error.status = res.status;
+    throw error;
   }
   return res.json();
 }
 
+function query(params) {
+  const search = new URLSearchParams();
+  Object.entries(params ?? {}).forEach(([key, value]) => {
+    if (value !== undefined && value !== null && value !== "" && value !== false) {
+      search.set(key, String(value));
+    }
+  });
+  const qs = search.toString();
+  return qs ? `?${qs}` : "";
+}
+
 export const api = {
-  listLandmarks: () => request("/landmarks"),
-  generateItinerary: (payload) =>
-    request("/itinerary/generate", { method: "POST", body: JSON.stringify(payload) }),
-  listProviders: (landmarkId) =>
-    request(`/providers${landmarkId ? `?landmark_id=${landmarkId}` : ""}`),
-  createRequest: (payload) =>
-    request("/requests", { method: "POST", body: JSON.stringify(payload) }),
-  listBids: (requestId) => request(`/requests/${requestId}/bids`),
-  submitBid: (requestId, payload) =>
-    request(`/requests/${requestId}/bids`, { method: "POST", body: JSON.stringify(payload) }),
-  acceptBid: (bidId) => request(`/bids/${bidId}/accept`, { method: "POST" }),
-  identifyLandmark: (formData) => request("/vision/identify", { method: "POST", body: formData }),
+  /** Top-level destinations only — the swipe deck. */
+  deck: () => request(`/landmarks${query({ deck: true })}`),
+  landmarks: () => request("/landmarks"),
+  landmark: (id) => request(`/landmarks/${id}`),
+
+  buildItinerary: (payload) =>
+    request("/itinerary/from-selection", { method: "POST", body: JSON.stringify(payload) }),
+  itinerary: (id) => request(`/itinerary/${id}`),
+
+  providers: (params) => request(`/providers${query(params)}`),
+  provider: (id, params) => request(`/providers/${id}${query(params)}`),
+
+  createBooking: (payload) =>
+    request("/bookings", { method: "POST", body: JSON.stringify(payload) }),
+  bookings: () => request("/bookings"),
+  booking: (id) => request(`/bookings/${id}`),
+  cancelBooking: (id) => request(`/bookings/${id}/cancel`, { method: "POST" }),
+
+  identifyLandmark: (formData) =>
+    request("/vision/identify", { method: "POST", body: formData }),
   chat: (payload) => request("/chat", { method: "POST", body: JSON.stringify(payload) }),
 };

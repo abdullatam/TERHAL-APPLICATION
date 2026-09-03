@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Ma'an">
+  <rect width="512" height="512" rx="112" fill="#2B221A"/>
+  <path d="M256 104c-58 0-104 46-104 104 0 78 104 200 104 200s104-122 104-200c0-58-46-104-104-104z" fill="#B2543A"/>
+  <path d="M256 150c-30 0-54 24-54 54v88h34v-70c0-11 9-20 20-20s20 9 20 20v70h34v-88c0-30-24-54-54-54z" fill="#F5EFE7"/>
+</svg>

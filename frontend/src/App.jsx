@@ -1,23 +1,29 @@
 import { Route, Routes } from "react-router-dom";
 
-import Navbar from "./components/Navbar.jsx";
-import BiddingBoard from "./pages/BiddingBoard.jsx";
+import { PhoneFrame, TabBar } from "./components/Shell.jsx";
+import AdvisorProfile from "./pages/AdvisorProfile.jsx";
+import Advisors from "./pages/Advisors.jsx";
+import BookingConfirmed from "./pages/BookingConfirmed.jsx";
+import Bookings from "./pages/Bookings.jsx";
 import CameraGuide from "./pages/CameraGuide.jsx";
-import ProviderDirectory from "./pages/ProviderDirectory.jsx";
-import TripPlanner from "./pages/TripPlanner.jsx";
+import Chat from "./pages/Chat.jsx";
+import Explore from "./pages/Explore.jsx";
+import Trip from "./pages/Trip.jsx";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-stone-50">
-      <Navbar />
-      <main className="mx-auto max-w-4xl p-6">
-        <Routes>
-          <Route path="/" element={<TripPlanner />} />
-          <Route path="/offers" element={<BiddingBoard />} />
-          <Route path="/camera-guide" element={<CameraGuide />} />
-          <Route path="/providers" element={<ProviderDirectory />} />
-        </Routes>
-      </main>
-    </div>
+    <PhoneFrame>
+      <Routes>
+        <Route path="/" element={<Explore />} />
+        <Route path="/trip" element={<Trip />} />
+        <Route path="/advisors" element={<Advisors />} />
+        <Route path="/advisors/:id" element={<AdvisorProfile />} />
+        <Route path="/bookings" element={<Bookings />} />
+        <Route path="/bookings/:id" element={<BookingConfirmed />} />
+        <Route path="/camera" element={<CameraGuide />} />
+        <Route path="/chat" element={<Chat />} />
+      </Routes>
+      <TabBar />
+    </PhoneFrame>
   );
 }

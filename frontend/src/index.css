@@ -2,6 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-html[dir="rtl"] {
-  text-align: right;
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-sand-900 text-sand-900 antialiased;
+    /* The app is a phone screen; the page itself never scrolls. */
+    overscroll-behavior: none;
+  }
+
+  /* Touch targets shouldn't flash a blue box on tap. */
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Leaflet sets its own direction; force LTR inside the map so tiles and
+   controls don't mirror when the app is in Arabic. */
+.leaflet-container {
+  direction: ltr;
+  background: #e8dccc;
+}
+.leaflet-container a.leaflet-popup-close-button {
+  direction: ltr;
 }

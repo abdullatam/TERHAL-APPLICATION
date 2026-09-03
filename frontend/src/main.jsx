@@ -4,14 +4,17 @@ import { BrowserRouter } from "react-router-dom";
 
 import App from "./App.jsx";
 import { LanguageProvider } from "./i18n/LanguageContext.jsx";
+import { TripProvider } from "./state/TripContext.jsx";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <LanguageProvider>
-        <App />
+        <TripProvider>
+          <App />
+        </TripProvider>
       </LanguageProvider>
     </BrowserRouter>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

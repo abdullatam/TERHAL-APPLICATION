@@ -1,10 +1,10 @@
-"""Seeds the database from the current in-repo data files.
+"""Seeds the database from the generated data files.
 
-Run with: python -m app.seed
+Run from backend/:  python -m app.seed
 
-Idempotent — safe to re-run as landmarks.py/mock_providers.py are updated
-during the data phase (see PLAN.md); existing rows are upserted, not
-duplicated.
+Idempotent — rows are upserted on their primary key, so re-running after
+`python scripts/build_dataset.py` refreshes the content without duplicating
+anything or disturbing itineraries and bookings made during a demo.
 """
 from sqlalchemy.dialects.postgresql import insert
 
@@ -12,6 +12,15 @@ from app.data.landmarks import LANDMARKS
 from app.data.mock_providers import MOCK_PROVIDERS
 from app.db import Base, SessionLocal, engine
 from app.db_models import LandmarkORM, ProviderORM
+
+LANDMARK_COLUMNS = [
+    "id", "name_en", "name_ar", "description_en", "description_ar",
+    "avg_visit_minutes", "accessibility_notes", "image_url",
+    "image_attribution", "lat", "lon", "source_url", "parent_id", "category",
+    "history_en", "history_ar", "significance_en", "significance_ar",
+    "narration_en", "narration_ar", "difficulty", "best_time_to_visit",
+    "requires_guide", "entrance_fee_notes", "active",
+]
 
 
 def upsert(session, model, rows: list[dict]) -> None:
@@ -31,20 +40,7 @@ def seed() -> None:
             session,
             LandmarkORM,
             [
-                {
-                    "id": landmark.id,
-                    "name_en": landmark.name_en,
-                    "name_ar": landmark.name_ar,
-                    "description_en": landmark.description_en,
-                    "description_ar": landmark.description_ar,
-                    "avg_visit_minutes": landmark.avg_visit_minutes,
-                    "accessibility_notes": landmark.accessibility_notes,
-                    "image_url": landmark.image_url,
-                    "image_attribution": landmark.image_attribution,
-                    "lat": landmark.lat,
-                    "lon": landmark.lon,
-                    "source_url": landmark.source_url,
-                }
+                {column: getattr(landmark, column) for column in LANDMARK_COLUMNS}
                 for landmark in LANDMARKS.values()
             ],
         )
@@ -63,6 +59,12 @@ def seed() -> None:
                     "verified": provider.verified,
                     "welfare_compliant": provider.welfare_compliant,
                     "accessibility_tags": provider.accessibility_tags,
+                    "lat": provider.lat,
+                    "lon": provider.lon,
+                    "hourly_rate_jod": provider.hourly_rate_jod,
+                    "bio_en": provider.bio_en,
+                    "bio_ar": provider.bio_ar,
+                    "photo_url": provider.photo_url,
                 }
                 for provider in MOCK_PROVIDERS
             ],
@@ -70,7 +72,11 @@ def seed() -> None:
 
         session.commit()
 
-    print(f"Seeded {len(LANDMARKS)} landmarks, {len(MOCK_PROVIDERS)} providers.")
+    deck = sum(1 for landmark in LANDMARKS.values() if not landmark.parent_id)
+    print(
+        f"Seeded {len(LANDMARKS)} landmarks ({deck} top-level destinations) "
+        f"and {len(MOCK_PROVIDERS)} providers."
+    )
 
 
 if __name__ == "__main__":

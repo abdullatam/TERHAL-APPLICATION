@@ -1,0 +1,13 @@
+{
+  "name": "Ma'an Trip Planner",
+  "short_name": "Ma'an",
+  "description": "Swipe the places you want, get a day-by-day plan, and book a verified local advisor.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#2B221A",
+  "theme_color": "#2B221A",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

@@ -1,5 +1,5 @@
 """Pydantic domain models shared across routers and services."""
-from datetime import date
+from datetime import date, datetime
 from enum import Enum
 from typing import Optional
 
@@ -18,12 +18,21 @@ class Language(str, Enum):
     en = "en"
 
 
+class BookingStatus(str, Enum):
+    pending = "pending"
+    confirmed = "confirmed"
+    cancelled = "cancelled"
+
+
 class Landmark(BaseModel):
     """A tourist attraction in Ma'an governorate — the sole place entity in
     the data model. Ranges from a whole area (Petra, Wadi Musa town) to a
-    single monument (the Treasury, the Siq) — there's no separate "site"
-    grouping above it, every attraction stands on its own.
+    single monument (the Treasury); `parent_id` is what separates the two.
+    A landmark with no parent is a destination in its own right and appears
+    in the swipe deck; one with a parent is a stop inside its parent.
     """
+
+    model_config = {"from_attributes": True}
 
     id: str
     name_en: str
@@ -38,29 +47,72 @@ class Landmark(BaseModel):
     lon: Optional[float] = None
     source_url: Optional[str] = None
 
-
-class ItineraryStop(BaseModel):
-    landmark_id: str
-    order: int
-    start_time: str
-    duration_minutes: int
-    notes: str = ""
+    # Phase 2 depth — present only where the research phase produced it.
+    parent_id: Optional[str] = None
+    category: Optional[str] = None
+    history_en: Optional[str] = None
+    history_ar: Optional[str] = None
+    significance_en: Optional[str] = None
+    significance_ar: Optional[str] = None
+    narration_en: Optional[str] = None
+    narration_ar: Optional[str] = None
+    difficulty: Optional[str] = None
+    best_time_to_visit: Optional[str] = None
+    requires_guide: Optional[bool] = None
+    entrance_fee_notes: Optional[str] = None
+    active: bool = True
 
 
 class ItineraryRequest(BaseModel):
-    interests: list[str]
-    trip_days: int = Field(ge=1, le=14)
+    """Built from the swipe deck: the ids the tourist swiped right on."""
+
+    landmark_ids: list[str] = Field(min_length=1)
+    trip_days: int = Field(ge=1, le=14, default=2)
     accessibility_needs: bool = False
     language: Language = Language.en
 
 
+class TimelineStop(BaseModel):
+    kind: str = "landmark"  # "landmark" | "break"
+    landmark_id: Optional[str] = None
+    name_en: str
+    name_ar: str
+    image_url: Optional[str] = None
+    day: int
+    order: int
+    start_time: str
+    end_time: str
+    duration_minutes: int
+    travel_minutes_from_prev: int = 0
+    accessibility_notes: Optional[str] = None
+    difficulty: Optional[str] = None
+    requires_guide: Optional[bool] = None
+
+
+class TimelineDay(BaseModel):
+    day: int
+    stops: list[TimelineStop]
+
+
+class ExcludedLandmark(BaseModel):
+    landmark_id: str
+    name_en: str
+    name_ar: str
+    reason_en: str
+    reason_ar: str
+
+
 class Itinerary(BaseModel):
     id: str
-    stops: list[ItineraryStop]
+    trip_days: int
     accessibility_friendly: bool
+    days: list[TimelineDay]
+    excluded: list[ExcludedLandmark] = []
 
 
 class Provider(BaseModel):
+    model_config = {"from_attributes": True}
+
     id: str
     name: str
     role: ProviderRole
@@ -70,49 +122,65 @@ class Provider(BaseModel):
     verified: bool = False
     welfare_compliant: bool = False
     accessibility_tags: list[str] = []
+    lat: Optional[float] = None
+    lon: Optional[float] = None
+    hourly_rate_jod: Optional[float] = None
+    bio_en: Optional[str] = None
+    bio_ar: Optional[str] = None
+    photo_url: Optional[str] = None
 
 
-class ProviderRegistration(BaseModel):
-    name: str
-    role: ProviderRole
-    landmark_ids: list[str]
-    languages: list[Language]
+class PriceLine(BaseModel):
+    label_en: str
+    label_ar: str
+    amount_jod: float
 
 
-class TripRequest(BaseModel):
-    id: str
-    itinerary_id: str
-    landmark_id: str
-    date: date
+class Quote(BaseModel):
+    """Every price the app shows carries its own breakdown and a mock flag —
+    nothing displays a bare number the tourist cannot interrogate."""
+
+    total_jod: float
+    currency: str = "JOD"
+    hours: int
     group_size: int
-    language: Language
-    specialty: Optional[str] = None
-    accessibility_needs: bool = False
+    breakdown: list[PriceLine]
+    is_mock: bool = True
 
 
-class TripRequestCreate(BaseModel):
-    itinerary_id: str
-    landmark_id: str
+class ProviderWithDistance(Provider):
+    distance_km: Optional[float] = None
+    quote: Optional[Quote] = None
+
+
+class BookingCreate(BaseModel):
+    provider_id: str
+    itinerary_id: Optional[str] = None
     date: date
-    group_size: int = Field(ge=1)
-    language: Language = Language.en
-    specialty: Optional[str] = None
-    accessibility_needs: bool = False
+    start_time: str = "09:00"
+    hours: int = Field(ge=1, le=12, default=4)
+    group_size: int = Field(ge=1, le=40, default=2)
 
 
-class Bid(BaseModel):
+class Booking(BaseModel):
+    model_config = {"from_attributes": True}
+
     id: str
-    request_id: str
     provider_id: str
-    price: float
-    message: str = ""
-    accepted: bool = False
+    itinerary_id: Optional[str] = None
+    date: date
+    start_time: str
+    hours: int
+    group_size: int
+    price_jod: float
+    price_is_mock: bool = True
+    status: BookingStatus = BookingStatus.confirmed
+    created_at: datetime
 
 
-class BidCreate(BaseModel):
-    provider_id: str
-    price: float = Field(gt=0)
-    message: str = ""
+class BookingDetail(Booking):
+    provider: Optional[Provider] = None
+    quote: Optional[Quote] = None
 
 
 class VisionIdentifyResult(BaseModel):

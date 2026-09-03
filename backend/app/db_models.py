@@ -1,17 +1,27 @@
 """SQLAlchemy ORM tables, mirroring the Pydantic models in app/models.py."""
-from datetime import date
+from datetime import date, datetime
 
-from sqlalchemy import ARRAY, Boolean, Date, Float, ForeignKey, Integer, String, Text
+from sqlalchemy import (
+    ARRAY,
+    Boolean,
+    Date,
+    DateTime,
+    Float,
+    ForeignKey,
+    Integer,
+    String,
+    Text,
+    func,
+)
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db import Base
 
 
 class LandmarkORM(Base):
-    """Every tourist attraction in Ma'an governorate — no separate "site"
-    grouping above it; a whole area (Petra) and a single monument (the
-    Treasury) are both just rows here, each with its own visit duration
-    and accessibility notes.
+    """Every tourist attraction in Ma'an governorate. A whole area (Petra) and
+    a single monument (the Treasury) are both rows here; `parent_id` is the
+    only thing separating a destination from a stop inside one.
     """
 
     __tablename__ = "landmarks"
@@ -29,6 +39,22 @@ class LandmarkORM(Base):
     lon: Mapped[float | None] = mapped_column(Float, nullable=True)
     source_url: Mapped[str | None] = mapped_column(Text, nullable=True)
 
+    # Phase 2 depth. Nullable throughout — Group 3 was never delivered, so a
+    # third of the dataset legitimately has none of this.
+    parent_id: Mapped[str | None] = mapped_column(String, nullable=True)
+    category: Mapped[str | None] = mapped_column(String, nullable=True)
+    history_en: Mapped[str | None] = mapped_column(Text, nullable=True)
+    history_ar: Mapped[str | None] = mapped_column(Text, nullable=True)
+    significance_en: Mapped[str | None] = mapped_column(Text, nullable=True)
+    significance_ar: Mapped[str | None] = mapped_column(Text, nullable=True)
+    narration_en: Mapped[str | None] = mapped_column(Text, nullable=True)
+    narration_ar: Mapped[str | None] = mapped_column(Text, nullable=True)
+    difficulty: Mapped[str | None] = mapped_column(String, nullable=True)
+    best_time_to_visit: Mapped[str | None] = mapped_column(Text, nullable=True)
+    requires_guide: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
+    entrance_fee_notes: Mapped[str | None] = mapped_column(Text, nullable=True)
+    active: Mapped[bool] = mapped_column(Boolean, default=True, server_default="true")
+
 
 class ProviderORM(Base):
     __tablename__ = "providers"
@@ -43,15 +69,26 @@ class ProviderORM(Base):
     welfare_compliant: Mapped[bool] = mapped_column(Boolean, default=False)
     accessibility_tags: Mapped[list[str]] = mapped_column(ARRAY(String), default=list)
 
+    # Mock "currently working near here" position, used by the advisor map.
+    lat: Mapped[float | None] = mapped_column(Float, nullable=True)
+    lon: Mapped[float | None] = mapped_column(Float, nullable=True)
+    hourly_rate_jod: Mapped[float | None] = mapped_column(Float, nullable=True)
+    bio_en: Mapped[str | None] = mapped_column(Text, nullable=True)
+    bio_ar: Mapped[str | None] = mapped_column(Text, nullable=True)
+    photo_url: Mapped[str | None] = mapped_column(String, nullable=True)
+
 
 class ItineraryORM(Base):
     __tablename__ = "itineraries"
 
     id: Mapped[str] = mapped_column(String, primary_key=True)
     accessibility_friendly: Mapped[bool] = mapped_column(Boolean, default=False)
+    trip_days: Mapped[int] = mapped_column(Integer, default=1, server_default="1")
 
     stops: Mapped[list["ItineraryStopORM"]] = relationship(
-        back_populates="itinerary", order_by="ItineraryStopORM.order", cascade="all, delete-orphan"
+        back_populates="itinerary",
+        order_by="ItineraryStopORM.order",
+        cascade="all, delete-orphan",
     )
 
 
@@ -60,34 +97,38 @@ class ItineraryStopORM(Base):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     itinerary_id: Mapped[str] = mapped_column(ForeignKey("itineraries.id"))
-    landmark_id: Mapped[str] = mapped_column(ForeignKey("landmarks.id"))
+    # Null for a break (lunch), which is a real row on the timeline but not a place.
+    landmark_id: Mapped[str | None] = mapped_column(
+        ForeignKey("landmarks.id"), nullable=True
+    )
+    kind: Mapped[str] = mapped_column(String, default="landmark", server_default="landmark")
+    day: Mapped[int] = mapped_column(Integer, default=1, server_default="1")
     order: Mapped[int] = mapped_column("stop_order", Integer)
     start_time: Mapped[str] = mapped_column(String)
     duration_minutes: Mapped[int] = mapped_column(Integer)
+    travel_minutes: Mapped[int] = mapped_column(Integer, default=0, server_default="0")
     notes: Mapped[str] = mapped_column(Text, default="")
 
     itinerary: Mapped["ItineraryORM"] = relationship(back_populates="stops")
 
 
-class TripRequestORM(Base):
-    __tablename__ = "trip_requests"
+class BookingORM(Base):
+    __tablename__ = "bookings"
 
     id: Mapped[str] = mapped_column(String, primary_key=True)
-    itinerary_id: Mapped[str] = mapped_column(ForeignKey("itineraries.id"))
-    landmark_id: Mapped[str] = mapped_column(ForeignKey("landmarks.id"))
-    date: Mapped[date] = mapped_column(Date)
-    group_size: Mapped[int] = mapped_column(Integer)
-    language: Mapped[str] = mapped_column(String)
-    specialty: Mapped[str | None] = mapped_column(String, nullable=True)
-    accessibility_needs: Mapped[bool] = mapped_column(Boolean, default=False)
-
-
-class BidORM(Base):
-    __tablename__ = "bids"
-
-    id: Mapped[str] = mapped_column(String, primary_key=True)
-    request_id: Mapped[str] = mapped_column(ForeignKey("trip_requests.id"))
     provider_id: Mapped[str] = mapped_column(ForeignKey("providers.id"))
-    price: Mapped[float] = mapped_column()
-    message: Mapped[str] = mapped_column(Text, default="")
-    accepted: Mapped[bool] = mapped_column(Boolean, default=False)
+    itinerary_id: Mapped[str | None] = mapped_column(
+        ForeignKey("itineraries.id"), nullable=True
+    )
+    date: Mapped[date] = mapped_column(Date)
+    start_time: Mapped[str] = mapped_column(String)
+    hours: Mapped[int] = mapped_column(Integer)
+    group_size: Mapped[int] = mapped_column(Integer)
+    price_jod: Mapped[float] = mapped_column(Float)
+    # Every stored price is flagged, so a real price can never be confused with
+    # a demo one once the pricing formula lands.
+    price_is_mock: Mapped[bool] = mapped_column(Boolean, default=True, server_default="true")
+    status: Mapped[str] = mapped_column(String, default="confirmed")
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
