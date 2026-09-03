@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    body { margin:0; background:#E7E2DA; font-family:Poppins, system-ui, sans-serif; -webkit-font-smoothing:antialiased; text-wrap:pretty; }
+    a { color:#B2543A; text-decoration:none; }
+    a:hover { color:#8E4230; }
+  </style>
+</helmet>
+<div data-screen-label="04 Onboarding Experience" style="position:relative;width:390px;height:844px;flex:none;background:#FAF6F2;overflow:hidden;display:flex;flex-direction:column">
+          <div style="flex:none;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 26px 0 30px;font:600 14px Poppins,sans-serif;color:#3A2A21"><span>9:41</span><span style="display:flex;align-items:center;gap:6px"><svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"></rect><rect x="4.6" y="5" width="3" height="6" rx="1"></rect><rect x="9.2" y="2.5" width="3" height="8.5" rx="1"></rect><rect x="13.8" y="0" width="3" height="11" rx="1"></rect></svg><svg width="26" height="12" viewBox="0 0 26 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="currentColor" opacity=".45"></rect><rect x="2.5" y="2.5" width="15" height="7" rx="2" fill="currentColor"></rect><path d="M23.4 4.3v3.4a2.2 2.2 0 0 0 0-3.4Z" fill="currentColor" opacity=".45"></path></svg></span></div>
+          <div style="position:relative;flex:none;height:396px;border-bottom-left-radius:72px;overflow:hidden;background:repeating-linear-gradient(135deg,#E8D3BC 0 10px,#DFC4A6 10px 20px);padding:30px;display:flex;flex-direction:column;justify-content:flex-end;gap:12px">
+            <svg viewBox="0 0 60 12" style="position:absolute;top:30px;right:30px;width:74px;height:16px;opacity:.6" fill="none" stroke="#B2543A" stroke-width="1.2" stroke-linecap="round"><path d="M2 7c2.2-3.4 4.4-3.4 6.6 0 2.2-3.4 4.4-3.4 6.6 0"></path><path d="M22 3.4c1.6-2.4 3.2-2.4 4.8 0 1.6-2.4 3.2-2.4 4.8 0"></path><path d="M38 8.6c1.3-2 2.6-2 3.9 0 1.3-2 2.6-2 3.9 0"></path></svg>
+            <div style="display:flex;align-items:center;gap:12px;background:#FAF6F2;border-radius:16px;padding:12px 16px;width:270px;box-shadow:0 10px 24px -14px rgba(58,42,33,.55)">
+              <div style="width:40px;height:40px;border-radius:50%;flex:none;background:repeating-linear-gradient(135deg,#D9B28C 0 5px,#C99C73 5px 10px)"></div>
+              <div style="display:flex;flex-direction:column;gap:2px"><span style="font:500 13px Poppins,sans-serif;color:#3A2A21">Suleiman Al-Ammarin</span><span style="font:300 12px Poppins,sans-serif;color:#7A6959">Bedouin guide · Little Petra</span></div>
+            </div>
+            <div style="align-self:flex-end;background:#B2543A;color:#FAF6F2;border-radius:16px 16px 4px 16px;padding:12px 16px;max-width:250px;font:400 13px/1.5 Poppins,sans-serif">"Come by the camp at dusk — my brother makes the tea."</div>
+            <div style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:#4A362A;background:rgba(250,246,242,.86);padding:5px 10px;border-radius:6px;align-self:flex-start">PHOTO · camp fire, Wadi Rum</div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;padding:38px 30px 0;gap:16px">
+            <span style="font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.22em;color:#B2543A">03 · EXPERIENCE</span>
+            <h2 style="margin:0;font:600 34px/1.12 Poppins,sans-serif;letter-spacing:-.02em;color:#3A2A21">Authentic moments, real connections</h2>
+            <sc-if value="{{ showArabic }}" hint-placeholder-val="{{ true }}"><p dir="rtl" style="margin:0;font:400 17px 'Noto Sans Arabic',sans-serif;color:#B2543A">لحظات أصيلة وصداقات حقيقية</p></sc-if>
+            <p style="margin:0;font:300 15px/1.65 Poppins,sans-serif;color:#5C4A3E">Book local advisors directly, ask the guide anything mid-walk, and let the camera coach you to the shot. Every dinar of a booking goes to the family hosting you.</p>
+          </div>
+          <div style="flex:none;padding:0 30px 26px;display:flex;flex-direction:column;gap:18px">
+            <div style="display:flex;gap:7px;align-items:center">
+              <div style="width:6px;height:6px;border-radius:3px;background:#D9B28C"></div>
+              <div style="width:6px;height:6px;border-radius:3px;background:#D9B28C"></div>
+              <div style="width:26px;height:6px;border-radius:3px;background:#B2543A"></div>
+            </div>
+            <div style="height:54px;border-radius:16px;background:#B2543A;display:flex;align-items:center;justify-content:center;color:#FAF6F2;font:600 15px Poppins,sans-serif;cursor:pointer">Create account</div>
+            <div style="height:54px;border-radius:16px;background:#FAF6F2;box-shadow:inset 0 0 0 1.5px #D9B28C;display:flex;align-items:center;justify-content:center;color:#3A2A21;font:500 15px Poppins,sans-serif;cursor:pointer;margin-top:-6px">Continue as guest</div>
+          </div>
+          <div style="flex:none;height:26px;display:flex;align-items:center;justify-content:center"><div style="width:134px;height:5px;border-radius:3px;background:#3A2A21;opacity:.28"></div></div>
+        </div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:390,&quot;height&quot;:844},&quot;showArabic&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return { showArabic: this.props.showArabic ?? true };
+  }
+}
+</script>
+</body>
+</html>

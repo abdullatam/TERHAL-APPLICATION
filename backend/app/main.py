@@ -10,6 +10,7 @@ from app.routers import (
     marketplace,
     passport,
     providers,
+    reviews,
     vision,
 )
 
@@ -31,6 +32,7 @@ app.include_router(vision.router)
 app.include_router(chat.router)
 app.include_router(passport.router)
 app.include_router(marketplace.router)
+app.include_router(reviews.router)
 
 
 @app.get("/health")

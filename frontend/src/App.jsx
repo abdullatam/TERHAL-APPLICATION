@@ -11,6 +11,7 @@ import Explore from "./pages/Explore.jsx";
 import Marketplace from "./pages/Marketplace.jsx";
 import Onboarding from "./pages/Onboarding.jsx";
 import Passport from "./pages/Passport.jsx";
+import Profile from "./pages/Profile.jsx";
 import PostTripReview from "./pages/PostTripReview.jsx";
 import Splash from "./pages/Splash.jsx";
 import Trip from "./pages/Trip.jsx";
@@ -36,6 +37,7 @@ export default function App() {
         <Route path="/trip" element={<Trip />} />
         <Route path="/passport" element={<Passport />} />
         <Route path="/marketplace" element={<Marketplace />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/advisors" element={<Advisors />} />
         <Route path="/advisors/:id" element={<AdvisorProfile />} />
         <Route path="/bookings" element={<Bookings />} />

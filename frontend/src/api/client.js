@@ -58,6 +58,8 @@ export const api = {
   marketplace: (params) => request(`/marketplace${query(params)}`),
 
   review: (bookingId) => request(`/bookings/${bookingId}/review`),
+  /** Every review written. No auth yet, so this is "mine" by default. */
+  reviews: () => request("/reviews"),
   submitReview: (bookingId, payload) =>
     request(`/bookings/${bookingId}/review`, {
       method: "POST",

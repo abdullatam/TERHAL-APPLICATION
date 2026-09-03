@@ -101,10 +101,7 @@ export default function Explore() {
         }
         showIcon
         action={
-          <HeaderAction
-            label={t("explore.filters")}
-            onClick={() => navigate("/marketplace")}
-          >
+          <HeaderAction label={t("nav.profile")} onClick={() => navigate("/profile")}>
             <svg
               width="19"
               height="19"
@@ -113,8 +110,10 @@ export default function Explore() {
               stroke="currentColor"
               strokeWidth="1.7"
               strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              <path d="M4 7h16M7 12h10M10 17h4" />
+              <circle cx="12" cy="8.5" r="3.4" />
+              <path d="M5.5 19.5c0-3.2 2.9-5.2 6.5-5.2s6.5 2 6.5 5.2" />
             </svg>
           </HeaderAction>
         }

@@ -297,3 +297,11 @@ class Review(BaseModel):
     tags: list[str] = []
     comment: Optional[str] = None
     created_at: datetime
+
+
+class ReviewWithContext(Review):
+    """A review plus enough of its booking to show it in a list."""
+
+    provider_name: Optional[str] = None
+    provider_role: Optional[str] = None
+    booking_date: Optional[date] = None
