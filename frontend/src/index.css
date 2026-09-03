@@ -10,15 +10,40 @@
   }
 
   body {
-    @apply bg-sand-900 text-sand-900 antialiased;
+    /* Outside the phone frame the export uses Neutral Gray. */
+    @apply bg-gray text-brown antialiased;
+    margin: 0;
+    text-wrap: pretty;
     /* The app is a phone screen; the page itself never scrolls. */
     overscroll-behavior: none;
   }
 
-  /* Touch targets shouldn't flash a blue box on tap. */
+  /*
+   * Arabic never renders in Poppins — it has no Arabic glyphs, so leaving it
+   * to the font stack would silently fall back to a system face and lose the
+   * geometric character the brand depends on. Binding the family to `dir`
+   * means every Arabic string gets Noto Sans Arabic without each component
+   * having to remember, and mixed-direction runs (a Latin proper noun inside
+   * an Arabic sentence) still resolve per-glyph through the stack.
+   */
+  [dir="rtl"] body,
+  [dir="rtl"] input,
+  [dir="rtl"] textarea,
+  [dir="rtl"] button {
+    font-family: "Noto Sans Arabic", Poppins, system-ui, sans-serif;
+  }
+
   button,
   a {
     -webkit-tap-highlight-color: transparent;
+  }
+
+  a {
+    @apply text-terracotta;
+    text-decoration: none;
+  }
+  a:hover {
+    @apply text-terracotta-hover;
   }
 }
 
@@ -32,12 +57,24 @@
   }
 }
 
-/* Leaflet sets its own direction; force LTR inside the map so tiles and
-   controls don't mirror when the app is in Arabic. */
+/*
+ * Leaflet sets its own direction; force LTR inside the map so tiles and
+ * controls do not mirror when the app is in Arabic. This is one of the two
+ * deliberate RTL exceptions (the other is the Explore swipe gesture).
+ */
 .leaflet-container {
   direction: ltr;
-  background: #e8dccc;
+  background: #e7dbc9;
 }
 .leaflet-container a.leaflet-popup-close-button {
   direction: ltr;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

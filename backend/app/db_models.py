@@ -169,3 +169,27 @@ class BookingORM(Base):
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now()
     )
+
+
+class ReviewORM(Base):
+    """A post-trip review, one per booking.
+
+    New in the Terhal redesign (screen 07). Reviews are stored rather than
+    derived because they are user-authored content — there is nothing to
+    derive them from. `booking_id` is unique: a trip gets reviewed once, and
+    re-submitting updates rather than duplicates.
+    """
+
+    __tablename__ = "reviews"
+
+    id: Mapped[str] = mapped_column(String, primary_key=True)
+    booking_id: Mapped[str] = mapped_column(
+        ForeignKey("bookings.id"), unique=True, index=True
+    )
+    provider_id: Mapped[str] = mapped_column(ForeignKey("providers.id"), index=True)
+    stars: Mapped[int] = mapped_column(Integer)
+    tags: Mapped[list[str]] = mapped_column(ARRAY(String), default=list)
+    comment: Mapped[str | None] = mapped_column(Text, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )

@@ -7,6 +7,14 @@ const DICTIONARIES = { en, ar };
 const STORAGE_KEY = "maan.language";
 const LanguageContext = createContext(null);
 
+function interpolate(template, vars) {
+  if (!vars) return template;
+  return Object.entries(vars).reduce(
+    (out, [name, val]) => out.replaceAll(`{${name}}`, String(val)),
+    template,
+  );
+}
+
 function stored() {
   try {
     const value = localStorage.getItem(STORAGE_KEY);
@@ -37,14 +45,15 @@ export function LanguageProvider({ children }) {
       setLanguage,
       toggleLanguage: () => setLanguage((l) => (l === "en" ? "ar" : "en")),
       // t("explore.remaining", { n: 4 }) -> "4 left"
-      t: (key, vars) => {
-        const template = dict[key] ?? key;
-        if (!vars) return template;
-        return Object.entries(vars).reduce(
-          (out, [name, val]) => out.replaceAll(`{${name}}`, String(val)),
-          template,
-        );
-      },
+      t: (key, vars) => interpolate(dict[key] ?? key, vars),
+      /**
+       * The same key in a specific language, regardless of the active one.
+       * Several Terhal screens print an English heading with its Arabic
+       * counterpart underneath (and the reverse in Arabic mode), so both
+       * strings are needed at once.
+       */
+      tIn: (lang, key, vars) =>
+        interpolate((DICTIONARIES[lang] ?? dict)[key] ?? key, vars),
       // Landmarks and advisors carry both languages on the same record.
       pick: (record, field) =>
         record?.[`${field}_${language}`] ?? record?.[`${field}_en`] ?? "",

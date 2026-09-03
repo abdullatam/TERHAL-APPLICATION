@@ -3,17 +3,23 @@ import { useNavigate } from "react-router-dom";
 
 import { api } from "../api/client.js";
 import LandmarkSheet from "../components/LandmarkSheet.jsx";
-import { TopBar } from "../components/Shell.jsx";
+import { HeaderAction, StatusBar, TopBar } from "../components/Shell.jsx";
 import SwipeCard from "../components/SwipeCard.jsx";
+import { useToast } from "../components/Toast.jsx";
 import { EmptyState, PrimaryButton, SecondaryButton, Spinner } from "../components/ui.jsx";
 import { useLanguage } from "../i18n/LanguageContext.jsx";
 import { useTrip } from "../state/TripContext.jsx";
 
 const VISIBLE = 3; // cards rendered in the stack at once
 
+/**
+ * Explore — screen 09. Visual layer rebuilt from the export; the deck fetch,
+ * queue filtering, undo and TripContext wiring are carried over unchanged.
+ */
 export default function Explore() {
   const { t } = useLanguage();
   const navigate = useNavigate();
+  const { undo: undoToast } = useToast();
   const { approved, skipped, approve, skip, undo, reset } = useTrip();
 
   const [all, setAll] = useState(null);
@@ -37,10 +43,7 @@ export default function Explore() {
     () => new Set([...approved.map((l) => l.id), ...skipped]),
     [approved, skipped],
   );
-  const queue = useMemo(
-    () => (all ?? []).filter((l) => !decided.has(l.id)),
-    [all, decided],
-  );
+  const queue = useMemo(() => (all ?? []).filter((l) => !decided.has(l.id)), [all, decided]);
 
   const handleSwipe = (landmark) => (direction) => {
     (direction === "right" ? approve : skip)(landmark);
@@ -50,15 +53,24 @@ export default function Explore() {
 
   const fire = (dir) => setCommand({ dir, token: Date.now() });
 
+  const handleUndo = () => {
+    if (!lastSwiped) return;
+    undo(lastSwiped);
+    setLastSwiped(null);
+  };
+
   if (error) {
     return (
       <Screen>
-        <TopBar title={t("explore.title")} />
+        <TopBar title={t("explore.title")} showIcon />
         <EmptyState
           title={t("common.offline")}
           body={error}
           action={
-            <SecondaryButton className="mt-2 w-auto" onClick={() => window.location.reload()}>
+            <SecondaryButton
+              className="mt-2 w-auto px-6"
+              onClick={() => window.location.reload()}
+            >
               {t("common.retry")}
             </SecondaryButton>
           }
@@ -70,7 +82,7 @@ export default function Explore() {
   if (!all) {
     return (
       <Screen>
-        <TopBar title={t("explore.title")} />
+        <TopBar title={t("explore.title")} showIcon />
         <Spinner label={t("common.loading")} />
       </Screen>
     );
@@ -87,9 +99,28 @@ export default function Explore() {
             ? `${t("explore.subtitle")} · ${t("explore.remaining", { n: queue.length })}`
             : t("explore.selected", { n: approved.length })
         }
+        showIcon
+        action={
+          <HeaderAction
+            label={t("explore.filters")}
+            onClick={() => navigate("/marketplace")}
+          >
+            <svg
+              width="19"
+              height="19"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.7"
+              strokeLinecap="round"
+            >
+              <path d="M4 7h16M7 12h10M10 17h4" />
+            </svg>
+          </HeaderAction>
+        }
       />
 
-      <div className="relative flex-1 overflow-hidden px-4 pb-2 pt-4">
+      <div className="relative flex-1 overflow-hidden px-[26px]">
         {stack.length ? (
           <div className="relative h-full w-full">
             {/* Reversed so the first card paints last and sits on top. */}
@@ -111,7 +142,7 @@ export default function Explore() {
             title={approved.length ? t("explore.emptyTitle") : t("explore.noneTitle")}
             body={approved.length ? t("explore.emptyBody") : t("explore.noneBody")}
             action={
-              <SecondaryButton className="mt-2 w-auto" onClick={reset}>
+              <SecondaryButton className="mt-2 w-auto px-6" onClick={reset}>
                 {t("explore.restart")}
               </SecondaryButton>
             }
@@ -119,35 +150,66 @@ export default function Explore() {
         )}
       </div>
 
-      <div className="shrink-0 space-y-3 px-4 pb-3">
+      {/* Action row: 56px reject · 48px undo · 68px accept, per the export. */}
+      <div className="shrink-0 space-y-3 px-[26px] pb-3">
         {stack.length ? (
-          <div className="flex items-center justify-center gap-5">
-            <CircleButton label={t("explore.skip")} tone="rose" onClick={() => fire("left")}>
-              <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor"
-                   strokeWidth="2.5" strokeLinecap="round">
-                <path d="M6 6l12 12M18 6L6 18" />
+          <div className="flex items-center justify-center gap-[22px]">
+            <button
+              onClick={() => fire("left")}
+              aria-label={t("explore.skip")}
+              className="grid h-14 w-14 place-items-center rounded-full bg-ivory shadow-[inset_0_0_0_1.5px_#D9B28C] transition active:scale-95"
+            >
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#9A8B7E"
+                strokeWidth="2"
+                strokeLinecap="round"
+              >
+                <path d="m7 7 10 10M17 7 7 17" />
               </svg>
-            </CircleButton>
+            </button>
 
             <button
-              onClick={() => lastSwiped && undo(lastSwiped)}
+              onClick={handleUndo}
               disabled={!lastSwiped}
-              className="grid h-12 w-12 place-items-center rounded-full border border-sand-300 bg-white text-sand-500 shadow-sm transition active:scale-95 disabled:opacity-30"
               aria-label={t("explore.undo")}
+              className="grid h-12 w-12 place-items-center rounded-full bg-beige transition active:scale-95 disabled:opacity-40"
             >
-              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor"
-                   strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#3A2A21"
+                strokeWidth="1.9"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
                 <path d="M3 8h11a5 5 0 0 1 0 10h-4" />
                 <path d="M7 4L3 8l4 4" />
               </svg>
             </button>
 
-            <CircleButton label={t("explore.add")} tone="emerald" onClick={() => fire("right")}>
-              <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor"
-                   strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M20 7L9 18l-5-5" />
+            <button
+              onClick={() => fire("right")}
+              aria-label={t("explore.add")}
+              className="grid h-[68px] w-[68px] place-items-center rounded-full bg-terracotta shadow-cta transition active:scale-95"
+            >
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#FAF6F2"
+                strokeWidth="2.1"
+                strokeLinecap="round"
+              >
+                <path d="M12 5.5v13M5.5 12h13" />
               </svg>
-            </CircleButton>
+            </button>
           </div>
         ) : null}
 
@@ -158,27 +220,35 @@ export default function Explore() {
         ) : null}
       </div>
 
-      {sheet ? <LandmarkSheet landmark={sheet} onClose={() => setSheet(null)} /> : null}
+      {sheet ? (
+        <LandmarkSheet
+          landmark={sheet}
+          onClose={() => setSheet(null)}
+          onAdd={
+            decided.has(sheet.id)
+              ? null
+              : () => {
+                  approve(sheet);
+                  setLastSwiped(sheet);
+                  setSheet(null);
+                  undoToast({
+                    title: t("explore.selected", { n: approved.length + 1 }),
+                    label: t("trip.undo"),
+                    onUndo: () => undo(sheet),
+                  });
+                }
+          }
+        />
+      ) : null}
     </Screen>
   );
 }
 
 function Screen({ children }) {
-  return <div className="relative flex min-h-0 flex-1 flex-col">{children}</div>;
-}
-
-function CircleButton({ children, onClick, tone, label }) {
-  const tones = {
-    rose: "text-rose-500 border-rose-200",
-    emerald: "text-emerald-600 border-emerald-200",
-  };
   return (
-    <button
-      onClick={onClick}
-      aria-label={label}
-      className={`grid h-16 w-16 place-items-center rounded-full border-2 bg-white shadow-card transition active:scale-95 ${tones[tone]}`}
-    >
+    <div className="relative flex min-h-0 flex-1 flex-col">
+      <StatusBar />
       {children}
-    </button>
+    </div>
   );
 }

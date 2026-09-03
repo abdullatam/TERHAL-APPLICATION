@@ -188,3 +188,90 @@ class VisionIdentifyResult(BaseModel):
     landmark: str
     narration: str
     language: Language
+
+
+# ---------------------------------------------------------------------------
+# Ma'an Passport (screen 05)
+#
+# Derived, not stored. A stamp is a landmark the traveller has actually been
+# taken to: a confirmed booking whose date has passed, whose advisor covers
+# that landmark. Nothing new is persisted, so there is no second source of
+# truth to keep in step with the bookings table.
+# ---------------------------------------------------------------------------
+class PassportStamp(BaseModel):
+    landmark_id: str
+    name_en: str
+    name_ar: str
+    image_url: Optional[str] = None
+    stamped: bool
+    # Set only when stamped: the booking that earned it.
+    stamped_on: Optional[date] = None
+    booking_id: Optional[str] = None
+    # Set only when not stamped: why it is still locked.
+    locked_reason_en: Optional[str] = None
+    locked_reason_ar: Optional[str] = None
+
+
+class Passport(BaseModel):
+    collected: int
+    total: int
+    percent: int
+    stamps: list[PassportStamp]
+
+
+# ---------------------------------------------------------------------------
+# Marketplace (screen 06)
+#
+# Vendors are real rows in the providers table. Their *products* are not
+# modelled anywhere — see the TODO on the router. `items` is therefore an
+# honest empty list rather than invented stock, and `items_pending` tells the
+# UI to say so instead of rendering an empty shelf.
+# ---------------------------------------------------------------------------
+class MarketItem(BaseModel):
+    id: str
+    title_en: str
+    title_ar: str
+    price_jod: float
+    image_url: Optional[str] = None
+
+
+class Maker(BaseModel):
+    id: str
+    name: str
+    role: ProviderRole
+    rating: float
+    verified: bool
+    bio_en: Optional[str] = None
+    bio_ar: Optional[str] = None
+    photo_url: Optional[str] = None
+    # Where they work, resolved to landmark names for display.
+    based_at_en: Optional[str] = None
+    based_at_ar: Optional[str] = None
+    items: list[MarketItem] = []
+
+
+class Marketplace(BaseModel):
+    makers: list[Maker]
+    # True while no product catalogue exists in the data model.
+    items_pending: bool
+
+
+# ---------------------------------------------------------------------------
+# Post-trip review (screen 07)
+# ---------------------------------------------------------------------------
+class ReviewCreate(BaseModel):
+    stars: int = Field(ge=1, le=5)
+    tags: list[str] = []
+    comment: Optional[str] = None
+
+
+class Review(BaseModel):
+    model_config = {"from_attributes": True}
+
+    id: str
+    booking_id: str
+    provider_id: str
+    stars: int
+    tags: list[str] = []
+    comment: Optional[str] = None
+    created_at: datetime

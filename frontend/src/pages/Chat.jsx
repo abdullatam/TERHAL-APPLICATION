@@ -1,8 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 
 import { api } from "../api/client.js";
-import { TopBar } from "../components/Shell.jsx";
+import { StatusBar, TopBar } from "../components/Shell.jsx";
 import { useLanguage } from "../i18n/LanguageContext.jsx";
+
+/**
+ * Chat — screen 17. Terhal-branded header, terracotta outgoing bubbles, ivory
+ * incoming bubbles on the beige ground, and suggestion chips before the first
+ * message. The chat POST and transcript handling are carried over unchanged.
+ */
+const SUGGESTIONS = ["chat.s1", "chat.s2", "chat.s3"];
 
 export default function Chat() {
   const { t, language } = useLanguage();
@@ -15,11 +22,8 @@ export default function Chat() {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, pending]);
 
-  const send = async (event) => {
-    event.preventDefault();
-    const question = draft.trim();
+  const ask = async (question) => {
     if (!question || pending) return;
-
     setMessages((m) => [...m, { role: "user", text: question }]);
     setDraft("");
     setPending(true);
@@ -33,15 +37,44 @@ export default function Chat() {
     }
   };
 
+  const send = (event) => {
+    event.preventDefault();
+    ask(draft.trim());
+  };
+
   return (
-    <div className="flex min-h-0 flex-1 flex-col">
-      <TopBar title={t("chat.title")} />
+    <div className="relative flex min-h-0 flex-1 flex-col bg-beige">
+      <div className="bg-ivory">
+        <StatusBar />
+      </div>
+
+      {/* The export gives Chat a branded header rather than a plain title. */}
+      <div className="shrink-0 bg-ivory">
+        <TopBar
+          title={t("chat.name")}
+          subtitle={t("chat.tagline")}
+          showIcon
+        />
+      </div>
 
       <div className="min-h-0 flex-1 space-y-3 overflow-y-auto p-4">
         {messages.length === 0 ? (
-          <p className="px-6 py-10 text-center text-sm leading-relaxed text-sand-500">
-            {t("chat.empty")}
-          </p>
+          <div className="space-y-3 py-6">
+            <p className="text-center font-sans text-sm font-light leading-relaxed text-ink-muted">
+              {t("chat.empty")}
+            </p>
+            <div className="flex flex-wrap justify-center gap-2">
+              {SUGGESTIONS.map((key) => (
+                <button
+                  key={key}
+                  onClick={() => ask(t(key))}
+                  className="rounded-full bg-ivory px-3.5 py-2 font-sans text-xs font-medium text-brown shadow-hairline active:bg-sandstone/30"
+                >
+                  {t(key)}
+                </button>
+              ))}
+            </div>
+          </div>
         ) : null}
 
         {messages.map((message, i) => (
@@ -50,12 +83,12 @@ export default function Chat() {
             className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
           >
             <p
-              className={`max-w-[85%] whitespace-pre-wrap rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed ${
+              className={`max-w-[85%] whitespace-pre-wrap rounded-2xl px-3.5 py-2.5 font-sans text-sm font-light leading-relaxed ${
                 message.role === "user"
-                  ? "bg-rose-500 text-white"
+                  ? "bg-terracotta text-ivory"
                   : message.role === "error"
-                    ? "bg-rose-50 text-rose-700"
-                    : "bg-white text-sand-800 ring-1 ring-sand-200"
+                    ? "bg-brown text-ivory"
+                    : "bg-ivory text-brown shadow-hairline"
               }`}
             >
               {message.text}
@@ -64,24 +97,38 @@ export default function Chat() {
         ))}
 
         {pending ? (
-          <p className="text-xs text-sand-400">{t("chat.thinking")}</p>
+          <p className="font-sans text-xs font-light text-ink-soft">{t("chat.thinking")}</p>
         ) : null}
         <div ref={endRef} />
       </div>
 
-      <form onSubmit={send} className="flex shrink-0 gap-2 border-t border-sand-200 bg-white p-3">
+      <form
+        onSubmit={send}
+        className="flex shrink-0 gap-2 border-t border-gray bg-ivory p-3"
+      >
         <input
           value={draft}
           onChange={(e) => setDraft(e.target.value)}
           placeholder={t("chat.placeholder")}
-          className="min-w-0 flex-1 rounded-full border border-sand-300 px-4 py-2.5 text-sm outline-none focus:border-rose-400"
+          className="min-w-0 flex-1 rounded-full bg-beige px-4 py-2.5 font-sans text-sm text-brown outline-none placeholder:text-ink-soft focus:ring-1 focus:ring-sandstone"
         />
         <button
           type="submit"
           disabled={pending || !draft.trim()}
-          className="shrink-0 rounded-full bg-rose-500 px-4 py-2.5 text-sm font-semibold text-white disabled:opacity-40"
+          aria-label={t("chat.send")}
+          className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-terracotta text-ivory disabled:opacity-40"
         >
-          {t("chat.send")}
+          <svg
+            viewBox="0 0 24 24"
+            className="h-5 w-5 rtl:-scale-x-100"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.9"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M5 12h13M13 6.5 18.5 12 13 17.5" />
+          </svg>
         </button>
       </form>
     </div>

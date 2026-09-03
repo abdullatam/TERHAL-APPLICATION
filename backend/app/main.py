@@ -2,7 +2,16 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
-from app.routers import bookings, chat, itinerary, landmarks, providers, vision
+from app.routers import (
+    bookings,
+    chat,
+    itinerary,
+    landmarks,
+    marketplace,
+    passport,
+    providers,
+    vision,
+)
 
 app = FastAPI(title="Maan Project API")
 
@@ -20,6 +29,8 @@ app.include_router(providers.router)
 app.include_router(bookings.router)
 app.include_router(vision.router)
 app.include_router(chat.router)
+app.include_router(passport.router)
+app.include_router(marketplace.router)
 
 
 @app.get("/health")

@@ -2,11 +2,14 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { api } from "../api/client.js";
-import { TopBar } from "../components/Shell.jsx";
+import { HeaderAction, StatusBar, TopBar } from "../components/Shell.jsx";
+import { useToast } from "../components/Toast.jsx";
 import {
   Badge,
   DifficultyBadge,
   EmptyState,
+  FilterPill,
+  PhotoPlaceholder,
   PrimaryButton,
   SecondaryButton,
   Spinner,
@@ -15,16 +18,25 @@ import { useFormatDuration, useLanguage } from "../i18n/LanguageContext.jsx";
 import { useTrip } from "../state/TripContext.jsx";
 import { sizedImage } from "../utils/images.js";
 
+/**
+ * My Trip — screen 11. The export shows a day-pill selector and a single
+ * scrolling timeline for the selected day, rather than every day stacked. That
+ * is the visual change; the itinerary build, the live rebuild on settings
+ * change, and the excluded-with-a-reason panel are carried over.
+ */
 export default function Trip() {
   const { t, pick, language } = useLanguage();
   const navigate = useNavigate();
+  const { undo: undoToast } = useToast();
   const {
     approved, tripDays, accessibility, itinerary,
-    setItinerary, setTripDays, setAccessibility, removeApproved,
+    setItinerary, setTripDays, setAccessibility, removeApproved, approve,
   } = useTrip();
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [activeDay, setActiveDay] = useState(1);
+  const [showOptions, setShowOptions] = useState(false);
 
   const ids = useMemo(() => approved.map((l) => l.id), [approved]);
   const idKey = ids.join(",");
@@ -57,87 +69,156 @@ export default function Trip() {
     build();
   }, [build]);
 
+  // Trip length can shrink under the selected day.
+  useEffect(() => {
+    if (activeDay > tripDays) setActiveDay(tripDays);
+  }, [tripDays, activeDay]);
+
+  const handleRemove = (stop) => {
+    const landmark = approved.find((l) => l.id === stop.landmark_id);
+    removeApproved(stop.landmark_id);
+    undoToast({
+      title: t("trip.removed"),
+      body: pick(stop, "name"),
+      label: t("trip.undo"),
+      onUndo: () => landmark && approve(landmark),
+    });
+  };
+
   if (!approved.length) {
     return (
-      <div className="flex min-h-0 flex-1 flex-col">
-        <TopBar title={t("trip.title")} />
+      <Screen>
+        <TopBar title={t("trip.title")} showIcon />
         <EmptyState
           title={t("trip.empty")}
           body={t("trip.emptyBody")}
           action={
-            <SecondaryButton className="mt-2 w-auto" onClick={() => navigate("/")}>
+            <SecondaryButton className="mt-2 w-auto px-6" onClick={() => navigate("/")}>
               {t("trip.goExplore")}
             </SecondaryButton>
           }
         />
-      </div>
+      </Screen>
     );
   }
 
-  const stopCount = itinerary?.days.reduce(
-    (n, day) => n + day.stops.filter((s) => s.kind === "landmark").length, 0) ?? 0;
+  const stopCount =
+    itinerary?.days.reduce(
+      (n, day) => n + day.stops.filter((s) => s.kind === "landmark").length,
+      0,
+    ) ?? 0;
+  const day = itinerary?.days.find((d) => d.day === activeDay) ?? itinerary?.days[0];
 
   return (
-    <div className="flex min-h-0 flex-1 flex-col">
+    <Screen>
       <TopBar
         title={t("trip.title")}
         subtitle={
           itinerary ? t("trip.totalStops", { n: stopCount, d: itinerary.trip_days }) : undefined
         }
+        showIcon
+        action={
+          <HeaderAction
+            label={t("trip.options")}
+            onClick={() => setShowOptions((v) => !v)}
+          >
+            <svg
+              width="19"
+              height="19"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+            >
+              <circle cx="12" cy="5.5" r="1.4" />
+              <circle cx="12" cy="12" r="1.4" />
+              <circle cx="12" cy="18.5" r="1.4" />
+            </svg>
+          </HeaderAction>
+        }
       />
 
-      <div className="min-h-0 flex-1 overflow-y-auto">
-        <Controls
+      {/* Day pills — the export's primary navigation for this screen. */}
+      <div className="flex shrink-0 gap-2 overflow-x-auto px-[22px] pb-3.5 no-scrollbar">
+        {Array.from({ length: tripDays }, (_, i) => i + 1).map((n) => (
+          <FilterPill key={n} active={activeDay === n} onClick={() => setActiveDay(n)}>
+            {t("trip.day", { n })}
+          </FilterPill>
+        ))}
+      </div>
+
+      {showOptions ? (
+        <Options
           tripDays={tripDays}
           accessibility={accessibility}
           onDays={setTripDays}
           onAccessibility={setAccessibility}
+          onPassport={() => navigate("/passport")}
+          onMarket={() => navigate("/marketplace")}
         />
+      ) : null}
 
+      <div className="min-h-0 flex-1 overflow-y-auto px-[22px]">
         {loading ? <Spinner label={t("common.loading")} /> : null}
 
         {error ? (
-          <div className="mx-4 rounded-2xl bg-rose-50 p-4 text-sm text-rose-700">
+          <div className="rounded-2xl bg-beige p-4 font-sans text-sm text-brown">
             {error}
-            <button onClick={build} className="mt-2 block font-semibold underline">
+            <button onClick={build} className="mt-2 block font-semibold text-terracotta underline">
               {t("common.retry")}
             </button>
           </div>
         ) : null}
 
-        {!loading && itinerary
-          ? itinerary.days.map((day) => (
-              <section key={day.day} className="px-4 pb-2 pt-4">
-                <h2 className="mb-2 text-sm font-bold uppercase tracking-wide text-rose-500">
-                  {t("trip.day", { n: day.day })}
-                </h2>
-                <ol className="space-y-0">
-                  {day.stops.map((stop, i) => (
-                    <StopRow
-                      key={`${day.day}-${stop.order}`}
-                      stop={stop}
-                      isLast={i === day.stops.length - 1}
-                      showAccessibility={accessibility}
-                      onRemove={stop.landmark_id ? () => removeApproved(stop.landmark_id) : null}
-                    />
-                  ))}
-                </ol>
-              </section>
-            ))
-          : null}
+        {!loading && day ? (
+          <div className="relative">
+            {/* Continuous rail behind the dots. */}
+            <div className="absolute bottom-6 start-[37px] top-3.5 w-0.5 bg-tint-rail" />
+            <ol className="relative flex flex-col gap-3.5 pb-2">
+              {day.stops.map((stop) => (
+                <StopRow
+                  key={`${day.day}-${stop.order}`}
+                  stop={stop}
+                  showAccessibility={accessibility}
+                  onRemove={stop.landmark_id ? () => handleRemove(stop) : null}
+                />
+              ))}
+              <li className="ms-[46px]">
+                <button
+                  onClick={() => navigate("/")}
+                  className="flex h-[50px] w-full items-center justify-center gap-2 rounded-2xl border-[1.5px] border-dashed border-sandstone font-sans text-[13.5px] font-medium text-terracotta active:bg-beige"
+                >
+                  <svg
+                    width="17"
+                    height="17"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  >
+                    <path d="M12 5.5v13M5.5 12h13" />
+                  </svg>
+                  {t("trip.addStop")}
+                </button>
+              </li>
+            </ol>
+          </div>
+        ) : null}
 
         {itinerary?.excluded?.length ? (
-          <section className="mx-4 mt-4 rounded-2xl border border-amber-200 bg-amber-50 p-4">
-            <h3 className="text-xs font-bold uppercase tracking-wide text-amber-800">
+          <section className="mt-4 rounded-2xl bg-beige p-4">
+            <h3 className="font-sans text-xs font-bold uppercase tracking-wide text-terracotta">
               {t("trip.excluded")}
             </h3>
             <ul className="mt-2 space-y-1.5">
               {itinerary.excluded.map((item) => (
-                <li key={item.landmark_id} className="text-sm text-amber-900">
+                <li key={item.landmark_id} className="font-sans text-sm text-brown">
                   <span className="font-medium">
                     {language === "ar" ? item.name_ar : item.name_en}
                   </span>
-                  <span className="text-amber-700">
+                  <span className="font-light text-ink-muted">
                     {" "}
                     — {language === "ar" ? item.reason_ar : item.reason_en}
                   </span>
@@ -150,30 +231,38 @@ export default function Trip() {
         <div className="h-4" />
       </div>
 
-      <div className="shrink-0 border-t border-sand-200 bg-white p-4">
+      <div className="shrink-0 border-t border-gray bg-ivory p-4">
         <PrimaryButton onClick={() => navigate("/advisors")} disabled={!itinerary}>
           {t("trip.bookAdvisor")}
         </PrimaryButton>
       </div>
+    </Screen>
+  );
+}
+
+function Screen({ children }) {
+  return (
+    <div className="relative flex min-h-0 flex-1 flex-col">
+      <StatusBar />
+      {children}
     </div>
   );
 }
 
-function Controls({ tripDays, accessibility, onDays, onAccessibility }) {
+/** Trip settings, revealed from the header's overflow button. */
+function Options({ tripDays, accessibility, onDays, onAccessibility, onPassport, onMarket }) {
   const { t } = useLanguage();
   return (
-    <div className="space-y-3 border-b border-sand-200 bg-white px-4 py-3">
+    <div className="shrink-0 space-y-3 border-y border-gray bg-beige px-[22px] py-3.5">
       <div className="flex items-center justify-between gap-3">
-        <span className="text-sm font-medium text-sand-700">{t("explore.tripDays")}</span>
+        <span className="font-sans text-sm font-medium text-brown">{t("explore.tripDays")}</span>
         <div className="flex gap-1.5">
           {[1, 2, 3, 4].map((n) => (
             <button
               key={n}
               onClick={() => onDays(n)}
-              className={`h-9 w-9 rounded-xl text-sm font-semibold transition ${
-                tripDays === n
-                  ? "bg-rose-500 text-white"
-                  : "bg-sand-100 text-sand-600 active:bg-sand-200"
+              className={`h-9 w-9 rounded-xl font-sans text-sm font-semibold transition ${
+                tripDays === n ? "bg-terracotta text-ivory" : "bg-ivory text-brown"
               }`}
             >
               {n}
@@ -184,23 +273,40 @@ function Controls({ tripDays, accessibility, onDays, onAccessibility }) {
 
       <label className="flex items-start justify-between gap-3">
         <span>
-          <span className="block text-sm font-medium text-sand-700">
+          <span className="block font-sans text-sm font-medium text-brown">
             {t("explore.accessibility")}
           </span>
-          <span className="block text-xs text-sand-500">{t("explore.accessibilityHint")}</span>
+          <span className="block font-sans text-xs font-light text-ink-muted">
+            {t("explore.accessibilityHint")}
+          </span>
         </span>
         <input
           type="checkbox"
           checked={accessibility}
           onChange={(e) => onAccessibility(e.target.checked)}
-          className="mt-0.5 h-6 w-6 shrink-0 accent-rose-500"
+          className="mt-0.5 h-6 w-6 shrink-0 accent-terracotta"
         />
       </label>
+
+      <div className="flex gap-2 pt-1">
+        <button
+          onClick={onPassport}
+          className="flex-1 rounded-xl bg-ivory py-2.5 font-sans text-xs font-semibold text-brown active:bg-sandstone/30"
+        >
+          {t("trip.passport")}
+        </button>
+        <button
+          onClick={onMarket}
+          className="flex-1 rounded-xl bg-ivory py-2.5 font-sans text-xs font-semibold text-brown active:bg-sandstone/30"
+        >
+          {t("trip.marketplace")}
+        </button>
+      </div>
     </div>
   );
 }
 
-function StopRow({ stop, isLast, onRemove, showAccessibility = false }) {
+function StopRow({ stop, onRemove, showAccessibility = false }) {
   const { t, pick } = useLanguage();
   const formatDuration = useFormatDuration();
   const isBreak = stop.kind === "break";
@@ -208,68 +314,87 @@ function StopRow({ stop, isLast, onRemove, showAccessibility = false }) {
   const image = sizedImage(stop.image_url, 200);
 
   return (
-    <li>
-      {stop.travel_minutes_from_prev > 0 ? (
-        <div className="flex items-center gap-2 ps-[4.25rem] text-[11px] text-sand-400">
-          <span className="h-4 w-px bg-sand-300" />
-          {t("trip.travel", { n: stop.travel_minutes_from_prev })}
-        </div>
-      ) : null}
+    <li className="flex items-start gap-3.5">
+      {/* Dot column, ring-cut out of the ivory ground so the rail breaks. */}
+      <div className="flex w-8 shrink-0 justify-center pt-4">
+        <div
+          className={`h-[13px] w-[13px] rounded-full ring-4 ring-ivory ${
+            isBreak ? "bg-ivory shadow-[0_0_0_2px_#D9B28C]" : "bg-terracotta"
+          }`}
+        />
+      </div>
 
-      <div className="flex gap-3">
-        <div className="w-14 shrink-0 pt-3 text-end">
-          <div className="text-sm font-semibold tabular-nums text-sand-800">{stop.start_time}</div>
-          <div className="text-[11px] tabular-nums text-sand-400">{stop.end_time}</div>
-        </div>
-
-        <div className="flex flex-1 gap-3 pb-2">
-          <div className="flex flex-col items-center pt-4">
-            <span
-              className={`h-2.5 w-2.5 shrink-0 rounded-full ${
-                isBreak ? "bg-sand-300" : "bg-rose-500"
-              }`}
+      <div
+        className={`flex flex-1 flex-col gap-2.5 rounded-2xl p-3.5 ${
+          isBreak ? "bg-beige" : "bg-ivory shadow-hairline"
+        }`}
+      >
+        <div className="flex gap-3">
+          {!isBreak && image ? (
+            <img
+              src={image}
+              alt=""
+              className="h-[54px] w-[54px] shrink-0 rounded-xl object-cover"
             />
-            {!isLast ? <span className="w-px flex-1 bg-sand-200" /> : null}
-          </div>
-
-          <div
-            className={`mb-1 flex flex-1 items-center gap-3 rounded-2xl p-2.5 ${
-              isBreak ? "bg-sand-100" : "bg-white shadow-sm ring-1 ring-sand-200"
-            }`}
-          >
-            {!isBreak && image ? (
-              <img src={image} alt="" className="h-12 w-12 shrink-0 rounded-xl object-cover" />
-            ) : null}
-            <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-semibold text-sand-900">{name}</p>
-              <div className="mt-1 flex flex-wrap items-center gap-1.5">
-                <Badge>{formatDuration(stop.duration_minutes)}</Badge>
-                {!isBreak ? <DifficultyBadge level={stop.difficulty} /> : null}
-              </div>
-              {/* Some places are only partly reachable — Petra's main trail is
-                  passable but the climbs beyond it are not. Someone who asked
-                  for accessible routes needs to read that, not just trust the
-                  filter that let it through. */}
-              {showAccessibility && !isBreak && stop.accessibility_notes ? (
-                <p className="mt-1.5 text-[11px] leading-snug text-sand-500">
-                  {stop.accessibility_notes}
-                </p>
+          ) : (
+            <PhotoPlaceholder
+              variant={isBreak ? "hatch-alt" : "hatch-sm"}
+              className="h-[54px] w-[54px] shrink-0 rounded-xl"
+            />
+          )}
+          <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+            <span className="font-mono text-[11.5px] text-terracotta">
+              {stop.start_time}
+              {stop.travel_minutes_from_prev > 0 ? (
+                <span className="font-sans font-light text-ink-soft">
+                  {" · "}
+                  {t("trip.travel", { n: stop.travel_minutes_from_prev })}
+                </span>
               ) : null}
-            </div>
-            {onRemove ? (
-              <button
-                onClick={onRemove}
-                aria-label={t("trip.remove")}
-                className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-sand-400 active:bg-sand-100"
-              >
-                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor"
-                     strokeWidth="2" strokeLinecap="round">
-                  <path d="M6 6l12 12M18 6L6 18" />
-                </svg>
-              </button>
-            ) : null}
+            </span>
+            <span className="truncate font-sans text-[14.5px] font-medium text-brown">
+              {name}
+            </span>
+            <span className="font-sans text-xs font-light text-ink-muted">
+              {formatDuration(stop.duration_minutes)}
+            </span>
           </div>
+          {onRemove ? (
+            <button
+              onClick={onRemove}
+              aria-label={t("trip.remove")}
+              className="-me-1 grid h-8 w-8 shrink-0 place-items-center self-start rounded-full text-ink-soft active:bg-beige"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              >
+                <path d="M6 6l12 12M18 6L6 18" />
+              </svg>
+            </button>
+          ) : null}
         </div>
+
+        <div className="flex flex-wrap items-center gap-1.5">
+          {!isBreak ? <DifficultyBadge level={stop.difficulty} /> : null}
+          {isBreak ? <Badge tone="success">{t("trip.lunch")}</Badge> : null}
+        </div>
+
+        {/*
+          Some places are only partly reachable — Petra's main trail is passable
+          but the climbs beyond it are not. Someone who asked for accessible
+          routes needs to read that, not just trust the filter that let it
+          through.
+        */}
+        {showAccessibility && !isBreak && stop.accessibility_notes ? (
+          <p className="font-sans text-[11px] font-light leading-snug text-ink-soft">
+            {stop.accessibility_notes}
+          </p>
+        ) : null}
       </div>
     </li>
   );

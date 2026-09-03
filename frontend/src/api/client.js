@@ -51,6 +51,19 @@ export const api = {
   booking: (id) => request(`/bookings/${id}`),
   cancelBooking: (id) => request(`/bookings/${id}/cancel`, { method: "POST" }),
 
+  /** Ma'an Passport — derived server-side from booking history. */
+  passport: () => request("/passport"),
+
+  /** Marketplace makers. `items_pending` is true until products are modelled. */
+  marketplace: (params) => request(`/marketplace${query(params)}`),
+
+  review: (bookingId) => request(`/bookings/${bookingId}/review`),
+  submitReview: (bookingId, payload) =>
+    request(`/bookings/${bookingId}/review`, {
+      method: "POST",
+      body: JSON.stringify(payload),
+    }),
+
   identifyLandmark: (formData) =>
     request("/vision/identify", { method: "POST", body: formData }),
   chat: (payload) => request("/chat", { method: "POST", body: JSON.stringify(payload) }),

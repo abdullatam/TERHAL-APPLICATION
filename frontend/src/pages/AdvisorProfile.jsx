@@ -2,9 +2,18 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 
 import { api } from "../api/client.js";
-import { TopBar } from "../components/Shell.jsx";
+import { StatusBar, TopBar } from "../components/Shell.jsx";
+import { useToast } from "../components/Toast.jsx";
 import {
-  Avatar, Badge, EmptyState, PriceBreakdown, PrimaryButton, Spinner,
+  Avatar,
+  Badge,
+  EmptyState,
+  PhotoPlaceholder,
+  PriceBreakdown,
+  PrimaryButton,
+  SectionLabel,
+  Spinner,
+  Stepper,
 } from "../components/ui.jsx";
 import { useLanguage } from "../i18n/LanguageContext.jsx";
 import { useTrip } from "../state/TripContext.jsx";
@@ -15,11 +24,18 @@ function tomorrow() {
   return date.toISOString().slice(0, 10);
 }
 
+/**
+ * Advisor profile — screen 13. The export leads with a photo band and a stats
+ * strip (rating / years / languages); the booking form and price breakdown sit
+ * below. Fetch, live re-quote on hours/people change, and the booking POST are
+ * carried over unchanged.
+ */
 export default function AdvisorProfile() {
   const { id } = useParams();
   const [params] = useSearchParams();
   const navigate = useNavigate();
   const { t, pick } = useLanguage();
+  const { toast } = useToast();
   const { itinerary } = useTrip();
 
   const [hours, setHours] = useState(Number(params.get("hours")) || 4);
@@ -53,6 +69,10 @@ export default function AdvisorProfile() {
         hours,
         group_size: groupSize,
       });
+      toast({
+        title: t("booking.confirmed"),
+        body: t("booking.with", { name: provider.name }),
+      });
       navigate(`/bookings/${result.id}`, { replace: true });
     } catch (err) {
       setError(err.message);
@@ -62,7 +82,8 @@ export default function AdvisorProfile() {
 
   if (error && !provider) {
     return (
-      <div className="flex min-h-0 flex-1 flex-col">
+      <div className="relative flex min-h-0 flex-1 flex-col">
+        <StatusBar />
         <TopBar title={t("provider.notFound")} onBack={() => navigate(-1)} />
         <EmptyState title={t("common.error")} body={error} />
       </div>
@@ -70,7 +91,8 @@ export default function AdvisorProfile() {
   }
   if (!provider) {
     return (
-      <div className="flex min-h-0 flex-1 flex-col">
+      <div className="relative flex min-h-0 flex-1 flex-col">
+        <StatusBar />
         <TopBar title={t("common.loading")} onBack={() => navigate(-1)} />
         <Spinner />
       </div>
@@ -78,52 +100,64 @@ export default function AdvisorProfile() {
   }
 
   return (
-    <div className="flex min-h-0 flex-1 flex-col">
+    <div className="relative flex min-h-0 flex-1 flex-col">
+      <StatusBar />
       <TopBar title={provider.name} onBack={() => navigate(-1)} />
 
-      <div className="min-h-0 flex-1 space-y-4 overflow-y-auto p-4">
+      <div className="min-h-0 flex-1 space-y-4 overflow-y-auto px-[22px] pb-4">
+        {/* Photo band. No advisor has a photograph, so this is the honest
+            placeholder rather than a stock face. */}
+        <PhotoPlaceholder
+          label={provider.photo_url ? null : t("common.noPhoto")}
+          className="h-[150px] w-full rounded-2xl"
+        />
+
         <div className="flex items-center gap-4">
-          <Avatar name={provider.name} url={provider.photo_url} size={68} />
+          <Avatar name={provider.name} url={provider.photo_url} size={64} />
           <div className="min-w-0">
-            <p className="text-sm font-medium text-sand-600">{t(`advisors.${provider.role}`)}</p>
-            <p className="text-sm text-sand-500">
-              ★ {provider.rating}
-              {provider.distance_km != null
-                ? ` · ${t("advisors.away", { n: provider.distance_km })}`
-                : ""}
+            <p className="font-sans text-sm font-medium text-ink-muted">
+              {t(`advisors.${provider.role}`)}
             </p>
             <div className="mt-1.5 flex flex-wrap gap-1">
-              {provider.verified ? <Badge tone="green">{t("provider.verified")}</Badge> : null}
-              {provider.welfare_compliant ? (
-                <Badge tone="blue">{t("provider.welfare")}</Badge>
+              {provider.verified ? (
+                <Badge tone="terracotta">{t("provider.verified")}</Badge>
               ) : null}
+              {provider.welfare_compliant ? <Badge>{t("provider.welfare")}</Badge> : null}
               {provider.accessibility_tags?.map((tag) => (
-                <Badge key={tag} tone="sand">{tag}</Badge>
+                <Badge key={tag} tone="outline">
+                  {tag}
+                </Badge>
               ))}
             </div>
           </div>
         </div>
 
-        {pick(provider, "bio") ? (
-          <p className="text-sm leading-relaxed text-sand-700">{pick(provider, "bio")}</p>
-        ) : null}
-
-        <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
-          <div>
-            <span className="text-sand-500">{t("provider.speaks")}: </span>
-            <span className="font-medium text-sand-800">
-              {provider.languages.map((l) => l.toUpperCase()).join(" · ")}
-            </span>
-          </div>
+        {/* Stats strip, per the export. */}
+        <div className="flex divide-x divide-gray rounded-2xl bg-beige py-3 rtl:divide-x-reverse">
+          <Stat value={`★ ${provider.rating}`} label={t("provider.rating", { n: "" }).trim()} />
+          <Stat
+            value={provider.languages.map((l) => l.toUpperCase()).join(" · ")}
+            label={t("advisors.languagesLabel")}
+          />
+          <Stat
+            value={provider.distance_km != null ? `${provider.distance_km}` : "—"}
+            label="km"
+          />
         </div>
 
-        <div className="space-y-3 rounded-2xl border border-sand-200 bg-white p-4">
+        {pick(provider, "bio") ? (
+          <p className="font-sans text-sm font-light leading-relaxed text-ink-body">
+            {pick(provider, "bio")}
+          </p>
+        ) : null}
+
+        <div className="space-y-3 rounded-2xl bg-ivory p-4 shadow-hairline">
           <Field label={t("price.date")}>
             <input
               type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              className="w-full rounded-xl border border-sand-300 px-3 py-2 text-sm"
+              className="w-full rounded-xl bg-beige px-3 py-2.5 font-sans text-sm text-brown"
             />
           </Field>
           <Field label={t("price.startTime")}>
@@ -131,33 +165,46 @@ export default function AdvisorProfile() {
               type="time"
               value={startTime}
               onChange={(e) => setStartTime(e.target.value)}
-              className="w-full rounded-xl border border-sand-300 px-3 py-2 text-sm"
+              className="w-full rounded-xl bg-beige px-3 py-2.5 font-sans text-sm text-brown"
             />
           </Field>
           <div className="grid grid-cols-2 gap-3">
             <Stepper label={t("price.hours")} value={hours} min={1} max={12} onChange={setHours} />
             <Stepper
-              label={t("price.people")} value={groupSize} min={1} max={20} onChange={setGroupSize}
+              label={t("price.people")}
+              value={groupSize}
+              min={1}
+              max={20}
+              onChange={setGroupSize}
             />
           </div>
         </div>
 
-        <div className="rounded-2xl border border-sand-200 bg-white p-4">
-          <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-sand-500">
-            {t("price.breakdown")}
-          </h3>
+        <div className="rounded-2xl bg-ivory p-4 shadow-hairline">
+          <SectionLabel>{t("price.breakdown")}</SectionLabel>
           <PriceBreakdown quote={provider.quote} />
         </div>
       </div>
 
-      <div className="shrink-0 border-t border-sand-200 bg-white p-4">
+      <div className="shrink-0 border-t border-gray bg-ivory p-4">
         <PrimaryButton onClick={submit} disabled={booking}>
           {booking
             ? t("common.loading")
-            : `${t("booking.confirm")} · ${provider.quote.total_jod.toFixed(2)} JOD`}
+            : `${t("advisors.requestBooking")} · ${provider.quote.total_jod.toFixed(2)} ${t("price.jod")}`}
         </PrimaryButton>
-        <p className="mt-2 text-center text-[11px] text-sand-500">{t("booking.payNote")}</p>
+        <p className="mt-2 text-center font-sans text-[11px] font-light text-ink-soft">
+          {t("booking.payNote")}
+        </p>
       </div>
+    </div>
+  );
+}
+
+function Stat({ value, label }) {
+  return (
+    <div className="flex flex-1 flex-col items-center gap-0.5 px-2">
+      <span className="truncate font-sans text-sm font-semibold text-brown">{value}</span>
+      <span className="truncate font-sans text-[10px] font-light text-ink-muted">{label}</span>
     </div>
   );
 }
@@ -165,36 +212,8 @@ export default function AdvisorProfile() {
 function Field({ label, children }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-medium text-sand-600">{label}</span>
+      <span className="mb-1 block font-sans text-xs font-medium text-ink-muted">{label}</span>
       {children}
     </label>
-  );
-}
-
-function Stepper({ label, value, min, max, onChange }) {
-  return (
-    <div>
-      <span className="mb-1 block text-xs font-medium text-sand-600">{label}</span>
-      <div className="flex items-center justify-between rounded-xl border border-sand-300 px-1">
-        <StepButton onClick={() => onChange(Math.max(min, value - 1))} disabled={value <= min}>
-          −
-        </StepButton>
-        <span className="text-sm font-semibold tabular-nums text-sand-900">{value}</span>
-        <StepButton onClick={() => onChange(Math.min(max, value + 1))} disabled={value >= max}>
-          +
-        </StepButton>
-      </div>
-    </div>
-  );
-}
-
-function StepButton({ children, ...props }) {
-  return (
-    <button
-      {...props}
-      className="grid h-9 w-9 place-items-center rounded-lg text-lg font-semibold text-sand-600 active:bg-sand-100 disabled:opacity-30"
-    >
-      {children}
-    </button>
   );
 }

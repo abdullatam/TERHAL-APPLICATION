@@ -3,24 +3,30 @@ import { useEffect, useRef, useState } from "react";
 
 import { useFormatDuration, useLanguage } from "../i18n/LanguageContext.jsx";
 import { sizedImage } from "../utils/images.js";
-import { DifficultyBadge } from "./ui.jsx";
+import { Badge, DifficultyBadge } from "./ui.jsx";
 
 const COMMIT_DISTANCE = 110; // px before a drag counts as a decision
 const FLICK_VELOCITY = 0.45; // a fast short flick counts too
 const EXIT_MS = 280;
 
 /**
- * One card in the deck. Right means add, left means skip — physically, in both
- * reading directions, because "right = yes" is the gesture people already know
- * and mirroring it in Arabic would be a surprise, not a courtesy.
+ * One card in the deck, restyled to the Terhal export (24px radius, hatched
+ * photo ground, deep-brown scrim, terracotta HIDDEN GEM tag).
+ *
+ * The gesture logic is carried over from the old implementation unchanged —
+ * commit distance, flick velocity, the moved-ref that stops a half-swipe from
+ * opening the sheet, and the ref-held onSwipe that keeps the exit timer from
+ * restarting on parent re-render. That behaviour was hard-won; only the markup
+ * is new.
+ *
+ * Right still means add in both reading directions. Mirroring a gesture people
+ * already know would be a surprise, not a courtesy.
  */
 export default function SwipeCard({ landmark, onSwipe, onOpen, command, depth = 0 }) {
   const { pick, t } = useLanguage();
   const formatDuration = useFormatDuration();
   const [drag, setDrag] = useState({ x: 0, active: false });
   const [exit, setExit] = useState(null);
-  // A drag that springs back still fires a native click on release. Without
-  // this the detail sheet pops open every time someone half-swipes.
   const movedRef = useRef(false);
   const isTop = depth === 0;
 
@@ -30,9 +36,7 @@ export default function SwipeCard({ landmark, onSwipe, onOpen, command, depth = 
   }, [command?.token]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // onSwipe is rebuilt on every parent render, so depending on it here would
-  // clear and restart the commit timer each time — a card mid-exit would never
-  // land if anything upstream re-rendered in a loop. Hold it in a ref and let
-  // the timer depend only on the exit direction.
+  // clear and restart the commit timer each time.
   const onSwipeRef = useRef(onSwipe);
   onSwipeRef.current = onSwipe;
 
@@ -64,16 +68,21 @@ export default function SwipeCard({ landmark, onSwipe, onOpen, command, depth = 
 
   const x = exit ? (exit === "right" ? 700 : -700) : drag.x;
   const rotation = (x / 18).toFixed(2);
-  const stackOffset = depth * 10;
-  const stackScale = 1 - depth * 0.04;
+
+  // The export stacks three cards, each inset and dropped behind the last.
+  const inset = depth * 9;
+  const drop = depth * 8;
 
   const style = {
     transform: exit
       ? `translate3d(${x}px, -40px, 0) rotate(${x > 0 ? 22 : -22}deg)`
-      : `translate3d(${x}px, ${stackOffset}px, 0) rotate(${rotation}deg) scale(${stackScale})`,
-    transition: drag.active ? "none" : `transform ${EXIT_MS}ms ease-out, opacity ${EXIT_MS}ms ease-out`,
+      : `translate3d(${x}px, ${drop}px, 0) rotate(${rotation}deg)`,
+    transition: drag.active
+      ? "none"
+      : `transform ${EXIT_MS}ms ease-out, opacity ${EXIT_MS}ms ease-out`,
     opacity: exit ? 0 : 1,
     zIndex: 30 - depth,
+    insetInline: `${inset}px`,
   };
 
   const image = sizedImage(landmark.image_url);
@@ -83,7 +92,7 @@ export default function SwipeCard({ landmark, onSwipe, onOpen, command, depth = 
     <div
       {...(isTop ? bind() : {})}
       style={style}
-      className="absolute inset-0 touch-none select-none"
+      className="absolute top-0 h-[490px] touch-none select-none"
     >
       <button
         type="button"
@@ -91,7 +100,7 @@ export default function SwipeCard({ landmark, onSwipe, onOpen, command, depth = 
           if (!isTop || drag.active || movedRef.current) return;
           onOpen?.(landmark);
         }}
-        className="relative h-full w-full overflow-hidden rounded-3xl bg-sand-800 text-start shadow-card"
+        className="relative flex h-full w-full flex-col justify-between overflow-hidden rounded-frame bg-hatch text-start shadow-card"
       >
         {image ? (
           <img
@@ -99,43 +108,61 @@ export default function SwipeCard({ landmark, onSwipe, onOpen, command, depth = 
             alt=""
             draggable="false"
             loading={depth < 2 ? "eager" : "lazy"}
-            className="h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover"
           />
-        ) : (
-          // Five researched places genuinely have no free-licensed photograph.
-          // A designed placeholder is honest; a stock photo of somewhere else
-          // would not be.
-          <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-sand-600 via-sand-700 to-sand-900 p-8">
-            <span className="text-center text-2xl font-bold leading-snug text-sand-100/90">
-              {pick(landmark, "name")}
-            </span>
-          </div>
-        )}
+        ) : null}
 
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent p-5 pt-16">
-          <h2 className="text-2xl font-bold leading-tight text-white drop-shadow">
+        {/* Top row: hidden-gem tag, and the photo credit slot when there is one. */}
+        <div className="relative flex items-start justify-between p-4">
+          <span className="flex items-center gap-[7px] rounded-full bg-terracotta px-[13px] py-[7px]">
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#FAF6F2"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M12 21s7-6.7 7-11.3A7 7 0 0 0 5 9.7C5 14.3 12 21 12 21Z" />
+              <circle cx="12" cy="9.6" r="2.2" />
+            </svg>
+            <span className="font-sans text-[11px] font-semibold uppercase tracking-[.09em] text-ivory">
+              {t("explore.hiddenGem")}
+            </span>
+          </span>
+          {!image ? (
+            <span className="rounded-md bg-ivory/[.86] px-[7px] py-1 font-mono text-[9.5px] text-ink-stamp">
+              {t("common.noPhoto")}
+            </span>
+          ) : null}
+        </div>
+
+        {/* Bottom scrim: name, one-liner, chip row. */}
+        <div className="relative flex flex-col gap-[7px] bg-gradient-to-t from-brown/[.82] via-brown/[.82] to-transparent px-5 pb-[22px] pt-16">
+          <h3 className="font-sans text-[27px] font-semibold leading-tight tracking-[-.01em] text-ivory">
             {pick(landmark, "name")}
-          </h2>
-          <p className="mt-1.5 line-clamp-2 text-sm leading-snug text-white/80">
+          </h3>
+          <p className="line-clamp-2 font-sans text-[13.5px] font-light leading-snug text-beige">
             {pick(landmark, "description")}
           </p>
-          <div className="mt-3 flex flex-wrap items-center gap-1.5">
-            <span className="rounded-full bg-white/20 px-2 py-0.5 text-[11px] font-medium text-white backdrop-blur">
-              {formatDuration(landmark.avg_visit_minutes)}
-            </span>
-            {landmark.difficulty ? <DifficultyBadge level={landmark.difficulty} /> : null}
+          <div className="mt-[5px] flex flex-wrap gap-[7px]">
+            {landmark.entrance_fee_notes?.toLowerCase().includes("free") ? (
+              <Badge tone="onImage">{t("explore.freeEntry")}</Badge>
+            ) : null}
+            <Badge tone="onImage">{formatDuration(landmark.avg_visit_minutes)}</Badge>
+            <DifficultyBadge level={landmark.difficulty} onImage />
             {landmark.requires_guide ? (
-              <span className="rounded-full bg-white/20 px-2 py-0.5 text-[11px] font-medium text-white backdrop-blur">
-                {t("trip.guideRecommended")}
-              </span>
+              <Badge tone="onImage">{t("trip.guideRecommended")}</Badge>
             ) : null}
           </div>
         </div>
 
         {isTop ? (
           <>
-            <Stamp side="start" tone="emerald" label={t("explore.stampAdd")} opacity={Math.max(0, intent)} />
-            <Stamp side="end" tone="rose" label={t("explore.stampSkip")} opacity={Math.max(0, -intent)} />
+            <Stamp side="start" tone="add" label={t("explore.stampAdd")} opacity={Math.max(0, intent)} />
+            <Stamp side="end" tone="skip" label={t("explore.stampSkip")} opacity={Math.max(0, -intent)} />
           </>
         ) : null}
       </button>
@@ -146,17 +173,16 @@ export default function SwipeCard({ landmark, onSwipe, onOpen, command, depth = 
 /** The ADD / SKIP stamp that fades in as the card is dragged. */
 function Stamp({ side, tone, label, opacity }) {
   const tones = {
-    emerald: "border-emerald-400 text-emerald-300",
-    rose: "border-rose-400 text-rose-300",
+    add: "border-ivory text-ivory",
+    skip: "border-sandstone text-sandstone",
   };
-  // "start" is physically left in LTR, so anchor by physical side to keep the
-  // stamp on the side the card is actually moving towards.
+  // Anchored by physical side, matching the physical gesture.
   const position = side === "start" ? "left-5 -rotate-12" : "right-5 rotate-12";
   return (
     <div
       aria-hidden="true"
       style={{ opacity }}
-      className={`pointer-events-none absolute top-6 ${position} rounded-xl border-4 px-3 py-1 text-2xl font-black tracking-wider ${tones[tone]} bg-black/25 backdrop-blur-sm transition-opacity`}
+      className={`pointer-events-none absolute top-6 ${position} rounded-xl border-4 bg-brown/25 px-3 py-1 font-sans text-2xl font-bold tracking-wider backdrop-blur-sm transition-opacity ${tones[tone]}`}
     >
       {label}
     </div>
