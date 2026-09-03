@@ -13,6 +13,7 @@ silently dropped.
 """
 from __future__ import annotations
 
+import re
 import uuid
 
 from sqlalchemy import select
@@ -41,17 +42,13 @@ DEFAULT_TRAVEL_MINUTES = 20  # used when a landmark has no coordinates
 HOME_BASE_ID = "WMU"
 HOME_BASE_FALLBACK = (30.3216568, 35.4800889)
 
-# Accessibility notes are researched prose, not a flag, and some describe a
-# place that is partly reachable: Petra's main trail is wheelchair-passable
-# while the climbs beyond it are not. Matching "not accessible" alone would
-# throw away the governorate's main attraction for the exact users the filter
-# exists to serve, so a negative is only decisive when nothing positive
-# survives alongside it.
-NEGATIVE_MARKERS = (
-    "not wheelchair accessible",
-    "not wheelchair-accessible",
-    "not accessible",
-)
+# Accessibility notes are researched prose, not a flag, and the research says
+# a place is unsuitable in whatever words fit: "not set up for wheelchair use",
+# "no prepared access", "not a visitor site", "rough, unimproved ground".
+# Hunting for negative phrases means missing the ones nobody thought of, and
+# every miss tells a wheelchair user a site will work when the research says it
+# will not. So the test runs the other way: a place is treated as accessible
+# only where the research affirmatively says so. Silence is not a yes.
 POSITIVE_MARKERS = (
     "wheelchair-passable",
     "wheelchair passable",
@@ -59,7 +56,13 @@ POSITIVE_MARKERS = (
     "wheelchair-accessible",
     "step-free",
     "generally accessible",
+    "fully accessible",
 )
+# A positive phrase only counts in a clause that is not negating it — the same
+# sentence that says "not purpose-built for wheelchair access" contains the
+# words "wheelchair access".
+NEGATION_WORDS = ("not", "no", "never", "cannot", "without")
+CLAUSE_SPLIT = r"[;.,]"
 
 
 def _hhmm(minutes: int) -> str:
@@ -83,16 +86,20 @@ def _travel_minutes(prev: LandmarkORM | None, nxt: LandmarkORM) -> int:
 
 
 def _is_accessible(landmark: LandmarkORM) -> bool:
-    notes = (landmark.accessibility_notes or "").lower()
-    if not any(marker in notes for marker in NEGATIVE_MARKERS):
-        return True
+    """True only where the notes affirmatively describe step-free or
+    wheelchair-passable access, in a clause that is not negating it.
 
-    # Remove the negative phrases before looking for a positive one, so
-    # "not wheelchair accessible" cannot read as an endorsement of itself.
-    remainder = notes
-    for marker in NEGATIVE_MARKERS:
-        remainder = remainder.replace(marker, " ")
-    return any(marker in remainder for marker in POSITIVE_MARKERS)
+    Petra qualifies on its main trail while its climbs do not; the timeline
+    surfaces that caveat rather than hiding it behind the yes.
+    """
+    notes = (landmark.accessibility_notes or "").lower()
+    for clause in re.split(CLAUSE_SPLIT, notes):
+        if not any(marker in clause for marker in POSITIVE_MARKERS):
+            continue
+        words = set(re.findall(r"[a-z']+", clause))
+        if words.isdisjoint(NEGATION_WORDS):
+            return True
+    return False
 
 
 def _order_route(landmarks: list[LandmarkORM]) -> list[LandmarkORM]:
@@ -191,8 +198,11 @@ def build_timeline(req: ItineraryRequest, landmarks: list[LandmarkORM]
 
         start = clock + travel
         if start + landmark.avg_visit_minutes > DAY_END:
-            # Does not fit today: roll to tomorrow if the trip is long enough.
-            if day < req.trip_days:
+            # Does not fit today. Only open a new day if it would actually fit
+            # there — otherwise a single over-long stop burns a whole day on its
+            # way to being excluded, and everything after it loses that day too.
+            fits_in_fresh_day = DAY_START + landmark.avg_visit_minutes <= DAY_END
+            if day < req.trip_days and fits_in_fresh_day:
                 day += 1
                 clock, previous, lunch_placed = DAY_START, None, False
                 travel, start = 0, DAY_START

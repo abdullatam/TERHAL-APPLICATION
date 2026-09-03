@@ -29,11 +29,18 @@ export default function SwipeCard({ landmark, onSwipe, onOpen, command, depth = 
     if (command?.token && isTop && !exit) setExit(command.dir);
   }, [command?.token]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // onSwipe is rebuilt on every parent render, so depending on it here would
+  // clear and restart the commit timer each time — a card mid-exit would never
+  // land if anything upstream re-rendered in a loop. Hold it in a ref and let
+  // the timer depend only on the exit direction.
+  const onSwipeRef = useRef(onSwipe);
+  onSwipeRef.current = onSwipe;
+
   useEffect(() => {
     if (!exit) return undefined;
-    const timer = setTimeout(() => onSwipe(exit), EXIT_MS);
+    const timer = setTimeout(() => onSwipeRef.current(exit), EXIT_MS);
     return () => clearTimeout(timer);
-  }, [exit, onSwipe]);
+  }, [exit]);
 
   const bind = useDrag(
     ({ first, down, movement: [mx], velocity: [vx], direction: [dx] }) => {
