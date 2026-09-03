@@ -14,6 +14,14 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
+      // Self-hosted landmark photos. data/landmark_images.csv stores these as
+      // bare /images/... paths, and the backend mounts data/images there — so
+      // without this the dev server answers with the SPA's index.html and
+      // every self-hosted photo silently renders as a broken image.
+      "/images": {
+        target: "http://127.0.0.1:8000",
+        changeOrigin: true,
+      },
     },
   },
 });
