@@ -1,5 +1,8 @@
+from pathlib import Path
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 from app.config import settings
 from app.routers import bookings, chat, itinerary, landmarks, providers, vision
@@ -13,6 +16,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Self-hosted landmark photos (data/landmark_images.csv). Served at the same
+# /images/<landmark_id>/<position>.<ext> path stored in that CSV's url column.
+IMAGES_DIR = Path(__file__).resolve().parent.parent.parent / "data" / "images"
+if IMAGES_DIR.is_dir():
+    app.mount("/images", StaticFiles(directory=IMAGES_DIR), name="images")
 
 app.include_router(landmarks.router)
 app.include_router(itinerary.router)

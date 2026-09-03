@@ -113,9 +113,12 @@ def validate(rows: list[dict[str, str]], known: set[str]) -> tuple[list[str], li
 
         url = (row.get("url") or "").strip()
         if url:
-            if not url.startswith(("http://", "https://")):
+            if url.startswith("/images/"):
+                if not (REPO / "data" / url.lstrip("/")).is_file():
+                    errors.append(f"{where}: self-hosted path {url!r} has no file on disk")
+            elif not url.startswith(("http://", "https://")):
                 errors.append(f"{where}: url is not a URL")
-            elif url in urls and urls[url] != lid:
+            if url in urls and urls[url] != lid:
                 warnings.append(f"{where}: same url already used for {urls[url]}")
             else:
                 urls.setdefault(url, lid)
@@ -154,7 +157,8 @@ def check_urls(rows: list[dict[str, str]]) -> tuple[list[str], list[str]]:
     import urllib.request
 
     targets = [(r["landmark_id"], r["position"], r["url"].strip())
-               for r in rows if not is_blank(r) and (r.get("url") or "").strip()]
+               for r in rows if not is_blank(r) and (r.get("url") or "").strip()
+               and not r["url"].strip().startswith("/images/")]  # self-hosted, already checked on disk
     if not targets:
         return [], []
 
