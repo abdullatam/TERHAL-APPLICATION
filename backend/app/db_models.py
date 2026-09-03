@@ -4,6 +4,7 @@ from datetime import date, datetime
 from sqlalchemy import (
     ARRAY,
     Boolean,
+    CheckConstraint,
     Date,
     DateTime,
     Float,
@@ -11,6 +12,7 @@ from sqlalchemy import (
     Integer,
     String,
     Text,
+    UniqueConstraint,
     func,
 )
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -54,6 +56,41 @@ class LandmarkORM(Base):
     requires_guide: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
     entrance_fee_notes: Mapped[str | None] = mapped_column(Text, nullable=True)
     active: Mapped[bool] = mapped_column(Boolean, default=True, server_default="true")
+
+
+class LandmarkImageORM(Base):
+    """A gallery of images per landmark, three to a place.
+
+    `landmarks.image_url` stays as it is — it is the single hero shot the swipe
+    deck and timeline use. This table is the gallery behind it, so a card can
+    open into several views of the same site.
+
+    Unique on (landmark_id, position) so a re-run replaces image 2 of a site
+    instead of appending a fourth. Licence and attribution are NOT NULL: an
+    image nobody can prove the rights to is worse than no image, and this is a
+    commercial product pitch.
+    """
+
+    __tablename__ = "landmark_images"
+    __table_args__ = (
+        UniqueConstraint("landmark_id", "position", name="uq_landmark_image_position"),
+        CheckConstraint("position >= 1", name="ck_landmark_image_position"),
+    )
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    landmark_id: Mapped[str] = mapped_column(ForeignKey("landmarks.id", ondelete="CASCADE"))
+    position: Mapped[int] = mapped_column(Integer)
+    url: Mapped[str] = mapped_column(Text)
+    source: Mapped[str] = mapped_column(String)
+    license: Mapped[str] = mapped_column(String)
+    attribution_text: Mapped[str] = mapped_column(Text)
+    caption_en: Mapped[str | None] = mapped_column(Text, nullable=True)
+    caption_ar: Mapped[str | None] = mapped_column(Text, nullable=True)
+    researcher: Mapped[str | None] = mapped_column(String, nullable=True)
+    notes: Mapped[str | None] = mapped_column(Text, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
 
 
 class ProviderORM(Base):
