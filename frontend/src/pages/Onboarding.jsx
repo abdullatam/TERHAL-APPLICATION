@@ -35,7 +35,7 @@ export default function Onboarding() {
 
   const finish = () => {
     complete();
-    navigate("/", { replace: true });
+    navigate("/explore", { replace: true });
   };
   const next = () => (isLast ? finish() : navigate(`/welcome/${step + 1}`));
 

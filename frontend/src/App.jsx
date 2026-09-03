@@ -18,22 +18,24 @@ import Trip from "./pages/Trip.jsx";
 
 /**
  * Splash and onboarding are pre-app: they own the whole frame and draw their
- * own home indicator, so the tab bar is suppressed there.
+ * own home indicator, so the tab bar is suppressed there. Splash is matched
+ * exactly rather than by prefix, since its path is "/".
  */
-const CHROMELESS = ["/splash", "/welcome"];
+const CHROMELESS = ["/welcome"];
 
 export default function App() {
   const { pathname } = useLocation();
-  const chromeless = CHROMELESS.some((p) => pathname.startsWith(p));
+  const chromeless = pathname === "/" || CHROMELESS.some((p) => pathname.startsWith(p));
 
   return (
     <PhoneFrame>
       <Routes>
-        <Route path="/splash" element={<Splash />} />
         <Route path="/welcome" element={<Onboarding />} />
         <Route path="/welcome/:step" element={<Onboarding />} />
 
-        <Route path="/" element={<Explore />} />
+        {/* Screen 01 is the app entry, per the design route table. */}
+        <Route path="/" element={<Splash />} />
+        <Route path="/explore" element={<Explore />} />
         <Route path="/trip" element={<Trip />} />
         <Route path="/passport" element={<Passport />} />
         <Route path="/marketplace" element={<Marketplace />} />

@@ -93,7 +93,7 @@ export default function Trip() {
           title={t("trip.empty")}
           body={t("trip.emptyBody")}
           action={
-            <SecondaryButton className="mt-2 w-auto px-6" onClick={() => navigate("/")}>
+            <SecondaryButton className="mt-2 w-auto px-6" onClick={() => navigate("/explore")}>
               {t("trip.goExplore")}
             </SecondaryButton>
           }
@@ -186,7 +186,7 @@ export default function Trip() {
               ))}
               <li className="ms-[46px]">
                 <button
-                  onClick={() => navigate("/")}
+                  onClick={() => navigate("/explore")}
                   className="flex h-[50px] w-full items-center justify-center gap-2 rounded-2xl border-[1.5px] border-dashed border-sandstone font-sans text-[13.5px] font-medium text-terracotta active:bg-beige"
                 >
                   <svg

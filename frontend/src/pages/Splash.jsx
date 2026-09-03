@@ -19,7 +19,7 @@ export default function Splash() {
 
   useEffect(() => {
     const timer = setTimeout(
-      () => navigate(seen ? "/" : "/welcome", { replace: true }),
+      () => navigate(seen ? "/explore" : "/welcome", { replace: true }),
       HOLD_MS,
     );
     return () => clearTimeout(timer);
@@ -29,23 +29,25 @@ export default function Splash() {
     <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden bg-terhal-gradient">
       <StatusBar tone="ivory" />
 
-      {/* Wayfinding squiggles, top-trailing. */}
-      <svg
-        viewBox="0 0 60 12"
-        preserveAspectRatio="none"
-        aria-hidden="true"
-        className="absolute end-[34px] top-[66px] h-3.5 w-[66px] opacity-55"
-        fill="none"
-        stroke="#FAF6F2"
-        strokeWidth="1.1"
-        strokeLinecap="round"
-      >
-        <path d="M2 7c2.2-3.4 4.4-3.4 6.6 0 2.2-3.4 4.4-3.4 6.6 0" />
-        <path d="M22 3.4c1.6-2.4 3.2-2.4 4.8 0 1.6-2.4 3.2-2.4 4.8 0" />
-        <path d="M38 8.6c1.3-2 2.6-2 3.9 0 1.3-2 2.6-2 3.9 0" />
-      </svg>
+      <div className="relative flex flex-1 flex-col items-center justify-center gap-[34px] px-[34px]">
+        {/* Wayfinding squiggles, top-trailing. Anchored to the content
+            region rather than the screen, so hiding the status bar on a real
+            device does not move them down by its height. */}
+        <svg
+          viewBox="0 0 60 12"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+          className="absolute end-0 top-[66px] h-3.5 w-[66px] opacity-55"
+          fill="none"
+          stroke="#FAF6F2"
+          strokeWidth="1.1"
+          strokeLinecap="round"
+        >
+          <path d="M2 7c2.2-3.4 4.4-3.4 6.6 0 2.2-3.4 4.4-3.4 6.6 0" />
+          <path d="M22 3.4c1.6-2.4 3.2-2.4 4.8 0 1.6-2.4 3.2-2.4 4.8 0" />
+          <path d="M38 8.6c1.3-2 2.6-2 3.9 0 1.3-2 2.6-2 3.9 0" />
+        </svg>
 
-      <div className="flex flex-1 flex-col items-center justify-center gap-[34px] px-[34px]">
         <div className="rounded-[34px] bg-ivory px-[30px] pb-[30px] pt-[34px] shadow-lockup">
           <img
             src="/brand/terhal-lockup.png"

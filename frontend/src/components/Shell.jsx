@@ -16,7 +16,7 @@ import { useTrip } from "../state/TripContext.jsx";
  */
 
 const TABS = [
-  { to: "/", key: "nav.explore", icon: CompassIcon },
+  { to: "/explore", key: "nav.explore", icon: CompassIcon },
   { to: "/trip", key: "nav.trip", icon: RouteIcon },
   { to: "/advisors", key: "nav.advisors", icon: AdvisorsIcon },
   { to: "/camera", key: "nav.camera", icon: CameraIcon },
@@ -196,7 +196,6 @@ export function TabBar() {
             <li key={to}>
               <NavLink
                 to={to}
-                end={to === "/"}
                 className={({ isActive }) =>
                   `relative flex flex-col items-center gap-[5px] ${
                     isActive || forced ? "text-terracotta" : "text-ink-soft"

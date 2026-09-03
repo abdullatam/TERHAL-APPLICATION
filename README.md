@@ -37,7 +37,12 @@ npm install
 npm run dev
 ```
 
-Open <http://localhost:5173>. It is designed as a phone screen and sits in a
+Open <http://localhost:5173>. The app opens on the Terhal splash, which sends a
+first-time visitor through three onboarding screens and a returning one straight
+to Explore — `terhal.onboarded` in localStorage is what separates them, so clear
+site data to see onboarding again.
+
+It is designed as a phone screen and sits in a
 phone-shaped frame on a laptop. `npm run dev` also prints a Network URL — open
 that on a real phone on the same wifi to demo it properly, or "Add to Home
 Screen" to run it fullscreen as an installed app.
@@ -53,16 +58,20 @@ legs, lunch placement, and the no-coordinates case.
 
 ## The demo loop
 
-1. **Explore** — swipe right on places you like, left to skip. Tap a card for
-   the researched history and honest accessibility notes.
-2. **My Trip** — a day-by-day timeline with real travel times between stops.
+1. **Splash → onboarding** — the brand lockup, then three screens explaining
+   discover / plan / experience. Skippable, and only shown once per device.
+2. **Explore** — swipe right on places you like, left to skip. Tap a card for
+   the researched history, its photo gallery, and honest accessibility notes.
+3. **My Trip** — a day-by-day timeline with real travel times between stops.
    Set trip length and accessible-routes-only here; it rebuilds live. Anything
    that will not fit comes back with a reason instead of vanishing.
-3. **Advisors** — verified local guides and drivers on a map, nearest first,
+4. **Advisors** — verified local guides and drivers on a map, nearest first,
    each showing what *this* trip would cost before you commit.
-4. **Book** — pick one, confirm, get a booking code and a full price breakdown.
-5. **Camera / Chat** — point the camera at a monument for a narrated
+5. **Book** — pick one, confirm, get a booking code and a full price breakdown.
+6. **Camera / Chat** — point the camera at a monument for a narrated
    explanation, or ask the bilingual assistant a question.
+7. **Profile / Passport** — trips, stamps and reviews, all counted from real
+   bookings; the passport stamps a place once you have actually been taken there.
 
 Every screen works in Arabic and English; the toggle is in the top right and
 the whole layout mirrors.
