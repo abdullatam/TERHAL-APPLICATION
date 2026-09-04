@@ -91,13 +91,23 @@ def check(rows: list[dict[str, str]], ids: list[str]) -> tuple[list[str], list[s
         lid, pos = row["landmark_id"], row["position"]
         where = f"line {i} ({lid}/{pos})"
 
-        if lid not in ids:
-            errors.append(f"{where}: '{lid}' is not a landmark id in the dataset")
         seen[(lid, pos)] += 1
         if not pos.isdigit() or not 1 <= int(pos) <= VIDEOS_PER_LANDMARK:
             errors.append(f"{where}: position must be 1..{VIDEOS_PER_LANDMARK}")
 
         started = any(row[c].strip() for c in REQUIRED if c not in ("landmark_id", "position"))
+
+        # An unknown id is only an error once somebody has put a video against
+        # it. Blank rows are pre-seeded slots, and some of them run ahead of
+        # the dataset on purpose — the food and activity places have image and
+        # video slots here while their landmark records are still in flight.
+        if lid not in ids:
+            msg = f"{where}: '{lid}' is not a landmark id in the dataset"
+            if started:
+                errors.append(msg)
+            else:
+                warnings.append(msg + " (blank slot, waiting on the dataset)")
+
         if not started:
             continue  # a row nobody has begun is progress, not an error
         filled_per[lid] += 1
