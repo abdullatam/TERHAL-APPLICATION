@@ -10,7 +10,7 @@ a hatched placeholder reading *"No free-licensed photo yet."*
 video today.
 
 Everything here follows the same licensing rules as Phase 1 and the image pass
-— [PLAN.md](PLAN.md) §4 and [ABD_TASKS.md](ABD_TASKS.md) §3. They have not
+— [PLAN.md](../PLAN.md) §4 and [ABD_TASKS.md](ABD_TASKS.md) §3. They have not
 changed and they are not negotiable. Short version in §3.
 
 ---
@@ -71,7 +71,7 @@ python scripts/validate_videos.py --check-urls
 ```
 
 `--commit` needs `backend/.venv` and `backend/.env` — see the
-[README](README.md). Everything else runs on plain `python3` with no database.
+[README](../../README.md). Everything else runs on plain `python3` with no database.
 
 The upsert key is `(landmark_id, position)`, so re-running replaces image 2 of a
 place rather than adding a fourth. Run it as often as you like.

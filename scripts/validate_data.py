@@ -12,7 +12,7 @@ Run on the merged file before it is seeded, checking every image URL too:
 Exits 0 only if there are no errors. Warnings never fail the run — they are
 things a human should look at, not things that break the seed.
 
-See PLAN.md sections 2, 4 and 12. This script is the gate described in
+See docs/PLAN.md sections 2, 4 and 12. This script is the gate described in
 TASKS.md; it is meant to be run by someone who did not write it, so every
 failure names the row and says what to do about it.
 """

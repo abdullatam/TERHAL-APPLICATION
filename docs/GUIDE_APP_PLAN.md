@@ -1,6 +1,6 @@
 # Guide App — architecture decisions
 
-The provider/guide-facing half of Terhal. Six screens from the `guide-app/`
+The provider/guide-facing half of Terhal. Six screens from the `design/guide/`
 Claude Design export, built against **the same backend and database** as the
 tourist app: a booking a tourist makes is the same row a guide accepts.
 

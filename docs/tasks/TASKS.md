@@ -1,7 +1,7 @@
 # Tasks
 
 Working checklist for Phase 1. Full specifications, sourcing rules and image-licence
-procedure are in [PLAN.md](PLAN.md) — **read §2, §3 and §4 before you start**; this
+procedure are in [PLAN.md](../PLAN.md) — **read §2, §3 and §4 before you start**; this
 file is only the tick-list.
 
 **Gate: Thu 3 Sept, 18:00** — all three group files complete.
@@ -10,7 +10,7 @@ Per entry you are filling seven fields: `description_en`, `description_ar`,
 `avg_visit_minutes`, `accessibility_notes`, `image_url`, `image_license`,
 `image_attribution` — plus whatever is listed under "extra gaps" for that row.
 `avg_visit_minutes` and `accessibility_notes` are required on **every** row now,
-monuments included ([PLAN.md](PLAN.md) schema note).
+monuments included ([PLAN.md](../PLAN.md) schema note).
 
 ---
 
@@ -90,7 +90,7 @@ File: `data/scraped_group_a.csv`
 
 ### 1. Settle these first — Mon 31 Aug, before scraping ✅ done
 
-They change what gets scraped. Full detail in [PLAN.md](PLAN.md) §7.
+They change what gets scraped. Full detail in [PLAN.md](../PLAN.md) §7.
 
 - [x] **Q1** `OPM` vs `PAM` — confirmed distinct (1963 cave museum vs. 2019 visitor-center museum, sourced independently). Both now in Group A.
 - [x] **Q2** `PET-QAB` "Dushares" &rarr; **Dushara**. Fixed in master_list.csv; matches Pulga's fix in Group C.
@@ -166,8 +166,8 @@ Two warnings specific to your group:
 
 ### 2. The seed path — the open problem
 
-[backend/app/seed.py](backend/app/seed.py) reads `LANDMARKS` from
-[backend/app/data/landmarks.py](backend/app/data/landmarks.py), a Python dict. **It does
+[backend/app/seed.py](../../backend/app/seed.py) reads `LANDMARKS` from
+[backend/app/data/landmarks.py](../../backend/app/data/landmarks.py), a Python dict. **It does
 not read a CSV**, so `data/merged.csv` currently connects to nothing.
 
 - [ ] Write the `merged.csv` &rarr; `landmarks.py` converter (or a direct CSV seed path)

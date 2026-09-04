@@ -22,9 +22,9 @@ Terhal is two apps on one backend. Tourists discover, plan and book; local
 guides list what they offer, take the requests and get paid. No commission
 model, no bidding war, no opaque pricing.
 
-**[PROJECT.md](PROJECT.md)** has the problem and the pitch ·
-**[APP_PLAN.md](APP_PLAN.md)** has the build plan ·
-**[GUIDE_APP_PLAN.md](GUIDE_APP_PLAN.md)** has the four architecture decisions
+**[PROJECT.md](docs/PROJECT.md)** has the problem and the pitch ·
+**[APP_PLAN.md](docs/APP_PLAN.md)** has the build plan ·
+**[GUIDE_APP_PLAN.md](docs/GUIDE_APP_PLAN.md)** has the four architecture decisions
 behind the provider side.
 
 ---
@@ -35,15 +35,16 @@ behind the provider side.
 2. [The demo loop](#the-demo-loop) — what to click, in order
 3. [The two apps](#the-two-apps)
 4. [Architecture](#architecture)
-5. [The data pipeline](#the-data-pipeline)
-6. [AI features](#ai-features)
-7. [Bilingual and RTL](#bilingual-and-rtl)
-8. [Real vs mocked](#what-is-real-and-what-is-mocked) — **read before demoing**
-9. [Scripts](#scripts)
-10. [Tests](#tests)
-11. [Troubleshooting](#troubleshooting)
-12. [Known gaps](#known-gaps)
-13. [Who did what](#who-did-what)
+5. [Repository layout](#repository-layout)
+6. [The data pipeline](#the-data-pipeline)
+7. [AI features](#ai-features)
+8. [Bilingual and RTL](#bilingual-and-rtl)
+9. [Real vs mocked](#what-is-real-and-what-is-mocked) — **read before demoing**
+10. [Scripts](#scripts)
+11. [Tests](#tests)
+12. [Troubleshooting](#troubleshooting)
+13. [Known gaps](#known-gaps)
+14. [Who did what](#who-did-what)
 
 ---
 
@@ -198,6 +199,34 @@ drifts. If you need a colour, add it there, not inline.
 
 ---
 
+## Repository layout
+
+```
+backend/            FastAPI app, Alembic migrations, tests
+  app/
+    routers/          10 routers, 33 endpoints
+    services/         itinerary packer, pricing, chat, vision
+    data/             generated dataset + seeded demo providers
+frontend/           React 18 + Vite + Tailwind
+  src/
+    pages/            22 screens (pages/guide/ is the provider side)
+    components/       phone shell, tab bars, cards, toasts
+    state/            trip, onboarding and guide-identity contexts
+    i18n/             en.json + ar.json, full parity
+data/                research inputs, the image gallery CSV, self-hosted images
+scripts/             the data pipeline and its validators
+docs/                the plans and the sourcing rules
+  tasks/              per-person task briefs
+design/              Claude Design artboards the app was built from
+```
+
+Reference material and build inputs are kept apart on purpose: nothing in
+`design/` or `docs/` is imported, bundled or served. `data/` is the exception —
+it holds both the research inputs and the images the API actually serves at
+`/images/...`.
+
+---
+
 ## The data pipeline
 
 `backend/app/data/landmarks.py` is **generated. Never edit it by hand.**
@@ -219,7 +248,7 @@ backend/app/data/landmarks.py
 
 Re-run those after anyone changes a research file.
 [data/README.md](data/README.md) has the field contract;
-[PLAN.md](PLAN.md) §4 has the sourcing and image-licensing rules.
+[PLAN.md](docs/PLAN.md) §4 has the sourcing and image-licensing rules.
 
 ### The rule that matters
 
@@ -394,7 +423,7 @@ Honest list. Everything here is known, not discovered later.
 - **9 places have fewer than three photos; 3 have none** (Abu Hutana, Khirbet
   el-Qirana, Rujm Tawil Ifjeij). Not an effort problem — the free-licensed
   photos do not exist, and the archives holding the right photographs (APAAME,
-  ACOR) are NC/ND. See **[Dam3a3.md](Dam3a3.md)**, which briefs the remaining
+  ACOR) are NC/ND. See **[Dam3a3.md](docs/tasks/Dam3a3.md)**, which briefs the remaining
   work and the two routes that do apply: ask the business, or shoot it.
   *Dam3a3.md counts 15 and 9 because it also covers the food and activity
   places in the bullet below, whose landmark records have not merged yet*
@@ -424,8 +453,8 @@ Honest list. Everything here is known, not discovered later.
 | **Dam3a** (Abdelrahman) | Phase 2 depth for the Petra landmarks · field photography · the photo and video pass ahead |
 | **Mahdi** | Phase 2 depth for the macro sites · Supabase |
 
-Task files: [tasks/](tasks/) for Phase 2, [ABD_TASKS.md](ABD_TASKS.md) and
-[Dam3a3.md](Dam3a3.md) for media.
+Task files: [tasks/](docs/tasks/) for Phase 2, [ABD_TASKS.md](docs/tasks/ABD_TASKS.md) and
+[Dam3a3.md](docs/tasks/Dam3a3.md) for media.
 
 ---
 

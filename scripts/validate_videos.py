@@ -5,11 +5,12 @@
     python scripts/validate_videos.py --check-urls # also fetch every URL
 
 There is deliberately no --commit. The `landmark_videos` table does not exist
-yet, and neither does the player that would show these — see Dam3a3.md §7.
+yet, and neither does the player that would show these — see
+docs/tasks/Dam3a3.md §7.
 This script exists so the research can be checked and reviewed in git while
 that plumbing is still outstanding, rather than piling up unverified.
 
-The licence rules are the same ones the image pass worked to (PLAN.md §4): a
+The licence rules are the same ones the image pass worked to (docs/PLAN.md §4): a
 real free licence read off the file page, a named author, and no NC or ND. A
 video nobody can prove the rights to is worse than no video.
 """
@@ -257,7 +258,8 @@ def main() -> int:
         print(f"FAILED — {len(errors)} error(s), {len(warnings)} warning(s)")
         return 1
     print(f"PASSED — 0 errors, {len(warnings)} warning(s)")
-    print("No --commit: the landmark_videos table does not exist yet (Dam3a3.md §7).")
+    print("No --commit: the landmark_videos table does not exist yet")
+    print("(docs/tasks/Dam3a3.md §7).")
     return 0
 
 

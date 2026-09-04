@@ -7,7 +7,7 @@
 
 Validation always runs first and nothing is written unless it passes. The rules
 are the same ones Phase 1 worked to: a real free licence read off the file page,
-a named photographer, and no NC or ND. See ABD_TASKS.md.
+a named photographer, and no NC or ND. See docs/tasks/ABD_TASKS.md.
 
 Upsert key is (landmark_id, position), so re-running replaces image 2 of a site
 rather than appending a fourth.
@@ -53,7 +53,7 @@ def landmark_ids() -> set[str]:
 def load_rows() -> list[dict[str, str]]:
     if not CSV_PATH.exists():
         raise SystemExit(
-            f"{CSV_PATH.relative_to(REPO)} does not exist yet — see ABD_TASKS.md"
+            f"{CSV_PATH.relative_to(REPO)} does not exist yet — see docs/tasks/ABD_TASKS.md"
         )
     with CSV_PATH.open(newline="", encoding="utf-8") as fh:
         reader = csv.DictReader(fh)
@@ -96,7 +96,7 @@ def validate(rows: list[dict[str, str]], known: set[str]) -> tuple[list[str], li
         if lid and lid not in known:
             errors.append(
                 f"{where}: landmark_id {lid!r} is not a real landmark — check the "
-                "table in ABD_TASKS.md, ids are case-sensitive"
+                "table in docs/tasks/ABD_TASKS.md, ids are case-sensitive"
             )
 
         raw_position = (row.get("position") or "").strip()

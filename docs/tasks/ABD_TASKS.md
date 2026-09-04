@@ -8,7 +8,7 @@ gallery, gives the camera guide more than one reference view per monument, and
 means a site is not represented by a single bad angle.
 
 Everything here follows the same licensing rules as Phase 1 — those are in
-[PLAN.md](PLAN.md) §4 and they have not changed. The short version is in §3
+[PLAN.md](../PLAN.md) §4 and they have not changed. The short version is in §3
 below.
 
 ---
@@ -41,7 +41,7 @@ backend/.venv/bin/python scripts/load_images.py --commit
 ```
 
 Step 3 needs `backend/.venv` set up and `backend/.env` filled in — see the
-[README](README.md). Steps 1 and 2 run on plain `python3` with no database.
+[README](../../README.md). Steps 1 and 2 run on plain `python3` with no database.
 
 Nothing is written unless validation passes. The upsert key is
 `(landmark_id, position)`, so re-running replaces image 2 of a site rather than

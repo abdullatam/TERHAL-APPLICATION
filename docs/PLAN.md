@@ -1,7 +1,7 @@
 # Phase 1 — Data Extraction
 
 **The only goal of this phase:** turn the verified places in
-[data/master_list.json](data/master_list.json) into one complete, licence-clean,
+[data/master_list.json](../data/master_list.json) into one complete, licence-clean,
 bilingual data file that can be seeded into a database without a human touching it
 again.
 
@@ -98,7 +98,7 @@ you change anything.
 
 ### 2.3 What actually reaches the database
 
-The `landmarks` table ([backend/app/db_models.py](backend/app/db_models.py)) has exactly
+The `landmarks` table ([backend/app/db_models.py](../backend/app/db_models.py)) has exactly
 nine columns: `id`, `name_en`, `name_ar`, `description_en`, `description_ar`,
 `avg_visit_minutes`, `accessibility_notes`, `image_url`, `image_attribution`.
 
@@ -156,7 +156,7 @@ unlicensed photo in a hackathon demo is a real problem, and "we found it on Goog
 is not a licence.
 
 **Preferred source: Wikimedia Commons.** Use the direct-file URL form, matching the
-pattern already in [backend/app/data/landmarks.py](backend/app/data/landmarks.py):
+pattern already in [backend/app/data/landmarks.py](../backend/app/data/landmarks.py):
 
 ```
 https://commons.wikimedia.org/wiki/Special:FilePath/<EXACT_FILENAME>.jpg
@@ -246,7 +246,7 @@ Wikipedia article (`Ayn al-Habis`) about a different castle in the Yarmouk gorge
 Parenthetical dropped from `name_en`.
 
 **Q4 — the Painted Biclinium at Little Petra is missing.**
-It was in the original seed [backend/app/data/landmarks.py](backend/app/data/landmarks.py)
+It was in the original seed [backend/app/data/landmarks.py](../backend/app/data/landmarks.py)
 but is not among the 41. Add it as a landmark with `parent_site = LPET`, or record
 why it was dropped. It is a strong camera-guide subject — painted ceiling frescoes
 are visually distinctive.
@@ -384,8 +384,8 @@ recorded in `notes`.
 
 ## 11. How the data actually gets in — one open problem
 
-[backend/app/seed.py](backend/app/seed.py) reads `LANDMARKS` from
-[backend/app/data/landmarks.py](backend/app/data/landmarks.py) — a Python dict — and
+[backend/app/seed.py](../backend/app/seed.py) reads `LANDMARKS` from
+[backend/app/data/landmarks.py](../backend/app/data/landmarks.py) — a Python dict — and
 upserts it into Postgres. It does **not** read a CSV.
 
 So `data/merged.csv` is not yet connected to anything. Someone has to write the

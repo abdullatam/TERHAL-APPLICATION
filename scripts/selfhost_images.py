@@ -10,7 +10,8 @@ them with HTTP 429 — verified, not theoretical. A demo that renders broken
 images because someone else's CDN throttled us is not a risk worth carrying, so
 every image gets served from this repo instead.
 
-ATD04 did this for the 78 images sourced in the ABD_TASKS.md pass (e71cd8a).
+ATD04 did this for the 78 images sourced in the docs/tasks/ABD_TASKS.md pass
+(e71cd8a).
 This finishes the job for the Phase 1 hero images that were left pointing at
 Commons, using exactly the same conventions:
 
