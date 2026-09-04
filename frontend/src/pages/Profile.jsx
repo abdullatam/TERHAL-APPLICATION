@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 
 import { api } from "../api/client.js";
 import { HeaderAction, StatusBar } from "../components/Shell.jsx";
-import { Spinner } from "../components/ui.jsx";
+import { useToast } from "../components/Toast.jsx";
+import { PrimaryButton, SecondaryButton, Spinner } from "../components/ui.jsx";
 import { useLanguage } from "../i18n/LanguageContext.jsx";
+import { useOnboarding } from "../state/OnboardingContext.jsx";
 import { useTrip } from "../state/TripContext.jsx";
 
 /**
@@ -27,19 +29,29 @@ import { useTrip } from "../state/TripContext.jsx";
  * The "Local First supporter" badge is earned rather than decorative: it
  * appears once a verified advisor has actually been booked.
  *
- * Payment methods, notifications and sign-out are in the artboard but have
- * nothing behind them, so they are rendered inert and labelled — a row that
- * looks tappable and silently does nothing is worse than one that says why.
+ * Payment methods and notifications are in the artboard but have nothing
+ * behind them, so they are rendered inert and labelled — a row that looks
+ * tappable and silently does nothing is worse than one that says why.
+ *
+ * Sign out does have something behind it. With no account to log out of, the
+ * session *is* the device: the swipes, trip settings and itinerary held in
+ * localStorage, plus the onboarding flag. Signing out clears exactly those and
+ * returns to the splash, which then routes to onboarding as a first run would.
+ * Bookings and reviews were POSTed to the server and are not the client's to
+ * delete, so the sheet says so rather than implying a full wipe.
  */
 export default function Profile() {
   const navigate = useNavigate();
   const { t, language, toggleLanguage } = useLanguage();
-  const { approved } = useTrip();
+  const { approved, reset: resetTrip } = useTrip();
+  const { reset: resetOnboarding } = useOnboarding();
+  const { toast } = useToast();
 
   const [bookings, setBookings] = useState(null);
   const [passport, setPassport] = useState(null);
   const [reviews, setReviews] = useState(null);
   const [error, setError] = useState(null);
+  const [confirmingSignOut, setConfirmingSignOut] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -72,6 +84,15 @@ export default function Profile() {
   );
 
   const loading = bookings === null;
+
+  const signOut = () => {
+    resetTrip();
+    resetOnboarding();
+    setConfirmingSignOut(false);
+    toast({ title: t("profile.signOut.toast"), body: t("profile.signOut.toastBody") });
+    // replace, so Back cannot land on a Profile reading the cleared trip.
+    navigate("/", { replace: true });
+  };
 
   return (
     <div className="relative flex min-h-0 flex-1 flex-col">
@@ -249,16 +270,79 @@ export default function Profile() {
               <InertRow icon={<CardIcon />} label={t("profile.payment")} />
             </MenuGroup>
 
-            {/*
-              The artboard has a Sign out link. There is no session to end, so
-              it is shown disabled with the reason rather than as a button that
-              looks live and does nothing.
-            */}
-            <p className="pb-2 text-center font-sans text-[13.5px] font-medium text-ink-soft">
-              {t("profile.signOut")} · {t("profile.notInBuild")}
-            </p>
+            {/* The artboard's Sign out link — see the note at the top. */}
+            <div className="pb-2 text-center">
+              <button
+                onClick={() => setConfirmingSignOut(true)}
+                className="rounded-full px-4 py-1.5 font-sans text-[13.5px] font-medium text-terracotta active:bg-beige"
+              >
+                {t("profile.signOut")}
+              </button>
+            </div>
           </>
         ) : null}
+      </div>
+
+      {confirmingSignOut ? (
+        <SignOutSheet onConfirm={signOut} onCancel={() => setConfirmingSignOut(false)} />
+      ) : null}
+    </div>
+  );
+}
+
+/**
+ * Confirmation sheet, in the same idiom as the landmark sheet: scrim, rounded
+ * top, grabber. Destructive and unrecoverable — a swiped-together trip is real
+ * work — so it is a deliberate two-tap, and it names what goes and what stays.
+ */
+function SignOutSheet({ onConfirm, onCancel }) {
+  const { t } = useLanguage();
+
+  useEffect(() => {
+    const onKey = (e) => e.key === "Escape" && onCancel();
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onCancel]);
+
+  return (
+    <div className="absolute inset-0 z-40 flex flex-col justify-end">
+      <button
+        aria-label={t("common.close")}
+        onClick={onCancel}
+        className="absolute inset-0 bg-brown/50 backdrop-blur-[2px]"
+      />
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-label={t("profile.signOut.title")}
+        className="relative flex flex-col overflow-hidden rounded-t-[28px] bg-ivory"
+      >
+        <div className="flex shrink-0 justify-center pb-2 pt-3">
+          <span className="h-1 w-10 rounded-full bg-sandstone" />
+        </div>
+
+        <div className="space-y-4 px-5 pb-7">
+          <div className="space-y-2">
+            <h2 className="font-sans text-lg font-semibold text-brown">
+              {t("profile.signOut.title")}
+            </h2>
+            <p className="font-sans text-sm font-light leading-relaxed text-ink-body">
+              {t("profile.signOut.body")}
+            </p>
+            <p className="font-sans text-[13px] font-light leading-relaxed text-ink-muted">
+              {t("profile.signOut.keeps")}
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-2.5">
+            <PrimaryButton onClick={onConfirm}>
+              {t("profile.signOut.confirm")}
+            </PrimaryButton>
+            <SecondaryButton onClick={onCancel}>
+              {t("profile.signOut.cancel")}
+            </SecondaryButton>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -26,7 +26,9 @@ UNKNOWN_MARK = "UNKNOWN - flag for team review"
 
 def has_unknown(value) -> bool:
     return isinstance(value, str) and UNKNOWN_MARK in value
-CATEGORIES = {"landmark", "macro_site", "castle", "wadi"}
+# "food" was added for the eating-and-drinking stops the research phase never
+# covered — a sweet shop is a place a tourist goes, but it is not a landmark.
+CATEGORIES = {"landmark", "macro_site", "castle", "wadi", "food"}
 DIFFICULTIES = {"easy", "moderate", "difficult"}
 CONFIDENCE = {"verified", "needs_review"}
 ARABIC = re.compile(r"[؀-ۿݐ-ݿ]")
