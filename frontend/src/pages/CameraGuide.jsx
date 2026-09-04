@@ -11,9 +11,14 @@ import { goldenHour } from "../utils/sun.js";
 /**
  * Camera guide — screen 16.
  *
- * The app's only dark screen: a live-feeling viewfinder with the results
- * sheet lifting over it. Rebuilt from the export at `16 Camera Guide.dc.html`,
- * which replaced the earlier light-themed version of this screen.
+ * A live-feeling viewfinder with the results sheet lifting over it. Rebuilt
+ * from the export at `16 Camera Guide.dc.html`, which replaced the earlier
+ * light-themed version of this screen.
+ *
+ * The export puts the status bar and header on the same near-black ground as
+ * the viewfinder. They use the app's ivory chrome instead, so the top of the
+ * screen matches every other tab; the dark treatment stops at the viewfinder,
+ * which is the only part of the screen that is meant to read as a camera.
  *
  * What the model actually decides, rather than what the artboard hard-codes:
  * the name, the Arabic name, the subtitle, the narration, the framing tip and
@@ -177,19 +182,19 @@ export default function CameraGuide() {
   };
 
   return (
-    <div className="relative flex min-h-0 flex-1 flex-col bg-night">
-      <StatusBar tone="ivory" />
+    <div className="relative flex min-h-0 flex-1 flex-col bg-ivory">
+      <StatusBar />
 
       {/* ---- header ---- */}
       <header className="flex shrink-0 items-center gap-3 px-5 pb-3 pt-0.5">
         <button
           onClick={() => navigate(-1)}
           aria-label={t("common.back")}
-          className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-ivory/[.12] active:bg-ivory/25"
+          className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-beige active:bg-sandstone/40"
         >
           <svg
             viewBox="0 0 24 24"
-            className="h-[19px] w-[19px] text-ivory rtl:-scale-x-100"
+            className="h-[19px] w-[19px] text-brown rtl:-scale-x-100"
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
@@ -200,16 +205,16 @@ export default function CameraGuide() {
           </svg>
         </button>
         <div className="flex min-w-0 flex-1 flex-col gap-px">
-          <span className="truncate font-sans text-[17px] font-semibold text-ivory">
+          <span className="truncate font-sans text-[17px] font-semibold text-brown">
             {t("camera.title")}
           </span>
-          <span className="line-clamp-2 font-sans text-[11.5px] font-light leading-tight text-ivory/60">
+          <span className="line-clamp-2 font-sans text-[11.5px] font-light leading-tight text-ink-muted">
             {t("camera.subtitle")}
           </span>
         </div>
         <button
           onClick={switchLanguage}
-          className="shrink-0 rounded-xl bg-ivory/[.12] px-[13px] py-2 text-xs font-medium text-ivory active:bg-ivory/25"
+          className="shrink-0 rounded-xl bg-beige px-[13px] py-2 text-xs font-medium text-brown active:bg-sandstone/40"
         >
           <span dir={language === "ar" ? "ltr" : "rtl"} className={otherFont(language)}>
             {language === "ar" ? "EN" : "عربي"}
@@ -222,11 +227,11 @@ export default function CameraGuide() {
         <button
           onClick={() => notBuilt("camera.favourite")}
           aria-label={t("camera.favourite")}
-          className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-ivory/[.12] opacity-60 active:bg-ivory/25"
+          className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-beige opacity-60 active:bg-sandstone/40"
         >
           <svg
             viewBox="0 0 24 24"
-            className="h-[18px] w-[18px] text-ivory"
+            className="h-[18px] w-[18px] text-brown"
             fill="none"
             stroke="currentColor"
             strokeWidth="1.8"
