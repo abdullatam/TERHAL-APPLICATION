@@ -21,3 +21,17 @@ python scripts/validate_phase2.py <your file>
 
 `../TASKS.md` is the Phase 1 checklist and is kept as a record; these files
 supersede it.
+
+## Media sourcing
+
+Separate track, separate files — these are not Phase 2 data extraction.
+
+| File | Who | Job | Status |
+|---|---|---|---|
+| [../ABD_TASKS.md](../ABD_TASKS.md) | Abd | three photos per place | 38/53 places at 3/3 |
+| [../Dam3a3.md](../Dam3a3.md) | Dam3a (Abdelrahman) | the 15 remaining photo gaps, plus a short video for every place | not started |
+
+```bash
+python scripts/load_images.py       # photos: check, then --commit
+python scripts/validate_videos.py   # video: check only, see Dam3a3.md §7
+```
