@@ -1,5 +1,10 @@
 <div align="center">
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/terhal-logo-dark.webp">
+  <img src="docs/assets/terhal-logo-light.webp" alt="Terhal — the Treasury facade set inside a terracotta T" width="190">
+</picture>
+
 # Terhal · ترحال
 
 **Swipe the places you want. Get a day-by-day plan. Book a local guide at a price you can see up front.**
