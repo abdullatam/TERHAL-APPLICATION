@@ -78,3 +78,54 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/*
+ * Camera guide (screen 16). The sweep, the breathing match dot and the
+ * waveform bars are all in the export's <helmet> block; Tailwind has no
+ * equivalent, so they live here rather than as inline styles on the elements.
+ * All three are turned off by the reduced-motion block above.
+ */
+@keyframes terhal-sweep {
+  /*
+   * The export animates `translateY(0 -> 292px)`, the artboard's fixed bracket
+   * height. Animating `top` instead makes the sweep travel the brackets
+   * whatever height they end up — which they have to be, because a 292px
+   * bracket box does not fit the viewfinder once a real narration fills the
+   * sheet (the artboard clips three of its four corners for exactly this
+   * reason).
+   */
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes terhal-breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes terhal-wave {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}

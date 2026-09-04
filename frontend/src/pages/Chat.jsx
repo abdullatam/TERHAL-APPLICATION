@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import { api } from "../api/client.js";
 import { StatusBar, TopBar } from "../components/Shell.jsx";
@@ -14,7 +15,10 @@ const SUGGESTIONS = ["chat.s1", "chat.s2", "chat.s3"];
 export default function Chat() {
   const { t, language } = useLanguage();
   const [messages, setMessages] = useState([]);
-  const [draft, setDraft] = useState("");
+  // The camera guide sends you here with a question already typed, so the
+  // "Ask about this place" button lands on something rather than a blank box.
+  const { state } = useLocation();
+  const [draft, setDraft] = useState(state?.draft ?? "");
   const [pending, setPending] = useState(false);
   const endRef = useRef(null);
 

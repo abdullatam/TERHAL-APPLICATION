@@ -220,11 +220,31 @@ class BookingDetail(Booking):
     quote: Optional[Quote] = None
 
 
+class VisionMode(str, Enum):
+    """What the camera is being asked to do — the design's three-way switch."""
+
+    identify = "identify"
+    frame = "frame"
+    sign = "sign"
+
+
 class VisionIdentifyResult(BaseModel):
     landmark_id: Optional[str]
     landmark: str
     narration: str
     language: Language
+    mode: VisionMode = VisionMode.identify
+    # Whether the model actually recognised something in the knowledge base.
+    matched: bool = False
+    # 0-100. Real, from the model, and the reason the design can show a score.
+    confidence: Optional[int] = None
+    name_ar: Optional[str] = None
+    # "Nabataean tomb · 1st century BCE · Petra"
+    subtitle: Optional[str] = None
+    # The design's bottom-left chip: "Step back 4 m for the full facade".
+    framing_tip: Optional[str] = None
+    # Which landmark to add to a trip: a stop's parent is the bookable place.
+    add_to_trip_id: Optional[str] = None
 
 
 # ---------------------------------------------------------------------------

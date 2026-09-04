@@ -16,6 +16,9 @@ class Settings(BaseSettings):
     # so a teammate with only the Anthropic key still gets a working assistant.
     openai_api_key: str = ""
     openai_chat_model: str = "gpt-4o-mini"
+    # Vision needs a model that accepts images; 4o-mini does and is cheap
+    # enough to point a camera at things repeatedly during a demo.
+    openai_vision_model: str = "gpt-4o-mini"
     allowed_origins: str = "http://localhost:5173"
     database_url: str = ""
 
