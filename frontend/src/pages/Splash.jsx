@@ -8,22 +8,28 @@ import { useOnboarding } from "../state/OnboardingContext.jsx";
  * Splash — screen 01. The one place the brand gradient is allowed as a full
  * background (the other is the Passport progress fill).
  *
- * It holds for a beat and then leaves on its own: onboarding for a first run,
- * Explore for anyone who has already seen it.
+ * It holds for a beat and then leaves on its own, to whichever step this
+ * device still owes: the slides on a first run, the role question if the
+ * slides were seen or skipped without one being answered, and otherwise
+ * straight into the half of the app that was chosen.
  */
 const HOLD_MS = 1500;
 
 export default function Splash() {
   const navigate = useNavigate();
-  const { seen } = useOnboarding();
+  const { seen, role } = useOnboarding();
 
   useEffect(() => {
-    const timer = setTimeout(
-      () => navigate(seen ? "/explore" : "/welcome", { replace: true }),
-      HOLD_MS,
-    );
+    const next = !seen
+      ? "/welcome"
+      : !role
+        ? "/welcome/role"
+        : role === "guide"
+          ? "/guide"
+          : "/explore";
+    const timer = setTimeout(() => navigate(next, { replace: true }), HOLD_MS);
     return () => clearTimeout(timer);
-  }, [navigate, seen]);
+  }, [navigate, seen, role]);
 
   return (
     <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden bg-terhal-gradient">

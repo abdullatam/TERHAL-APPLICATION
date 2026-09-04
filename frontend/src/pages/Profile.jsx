@@ -44,7 +44,7 @@ export default function Profile() {
   const navigate = useNavigate();
   const { t, language, toggleLanguage } = useLanguage();
   const { approved, reset: resetTrip } = useTrip();
-  const { reset: resetOnboarding } = useOnboarding();
+  const { reset: resetOnboarding, chooseRole } = useOnboarding();
   const { toast } = useToast();
 
   const [bookings, setBookings] = useState(null);
@@ -268,6 +268,23 @@ export default function Profile() {
                 onClick={() => navigate("/chat")}
               />
               <InertRow icon={<CardIcon />} label={t("profile.payment")} />
+            </MenuGroup>
+
+            {/*
+              The other side of the door. Screen 00 promises you can switch
+              sides from your profile, so this is that promise: it moves the
+              remembered role, which is also what the splash reads, so the app
+              opens on the guide side next time too.
+            */}
+            <MenuGroup>
+              <MenuRow
+                icon={<RidgeIcon />}
+                label={t("role.switchToGuide")}
+                onClick={() => {
+                  chooseRole("guide");
+                  navigate("/guide");
+                }}
+              />
             </MenuGroup>
 
             {/* The artboard's Sign out link — see the note at the top. */}
@@ -501,6 +518,15 @@ function HelpIcon() {
     <svg {...ico}>
       <circle cx="12" cy="12" r="8.5" />
       <path d="M9.8 9.6a2.3 2.3 0 1 1 3.1 2.2c-.6.3-.9.8-.9 1.4v.4M12 16.6v.2" />
+    </svg>
+  );
+}
+/** The ridge line screen 00 uses for the guide side. */
+function RidgeIcon() {
+  return (
+    <svg {...ico}>
+      <path d="M3 13.5 6.5 10l3 2.5 3-2.5 3 2.5L21 10" />
+      <path d="M4.5 15.5c2 2.6 4.6 4 7.5 4s5.5-1.4 7.5-4" />
     </svg>
   );
 }

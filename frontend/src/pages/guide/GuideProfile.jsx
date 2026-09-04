@@ -15,6 +15,7 @@ import {
 } from "../../components/ui.jsx";
 import { useLanguage } from "../../i18n/LanguageContext.jsx";
 import { useGuide } from "../../state/GuideContext.jsx";
+import { useOnboarding } from "../../state/OnboardingContext.jsx";
 
 /**
  * G6 — Guide profile.
@@ -33,6 +34,7 @@ export default function GuideProfile() {
   const navigate = useNavigate();
   const { t, language, pick } = useLanguage();
   const { providerId, signOut } = useGuide();
+  const { chooseRole } = useOnboarding();
   const { toast } = useToast();
 
   const [provider, setProvider] = useState(null);
@@ -252,12 +254,24 @@ export default function GuideProfile() {
           <InertRow label={t("guide.prof.yearsGuiding")} />
         </div>
 
-        <button
-          onClick={signOut}
-          className="w-full pb-2 text-center font-sans text-[13.5px] font-semibold text-terracotta"
-        >
-          {t("guide.signOut")}
-        </button>
+        <div className="flex flex-col items-center gap-2.5 pb-2">
+          <button
+            onClick={signOut}
+            className="font-sans text-[13.5px] font-semibold text-terracotta"
+          >
+            {t("guide.signOut")}
+          </button>
+          {/* Screen 00's promise, from this side: back to the visitor app. */}
+          <button
+            onClick={() => {
+              chooseRole("traveller");
+              navigate("/explore");
+            }}
+            className="font-sans text-[13px] font-medium text-ink-muted"
+          >
+            {t("role.switchToTraveller")}
+          </button>
+        </div>
       </div>
     </Screen>
   );

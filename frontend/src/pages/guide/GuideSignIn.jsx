@@ -1,7 +1,10 @@
+import { useNavigate } from "react-router-dom";
+
 import { StatusBar } from "../../components/Shell.jsx";
 import { Avatar, Badge, EmptyState, Spinner } from "../../components/ui.jsx";
 import { useLanguage } from "../../i18n/LanguageContext.jsx";
 import { useGuide } from "../../state/GuideContext.jsx";
+import { useOnboarding } from "../../state/OnboardingContext.jsx";
 
 /**
  * The demo identity picker.
@@ -12,8 +15,10 @@ import { useGuide } from "../../state/GuideContext.jsx";
  * provider you want to act as, and says why.
  */
 export default function GuideSignIn() {
+  const navigate = useNavigate();
   const { t, pick, language } = useLanguage();
   const { roster, error, signIn } = useGuide();
+  const { chooseRole } = useOnboarding();
 
   return (
     <div className="relative flex min-h-0 flex-1 flex-col">
@@ -31,8 +36,22 @@ export default function GuideSignIn() {
         <p className="mt-1.5 font-sans text-[13px] font-light leading-relaxed text-ink-body">
           {t("guide.signIn.body")}
         </p>
-        <div className="mt-3">
+        <div className="mt-3 flex items-center justify-between gap-3">
           <Badge tone="outline">{t("guide.signIn.demoNote")}</Badge>
+          {/*
+            Screen 00 sends whoever picked the guide card here. Picking the
+            wrong card is easy, and every guide tab lands back on this screen,
+            so the way out is on it.
+          */}
+          <button
+            onClick={() => {
+              chooseRole("traveller");
+              navigate("/explore");
+            }}
+            className="shrink-0 font-sans text-[12.5px] font-medium text-terracotta active:opacity-60"
+          >
+            {t("role.switchToTraveller")}
+          </button>
         </div>
       </div>
 

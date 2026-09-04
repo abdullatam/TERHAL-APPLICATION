@@ -73,9 +73,11 @@ export default function Onboarding() {
   const step = STEPS.includes(Number(rawStep)) ? Number(rawStep) : 1;
   const isLast = step === STEPS.length;
 
+  // Both Skip and the last slide's Start hand over to screen 00: the role
+  // question decides which app you land in, so it is not skippable.
   const finish = () => {
     complete();
-    navigate("/explore", { replace: true });
+    navigate("/welcome/role", { replace: true });
   };
   const next = () => (isLast ? finish() : navigate(`/welcome/${step + 1}`));
 

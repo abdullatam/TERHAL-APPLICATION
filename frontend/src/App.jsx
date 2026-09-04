@@ -8,6 +8,7 @@ import BookingConfirmed from "./pages/BookingConfirmed.jsx";
 import Bookings from "./pages/Bookings.jsx";
 import CameraGuide from "./pages/CameraGuide.jsx";
 import Chat from "./pages/Chat.jsx";
+import ChooseRole from "./pages/ChooseRole.jsx";
 import Explore from "./pages/Explore.jsx";
 import Marketplace from "./pages/Marketplace.jsx";
 import Onboarding from "./pages/Onboarding.jsx";
@@ -26,9 +27,10 @@ import GuideToday from "./pages/guide/GuideToday.jsx";
 import { useGuide } from "./state/GuideContext.jsx";
 
 /**
- * Splash and onboarding are pre-app: they own the whole frame and draw their
- * own home indicator, so the tab bar is suppressed there. Splash is matched
- * exactly rather than by prefix, since its path is "/".
+ * Splash, the onboarding slides and the role question are pre-app: they own
+ * the whole frame and draw their own home indicator, so the tab bar is
+ * suppressed there. One prefix covers the slides and the role screen. Splash
+ * is matched exactly rather than by prefix, since its path is "/".
  */
 const CHROMELESS = ["/welcome"];
 
@@ -63,6 +65,8 @@ export default function App() {
     <PhoneFrame>
       <Routes>
         <Route path="/welcome" element={<Onboarding />} />
+        {/* Screen 00 — the last pre-app step, after the three slides. */}
+        <Route path="/welcome/role" element={<ChooseRole />} />
         <Route path="/welcome/:step" element={<Onboarding />} />
 
         {/* Screen 01 is the app entry, per the design route table. */}
