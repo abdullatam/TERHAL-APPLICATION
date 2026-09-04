@@ -11,6 +11,18 @@ Human research output for the Data Phase. Code-side seed data lives in
 - `merged.csv` — **generated**, not hand-maintained. `scripts/build_dataset.py`
   concatenates the three group files here every time it runs. Don't hand-edit it
   or hand-merge the groups — re-run the script instead (see Pipeline below).
+- `phase2/*.json` — Phase 2 depth (history, significance, narration, visiting
+  info), keyed by the same ids. A record for an id Phase 1 never had is treated
+  as a new place and joins the dataset on its own — that is the Job B path in
+  `build_dataset.py`.
+- `phase2/field_additions.json` — places added after the research phase closed,
+  from a team field visit rather than a scraping group. Same schema as the group
+  files; validate it the same way (`python scripts/validate_phase2.py`). Give
+  each one a `master_list.csv` row with a blank `group`, so the registry stays
+  complete without the row being treated as un-scraped Phase 1 work.
+- `landmark_images.csv` — the gallery worklist, three images per landmark, loaded
+  by `scripts/load_images.py`. Self-hosted files live in `images/<id>/<n>.<ext>`
+  and are stored in the `url` column as bare `/images/...` paths.
 
 ## Pipeline
 

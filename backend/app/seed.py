@@ -9,9 +9,10 @@ anything or disturbing itineraries and bookings made during a demo.
 from sqlalchemy.dialects.postgresql import insert
 
 from app.data.landmarks import LANDMARKS
+from app.data.mock_offerings import MOCK_OFFERINGS
 from app.data.mock_providers import MOCK_PROVIDERS
 from app.db import Base, SessionLocal, engine
-from app.db_models import LandmarkORM, ProviderORM
+from app.db_models import LandmarkORM, OfferingORM, ProviderORM
 
 LANDMARK_COLUMNS = [
     "id", "name_en", "name_ar", "description_en", "description_ar",
@@ -70,11 +71,33 @@ def seed() -> None:
             ],
         )
 
+        upsert(
+            session,
+            OfferingORM,
+            [
+                {
+                    "id": o["id"],
+                    "provider_id": o["provider_id"],
+                    "title_en": o["title_en"],
+                    "title_ar": o["title_ar"],
+                    "description_en": o.get("description_en"),
+                    "description_ar": o.get("description_ar"),
+                    "hours": o["hours"],
+                    "max_group": o["max_group"],
+                    "price_jod": o["price_jod"],
+                    "landmark_id": o.get("landmark_id"),
+                    "status": o["status"],
+                }
+                for o in MOCK_OFFERINGS
+            ],
+        )
+
         session.commit()
 
     deck = sum(1 for landmark in LANDMARKS.values() if not landmark.parent_id)
     print(
-        f"Seeded {len(LANDMARKS)} landmarks ({deck} top-level destinations) "
+        f"Seeded {len(LANDMARKS)} landmarks ({deck} top-level destinations), "
+        f"{len(MOCK_OFFERINGS)} offerings "
         f"and {len(MOCK_PROVIDERS)} providers."
     )
 

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    body { margin:0; background:#E7E2DA; font-family:Poppins, system-ui, sans-serif; -webkit-font-smoothing:antialiased; text-wrap:pretty; }
+    a { color:#B2543A; text-decoration:none; }
+    a:hover { color:#8E4230; }
+  </style>
+</helmet>
+<div data-screen-label="G3 Guide Calendar" style="position:relative;width:390px;height:844px;background:#FAF6F2;overflow:hidden;display:flex;flex-direction:column">
+  <div style="flex:none;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 26px 0 30px;font:600 14px Poppins,sans-serif;color:#3A2A21"><span>9:41</span><span style="display:flex;align-items:center;gap:6px"><svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"></rect><rect x="4.6" y="5" width="3" height="6" rx="1"></rect><rect x="9.2" y="2.5" width="3" height="8.5" rx="1"></rect><rect x="13.8" y="0" width="3" height="11" rx="1"></rect></svg><svg width="26" height="12" viewBox="0 0 26 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="currentColor" opacity=".45"></rect><rect x="2.5" y="2.5" width="15" height="7" rx="2" fill="currentColor"></rect><path d="M23.4 4.3v3.4a2.2 2.2 0 0 0 0-3.4Z" fill="currentColor" opacity=".45"></path></svg></span></div>
+
+  <div style="flex:none;padding:4px 22px 14px;display:flex;align-items:center;justify-content:space-between">
+    <span style="font:600 24px Poppins,sans-serif;color:#3A2A21">Calendar</span>
+    <div style="display:flex;align-items:center;gap:10px">
+      <div style="width:34px;height:34px;border-radius:11px;background:#F2E7DA;display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#3A2A21" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 6.5 8.5 12 14 17.5"></path></svg></div>
+      <span style="font:500 14.5px Poppins,sans-serif;color:#3A2A21">March 2026</span>
+      <div style="width:34px;height:34px;border-radius:11px;background:#F2E7DA;display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#3A2A21" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m10 6.5 5.5 5.5L10 17.5"></path></svg></div>
+    </div>
+  </div>
+
+  <div style="flex:none;padding:0 22px 16px">
+    <div style="background:#FAF6F2;border-radius:20px;box-shadow:0 0 0 1px #E7E2DA;padding:16px 14px;display:flex;flex-direction:column;gap:10px">
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px">
+        <span style="text-align:center;font:500 11px Poppins,sans-serif;color:#9A8B7E">S</span>
+        <span style="text-align:center;font:500 11px Poppins,sans-serif;color:#9A8B7E">M</span>
+        <span style="text-align:center;font:500 11px Poppins,sans-serif;color:#9A8B7E">T</span>
+        <span style="text-align:center;font:500 11px Poppins,sans-serif;color:#9A8B7E">W</span>
+        <span style="text-align:center;font:500 11px Poppins,sans-serif;color:#9A8B7E">T</span>
+        <span style="text-align:center;font:500 11px Poppins,sans-serif;color:#9A8B7E">F</span>
+        <span style="text-align:center;font:500 11px Poppins,sans-serif;color:#9A8B7E">S</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px">
+        <div style="height:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font:400 13px Poppins,sans-serif;color:#C4B7A8">8</div>
+        <div style="height:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font:400 13px Poppins,sans-serif;color:#C4B7A8">9</div>
+        <div style="height:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font:400 13px Poppins,sans-serif;color:#C4B7A8">10</div>
+        <div style="height:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font:400 13px Poppins,sans-serif;color:#C4B7A8">11</div>
+        <div style="height:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font:400 13px Poppins,sans-serif;color:#C4B7A8">12</div>
+        <div style="height:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font:400 13px Poppins,sans-serif;color:#C4B7A8">13</div>
+        <div style="height:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font:400 13px Poppins,sans-serif;color:#3A2A21">14<div style="width:5px;height:5px;border-radius:50%;background:#D9B28C"></div></div>
+        <div style="height:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font:400 13px Poppins,sans-serif;color:#3A2A21">15<div style="width:5px;height:5px;border-radius:50%;background:#D9B28C"></div></div>
+        <div style="height:40px;border-radius:12px;background:#B2543A;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font:600 13px Poppins,sans-serif;color:#FAF6F2">16<div style="width:5px;height:5px;border-radius:50%;background:#FAF6F2"></div></div>
+        <div style="height:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font:400 13px Poppins,sans-serif;color:#3A2A21">17<div style="width:5px;height:5px;border-radius:50%;background:#B2543A"></div></div>
+        <div style="height:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font:400 13px Poppins,sans-serif;color:#3A2A21">18<div style="width:5px;height:5px;border-radius:50%;background:#B2543A"></div></div>
+        <div style="height:40px;border-radius:12px;background:#F2E7DA;display:flex;align-items:center;justify-content:center;font:400 13px Poppins,sans-serif;color:#9A8B7E">19</div>
+        <div style="height:40px;border-radius:12px;background:#F2E7DA;display:flex;align-items:center;justify-content:center;font:400 13px Poppins,sans-serif;color:#9A8B7E">20</div>
+        <div style="height:40px;display:flex;align-items:center;justify-content:center;font:400 13px Poppins,sans-serif;color:#3A2A21">21</div>
+        <div style="height:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font:400 13px Poppins,sans-serif;color:#3A2A21">22<div style="width:5px;height:5px;border-radius:50%;background:#B2543A"></div></div>
+        <div style="height:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font:400 13px Poppins,sans-serif;color:#3A2A21">23<div style="width:5px;height:5px;border-radius:50%;background:#B2543A"></div></div>
+        <div style="height:40px;display:flex;align-items:center;justify-content:center;font:400 13px Poppins,sans-serif;color:#3A2A21">24</div>
+        <div style="height:40px;display:flex;align-items:center;justify-content:center;font:400 13px Poppins,sans-serif;color:#3A2A21">25</div>
+        <div style="height:40px;display:flex;align-items:center;justify-content:center;font:400 13px Poppins,sans-serif;color:#3A2A21">26</div>
+        <div style="height:40px;display:flex;align-items:center;justify-content:center;font:400 13px Poppins,sans-serif;color:#3A2A21">27</div>
+        <div style="height:40px;display:flex;align-items:center;justify-content:center;font:400 13px Poppins,sans-serif;color:#3A2A21">28</div>
+      </div>
+      <div style="display:flex;gap:16px;padding-top:4px">
+        <div style="display:flex;align-items:center;gap:6px"><div style="width:6px;height:6px;border-radius:50%;background:#B2543A"></div><span style="font:300 11.5px Poppins,sans-serif;color:#7A6959">Booked</span></div>
+        <div style="display:flex;align-items:center;gap:6px"><div style="width:6px;height:6px;border-radius:50%;background:#D9B28C"></div><span style="font:300 11.5px Poppins,sans-serif;color:#7A6959">Past trip</span></div>
+        <div style="display:flex;align-items:center;gap:6px"><div style="width:12px;height:8px;border-radius:3px;background:#F2E7DA"></div><span style="font:300 11.5px Poppins,sans-serif;color:#7A6959">Blocked</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:0 22px;display:flex;flex-direction:column;gap:12px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between"><span style="font:600 16px Poppins,sans-serif;color:#3A2A21">Saturday 16</span><span style="font:500 12.5px Poppins,sans-serif;color:#B2543A">Block this day</span></div>
+    <div style="display:flex;gap:13px;background:#FAF6F2;border-radius:16px;padding:14px;box-shadow:0 0 0 1px #E7E2DA">
+      <span style="width:52px;flex:none;font:600 14px Poppins,sans-serif;color:#B2543A">16:00</span>
+      <div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:500 14px Poppins,sans-serif;color:#3A2A21">Sunset ridge walk + supper</span><span style="font:300 12px Poppins,sans-serif;color:#7A6959">Layla Haddad · 2 people</span></div>
+    </div>
+    <div style="display:flex;gap:13px;background:#FAF6F2;border-radius:16px;padding:14px;box-shadow:0 0 0 1px #E7E2DA">
+      <span style="width:52px;flex:none;font:600 14px Poppins,sans-serif;color:#B2543A">20:30</span>
+      <div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:500 14px Poppins,sans-serif;color:#3A2A21">Stargazing at the camp</span><span style="font:300 12px Poppins,sans-serif;color:#7A6959">Marco Ferri · 4 people</span></div>
+    </div>
+    <div style="height:48px;border-radius:14px;border:1.5px dashed #D9B28C;display:flex;align-items:center;justify-content:center;gap:8px;color:#B2543A;font:500 13.5px Poppins,sans-serif"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5.5v13M5.5 12h13"></path></svg>Open a slot</div>
+  </div>
+
+  <dc-import name="GuideTabBar" active="calendar" hint-size="100%,78px"></dc-import>
+  <div style="flex:none;height:26px;background:#FAF6F2;display:flex;align-items:center;justify-content:center"><div style="width:134px;height:5px;border-radius:3px;background:#3A2A21;opacity:.28"></div></div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:390,&quot;height&quot;:844}}"></script>
+</body>
+</html>

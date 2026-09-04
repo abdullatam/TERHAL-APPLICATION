@@ -8,6 +8,7 @@ from app.config import settings
 from app.routers import (
     bookings,
     chat,
+    guide,
     itinerary,
     landmarks,
     marketplace,
@@ -42,6 +43,7 @@ app.include_router(chat.router)
 app.include_router(passport.router)
 app.include_router(marketplace.router)
 app.include_router(reviews.router)
+app.include_router(guide.router)
 
 
 @app.get("/health")

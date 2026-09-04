@@ -52,26 +52,67 @@ export default function BookingConfirmed() {
   return (
     <div className="relative flex min-h-0 flex-1 flex-col">
       <StatusBar />
-      <TopBar title={t("booking.confirmed")} />
+      <TopBar
+        title={t(
+          booking.status === "confirmed" ? "booking.confirmed" : "booking.requested",
+        )}
+      />
 
       <div className="min-h-0 flex-1 space-y-4 overflow-y-auto px-[22px] pb-4">
         <div className="flex flex-col items-center gap-3 py-3">
-          <div className="grid h-16 w-16 place-items-center rounded-full bg-terracotta">
-            <svg
-              viewBox="0 0 24 24"
-              className="h-8 w-8 text-ivory"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.4"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="m5 12.5 4.5 4.5L19 7.5" />
-            </svg>
+          <div
+            className={`grid h-16 w-16 place-items-center rounded-full ${
+              booking.status === "confirmed" ? "bg-terracotta" : "bg-beige"
+            }`}
+          >
+            {booking.status === "confirmed" ? (
+              <svg
+                viewBox="0 0 24 24"
+                className="h-8 w-8 text-ivory"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="m5 12.5 4.5 4.5L19 7.5" />
+              </svg>
+            ) : (
+              // Pending: an hourglass, not a tick. The trip is not booked yet.
+              <svg
+                viewBox="0 0 24 24"
+                className="h-8 w-8 text-terracotta"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <circle cx="12" cy="12" r="8.5" />
+                <path d="M12 7.4V12l3 1.8" />
+              </svg>
+            )}
           </div>
           <p className="text-center font-sans text-sm font-light text-ink-body">
-            {t("booking.with", { name: booking.provider?.name ?? "" })}
+            {booking.status === "confirmed"
+              ? t("booking.with", { name: booking.provider?.name ?? "" })
+              : t("booking.awaiting", { name: booking.provider?.name ?? "" })}
           </p>
+          {/*
+            A guide has 24 hours to answer (see backend/app/routers/guide.py).
+            Saying "confirmed" here while the request is still pending would be
+            the one dishonest screen in the app.
+          */}
+          {booking.status === "pending" ? (
+            <p className="max-w-[16rem] text-center font-sans text-xs font-light leading-relaxed text-ink-muted">
+              {t("booking.awaitingBody")}
+            </p>
+          ) : null}
+          {booking.status === "declined" || booking.status === "expired" ? (
+            <p className="max-w-[17rem] rounded-2xl bg-beige p-3 text-center font-sans text-xs font-light leading-relaxed text-ink-body">
+              {t("booking.declinedNote")}
+            </p>
+          ) : null}
         </div>
 
         {booking.provider ? (
@@ -95,7 +136,7 @@ export default function BookingConfirmed() {
             value={`${booking.hours}h · ${booking.group_size}`}
           />
           <Fact
-            label={t("booking.paid")}
+            label={t(booking.status === "confirmed" ? "booking.paid" : "price.total")}
             value={`${booking.price_jod.toFixed(2)} ${t("price.jod")}`}
           />
           <Fact label={t("booking.reference")} value={booking.id} mono />

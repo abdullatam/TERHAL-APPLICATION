@@ -1,5 +1,5 @@
 import uuid
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import select
@@ -19,6 +19,9 @@ from app.models import (
 from app.services.pricing_service import quote
 
 router = APIRouter(prefix="/bookings", tags=["bookings"])
+
+# Kept in step with app/routers/guide.py, which counts down against it.
+RESPOND_WITHIN = timedelta(hours=24)
 
 
 def _detail(db: Session, row: BookingORM) -> BookingDetail:
@@ -40,9 +43,12 @@ def create_booking(payload: BookingCreate, db: Session = Depends(get_db)) -> Boo
     provider = Provider.model_validate(provider_row, from_attributes=True)
     priced = quote(provider, hours=payload.hours, group_size=payload.group_size)
 
-    # No availability check and no payment capture: this is the mocked half of
-    # the flow. The price is stored with its mock flag so a demo booking can
-    # never be mistaken for a real one later.
+    # No payment capture: that half of the flow is mocked. The price is stored
+    # with its mock flag so a demo booking can never be mistaken for a real one.
+    #
+    # A booking now starts `pending`, not `confirmed`: the guide app gives the
+    # provider 24 hours to accept or decline it (see app/routers/guide.py). The
+    # tourist is told their request has been sent, not that it is booked.
     row = BookingORM(
         id=f"bk-{uuid.uuid4().hex[:6].upper()}",
         provider_id=payload.provider_id,
@@ -53,7 +59,9 @@ def create_booking(payload: BookingCreate, db: Session = Depends(get_db)) -> Boo
         group_size=payload.group_size,
         price_jod=priced.total_jod,
         price_is_mock=priced.is_mock,
-        status=BookingStatus.confirmed.value,
+        status=BookingStatus.pending.value,
+        offering_id=payload.offering_id,
+        responds_by=datetime.now(timezone.utc) + RESPOND_WITHIN,
     )
     db.add(row)
     db.commit()
@@ -82,6 +90,10 @@ def cancel_booking(booking_id: str, db: Session = Depends(get_db)) -> BookingORM
     row = db.get(BookingORM, booking_id)
     if row is None:
         raise HTTPException(status_code=404, detail="Booking not found")
+    if row.status in (BookingStatus.declined.value, BookingStatus.expired.value):
+        raise HTTPException(
+            status_code=409, detail=f"This booking was already {row.status}"
+        )
     row.status = BookingStatus.cancelled.value
     db.commit()
     db.refresh(row)

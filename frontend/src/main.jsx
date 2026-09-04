@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import { ToastProvider } from "./components/Toast.jsx";
 import { LanguageProvider } from "./i18n/LanguageContext.jsx";
+import { GuideProvider } from "./state/GuideContext.jsx";
 import { OnboardingProvider } from "./state/OnboardingContext.jsx";
 import { TripProvider } from "./state/TripContext.jsx";
 import "./index.css";
@@ -15,10 +16,13 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <LanguageProvider>
         <OnboardingProvider>
           <TripProvider>
+            {/* Which provider the guide side is acting as. */}
+            <GuideProvider>
             {/* Toasts sit inside the phone frame, so the provider wraps App. */}
             <ToastProvider>
               <App />
-            </ToastProvider>
+              </ToastProvider>
+            </GuideProvider>
           </TripProvider>
         </OnboardingProvider>
       </LanguageProvider>

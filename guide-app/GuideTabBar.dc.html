@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="flex:none;height:78px;background:#FAF6F2;border-top:1px solid #E7E2DA;display:grid;grid-template-columns:repeat(5,1fr);align-items:start;padding:11px 8px 0">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:5px;color:{{ cToday }}">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.4V12l3 1.8"></path></svg>
+    <span style="font:500 10px Poppins,sans-serif;letter-spacing:.03em">Today</span>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:5px;color:{{ cRequests }}">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7.5 12 13l8-5.5"></path><rect x="4" y="5.5" width="16" height="13" rx="2.6"></rect></svg>
+    <span style="font:500 10px Poppins,sans-serif;letter-spacing:.03em">Requests</span>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:5px;color:{{ cCalendar }}">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5.5" width="16" height="14" rx="2.8"></rect><path d="M4 10h16M8.5 3.6v3.8M15.5 3.6v3.8"></path></svg>
+    <span style="font:500 10px Poppins,sans-serif;letter-spacing:.03em">Calendar</span>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:5px;color:{{ cEarnings }}">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18V11M12 18V6.5M19 18v-4.5"></path></svg>
+    <span style="font:500 10px Poppins,sans-serif;letter-spacing:.03em">Earnings</span>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:5px;color:{{ cProfile }}">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.6" r="3.4"></circle><path d="M5.5 19.4c0-3.3 2.9-5.2 6.5-5.2s6.5 1.9 6.5 5.2"></path></svg>
+    <span style="font:500 10px Poppins,sans-serif;letter-spacing:.03em">Profile</span>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:390,&quot;height&quot;:78},&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;today&quot;,&quot;requests&quot;,&quot;calendar&quot;,&quot;earnings&quot;,&quot;profile&quot;,&quot;none&quot;],&quot;default&quot;:&quot;today&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const a = this.props.active || 'today';
+    const on = '#B2543A', off = '#9A8B7E';
+    return {
+      cToday: a === 'today' ? on : off,
+      cRequests: a === 'requests' ? on : off,
+      cCalendar: a === 'calendar' ? on : off,
+      cEarnings: a === 'earnings' ? on : off,
+      cProfile: a === 'profile' ? on : off,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

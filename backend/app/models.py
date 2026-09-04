@@ -19,8 +19,17 @@ class Language(str, Enum):
 
 
 class BookingStatus(str, Enum):
+    """A booking's life.
+
+    `pending` is where every booking now starts: the tourist has asked, the
+    guide has not answered. It was in this enum unused until the guide app
+    gave it a meaning.
+    """
+
     pending = "pending"
     confirmed = "confirmed"
+    declined = "declined"
+    expired = "expired"
     cancelled = "cancelled"
 
 
@@ -178,6 +187,9 @@ class ProviderWithDistance(Provider):
 class BookingCreate(BaseModel):
     provider_id: str
     itinerary_id: Optional[str] = None
+    # Set when the tourist booked a named offering rather than hours of a
+    # guide's time. Nullable so the existing hourly flow keeps working.
+    offering_id: Optional[str] = None
     date: date
     start_time: str = "09:00"
     hours: int = Field(ge=1, le=12, default=4)
@@ -190,6 +202,9 @@ class Booking(BaseModel):
     id: str
     provider_id: str
     itinerary_id: Optional[str] = None
+    offering_id: Optional[str] = None
+    # When the guide's window to answer closes. Null once answered.
+    responds_by: Optional[datetime] = None
     date: date
     start_time: str
     hours: int
@@ -309,3 +324,111 @@ class ReviewWithContext(Review):
     provider_name: Optional[str] = None
     provider_role: Optional[str] = None
     booking_date: Optional[date] = None
+
+
+# ---------------------------------------------------------------------------
+# Guide app (the provider-facing half)
+# ---------------------------------------------------------------------------
+class OfferingStatus(str, Enum):
+    live = "live"
+    paused = "paused"
+    draft = "draft"
+
+
+class OfferingBase(BaseModel):
+    title_en: str
+    title_ar: str
+    description_en: Optional[str] = None
+    description_ar: Optional[str] = None
+    hours: int = Field(ge=1, le=24)
+    max_group: int = Field(ge=1, le=60)
+    price_jod: float = Field(ge=0)
+    landmark_id: Optional[str] = None
+    status: OfferingStatus = OfferingStatus.draft
+
+
+class OfferingCreate(OfferingBase):
+    pass
+
+
+class OfferingUpdate(BaseModel):
+    """Every field optional — this is a PATCH."""
+
+    title_en: Optional[str] = None
+    title_ar: Optional[str] = None
+    description_en: Optional[str] = None
+    description_ar: Optional[str] = None
+    hours: Optional[int] = Field(default=None, ge=1, le=24)
+    max_group: Optional[int] = Field(default=None, ge=1, le=60)
+    price_jod: Optional[float] = Field(default=None, ge=0)
+    landmark_id: Optional[str] = None
+    status: Optional[OfferingStatus] = None
+
+
+class Offering(OfferingBase):
+    model_config = {"from_attributes": True}
+
+    id: str
+    provider_id: str
+    created_at: datetime
+    # Derived, not stored: how many bookings this offering has taken.
+    trips: int = 0
+    # The place it runs at, resolved for display.
+    landmark_name_en: Optional[str] = None
+    landmark_name_ar: Optional[str] = None
+
+
+class AvailabilityBlockCreate(BaseModel):
+    date: date
+    # Omit both for a whole-day block, which is what "Block this day" sends.
+    start_time: Optional[str] = None
+    end_time: Optional[str] = None
+    reason: Optional[str] = None
+
+
+class AvailabilityBlock(AvailabilityBlockCreate):
+    model_config = {"from_attributes": True}
+
+    id: str
+    provider_id: str
+
+
+class GuideBooking(BookingDetail):
+    """A booking as the guide sees it: the tourist's side plus the offering."""
+
+    offering_id: Optional[str] = None
+    offering_title_en: Optional[str] = None
+    offering_title_ar: Optional[str] = None
+    # Hours left to answer, for the Requests countdown. None once answered.
+    expires_in_hours: Optional[int] = None
+
+
+class GuideToday(BaseModel):
+    """G1's dashboard numbers, all derived from real bookings."""
+
+    provider_id: str
+    provider_name: str
+    accepting: bool
+    trips_today: int
+    earnings_today_jod: float
+    pending_count: int
+    # Hours until the soonest pending request expires, if there is one.
+    soonest_expiry_hours: Optional[int] = None
+    schedule: list[GuideBooking] = []
+
+
+class GuideEarnings(BaseModel):
+    """G4. Every figure here is demo pricing, like every price in the app."""
+
+    available_jod: float
+    pending_jod: float
+    this_month_jod: float
+    next_payout: Optional[date] = None
+    months: list["EarningsMonth"] = []
+    recent: list[GuideBooking] = []
+    is_mock: bool = True
+
+
+class EarningsMonth(BaseModel):
+    label: str
+    total_jod: float

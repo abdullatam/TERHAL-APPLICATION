@@ -173,7 +173,16 @@ class BookingORM(Base):
     # Every stored price is flagged, so a real price can never be confused with
     # a demo one once the pricing formula lands.
     price_is_mock: Mapped[bool] = mapped_column(Boolean, default=True, server_default="true")
-    status: Mapped[str] = mapped_column(String, default="confirmed")
+    status: Mapped[str] = mapped_column(String, default="pending")
+    # Which offering was booked, when the tourist picked one. Nullable because
+    # bookings predate offerings and a guide can still be booked by the hour.
+    offering_id: Mapped[str | None] = mapped_column(
+        ForeignKey("offerings.id", ondelete="SET NULL"), nullable=True
+    )
+    # The guide has until this moment to accept or decline. Set on creation.
+    responds_by: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now()
     )
@@ -198,6 +207,64 @@ class ReviewORM(Base):
     stars: Mapped[int] = mapped_column(Integer)
     tags: Mapped[list[str]] = mapped_column(ARRAY(String), default=list)
     comment: Mapped[str | None] = mapped_column(Text, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+
+
+class OfferingORM(Base):
+    """A named experience a guide sells — "Sunset ridge walk + supper".
+
+    New for the guide app. The tourist app priced a booking as
+    hourly_rate_jod x hours with no concept of a named product, but four of the
+    six guide screens display offerings by name, so this is what they display.
+    """
+
+    __tablename__ = "offerings"
+
+    id: Mapped[str] = mapped_column(String, primary_key=True)
+    provider_id: Mapped[str] = mapped_column(
+        ForeignKey("providers.id", ondelete="CASCADE"), index=True
+    )
+    title_en: Mapped[str] = mapped_column(String)
+    title_ar: Mapped[str] = mapped_column(String)
+    description_en: Mapped[str | None] = mapped_column(Text, nullable=True)
+    description_ar: Mapped[str | None] = mapped_column(Text, nullable=True)
+    hours: Mapped[int] = mapped_column(Integer)
+    max_group: Mapped[int] = mapped_column(Integer)
+    price_jod: Mapped[float] = mapped_column(Float)
+    # Where it runs. Nullable: some offerings are not tied to one place.
+    landmark_id: Mapped[str | None] = mapped_column(
+        ForeignKey("landmarks.id", ondelete="SET NULL"), nullable=True
+    )
+    status: Mapped[str] = mapped_column(String, default="draft")
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+
+
+class AvailabilityBlockORM(Base):
+    """A date, or a slice of one, the guide has marked unavailable.
+
+    A whole-day block leaves start_time and end_time null — that is what G3's
+    "Block this day" writes. A partial block carries both.
+    """
+
+    __tablename__ = "availability_blocks"
+    __table_args__ = (
+        UniqueConstraint(
+            "provider_id", "date", "start_time", name="uq_availability_slot"
+        ),
+    )
+
+    id: Mapped[str] = mapped_column(String, primary_key=True)
+    provider_id: Mapped[str] = mapped_column(
+        ForeignKey("providers.id", ondelete="CASCADE"), index=True
+    )
+    date: Mapped[date] = mapped_column(Date, index=True)
+    start_time: Mapped[str | None] = mapped_column(String, nullable=True)
+    end_time: Mapped[str | None] = mapped_column(String, nullable=True)
+    reason: Mapped[str | None] = mapped_column(Text, nullable=True)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now()
     )
