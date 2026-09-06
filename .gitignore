@@ -16,3 +16,6 @@ dist/
 
 # Editor workspace file
 *.code-workspace
+
+# API response cache for scripts/find_images.py
+.cache/
