@@ -327,3 +327,34 @@ export function SectionLabel({ children }) {
     </h3>
   );
 }
+
+/**
+ * The tourist's meeting-point PIN.
+ *
+ * This is the handshake that proves the two people actually met: the tourist
+ * holds the number, the guide has to be told it face to face before the meter
+ * starts. It is deliberately the loudest thing on a confirmed booking, because
+ * it is the one piece of the screen the tourist needs while standing in front
+ * of somebody.
+ */
+export function TripPin({ pin }) {
+  const { t } = useLanguage();
+  if (!pin) return null;
+  return (
+    <div className="rounded-2xl bg-brown p-4 text-center">
+      <p className="font-sans text-[11px] font-light uppercase tracking-wide text-beige">
+        {t("trip.pin.title")}
+      </p>
+      <p className="mt-1.5 font-mono text-[34px] font-semibold leading-none tracking-[0.35em] text-ivory">
+        {pin}
+      </p>
+      <p className="mx-auto mt-2.5 max-w-[15rem] font-sans text-[11px] font-light leading-snug text-beige">
+        {t("trip.pin.body")}
+      </p>
+      {/* Say it is a stub rather than let a judge assume it is real security. */}
+      <p className="mt-1.5 font-sans text-[10px] font-light text-beige/70">
+        {t("trip.pin.demo")}
+      </p>
+    </div>
+  );
+}

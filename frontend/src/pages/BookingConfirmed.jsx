@@ -7,6 +7,7 @@ import {
   Avatar,
   EmptyState,
   PriceBreakdown,
+  TripPin,
   PrimaryButton,
   SecondaryButton,
   SectionLabel,
@@ -129,6 +130,10 @@ export default function BookingConfirmed() {
           </div>
         ) : null}
 
+        {booking.status === "confirmed" || booking.status === "in_progress" ? (
+          <TripPin pin={booking.pin} />
+        ) : null}
+
         <div className="divide-y divide-gray rounded-2xl bg-ivory shadow-hairline">
           <Fact label={t("booking.when")} value={`${booking.date} · ${booking.start_time}`} />
           <Fact
@@ -136,15 +141,20 @@ export default function BookingConfirmed() {
             value={`${booking.hours}h · ${booking.group_size}`}
           />
           <Fact
-            label={t(booking.status === "confirmed" ? "booking.paid" : "price.total")}
-            value={`${booking.price_jod.toFixed(2)} ${t("price.jod")}`}
+            label={t(booking.final_price_jod != null ? "price.final" : "price.estimate")}
+            value={`${(booking.final_price_jod ?? booking.price_jod).toFixed(2)} ${t("price.jod")}`}
           />
           <Fact label={t("booking.reference")} value={booking.id} mono />
         </div>
 
         <div className="rounded-2xl bg-ivory p-4 shadow-hairline">
           <SectionLabel>{t("price.breakdown")}</SectionLabel>
-          <PriceBreakdown quote={booking.quote} />
+          <PriceBreakdown quote={booking.final_quote ?? booking.quote} />
+          {booking.final_quote ? (
+            <p className="mt-2 font-sans text-[11px] font-light leading-snug text-ink-soft">
+              {t("price.settledNote")}
+            </p>
+          ) : null}
         </div>
 
         <p className="rounded-2xl bg-beige p-3 text-center font-sans text-xs font-light leading-relaxed text-ink-body">

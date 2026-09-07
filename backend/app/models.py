@@ -31,6 +31,10 @@ class BookingStatus(str, Enum):
     declined = "declined"
     expired = "expired"
     cancelled = "cancelled"
+    # The guide entered the tourist's PIN at the meeting point and the clock
+    # is running; then the guide ended it and the real price was settled.
+    in_progress = "in_progress"
+    completed = "completed"
 
 
 class LandmarkImage(BaseModel):
@@ -176,6 +180,13 @@ class Quote(BaseModel):
     hours: int
     group_size: int
     breakdown: list[PriceLine]
+    hourly_rate_jod: Optional[float] = None
+    # True while this is what the trip is expected to cost; False once it is
+    # what the trip did cost. The UI must not present the two the same way.
+    is_estimate: bool = True
+    # Real minutes between the guide starting and ending the trip, on a
+    # settled price only.
+    elapsed_minutes: Optional[int] = None
     is_mock: bool = True
 
 
@@ -209,15 +220,34 @@ class Booking(BaseModel):
     start_time: str
     hours: int
     group_size: int
+    # The estimate agreed at booking. The final figure is final_price_jod.
     price_jod: float
     price_is_mock: bool = True
     status: BookingStatus = BookingStatus.confirmed
     created_at: datetime
 
+    # The trip itself, once it runs.
+    started_at: Optional[datetime] = None
+    ended_at: Optional[datetime] = None
+    final_price_jod: Optional[float] = None
+
 
 class BookingDetail(Booking):
     provider: Optional[Provider] = None
+    # What it is expected to cost, from the planned timeline.
     quote: Optional[Quote] = None
+    # What it did cost, present only once the trip has ended.
+    final_quote: Optional[Quote] = None
+    # The tourist's meeting-point PIN. Only ever sent to the tourist's own
+    # views — the guide is asked to type it, never shown it.
+    pin: Optional[str] = None
+    elapsed_minutes: Optional[int] = None
+
+
+class TripStartRequest(BaseModel):
+    """The guide types the four digits the tourist is holding."""
+
+    pin: str = Field(min_length=1, max_length=12)
 
 
 class VisionMode(str, Enum):

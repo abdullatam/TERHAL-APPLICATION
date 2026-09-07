@@ -23,7 +23,7 @@ MOCK_PROVIDERS: list[Provider] = [
         verified=True,
         welfare_compliant=True,
         accessibility_tags=["wheelchair-friendly-briefing"],
-        lat=30.3221, lon=35.4520, hourly_rate_jod=14.0,
+        lat=30.3221, lon=35.4520, hourly_rate_jod=25.0,
         bio_en="Bdoul family guide, born in the caves above the Treasury. Fifteen "
                "years walking the Siq, and happiest explaining Nabataean water "
                "engineering to anyone who will stand still long enough.",
@@ -40,7 +40,7 @@ MOCK_PROVIDERS: list[Provider] = [
         verified=True,
         welfare_compliant=False,
         accessibility_tags=[],
-        lat=30.5310, lon=35.5605, hourly_rate_jod=12.0,
+        lat=30.5310, lon=35.5605, hourly_rate_jod=25.0,
         bio_en="Archaeology graduate specialising in the Crusader and Ottoman "
                "layers at Shobak. Runs the castle's rock-cut spring staircase "
                "tour when the light is right.",
@@ -105,7 +105,7 @@ MOCK_PROVIDERS: list[Provider] = [
         verified=True,
         welfare_compliant=False,
         accessibility_tags=[],
-        lat=30.3350, lon=35.4400, hourly_rate_jod=13.0,
+        lat=30.3350, lon=35.4400, hourly_rate_jod=25.0,
         bio_en="High-route specialist: the Monastery stairs, the High Place of "
                "Sacrifice, and the long walk out to Jebel Harun. Sets a slow pace "
                "and carries extra water.",
@@ -122,7 +122,7 @@ MOCK_PROVIDERS: list[Provider] = [
         verified=True,
         welfare_compliant=False,
         accessibility_tags=["step-free-route-knowledge"],
-        lat=30.3300, lon=35.4440, hourly_rate_jod=15.0,
+        lat=30.3300, lon=35.4440, hourly_rate_jod=25.0,
         bio_en="Byzantine and late-antique Petra — the church mosaics, the Great "
                "Temple excavations, and what the burnt papyri say about the city "
                "in the 6th century.",
@@ -155,7 +155,7 @@ MOCK_PROVIDERS: list[Provider] = [
         verified=True,
         welfare_compliant=False,
         accessibility_tags=[],
-        lat=30.3755, lon=35.4515, hourly_rate_jod=12.0,
+        lat=30.3755, lon=35.4515, hourly_rate_jod=25.0,
         bio_en="Neolithic sites specialist — Beidha, Ba'ja and Basta. Explains why "
                "a 9,000-year-old village floor plan is worth the climb.",
         bio_ar="متخصصة بمواقع العصر الحجري الحديث: البيضا وبعجة وبسطة، وتشرح لماذا "
@@ -203,7 +203,7 @@ MOCK_PROVIDERS: list[Provider] = [
         verified=True,
         welfare_compliant=False,
         accessibility_tags=[],
-        lat=30.3236, lon=35.4610, hourly_rate_jod=14.0,
+        lat=30.3236, lon=35.4610, hourly_rate_jod=25.0,
         bio_en="Wadi routes — Muthlim, Farasa and the long day out to Sabra. "
                "Licensed for the flood-risk canyons that need a guide by law.",
         bio_ar="مسارات الوديان: المذلم وفراسة واليوم الطويل إلى سبرة. مرخّص "

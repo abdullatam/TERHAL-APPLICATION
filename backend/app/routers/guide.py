@@ -41,8 +41,10 @@ from app.models import (
     OfferingStatus,
     OfferingUpdate,
     Provider,
+    TripStartRequest,
 )
-from app.services.pricing_service import quote
+from app.routers.bookings import elapsed_minutes
+from app.services.pricing_service import quote, settle
 
 router = APIRouter(prefix="/guide", tags=["guide"])
 
@@ -74,6 +76,17 @@ def _guide_booking(db: Session, row: BookingORM, provider: ProviderORM) -> Guide
     item.provider = Provider.model_validate(provider, from_attributes=True)
     item.quote = quote(item.provider, hours=row.hours, group_size=row.group_size)
     item.expires_in_hours = _expires_in_hours(row)
+
+    # The guide must never receive the PIN. The whole handshake is that the
+    # tourist holds it and the guide has to be told it in person; sending it
+    # here would let the guide start a trip they never turned up to.
+    item.pin = None
+
+    item.elapsed_minutes = elapsed_minutes(row)
+    if row.started_at is not None:
+        item.final_quote = settle(
+            item.provider, item.elapsed_minutes or 0, group_size=row.group_size
+        )
     if row.offering_id:
         offering = db.get(OfferingORM, row.offering_id)
         if offering is not None:
@@ -108,8 +121,18 @@ def today(provider_id: str, db: Session = Depends(get_db)) -> GuideToday:
     provider = _provider(db, provider_id)
     at = date.today()
 
+    # A trip leaves `confirmed` the moment the guide starts it, so the running
+    # and finished ones have to be listed too or today's work disappears from
+    # the screen precisely when it is happening.
     confirmed_today = _bookings_for(
-        db, provider_id, statuses=[BookingStatus.confirmed.value], on=at
+        db,
+        provider_id,
+        statuses=[
+            BookingStatus.confirmed.value,
+            BookingStatus.in_progress.value,
+            BookingStatus.completed.value,
+        ],
+        on=at,
     )
     pending = _bookings_for(db, provider_id, statuses=[BookingStatus.pending.value])
 
@@ -132,8 +155,13 @@ def today(provider_id: str, db: Session = Depends(get_db)) -> GuideToday:
         provider_name=provider.name,
         accepting=not blocked_today,
         trips_today=len(schedule),
-        # Demo pricing, like every figure in this app.
-        earnings_today_jod=round(sum(b.price_jod for b in confirmed_today), 2),
+        # Settled where a trip has finished, estimated where it has not — so
+        # the day's total stops being a guess as the day goes on.
+        earnings_today_jod=round(
+            sum(b.final_price_jod if b.final_price_jod is not None else b.price_jod
+                for b in confirmed_today),
+            2,
+        ),
         pending_count=len(pending),
         soonest_expiry_hours=min(expiries) if expiries else None,
         schedule=schedule,
@@ -187,6 +215,67 @@ def decline(provider_id: str, booking_id: str, db: Session = Depends(get_db)) ->
             status_code=409, detail=f"This request is already {row.status}"
         )
     row.status = BookingStatus.declined.value
+    db.commit()
+    db.refresh(row)
+    return _guide_booking(db, row, provider)
+
+
+# ---------------------------------------------------------------------------
+# Running a trip — the meeting-point handshake and the meter
+#
+# The tourist's app shows a PIN. The guide types it in front of them, which is
+# what proves the two actually met, and that starts the clock. Ending the trip
+# settles the real price from measured time, so a trip that runs short costs
+# less than its estimate.
+# ---------------------------------------------------------------------------
+@router.post("/{provider_id}/trips/{booking_id}/start", response_model=GuideBooking)
+def start_trip(
+    provider_id: str,
+    booking_id: str,
+    payload: TripStartRequest,
+    db: Session = Depends(get_db),
+) -> GuideBooking:
+    provider = _provider(db, provider_id)
+    row = db.get(BookingORM, booking_id)
+    if row is None or row.provider_id != provider_id:
+        raise HTTPException(status_code=404, detail="Booking not found")
+    if row.status == BookingStatus.in_progress.value:
+        raise HTTPException(status_code=409, detail="This trip has already started")
+    if row.status != BookingStatus.confirmed.value:
+        raise HTTPException(
+            status_code=409,
+            detail=f"A {row.status} booking cannot be started",
+        )
+    if not row.pin or payload.pin.strip() != row.pin:
+        # Deliberately says nothing about the real code.
+        raise HTTPException(status_code=403, detail="That PIN does not match")
+
+    row.status = BookingStatus.in_progress.value
+    row.started_at = datetime.now(timezone.utc)
+    db.commit()
+    db.refresh(row)
+    return _guide_booking(db, row, provider)
+
+
+@router.post("/{provider_id}/trips/{booking_id}/end", response_model=GuideBooking)
+def end_trip(
+    provider_id: str, booking_id: str, db: Session = Depends(get_db)
+) -> GuideBooking:
+    provider = _provider(db, provider_id)
+    row = db.get(BookingORM, booking_id)
+    if row is None or row.provider_id != provider_id:
+        raise HTTPException(status_code=404, detail="Booking not found")
+    if row.status != BookingStatus.in_progress.value:
+        raise HTTPException(status_code=409, detail="This trip is not running")
+
+    row.ended_at = datetime.now(timezone.utc)
+    row.status = BookingStatus.completed.value
+    minutes = max(0, int((row.ended_at - row.started_at).total_seconds() // 60))
+    row.final_price_jod = settle(
+        Provider.model_validate(provider, from_attributes=True),
+        minutes,
+        group_size=row.group_size,
+    ).total_jod
     db.commit()
     db.refresh(row)
     return _guide_booking(db, row, provider)

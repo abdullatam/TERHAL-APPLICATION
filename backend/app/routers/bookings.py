@@ -16,12 +16,21 @@ from app.models import (
     Review,
     ReviewCreate,
 )
-from app.services.pricing_service import quote
+from app.config import settings
+from app.services.pricing_service import quote, settle
 
 router = APIRouter(prefix="/bookings", tags=["bookings"])
 
 # Kept in step with app/routers/guide.py, which counts down against it.
 RESPOND_WITHIN = timedelta(hours=24)
+
+
+def elapsed_minutes(row: BookingORM) -> int | None:
+    """How long the trip has run, or ran. Live while it is in progress."""
+    if row.started_at is None:
+        return None
+    end = row.ended_at or datetime.now(timezone.utc)
+    return max(0, int((end - row.started_at).total_seconds() // 60))
 
 
 def _detail(db: Session, row: BookingORM) -> BookingDetail:
@@ -30,7 +39,14 @@ def _detail(db: Session, row: BookingORM) -> BookingDetail:
     if provider_row is not None:
         provider = Provider.model_validate(provider_row, from_attributes=True)
         detail.provider = provider
+        # The estimate the trip was booked at, always shown.
         detail.quote = quote(provider, hours=row.hours, group_size=row.group_size)
+        # The settled price, once there is one to show.
+        detail.elapsed_minutes = elapsed_minutes(row)
+        if row.started_at is not None:
+            detail.final_quote = settle(
+                provider, detail.elapsed_minutes or 0, group_size=row.group_size
+            )
     return detail
 
 
@@ -62,6 +78,9 @@ def create_booking(payload: BookingCreate, db: Session = Depends(get_db)) -> Boo
         status=BookingStatus.pending.value,
         offering_id=payload.offering_id,
         responds_by=datetime.now(timezone.utc) + RESPOND_WITHIN,
+        # Same four digits for every booking while this is a demo — see the
+        # note on settings.demo_trip_pin.
+        pin=settings.demo_trip_pin,
     )
     db.add(row)
     db.commit()

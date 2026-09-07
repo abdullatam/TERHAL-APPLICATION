@@ -78,6 +78,15 @@ export const api = {
     request(`/guide/${id}/requests/${bookingId}/accept`, { method: "POST" }),
   guideDecline: (id, bookingId) =>
     request(`/guide/${id}/requests/${bookingId}/decline`, { method: "POST" }),
+  // The meeting-point handshake: the guide types the PIN the tourist is
+  // holding, which starts the meter. Ending it settles the real price.
+  guideStartTrip: (id, bookingId, pin) =>
+    request(`/guide/${id}/trips/${bookingId}/start`, {
+      method: "POST",
+      body: JSON.stringify({ pin }),
+    }),
+  guideEndTrip: (id, bookingId) =>
+    request(`/guide/${id}/trips/${bookingId}/end`, { method: "POST" }),
   guideCalendar: (id, month) => request(`/guide/${id}/calendar${query({ month })}`),
   guideAvailability: (id, month) => request(`/guide/${id}/availability${query({ month })}`),
   guideBlock: (id, payload) =>

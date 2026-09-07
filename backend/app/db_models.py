@@ -183,6 +183,23 @@ class BookingORM(Base):
     responds_by: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True), nullable=True
     )
+
+    # --- the trip itself -------------------------------------------------
+    # The tourist holds this and reads it out at the meeting point; the guide
+    # types it to start the clock. Stored per booking rather than compared
+    # against one global constant, so issuing real random PINs later is a
+    # change to how this column is filled and nothing else.
+    pin: Mapped[str | None] = mapped_column(String, nullable=True)
+    started_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    ended_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    # What the trip actually cost, from measured time. Null until it ends;
+    # price_jod above stays the estimate it was booked at, so the two are
+    # always comparable after the fact.
+    final_price_jod: Mapped[float | None] = mapped_column(Float, nullable=True)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now()
     )

@@ -22,6 +22,13 @@ class Settings(BaseSettings):
     allowed_origins: str = "http://localhost:5173"
     database_url: str = ""
 
+    # DEMO ONLY. Every booking is issued this same PIN so the meeting-point
+    # handshake can be shown on stage without coordinating two phones. Before
+    # this is in front of a real tourist it must become a per-booking random
+    # code — the column already stores one per booking, so the change is here
+    # and in create_booking, nowhere else.
+    demo_trip_pin: str = "1234"
+
     @property
     def allowed_origins_list(self) -> list[str]:
         return [o.strip() for o in self.allowed_origins.split(",") if o.strip()]

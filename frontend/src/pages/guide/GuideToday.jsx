@@ -157,7 +157,12 @@ export default function GuideToday() {
         ) : (
           <ul className="space-y-2.5">
             {data.schedule.map((booking) => (
-              <ScheduleRow key={booking.id} booking={booking} />
+              <ScheduleRow
+                key={booking.id}
+                booking={booking}
+                providerId={providerId}
+                onChanged={load}
+              />
             ))}
           </ul>
         )}
@@ -189,11 +194,47 @@ function Tile({ value, unit = null, label }) {
   );
 }
 
-function ScheduleRow({ booking }) {
+function ScheduleRow({ booking, providerId, onChanged }) {
   const { t, language } = useLanguage();
+  const [entering, setEntering] = useState(false);
+  const [pin, setPin] = useState("");
+  const [error, setError] = useState(null);
+  const [busy, setBusy] = useState(false);
+
   const title =
     (language === "ar" ? booking.offering_title_ar : booking.offering_title_en) ??
     t("guide.req.byTheHour");
+
+  const running = booking.status === "in_progress";
+  const done = booking.status === "completed";
+
+  const start = async () => {
+    setBusy(true);
+    setError(null);
+    try {
+      await api.guideStartTrip(providerId, booking.id, pin.trim());
+      setEntering(false);
+      setPin("");
+      onChanged();
+    } catch (err) {
+      // 403 is the wrong PIN; anything else is worth showing verbatim.
+      setError(err.status === 403 ? t("guide.trip.pinWrong") : err.message);
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const end = async () => {
+    setBusy(true);
+    try {
+      await api.guideEndTrip(providerId, booking.id);
+      onChanged();
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setBusy(false);
+    }
+  };
 
   return (
     <li className="rounded-2xl bg-ivory p-3.5 shadow-hairline">
@@ -208,19 +249,84 @@ function ScheduleRow({ booking }) {
           <p className="truncate font-sans text-[14.5px] font-medium text-brown">{title}</p>
           <p className="truncate font-sans text-xs font-light text-ink-muted">
             {t("guide.req.people", { n: booking.group_size })} ·{" "}
-            {booking.price_jod.toFixed(0)} {t("price.jod")}
+            {done
+              ? t("guide.trip.earned", {
+                  n: (booking.final_price_jod ?? booking.price_jod).toFixed(0),
+                })
+              : t("price.estimated", { n: booking.price_jod.toFixed(0) })}
           </p>
         </div>
+        {running ? (
+          <span className="shrink-0 rounded-full bg-success/15 px-2 py-0.5 font-sans text-[10px] font-semibold text-success">
+            {t("guide.trip.running")}
+          </span>
+        ) : null}
+        {done ? (
+          <span className="shrink-0 rounded-full bg-beige px-2 py-0.5 font-sans text-[10px] font-semibold text-ink-muted">
+            {t("guide.trip.completed")}
+          </span>
+        ) : null}
       </div>
 
-      {/*
-        The artboard has "Message" and "Meeting point" buttons here. There is
-        no messaging in this product and bookings carry no meeting point, so
-        the row states that rather than offering controls that do nothing.
-      */}
-      <p className="mt-2.5 border-t border-gray pt-2.5 font-sans text-[11px] font-light text-ink-soft">
-        {t("guide.today.meetingPoint")}: {t("guide.today.meetingPointUnset")}
-      </p>
+      {/* The meeting-point handshake. The guide never sees the PIN — it is
+          read out by the tourist standing in front of them. */}
+      {entering ? (
+        <div className="mt-3 border-t border-gray pt-3">
+          <label className="block font-sans text-[11px] font-light text-ink-muted">
+            {t("guide.trip.enterPin")}
+          </label>
+          <div className="mt-2 flex gap-2">
+            <input
+              value={pin}
+              onChange={(e) => setPin(e.target.value.replace(/\D/g, "").slice(0, 6))}
+              inputMode="numeric"
+              autoFocus
+              placeholder="––––"
+              className="w-28 rounded-xl border border-gray bg-white px-3 py-2 text-center font-mono text-lg tracking-[0.3em] text-brown outline-none focus:border-terracotta"
+            />
+            <button
+              onClick={start}
+              disabled={busy || pin.length < 4}
+              className="flex-1 rounded-xl bg-terracotta px-4 py-2 font-sans text-sm font-semibold text-ivory disabled:opacity-40"
+            >
+              {t("guide.trip.confirm")}
+            </button>
+            <button
+              onClick={() => { setEntering(false); setError(null); setPin(""); }}
+              className="rounded-xl px-3 py-2 font-sans text-sm font-medium text-ink-muted"
+            >
+              {t("guide.trip.cancel")}
+            </button>
+          </div>
+          {error ? (
+            <p className="mt-2 font-sans text-xs text-terracotta">{error}</p>
+          ) : null}
+        </div>
+      ) : null}
+
+      {!entering && !done ? (
+        <div className="mt-2.5 border-t border-gray pt-2.5">
+          {running ? (
+            <button
+              onClick={end}
+              disabled={busy}
+              className="w-full rounded-xl border-[1.5px] border-terracotta py-2 font-sans text-[13px] font-semibold text-terracotta active:bg-beige disabled:opacity-40"
+            >
+              {t("guide.trip.end")}
+            </button>
+          ) : (
+            <button
+              onClick={() => setEntering(true)}
+              className="w-full rounded-xl bg-terracotta py-2 font-sans text-[13px] font-semibold text-ivory active:opacity-90"
+            >
+              {t("guide.trip.start")}
+            </button>
+          )}
+          {error && !entering ? (
+            <p className="mt-2 font-sans text-xs text-terracotta">{error}</p>
+          ) : null}
+        </div>
+      ) : null}
     </li>
   );
 }
