@@ -19,3 +19,8 @@ dist/
 
 # API response cache for scripts/find_images.py
 .cache/
+
+# Portfolio intermediates. The PDF is committed; these are regenerable with
+# scripts/capture_screens.py and reference machine-specific file:// paths.
+docs/portfolio/screens/
+docs/portfolio/terhal.html
